@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -21,6 +20,21 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 48px;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 40px;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 28px;
 }
 
 @keyframes logo-spin {
