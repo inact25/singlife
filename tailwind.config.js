@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: ["./src/**/*.{html,js}"],
+    content: ["./src/**/*.{html, js,jsx,ts,tsx}"],
     theme: {
         colors: {
             'singlife-red-800': '#FF0008',
