@@ -6,10 +6,10 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "paths": {
-      "@assets/*": ["/src/assets/*"],
-      "@components/*": ["/src/components/*"],
-      "@contents/*": ["/src/contents/*"],
-      "@services/*": ["/src/services/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@contents/*": ["./src/contents/*"],
+      "@services/*": ["./src/services/*"],
     },
     /* Bundler mode */
     "moduleResolution": "bundler",
