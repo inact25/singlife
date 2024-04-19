@@ -1,10 +1,10 @@
 import './App.css'
-import Splash from '@components/atom/splash'
+import Introduction from './pages/introduction'
 
 function App() {
   return (
     <>
-      <Splash />
+      <Introduction />
     </>
   )
 }

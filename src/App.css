@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 #root {
-    margin: 0 auto;
     text-align: center;
 }
 
@@ -52,6 +51,21 @@ h2 {
 h2 {
     font-size: 22px;
     line-height: 28px;
+}
+
+.body-1 {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.body-2 {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.note {
+    font-size: 12px;
+    line-height: 16px;
 }
 
 @keyframes logo-spin {
