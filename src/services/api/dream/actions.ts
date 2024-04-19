@@ -7,7 +7,7 @@ export const getDreamList = async (params: ListDreamParams | null) => {
     .get('/api/v1/dreams/list', {
       params,
     })
-    .then((response) => {
+    .then((response: { data: PaginationResponse<ListDream> }) => {
       return response.data as PaginationResponse<ListDream>
     })
 }
