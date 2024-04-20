@@ -3,8 +3,15 @@ import back from '@assets/svgs/back.svg'
 import Buttonicon from '@components/atom/buttonicon'
 import Gallery from '@components/atom/gallery'
 import Card from '@components/atom/card'
+import useDream from '@services/api/dream'
+import { useEffect } from 'react'
+import { arrayEven, arrayOdd, exceptText, numberComma } from '@utils/helper.ts'
 
 const Index = () => {
+  const dream_v1 = useDream()
+  useEffect(() => {
+    dream_v1.getDreamListDo()
+  }, [dream_v1.paginate.filter])
   return (
     <WrapperLayouts>
       <div className='min-h-screen'>
@@ -21,26 +28,25 @@ const Index = () => {
         <div className='my-5'>
           <div className='grid items-start grid-cols-2 md:grid-cols-4 gap-4'>
             <div className='grid gap-4'>
-              <Card title={'Dreams generated'} count={'99,999'} />
-              {[...new Array(3)].map((item) => (
-                <div key={item}>
+              <Card
+                title={'Dreams generated'}
+                count={numberComma(dream_v1.data.length)}
+              />
+              {arrayEven(dream_v1.data).map((item) => (
+                <div key={item.id}>
                   <Gallery
-                    description={'Retiring peacefully in the country side...'}
-                    image={
-                      'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-                    }
+                    description={exceptText(item.description, 39)}
+                    image={item.featured_image}
                   />
                 </div>
               ))}
             </div>
             <div className='grid gap-4'>
-              {[...new Array(3)].map((item) => (
-                <div key={item}>
+              {arrayOdd(dream_v1.data).map((item) => (
+                <div key={item.id}>
                   <Gallery
-                    description={'Retiring peacefully in the country side...'}
-                    image={
-                      'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-                    }
+                    description={exceptText(item.description, 39)}
+                    image={item.featured_image}
                   />
                 </div>
               ))}
