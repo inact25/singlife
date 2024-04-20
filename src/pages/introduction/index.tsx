@@ -1,6 +1,7 @@
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import background from '@assets/svgs/introduction.svg'
 import Button from '@components/atom/button'
+import Buttonimage from '@components/atom/buttonimage'
 
 const Index = () => {
   return (
@@ -27,7 +28,10 @@ const Index = () => {
                   <Button title={'GET STARTED'} type={'primary'} />
                 </div>
                 <div className='mb-3'>
-                  <Button title={'GET STARTED'} type={'primary'} />
+                  <Buttonimage
+                    title={'EXPLORE DREAM GALLERY'}
+                    type={'secondary'}
+                  />
                 </div>
               </div>
             </div>
