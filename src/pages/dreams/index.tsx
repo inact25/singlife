@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <WrapperLayouts>
       <div className='min-h-screen'>
-        <div className='grid grid-cols-12 justify-between'>
+        <div className='grid grid-cols-12 justify-between pt-5'>
           <div className='col-span-4 text-left'>
             <Buttonicon icon={back} />
           </div>
