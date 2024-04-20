@@ -9,6 +9,8 @@ import { arrayEven, arrayOdd, exceptText, numberComma } from '@utils/helper.ts'
 
 const Index = () => {
   const dream_v1 = useDream()
+  // dream_v1.paginate.handleFilter("page", 1);
+  // dream_v1.paginate.handleFilter("limit", 1);
   useEffect(() => {
     dream_v1.getDreamListDo()
   }, [dream_v1.paginate.filter])
