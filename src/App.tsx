@@ -1,6 +1,6 @@
 import './App.css'
-import Introduction from './pages/introduction'
 import { useEffect } from 'react'
+import Dreams from './pages/dreams'
 
 function App() {
   useEffect(() => {
@@ -16,7 +16,7 @@ function App() {
   }, [])
   return (
     <div>
-      <Introduction />
+      <Dreams />
     </div>
   )
 }
