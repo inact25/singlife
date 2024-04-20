@@ -15,9 +15,9 @@ function App() {
     }
   }, [])
   return (
-    <>
+    <div>
       <Introduction />
-    </>
+    </div>
   )
 }
 
