@@ -5,7 +5,7 @@ type Props = {
   isFull?: boolean
 }
 const WrapperLayouts = ({ children, isFull = false }: Props) => {
-  return <div className={`min-w-[100vw] ${!isFull && 'p-5'}`}>{children}</div>
+  return <div className={`max-w-md  ${!isFull && 'p-5'}`}>{children}</div>
 }
 
 export default WrapperLayouts

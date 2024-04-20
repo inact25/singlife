@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <WrapperLayouts>
       <div className='min-h-screen'>
-        <div className='grid grid-cols-12 justify-between'>
+        <div className='grid grid-cols-12 justify-between pt-5'>
           <div className='col-span-4 text-left'>
             <Buttonicon icon={back} />
           </div>
@@ -28,7 +28,7 @@ const Index = () => {
           </div>
         </div>
         <div className='my-5'>
-          <div className='grid items-start grid-cols-2 md:grid-cols-4 gap-4'>
+          <div className='grid items-start grid-cols-2 gap-4'>
             <div className='grid gap-4'>
               <Card
                 title={'Dreams generated'}
