@@ -20,7 +20,7 @@ export const getQuizList = async (params: ListQuizParams | null) => {
 
 export const submitQuiz = async (body: QuizSubmitBody | null) => {
   return http
-    .post('/api/v1/quiz/list', body)
+    .post('/api/v1/quiz/submit', body)
     .then((response: AxiosResponse) => {
       return response.data as CommonResponse<QuizSubmitResponse>
     })
