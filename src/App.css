@@ -69,6 +69,10 @@ h3 {
     line-height: 16px;
 }
 
+.image-screen {
+    background-size: cover !important;
+}
+
 @keyframes logo-spin {
     from {
         transform: rotate(0deg);
