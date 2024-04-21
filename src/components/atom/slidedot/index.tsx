@@ -1,5 +1,5 @@
 type Props = {
-  indexActive: 0 | 1 | 2
+  indexActive: number
   position?: 'start' | 'center' | 'end'
 }
 const Index = ({ indexActive, position = 'start' }: Props) => {

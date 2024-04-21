@@ -1,9 +1,13 @@
 type Props = {
   icon: any
+  onClick?: () => void
 }
-const Index = ({ icon }: Props) => {
+const Index = ({ icon, onClick }: Props) => {
   return (
-    <div className='rounded-full h-[40px] flex w-[40px] bg-white'>
+    <div
+      onClick={onClick}
+      className='rounded-full h-[40px] flex w-[40px] bg-white'
+    >
       <img
         style={{ width: 24, height: 24 }}
         className='m-auto'

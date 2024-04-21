@@ -1,8 +1,9 @@
 type Props = {
   title: string
   type?: 'primary' | 'secondary' | 'info' | 'warning' | 'default'
+  onClick?: () => void
 }
-const Index = ({ title, type = 'primary' }: Props) => {
+const Index = ({ title, type = 'primary', onClick }: Props) => {
   const btnMap = {
     primary: 'bg-singlife-red-800 text-white',
     secondary:
@@ -13,6 +14,7 @@ const Index = ({ title, type = 'primary' }: Props) => {
   }
   return (
     <button
+      onClick={onClick}
       className={`w-full px-5 py-4 text5[12px] text-[12px]  rounded-full ${btnMap[type]}`}
     >
       {title}

@@ -1,16 +1,20 @@
 import { DefaultFilter } from '@models/common'
 
 export type ListQuiz = {
-  title: string
-  featured_image: string
-  description: string
-  id: number
+  quest_id: number
+  question: string
+  choices: {
+    id: number
+    choice: string
+  }[]
 }
 export type ListQuizParams = DefaultFilter
-
-export type QuizSubmitBody = {
+export type QuizSubmitItem = {
   quiz_id: number
-  answer_id
+  answer_id: number
+}
+export type QuizSubmitBody = {
+  answers: QuizSubmitItem[]
 }
 
 export type QuizSubmitResponse = {

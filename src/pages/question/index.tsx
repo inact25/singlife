@@ -1,85 +1,83 @@
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
-import Buttonicon from '@components/atom/buttonicon'
-import back from '@assets/svgs/back.svg'
-import question1 from '@assets/background/Question1.jpg'
-import Radio from '@components/atom/radio'
-import Button from '@components/atom/button'
-import Slidedot from '@components/atom/slidedot'
-import { useEffect, useState } from 'react' // import question2 from '@assets/background/Question2.jpg'
+import { useEffect, useState } from 'react'
+import RenderQuestion from './RenderQuestion.tsx'
+import useQuiz from '@services/api/quiz'
+import { QuizSubmitItem } from '@services/api/quiz/type' // import question2 from '@assets/background/Question2.jpg'
 // import question2 from '@assets/background/Question2.jpg'
 // import question3 from '@assets/background/Question3.jpg'
 
 const Index = () => {
-  const [isActive, setIsActive] = useState(false)
+  const quiz_service = useQuiz()
+  const [selected, setSelected] = useState<number | null>(null)
+  const [answers, setAnswers] = useState<QuizSubmitItem[]>([])
+  const pushAnswer = (values: QuizSubmitItem) => {
+    const newAnswers = answers.filter((item) => item.quiz_id !== values.quiz_id)
+    setAnswers([...newAnswers, values])
+  }
+  const handleChanges = (values: QuizSubmitItem) => {
+    pushAnswer(values)
+  }
+  const handleBack = (id: number) => {
+    const isAvailable = quiz_service.data.find((item) => item.quest_id === id)
+
+    if (!isAvailable) {
+      console.log('Route to get started')
+      return
+    }
+    setSelected(id)
+  }
+  const handleNext = () => {
+    const next = (selected ?? 0) + 1
+    const isAvailable = quiz_service.data.find((item) => item.quest_id === next)
+    if (!isAvailable) {
+      console.log('Route to get started')
+      return
+    }
+    setSelected(next)
+  }
+  const selectAnswer = (id: number) => {
+    return answers.find((item) => item.quiz_id === id)?.answer_id
+  }
+  const handleSubmit = () => {
+    quiz_service
+      .submitQuizDo({
+        answers,
+      })
+      .then((response) => {
+        console.log('response', response.data)
+      })
+  }
+  useEffect(() => {
+    quiz_service.getQuizListDo()
+  }, [quiz_service.paginate.filter])
+  useEffect(() => {
+    console.log('answers', answers)
+  }, [answers])
 
   useEffect(() => {
-    setTimeout(() => setIsActive(true), 3000)
-  }, [])
+    if (!selected && quiz_service.data.length > 0) {
+      setSelected(quiz_service.data[0].quest_id)
+    }
+  }, [quiz_service.data])
   return (
     <WrapperLayouts isFull={true}>
-      <div className=''>
-        <div className='absolute top-5 left-5 text-left'>
-          <Buttonicon icon={back} />
-        </div>
-        <div
-          style={{
-            backgroundSize: 'cover',
-            background: `url(${question1}) center center no-repeat`,
+      {quiz_service.data.map((record, index) => (
+        <RenderQuestion
+          key={record.quest_id}
+          record={record}
+          handleBack={handleBack}
+          selected={selected ?? 0}
+          index={index}
+          onChange={handleChanges}
+          value={{
+            quiz_id: record.quest_id,
+            answer_id: selectAnswer(record.quest_id) ?? 0,
           }}
-          className='image-screen w-screen min-h-screen flex items-center'
-        >
-          <div className='w-full'>
-            <div className='content absolute bottom-0 text-start bg-white rounded-t-3xl'>
-              <WrapperLayouts>
-                <div className={`title mt-5`}>
-                  <h2>
-                    What Is <b>Financial Freedom</b> To You?
-                  </h2>
-                  {!isActive && (
-                    <div className='w-full m-auto my-5'>
-                      <Slidedot position={'center'} indexActive={0} />
-                    </div>
-                  )}
-                </div>
-                <div className={`content mt-10 ${!isActive && 'hidden'}`}>
-                  <div className='flex gap-3 items-center mb-3'>
-                    <Radio type={'round'} checked={true} />
-                    <p className='body-1'>Buy anything I fancy</p>
-                  </div>
-                  <div className='flex gap-3 items-center mb-3'>
-                    <Radio type={'round'} checked={true} />
-                    <p className='body-1'>All the time in the world</p>
-                  </div>
-                  <div className='flex gap-3 items-center mb-3'>
-                    <Radio type={'round'} checked={true} />
-                    <p className='body-1'>Pursuing exotic adventures</p>
-                  </div>
-                  <div className='flex gap-3 items-center mb-3'>
-                    <Radio type={'round'} checked={true} />
-                    <p className='body-1'>Pursuing wellness</p>
-                  </div>
-                  <div className='flex gap-3 items-center mb-3'>
-                    <Radio type={'round'} checked={true} />
-                    <p className='body-1'>Spending time with my loved ones</p>
-                  </div>
-                  <div className='flex gap-3 items-center mb-3'>
-                    <Radio type={'round'} checked={true} />
-                    <p className='body-1'>Giving back to society</p>
-                  </div>
-                  <div className='grid grid-cols-12 gap-3 items-center mt-10 mb-3'>
-                    <div className='col-span-4'>
-                      <Slidedot indexActive={0} />
-                    </div>
-                    <div className='col-span-8'>
-                      <Button type={'default'} title={'NEXT'} />
-                    </div>
-                  </div>
-                </div>
-              </WrapperLayouts>
-            </div>
-          </div>
-        </div>
-      </div>
+          handleNext={handleNext}
+          isLast={quiz_service.data.length - 1 === index}
+          handleSubmit={handleSubmit}
+        />
+      ))}
     </WrapperLayouts>
   )
 }
