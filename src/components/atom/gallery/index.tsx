@@ -1,13 +1,16 @@
 import Buttonicon from '@components/atom/buttonicon'
 import expand from '@assets/svgs/expand.svg'
+import React from 'react'
 
 type Props = {
   image: string
   description: string
+  onClick?: () => void
 }
-const Index = ({ image, description }: Props) => {
+const Index: React.FC<Props> = ({ image, description, onClick }) => {
   return (
     <div
+      onClick={onClick}
       style={{
         background: `url(${image}) center center no-repeat`,
         backgroundSize: 'cover',

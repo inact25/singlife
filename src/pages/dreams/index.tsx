@@ -6,9 +6,17 @@ import Card from '@components/atom/card'
 import useDream from '@services/api/dream'
 import { useEffect } from 'react'
 import { arrayEven, arrayOdd, exceptText, numberComma } from '@utils/helper.ts'
+import { useNavigate } from 'react-router-dom'
 
-const Index = () => {
+const Dream = () => {
+  const navigate = useNavigate()
   const dream_v1 = useDream()
+  const handleBack = () => {
+    navigate('/')
+  }
+  const handleYourDream = (id: number) => {
+    navigate(`/your-dream/${id}`)
+  }
   // dream_v1.paginate.handleFilter("page", 1);
   // dream_v1.paginate.handleFilter("limit", 1);
   useEffect(() => {
@@ -19,7 +27,7 @@ const Index = () => {
       <div className='min-h-screen'>
         <div className='grid grid-cols-12 justify-between pt-5'>
           <div className='col-span-4 text-left'>
-            <Buttonicon icon={back} />
+            <Buttonicon icon={back} onClick={handleBack} />
           </div>
           <div className='col-span-8'>
             <h2 className='text-right'>
@@ -37,6 +45,7 @@ const Index = () => {
               {arrayEven(dream_v1.data).map((item) => (
                 <div key={item.id}>
                   <Gallery
+                    onClick={() => handleYourDream(item.id)}
                     description={exceptText(item.description, 39)}
                     image={item.featured_image}
                   />
@@ -47,6 +56,7 @@ const Index = () => {
               {arrayOdd(dream_v1.data).map((item) => (
                 <div key={item.id}>
                   <Gallery
+                    onClick={() => handleYourDream(item.id)}
                     description={exceptText(item.description, 39)}
                     image={item.featured_image}
                   />
@@ -60,4 +70,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default Dream

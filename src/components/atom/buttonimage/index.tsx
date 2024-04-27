@@ -1,8 +1,12 @@
+import { useCallback } from 'react'
+
 type Props = {
   title: string
   type?: 'primary' | 'secondary' | 'info' | 'warning' | 'default'
+  onClick?: () => void
+  images?: string[]
 }
-const Index = ({ title, type = 'primary' }: Props) => {
+const Index = ({ title, type = 'primary', onClick, images }: Props) => {
   const btnMap = {
     primary: 'bg-singlife-red-800',
     secondary:
@@ -11,16 +15,23 @@ const Index = ({ title, type = 'primary' }: Props) => {
     default: 'bg-singlife-purle-800',
     warning: 'bg-singlife-orange-800',
   }
+  const filterLimit = useCallback(
+    (limit: number, _images: string[]) => {
+      return _images?.filter((_, index) => index < limit)
+    },
+    [images],
+  )
   return (
     <button
+      onClick={onClick}
       className={`flex w-full items-center justify-between py-1   rounded-full ${btnMap[type]}`}
     >
       <div className='text-[12px] font-bold'>{title}</div>
       <div className='flex text-[12px]  w-fit pe-2'>
-        {[...new Array(3)].map((item) => (
+        {filterLimit(3, images ?? [])?.map((image, index) => (
           <img
-            key={item}
-            src='https://images.unsplash.com/photo-1682695797873-aa4cb6edd613?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            key={index}
+            src={image}
             className='border border-2 mr-[-1.15rem] w-[40px] h-[40px] rounded-full'
             alt=''
           />
