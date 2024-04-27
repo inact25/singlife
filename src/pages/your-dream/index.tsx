@@ -4,16 +4,21 @@ import Buttonicon from '@components/atom/buttonicon'
 import back from '@assets/svgs/back.svg'
 import { useEffect } from 'react'
 import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
+import { useNavigate } from 'react-router-dom'
 
-const Index = () => {
+const YourDream = () => {
+  const navigate = useNavigate()
   useEffect(() => {
-    setTimeout(() => bottomPopup(), 5000)
+    const timeout = setTimeout(() => bottomPopup(), 5000)
+    return () => {
+      clearTimeout(timeout)
+    }
   }, [])
   return (
     <WrapperLayouts isFull={true}>
       <div className=''>
         <div className='absolute top-5 left-5 text-left'>
-          <Buttonicon icon={back} />
+          <Buttonicon icon={back} onClick={() => navigate('/dreams')} />
         </div>
         <div
           style={{
@@ -34,4 +39,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default YourDream

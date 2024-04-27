@@ -2,11 +2,13 @@ import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import { useEffect, useState } from 'react'
 import RenderQuestion from './RenderQuestion.tsx'
 import useQuiz from '@services/api/quiz'
-import { QuizSubmitItem } from '@services/api/quiz/type' // import question2 from '@assets/background/Question2.jpg'
+import { QuizSubmitItem } from '@services/api/quiz/type'
+import { useNavigate } from 'react-router-dom' // import question2 from '@assets/background/Question2.jpg'
 // import question2 from '@assets/background/Question2.jpg'
 // import question3 from '@assets/background/Question3.jpg'
 
-const Index = () => {
+const Question = () => {
+  const navigate = useNavigate()
   const quiz_service = useQuiz()
   const [selected, setSelected] = useState<number | null>(null)
   const [answers, setAnswers] = useState<QuizSubmitItem[]>([])
@@ -22,6 +24,7 @@ const Index = () => {
 
     if (!isAvailable) {
       console.log('Route to get started')
+      navigate('/')
       return
     }
     setSelected(id)
@@ -82,4 +85,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default Question
