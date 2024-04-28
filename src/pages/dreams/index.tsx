@@ -35,7 +35,7 @@ const Dream = () => {
             </h2>
           </div>
         </div>
-        <div className='my-5'>
+        <div className='my-5 overflow-y-auto max-h-[78vh]'>
           <div className='grid items-start grid-cols-2 gap-4'>
             <div className='grid gap-4'>
               <Card

@@ -5,6 +5,8 @@
 #root {
     text-align: center;
     background: #ffe9ec;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .logo {
