@@ -5,8 +5,34 @@ import Buttonimage from '@components/atom/buttonimage'
 import { useNavigate } from 'react-router-dom'
 import useDream from '@services/api/dream'
 import { useEffect } from 'react'
+import useResponsive from '../../hooks/useResponsive.ts'
 
 const Introduction = () => {
+  const responsive = useResponsive()
+  const { breakpoint } = responsive
+  console.log('breakpoint', breakpoint)
+  const classList = {
+    sm: {
+      image: 'w-full absolute',
+      footer: 'fixed inset-x-0 bottom-0',
+    },
+    md: {
+      image: 'w-full',
+      footer: '',
+    },
+    lg: {
+      image: 'w-full',
+      footer: '',
+    },
+    xl: {
+      image: 'w-full',
+      footer: '',
+    },
+    xs: {
+      image: 'w-full absolute',
+      footer: 'fixed inset-x-0 bottom-0',
+    },
+  }
   const dream_v1 = useDream()
   const navigate = useNavigate()
   const handleGetStarted = () => {
@@ -33,11 +59,15 @@ const Introduction = () => {
           </WrapperLayouts>
           <WrapperLayouts isFull={true}>
             <div className='content w-full'>
-              <img src={background} className='w-full' alt='introduction' />
+              <img
+                src={background}
+                className={classList[breakpoint ?? 'sm'].image}
+                alt='introduction'
+              />
             </div>
           </WrapperLayouts>
-          <WrapperLayouts>
-            <div className='footer  max-h-[15vh] '>
+          <WrapperLayouts className={classList[breakpoint ?? 'sm'].footer}>
+            <div className='footer  max-h-[15vh]'>
               <div className='action'>
                 <div className='mb-3'>
                   <Button
