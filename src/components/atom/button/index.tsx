@@ -2,8 +2,9 @@ type Props = {
   title: any
   type?: 'primary' | 'secondary' | 'info' | 'warning' | 'default'
   onClick?: () => void
+  color?: string
 }
-const Index = ({ title, type = 'primary', onClick }: Props) => {
+const Index = ({ title, type = 'primary', onClick, color }: Props) => {
   const btnMap = {
     primary: 'bg-singlife-red-800 text-white',
     secondary:
@@ -19,6 +20,10 @@ const Index = ({ title, type = 'primary', onClick }: Props) => {
     info: 'rgb(25 211 197 / 50%) 0px 4px 16px 0px',
     default: 'rgb(136 62 137 / 50%) 0px 4px 16px 0px',
     warning: 'rgb(255 161 104 / 50%) 0px 4px 16px 0px',
+  }
+  if (color) {
+    btnMap.default = `bg-${color}-800 text-white font-bold`
+    styleMap.default = `0 4px 16px 0 rgba(156, 163, 175, 0.5)`
   }
   return (
     <button

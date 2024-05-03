@@ -6,6 +6,7 @@ type Props = {
   onChange?: (checked: boolean) => void
   type?: 'square' | 'round'
   size?: 'large' | 'normal' | 'small'
+  color?: string
 }
 
 const Radio: React.FC<Props> = ({
@@ -13,6 +14,7 @@ const Radio: React.FC<Props> = ({
   checked = false,
   onChange = () => {},
   type = 'round',
+  color,
 }) => {
   return (
     <div
@@ -20,8 +22,8 @@ const Radio: React.FC<Props> = ({
       className={`border border-gray-300 cursor-pointer  ${
         type === 'square' ? 'rounded' : 'rounded-full'
       } ${size === 'large' ? 'w-[36px] h-[36px]' : size === 'normal' ? 'w-[28px] h-[28px]' : 'w-[24px] h-[24px]'} border ${
-        checked ? 'bg-white' : ''
-      } text-black flex justify-center items-center`}
+        checked ? `bg-${color}-200` : ''
+      } text-${color}-800 flex justify-center items-center`}
     >
       {checked && <IoMdCheckmark />}
     </div>

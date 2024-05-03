@@ -10,9 +10,10 @@ import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Slidedot from '@components/atom/slidedot'
 import Radio from '@components/atom/radio'
 import Button from '@components/atom/button'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ListQuiz, QuizSubmitItem } from '@services/api/quiz/type'
 import htmlParser from 'html-react-parser'
+import { motion } from 'framer-motion'
 
 type Props = {
   selected: number
@@ -25,7 +26,54 @@ type Props = {
   isLast?: boolean
   handleSubmit: () => void
 }
-
+const switchImage = (index: number) => {
+  switch (index) {
+    case 0:
+      return question1
+    case 1:
+      return question2
+    case 2:
+      return question3
+    default:
+      return question1
+  }
+}
+const motionConfig = {
+  closed: {
+    height: 0,
+    opacity: 0,
+  },
+  //open visible
+  open: {
+    height: 'auto',
+    opacity: 1,
+  },
+}
+const motionImageConfig = {
+  transition: {
+    y: {
+      repeat: Infinity,
+      repeatType: 'loop',
+      duration: 1.5,
+      ease: 'easeOut',
+    },
+  },
+  animate: {
+    y: [0, '2rem', 0],
+  },
+}
+const colorPicker = (index: number) => {
+  switch (index) {
+    case 0:
+      return 'singlife-purple'
+    case 1:
+      return 'singlife-turquoise'
+    case 2:
+      return 'singlife-orange'
+    default:
+      return 'singlife-purple'
+  }
+}
 const RenderQuestion: React.FC<Props> = ({
   selected,
   handleBack,
@@ -37,16 +85,25 @@ const RenderQuestion: React.FC<Props> = ({
   isLast,
   handleSubmit,
 }) => {
-  const isActive = selected === record.quest_id
-  if (!isActive) {
-    return null
-  }
+  const [isActive, setIsActive] = useState(false)
+  const isShow = selected === record.quest_id
   const isChecked = (id: number) => {
     return value?.answer_id === id
   }
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsActive(true)
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [selected, record.quest_id])
+  useEffect(() => {
+    setIsActive(false)
+  }, [selected])
+  if (!isShow) return null
+
   return (
     <div className=''>
-      <div className='absolute top-5 left-5 text-left'>
+      <div className='absolute top-5 left-5 text-left z-10'>
         <Buttonicon
           icon={back}
           onClick={() => handleBack && handleBack(record.quest_id - 1)}
@@ -55,15 +112,21 @@ const RenderQuestion: React.FC<Props> = ({
       <div
         style={{
           backgroundSize: 'cover',
-          background: `url(${index === 0 ? question1 : index === 1 ? question2 : question3}) center center no-repeat`,
+          background: `url(${switchImage(index)}) center center no-repeat`,
         }}
         className='image-screen w-screen min-h-screen flex items-center'
       >
         <div className='w-full'>
           <div
-            className={`${index === 0 ? 'mt-[-15rem]' : index === 1 ? 'absolute top-0 right-0' : 'absolute top-16 right-0'}`}
+            className={` ${index === 0 ? 'mt-[-15rem]' : index === 1 ? 'absolute -top-10 right-0' : 'absolute top-16 right-0'}`}
           >
-            <img
+            <motion.img
+              transition={{
+                y: motionImageConfig.transition.y,
+              }}
+              animate={{
+                y: motionImageConfig.animate.y,
+              }}
               src={index === 0 ? object1 : index === 1 ? object2 : object3}
               alt={''}
             />
@@ -76,15 +139,25 @@ const RenderQuestion: React.FC<Props> = ({
                 {htmlParser(record.question)}
                 {!isActive && (
                   <div className='w-full m-auto my-5'>
-                    <Slidedot position={'center'} indexActive={index} />
+                    <Slidedot
+                      position={'center'}
+                      color={colorPicker(index)}
+                      indexActive={index}
+                    />
                   </div>
                 )}
               </h2>
-              <div className={`content mt-10 ${!isActive && 'hidden'}`}>
+              <motion.div
+                className='content mt-10'
+                initial={'closed'}
+                animate={isActive ? 'open' : 'closed'}
+                variants={motionConfig}
+              >
                 {record.choices.map((item) => (
                   <div className='flex gap-3 items-center mb-3' key={item.id}>
                     <Radio
-                      type={'round'}
+                      color={colorPicker(index)}
+                      type='round'
                       checked={isChecked(item.id)}
                       onChange={() => {
                         onChange &&
@@ -99,17 +172,18 @@ const RenderQuestion: React.FC<Props> = ({
                 ))}
                 <div className='grid grid-cols-12 gap-3 items-center mt-10 mb-3'>
                   <div className='col-span-4'>
-                    <Slidedot indexActive={index} />
+                    <Slidedot indexActive={index} color={colorPicker(index)} />
                   </div>
                   <div className='col-span-8'>
                     <Button
-                      type={'default'}
+                      type='default'
                       title={isLast ? 'Submit' : 'Next'}
                       onClick={isLast ? handleSubmit : handleNext}
+                      color={colorPicker(index)}
                     />
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </WrapperLayouts>
           </div>
         </div>
