@@ -21,12 +21,12 @@ const Question = () => {
   }
   const handleBack = (id: number) => {
     const isAvailable = quiz_service.data.find((item) => item.quest_id === id)
-
     if (!isAvailable) {
       console.log('Route to get started')
       navigate('/')
       return
     }
+    console.log('id', id)
     setSelected(id)
   }
   const handleNext = () => {
