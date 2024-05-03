@@ -108,7 +108,7 @@ const Introduction = () => {
                 </div>
                 <div className='mb-3'>
                   <Buttonimage
-                    title='Explore Dream Gallery'
+                    title={'Explore Dream Gallery'}
                     type='secondary'
                     onClick={handleExploreDreamGallery}
                     images={dream_v1.data.map((item) => item.featured_image)}

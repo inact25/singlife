@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 type Props = {
-  title: string
+  title: any
   type?: 'primary' | 'secondary' | 'info' | 'warning' | 'default'
   onClick?: () => void
   images?: string[]
@@ -26,7 +26,7 @@ const Index = ({ title, type = 'primary', onClick, images }: Props) => {
       onClick={onClick}
       className={`flex w-full items-center justify-between py-1   rounded-full ${btnMap[type]}`}
     >
-      <div className='text-[12px] font-bold'>{title}</div>
+      <div className='text-[12px] font-medium'>{title}</div>
       <div className='flex text-[12px]  w-fit pe-2'>
         {filterLimit(3, images ?? [])?.map((image, index) => (
           <img

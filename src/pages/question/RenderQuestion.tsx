@@ -57,14 +57,14 @@ const RenderQuestion: React.FC<Props> = ({
         <div className='w-full'>
           <div className='content absolute bottom-0 text-start bg-white rounded-t-3xl w-full'>
             <WrapperLayouts>
-              <div className={`title mt-5`}>
+              <h2 className={`title  mt-5 text-black`}>
                 {htmlParser(record.question)}
                 {!isActive && (
                   <div className='w-full m-auto my-5'>
                     <Slidedot position={'center'} indexActive={index} />
                   </div>
                 )}
-              </div>
+              </h2>
               <div className={`content mt-10 ${!isActive && 'hidden'}`}>
                 {record.choices.map((item) => (
                   <div className='flex gap-3 items-center mb-3' key={item.id}>
@@ -79,7 +79,7 @@ const RenderQuestion: React.FC<Props> = ({
                           })
                       }}
                     />
-                    <p className='body-1'>{item.choice}</p>
+                    <p className='body-1 text-black'>{item.choice}</p>
                   </div>
                 ))}
                 <div className='grid grid-cols-12 gap-3 items-center mt-10 mb-3'>

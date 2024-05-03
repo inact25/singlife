@@ -17,10 +17,10 @@ const Index: React.FC<Props> = ({ image, description, onClick }) => {
       }}
       className='min-h-[265px] w-full rounded-xl relative'
     >
-      <div className='absolute right-2 top-2'>
+      <div className='absolute right-[8px] top-[8px]'>
         <Buttonicon icon={expand} />
       </div>
-      <div className='font-medium backdrop-blur-md text-start text-[14px] absolute bottom-0 px-2 bg-white/70  w-full rounded-b-xl py-3'>
+      <div className='text-black font-medium backdrop-blur-md text-start text-[14px] absolute bottom-0 px-3.5 bg-white/70  w-full rounded-b-xl py-5'>
         {description}
       </div>
     </div>

@@ -14,7 +14,7 @@ const Index = () => {
           />
         </div>
         <div>
-          <p className='note'>Look around to explore</p>
+          <p className='note text-black'>Look around to explore</p>
         </div>
       </div>
     </div>
