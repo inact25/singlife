@@ -3,11 +3,16 @@ import Introduction from '@pages/introduction'
 import Dream from '@pages/dreams'
 import Question from '@pages/question'
 import YourDream from '@pages/your-dream'
+import Test from '@pages/test'
 
 const routes: RouteObject[] = [
   {
     path: '/',
     element: <Introduction />,
+  },
+  {
+    path: '/test',
+    element: <Test />,
   },
   {
     path: '/dreams',
