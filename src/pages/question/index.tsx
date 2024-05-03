@@ -48,6 +48,7 @@ const Question = () => {
       })
       .then((response) => {
         console.log('response', response.data)
+        navigate('/dreams')
       })
   }
   useEffect(() => {
