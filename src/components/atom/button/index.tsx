@@ -24,7 +24,7 @@ const Index = ({ title, type = 'primary', onClick }: Props) => {
     <button
       onClick={onClick}
       style={{ boxShadow: styleMap[type] }}
-      className={`w-full px-5 py-3  text-[16px] font-semibold  rounded-full ${btnMap[type]}`}
+      className={`w-full px-5 py-3.5  text-[16px] font-semibold  rounded-full ${btnMap[type]}`}
     >
       {title}
     </button>
