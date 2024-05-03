@@ -1,3 +1,35 @@
+/*@import "./assets/fontface/F37 Gruffy/F37GruffySoft-Regular.otf";*/
+/*@import "./assets/fontface/F37 Gruffy/F37Gruffy-Regular.otf";*/
+/*@import "./assets/fontface/mon/MontserratAlternates-Black.otf";*/
+
+/*@font-face {*/
+/*    font-family: "MontserratAlternates-Black";*/
+/*    src: local("MontserratAlternates-Black"),*/
+/*    url("./assets/fontface/mon/MontserratAlternates-Black.otf") format("opentype");*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: "F37Gruffy";*/
+/*    src: local("F37Gruffy"),*/
+/*    url("./assets/fontface/F37 Gruffy/F37Gruffy-Regular.otf") format("opentype");*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: "F37GruffySoft";*/
+/*    src: local("F37GruffySoft"),*/
+/*    url("./assets/fontface/F37 Gruffy/F37GruffySoft-Regular.otf") format("opentype");*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+
+/** {*/
+/*    font-family: MontserratAlternates-Black, serif;*/
+/*}*/
+
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;

@@ -1,5 +1,5 @@
 type Props = {
-  title: string
+  title: any
   type?: 'primary' | 'secondary' | 'info' | 'warning' | 'default'
   onClick?: () => void
 }
@@ -15,7 +15,7 @@ const Index = ({ title, type = 'primary', onClick }: Props) => {
   return (
     <button
       onClick={onClick}
-      className={`w-full px-5 py-4 text5[12px] text-[12px]  rounded-full ${btnMap[type]}`}
+      className={`w-full px-5 py-4 text5[12px] text-[12px] font-bold  rounded-full ${btnMap[type]}`}
     >
       {title}
     </button>

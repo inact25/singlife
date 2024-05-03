@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import useDream from '@services/api/dream'
 import { useEffect } from 'react'
 import useResponsive from '../../hooks/useResponsive.ts'
+import { RiChatSmile3Fill } from 'react-icons/ri'
 
 const Introduction = () => {
   const responsive = useResponsive()
@@ -51,7 +52,7 @@ const Introduction = () => {
         <div className='overflow-hidden max-h-screen'>
           <WrapperLayouts>
             <div className='head w-full max-h-[15vh] pt-5'>
-              <div className='text-left'>
+              <div className='text-left text-black'>
                 <p className='body-2'>Welcome to</p>
                 <p className='body-2 font-bold'>The SingLife Dream Cube</p>
               </div>
@@ -67,18 +68,47 @@ const Introduction = () => {
             </div>
           </WrapperLayouts>
           <WrapperLayouts className={classList[breakpoint ?? 'sm'].footer}>
-            <div className='footer  max-h-[15vh]'>
+            <div className='footer'>
               <div className='action'>
                 <div className='mb-3'>
                   <Button
                     onClick={handleGetStarted}
-                    title='GET STARTED'
+                    title='Get Started'
                     type='primary'
                   />
                 </div>
                 <div className='mb-3'>
+                  <Button
+                    onClick={() => console.log('')}
+                    title={
+                      <span className='flex items-center gap-2 justify-center'>
+                        <span className='text-[18px]'>
+                          <RiChatSmile3Fill />
+                        </span>{' '}
+                        Talk to a Financial Advisor
+                      </span>
+                    }
+                    type='secondary'
+                  />
+                </div>
+                <div className='divider my-2 grid items-center grid-cols-10'>
+                  <span className={'col-span-4'}>
+                    <hr />
+                  </span>
+                  <span
+                    className={
+                      'font-semibold text-black text-[14px] col-span-2'
+                    }
+                  >
+                    Or
+                  </span>
+                  <span className={'col-span-4'}>
+                    <hr />
+                  </span>
+                </div>
+                <div className='mb-3'>
                   <Buttonimage
-                    title='EXPLORE DREAM GALLERY'
+                    title='Explore Dream Gallery'
                     type='secondary'
                     onClick={handleExploreDreamGallery}
                     images={dream_v1.data.map((item) => item.featured_image)}
