@@ -2,46 +2,119 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+        font-family: "F37Gruffy";
+        src: local("F37Gruffy"),
+        url("./assets/fontface/F37Gruffy/F37Gruffy-Regular.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "F37Gruffy";
+        src: local("F37Gruffy-Bold"),
+        url("./assets/fontface/F37Gruffy/F37Gruffy-Bold.otf") format("opentype");
+        font-weight: bold;
+        font-style: normal;
+    }
+}
+
+* {
+    font-family: F37Gruffy, serif;
+}
 
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    text-align: center;
+    background: #ffe9ec;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
 }
+
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+    filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+    filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.display {
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 48px;
+}
+
+.cta-1 {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.cta-2 {
+    font-size: 12px;
+    line-height: 22px;
+}
+
+
+h1 {
+    font-size: 30px;
+    line-height: 48px;
+}
+
+h2 {
+    font-size: 28px;
+    line-height: 40px;
+}
+
+h3 {
+    font-size: 22px;
+    line-height: 28px;
+}
+
+.body-1 {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.body-2 {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.note {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.image-screen {
+    background-size: cover !important;
 }
 
 @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
 }
 
 .card {
-  padding: 2em;
+    padding: 2em;
 }
 
 .read-the-docs {
-  color: #888;
+    color: #888;
 }
