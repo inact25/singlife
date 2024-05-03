@@ -1,6 +1,11 @@
 import Buttonicon from '@components/atom/buttonicon'
 import back from '@assets/svgs/back.svg'
 import question1 from '@assets/background/Question1.jpg'
+import question2 from '@assets/background/Question2.jpg'
+import question3 from '@assets/background/Question3.jpg'
+import object1 from '@assets/svgs/object1.svg'
+import object2 from '@assets/svgs/object2.svg'
+import object3 from '@assets/svgs/object3.svg'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Slidedot from '@components/atom/slidedot'
 import Radio from '@components/atom/radio'
@@ -50,14 +55,24 @@ const RenderQuestion: React.FC<Props> = ({
       <div
         style={{
           backgroundSize: 'cover',
-          background: `url(${question1}) center center no-repeat`,
+          background: `url(${index === 0 ? question1 : index === 1 ? question2 : question3}) center center no-repeat`,
         }}
         className='image-screen w-screen min-h-screen flex items-center'
       >
         <div className='w-full'>
-          <div className='content absolute bottom-0 text-start bg-white rounded-t-3xl w-full'>
+          <div
+            className={`${index === 0 ? 'mt-[-15rem]' : index === 1 ? 'absolute top-0 right-0' : 'absolute top-16 right-0'}`}
+          >
+            <img
+              src={index === 0 ? object1 : index === 1 ? object2 : object3}
+              alt={''}
+            />
+          </div>
+          <div
+            className={`content absolute bottom-0 text-start bg-white rounded-t-[32px] w-full`}
+          >
             <WrapperLayouts>
-              <h2 className={`title  mt-5 text-black`}>
+              <h2 className={`title mt-5 text-black`}>
                 {htmlParser(record.question)}
                 {!isActive && (
                   <div className='w-full m-auto my-5'>

@@ -1,12 +1,13 @@
 type Props = {
   icon: any
   onClick?: () => void
+  isActive?: boolean
 }
-const Index = ({ icon, onClick }: Props) => {
+const Index = ({ icon, onClick, isActive = false }: Props) => {
   return (
     <div
       onClick={onClick}
-      className='rounded-full h-[40px] flex w-[40px] bg-white'
+      className={`rounded-full h-[40px] flex w-[40px] ${isActive ? 'bg-singlife-red-800' : 'bg-white '}`}
     >
       <img
         style={{ width: 24, height: 24 }}

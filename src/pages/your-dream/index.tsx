@@ -1,5 +1,5 @@
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
-import L360 from '@components/atom/l360'
+import Mediapop from '../../components/atom/mediapop'
 import Buttonicon from '@components/atom/buttonicon'
 import back from '@assets/svgs/back.svg'
 import { useEffect } from 'react'
@@ -30,7 +30,7 @@ const YourDream = () => {
         >
           <div className='w-full'>
             <WrapperLayouts>
-              <L360 />
+              <Mediapop type={'360'} />
             </WrapperLayouts>
           </div>
         </div>

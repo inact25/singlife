@@ -5,7 +5,7 @@ const bottomPopup = () => {
   return Swal.fire({
     customClass: {
       container: 'p-0',
-      popup: 'rounded-b-none rounded-t-2xl',
+      popup: 'rounded-b-none rounded-t-[32px]',
       title: 'body-1 font-medium text-black pt-10',
       actions: 'w-full px-5',
       confirmButton: 'w-full rounded-full bg-singlife-red-800',
