@@ -28,6 +28,31 @@ const Index = () => {
     )
   }
 
+  const Capture = () => {
+    return (
+      <div className='w-full px-5'>
+        <div className='body-1 text text-[12px] my-4 mb-8 px-5'>
+          Download the image and share this with your friends!
+        </div>
+        <div className='image m-auto mb-8'>
+          <img
+            className='m-auto w-[155px] h-[275px] rounded-2xl object-cover'
+            src='https://images.unsplash.com/photo-1713107102323-00cd32c4b7df?q=80&w=1984&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            alt=''
+          />
+        </div>
+        <div className='grid grid-cols-2 gap-5'>
+          <div>
+            <Button title={'Retake'} type={'secondary'} />
+          </div>
+          <div>
+            <Button title={'Download'} type={'primary'} />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const Share = () => {
     return (
       <div className='w-full px-5'>
@@ -66,7 +91,7 @@ const Index = () => {
     <div>
       <Popup
         title={'Make it Real'}
-        content={<Share />}
+        content={<Capture />}
         open={open}
         onPop={() => setOpen(!open)}
       />

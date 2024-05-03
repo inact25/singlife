@@ -11,7 +11,7 @@ const Index = ({ onPop, open, content, title }: Props) => {
       <div className='w-full fixed bottom-0'>
         <div
           onClick={onPop}
-          className='rounded-t-[32px] head bg-black w-full pt-2'
+          className='cursor-pointer rounded-t-[32px] head bg-black w-full pt-2'
         >
           <div className='rounded-full line border border-b-2 mt-2 m-auto w-[60px]' />
           <h3 className='title p-4 pt-6'>{title}</h3>
