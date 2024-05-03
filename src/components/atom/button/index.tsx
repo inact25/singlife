@@ -7,7 +7,7 @@ const Index = ({ title, type = 'primary', onClick }: Props) => {
   const btnMap = {
     primary: 'bg-singlife-red-800 text-white',
     secondary:
-      'bg-transparent border border-singlife-red-800 text-singlife-red-800',
+      'bg-[#FFE9EC] border border-singlife-red-800 text-singlife-red-800',
     info: 'bg-singlife-turqoise-800',
     default: 'bg-singlife-purple-800 text-white font-bold',
     warning: 'bg-singlife-orange-800',

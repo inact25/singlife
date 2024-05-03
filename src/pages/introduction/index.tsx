@@ -51,15 +51,15 @@ const Introduction = () => {
       <WrapperLayouts isFull={true}>
         <div className='overflow-hidden max-h-screen'>
           <WrapperLayouts>
-            <div className='head w-full max-h-[15vh] pt-5'>
-              <div className='text-left text-black'>
+            <div className='head w-full max-h-[15vh] pt-5 '>
+              <div className='text-left text-black absolute'>
                 <p className='body-2'>Welcome to</p>
                 <p className='body-2 font-bold'>The SingLife Dream Cube</p>
               </div>
             </div>
           </WrapperLayouts>
           <WrapperLayouts isFull={true}>
-            <div className='content w-full'>
+            <div className='content w-full absolute top-10'>
               <img
                 src={background}
                 className={classList[breakpoint ?? 'sm'].image}
