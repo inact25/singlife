@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+        font-family: "F37Gruffy";
+        src: local("F37Gruffy"),
+        url("./assets/fontface/F37Gruffy/F37Gruffy-Regular.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "F37Gruffy";
+        src: local("F37Gruffy-Bold"),
+        url("./assets/fontface/F37Gruffy/F37Gruffy-Bold.otf") format("opentype");
+        font-weight: bold;
+        font-style: normal;
+    }
+}
+
+* {
+    font-family: F37Gruffy, serif;
+}
+
 #root {
     text-align: center;
     background: #ffe9ec;
