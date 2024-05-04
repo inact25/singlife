@@ -4,7 +4,7 @@ import Gallery from '@components/atom/gallery'
 import Card from '@components/atom/card'
 import useDream from '@services/api/dream'
 import { useEffect } from 'react'
-import { arrayEven, arrayOdd, exceptText, numberComma } from '@utils/helper.ts'
+import { arrayEven, arrayOdd, exceptText } from '@utils/helper.ts'
 import { useNavigate } from 'react-router-dom'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 
@@ -42,7 +42,8 @@ const Dream = () => {
             <div className='grid gap-4'>
               <Card
                 title={'Dreams generated'}
-                count={numberComma(dream_v1.data.length)}
+                // count={numberComma(dream_v1.data.length)}
+                count={99999}
               />
               {arrayEven(dream_v1.data).map((item) => (
                 <div key={item.id}>
