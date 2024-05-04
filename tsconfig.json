@@ -7,6 +7,9 @@
       "DOM",
       "DOM.Iterable"
     ],
+    "types": [
+      "types-aframe-react"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
     "paths": {
@@ -33,6 +36,9 @@
       ],
       "@pages/*": [
         "./src/pages/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
       ]
     },
     /* Bundler mode */
