@@ -19,15 +19,23 @@ const ArRender = () => {
         })
       },
     })
+    aframe.register('colorize-v2', {
+      schema: {
+        color: { default: 'red' },
+      },
+      init: function () {
+        console.log('init v2')
+        const data = this.data
+        const el = this.el // <a-box>
+        el.addEventListener('click', function () {
+          el.setAttribute('color', data.color)
+        })
+      },
+    })
   }, [])
   return (
     <AFrameScene>
-      <a-box
-        position='-1 0.5 -3'
-        rotation='0 45 0'
-        color='#4CC3D9'
-        colorize
-      ></a-box>
+      <a-box position='-1 0.5 -3' rotation='0 45 0' color='#4CC3D9'></a-box>
       <a-sphere position='0 1.25 -5' radius='1.25' color='#EF2D5E'></a-sphere>
       <a-cylinder
         position='1 0.75 -3'
