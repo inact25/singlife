@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import background from '@assets/svgs/introduction.svg'
 import Button from '@components/atom/button'

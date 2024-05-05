@@ -10,7 +10,7 @@ import {
 
 export const getQuizList = async (params: ListQuizParams | null) => {
   return http
-    .get('/api/v1/quiz/list', {
+    .get('mocktail/quiz_list', {
       params,
     })
     .then((response: AxiosResponse) => {
@@ -20,7 +20,7 @@ export const getQuizList = async (params: ListQuizParams | null) => {
 
 export const submitQuiz = async (body: QuizSubmitBody | null) => {
   return http
-    .post('/api/v1/quiz/submit', body)
+    .post('mocktail/quiz_submit', body)
     .then((response: AxiosResponse) => {
       return response.data as CommonResponse<QuizSubmitResponse>
     })

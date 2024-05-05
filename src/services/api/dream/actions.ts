@@ -5,7 +5,7 @@ import { AxiosResponse } from 'axios'
 
 export const getDreamList = async (params: ListDreamParams | null) => {
   return http
-    .get('/api/v1/dreams/list', {
+    .get('mocktail/dream_list', {
       params,
     })
     .then((response: AxiosResponse) => {

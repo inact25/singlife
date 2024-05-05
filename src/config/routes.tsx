@@ -3,6 +3,7 @@ import Introduction from '@pages/introduction'
 import Dream from '@pages/dreams'
 import Question from '@pages/question'
 import YourDream from '@pages/your-dream'
+import Ar from '@pages/ar'
 
 const routes: RouteObject[] = [
   {
@@ -20,6 +21,10 @@ const routes: RouteObject[] = [
   {
     path: '/your-dream/:id',
     element: <YourDream />,
+  },
+  {
+    path: '/ar',
+    element: <Ar />,
   },
   {
     path: '*',
