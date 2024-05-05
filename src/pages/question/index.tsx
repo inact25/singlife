@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import { useEffect, useState } from 'react'
 import RenderQuestion from './RenderQuestion.tsx'
@@ -48,7 +49,7 @@ const Question = () => {
       })
       .then((response) => {
         console.log('response', response.data)
-        navigate('/dreams')
+        navigate('/ar')
       })
   }
   useEffect(() => {

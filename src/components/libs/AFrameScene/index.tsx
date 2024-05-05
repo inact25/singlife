@@ -1,5 +1,6 @@
+/* eslint-disable prettier/prettier */
 import React from 'react'
-import 'aframe'
+// import 'aframe'
 
 type Props = {
   children: React.ReactNode

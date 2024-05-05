@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import ArRender from '@components/WebAR/ArRender.tsx'
 
 const Ar = () => {
