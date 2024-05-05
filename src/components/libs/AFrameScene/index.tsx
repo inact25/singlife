@@ -4,8 +4,9 @@ import 'aframe'
 type Props = {
   children: React.ReactNode
 }
-const AFrameScene: React.FC<Props> = ({ children }) => {
-  return <a-scene>{children}</a-scene>
+const AFrameScene: React.FC<Props> = (props) => {
+  const { children } = props
+  return <a-scene {...props}>{children}</a-scene>
 }
 
 export default AFrameScene

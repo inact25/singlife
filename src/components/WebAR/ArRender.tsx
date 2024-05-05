@@ -9,6 +9,10 @@ type Props = {
 const ArRender: React.FC<Props> = ({ params }) => {
   const aframe = useAframe()
   const [text, setText] = React.useState('')
+  const handleClick = () => {
+    console.log('button')
+    alert('ok')
+  }
   useEffect(() => {
     console.log('_params', params?.param)
     let counter = 0
@@ -19,19 +23,10 @@ const ArRender: React.FC<Props> = ({ params }) => {
   }, [params])
   useEffect(() => {
     aframe.register('linknew', {
-      schema: {
-        on: { type: 'string', default: 'click' },
-        href: { type: 'string' },
-      },
       init: function () {
         console.log('loaded link')
-        const data = this.data
-        const el = this.el
-        el.addEventListener(data.on, function () {
-          if (data.href) {
-            window.location.href = data.href
-          }
-        })
+        console.log('test', this.el)
+        this.el.addEventListener('click', handleClick)
       },
     })
   }, [])
@@ -69,19 +64,25 @@ const ArRender: React.FC<Props> = ({ params }) => {
           src='https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg'
         />
       </a-assets>
-      <a-text value={text}></a-text>
-      <a-sky id='image-360' radius='10' src='#city' linknew></a-sky>
+      <a-box
+        class='cantap'
+        position='0 2 -5'
+        color='#6173F4'
+        rotation='0 45 45'
+        opacity=' 0.8'
+        depth='1'
+        linknew
+      ></a-box>
+      <a-text className='cantap' id='text' value={text}></a-text>
+      <a-sky id='image-360' radius='10' src='#city'></a-sky>
 
       <a-entity className='link'></a-entity>
 
-      <a-camera>
-        <a-cursor
-          id='cursor'
-          animation__click='property: scale; from: 0.1 0.1 0.1; to: 1 1 1; easing: easeInCubic; dur: 150; startEvents: click'
-          animation__clickreset='property: scale; to: 0.1 0.1 0.1; dur: 1; startEvents: animationcomplete__click'
-          animation__fusing='property: scale; from: 1 1 1; to: 0.1 0.1 0.1; easing: easeInCubic; dur: 150; startEvents: fusing'
-        ></a-cursor>
-      </a-camera>
+      <a-camera
+        raycaster='objects: .cantap'
+        id='camera'
+        cursor='fuse: false; rayOrigin: mouse;'
+      ></a-camera>
     </AFrameScene>
   )
 }
