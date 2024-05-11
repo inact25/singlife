@@ -28,7 +28,9 @@ export const rpc = async ({ e, method, params }: Props) => {
     case 'POST':
       return http
         .post('/', body, {
-          params,
+          params: {
+            e,
+          },
         })
         .then((response) => {
           return response.data
@@ -37,7 +39,9 @@ export const rpc = async ({ e, method, params }: Props) => {
     case 'PUT':
       return http
         .put('/', body, {
-          params,
+          params: {
+            e,
+          },
         })
         .then((response) => {
           return response.data
@@ -46,7 +50,9 @@ export const rpc = async ({ e, method, params }: Props) => {
     case 'PATCH':
       return http
         .patch('/', body, {
-          params,
+          params: {
+            e,
+          },
         })
         .then((response) => {
           return response.data

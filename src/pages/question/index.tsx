@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react'
 import RenderQuestion from './RenderQuestion.tsx'
 import useQuiz from '@services/api/quiz'
 import { QuizSubmitItem } from '@services/api/quiz/type'
-import { useNavigate } from 'react-router-dom' // import question2 from '@assets/background/Question2.jpg'
-// import question2 from '@assets/background/Question2.jpg'
-// import question3 from '@assets/background/Question3.jpg'
+import { useNavigate } from 'react-router-dom'
+
 const question_ids = [1, 2, 3]
 const Question = () => {
   const navigate = useNavigate()
@@ -48,15 +47,14 @@ const Question = () => {
     return answers.find((item) => item.quiz_id === id)?.answer_id
   }
   const handleSubmit = () => {
-    console.log('answers_submitted', answers)
-    // quiz_service
-    //   .submitQuizDo({
-    //     answers,
-    //   })
-    //   .then((response) => {
-    //     console.log('response', response.data)
-    //     navigate('/ar')
-    //   })
+    quiz_service
+      .submitQuizRPCDo({
+        answers,
+      })
+      .then((response) => {
+        console.log('response', response)
+        navigate('/ar')
+      })
   }
   useEffect(() => {
     // quiz_service.getQuizListDo()

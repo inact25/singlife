@@ -26,6 +26,27 @@ export const submitQuiz = async (body: QuizSubmitBody | null) => {
       return response.data as CommonResponse<QuizSubmitResponse>
     })
 }
+
+export const submitQuizRPC = async (body: QuizSubmitBody | null) => {
+  const sortBody = body?.answers.sort((a, b) => a.quiz_id - b.quiz_id)
+  let choices = {}
+  sortBody?.map((item) => {
+    choices = {
+      ...choices,
+      [`choice_${item.quiz_id}`]: item.answer_id,
+    }
+  })
+  return rpc({
+    e: 'submit-all',
+    method: 'POST',
+    params: {
+      e: 'submit-all',
+      ...choices,
+    },
+  }).then((response) => {
+    return response as QuizSubmitResponse
+  })
+}
 type PropsQuizRPC = {
   q_id: number
   c_id?: number

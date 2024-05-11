@@ -4,6 +4,7 @@ import {
   getQuizList,
   getQuizRPC,
   submitQuiz,
+  submitQuizRPC,
 } from '@services/api/quiz/actions.ts'
 import {
   ListQuiz,
@@ -42,6 +43,16 @@ const useQuiz = () => {
     off()
     return response
   }
+  const submitQuizRPCDo = async (body: QuizSubmitBody) => {
+    on()
+    try {
+      return await submitQuizRPC(body)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      off()
+    }
+  }
   const getQuizRPCDo = async (q_id: number, c_id?: number) => {
     on()
     try {
@@ -60,6 +71,7 @@ const useQuiz = () => {
     getQuizListDo,
     submitQuizDo,
     getQuizRPCDo,
+    submitQuizRPCDo,
     paginate: {
       ...paginate,
     },

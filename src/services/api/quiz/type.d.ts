@@ -18,6 +18,8 @@ export type QuizSubmitBody = {
 }
 
 export type QuizSubmitResponse = {
-  url: string
-  text: string
+  show_image: string
+  saved: boolean
+  image_filename: string
+  entry_id: number
 }
