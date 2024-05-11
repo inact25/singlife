@@ -7,11 +7,12 @@ import { QuizSubmitItem } from '@services/api/quiz/type'
 import { useNavigate } from 'react-router-dom' // import question2 from '@assets/background/Question2.jpg'
 // import question2 from '@assets/background/Question2.jpg'
 // import question3 from '@assets/background/Question3.jpg'
-
+const question_ids = [1, 2, 3]
 const Question = () => {
   const navigate = useNavigate()
   const quiz_service = useQuiz()
   const [selected, setSelected] = useState<number | null>(null)
+  const [lastChoice, setLastChoice] = useState<number | null>(null)
   const [answers, setAnswers] = useState<QuizSubmitItem[]>([])
   const pushAnswer = (values: QuizSubmitItem) => {
     const newAnswers = answers.filter((item) => item.quiz_id !== values.quiz_id)
@@ -21,68 +22,61 @@ const Question = () => {
     pushAnswer(values)
   }
   const handleBack = (id: number) => {
-    const isAvailable = quiz_service.data.find((item) => item.quest_id === id)
+    const isAvailable = question_ids.find((item) => item === id)
     if (!isAvailable) {
       console.log('Route to get started')
       navigate('/')
       return
     }
-    console.log('id', id)
+    const answer = answers.find((item) => item.quiz_id === id - 1)
+    console.log('answer', answer)
+    setLastChoice(answer?.answer_id ?? 0)
     setSelected(id)
   }
   const handleNext = () => {
     const next = (selected ?? 0) + 1
-    const isAvailable = quiz_service.data.find((item) => item.quest_id === next)
+    const isAvailable = question_ids.find((item) => item === next)
     if (!isAvailable) {
       console.log('Route to get started')
       return
     }
+    const answer = answers.find((item) => item.quiz_id === selected)
+    setLastChoice(answer?.answer_id ?? 0)
     setSelected(next)
   }
   const selectAnswer = (id: number) => {
     return answers.find((item) => item.quiz_id === id)?.answer_id
   }
   const handleSubmit = () => {
-    quiz_service
-      .submitQuizDo({
-        answers,
-      })
-      .then((response) => {
-        console.log('response', response.data)
-        navigate('/ar')
-      })
+    console.log('answers_submitted', answers)
+    // quiz_service
+    //   .submitQuizDo({
+    //     answers,
+    //   })
+    //   .then((response) => {
+    //     console.log('response', response.data)
+    //     navigate('/ar')
+    //   })
   }
   useEffect(() => {
-    quiz_service.getQuizListDo()
+    // quiz_service.getQuizListDo()
   }, [quiz_service.paginate.filter])
-  useEffect(() => {
-    console.log('answers', answers)
-  }, [answers])
-
-  useEffect(() => {
-    if (!selected && quiz_service.data.length > 0) {
-      setSelected(quiz_service.data[0].quest_id)
-    }
-  }, [quiz_service.data])
   return (
     <WrapperLayouts isFull={true}>
-      {quiz_service.data.map((record, index) => (
-        <RenderQuestion
-          key={record.quest_id}
-          record={record}
-          handleBack={handleBack}
-          selected={selected ?? 0}
-          index={index}
-          onChange={handleChanges}
-          value={{
-            quiz_id: record.quest_id,
-            answer_id: selectAnswer(record.quest_id) ?? 0,
-          }}
-          handleNext={handleNext}
-          isLast={quiz_service.data.length - 1 === index}
-          handleSubmit={handleSubmit}
-        />
-      ))}
+      <RenderQuestion
+        handleBack={handleBack}
+        selected={selected ?? 1}
+        index={selected ? selected - 1 : 0}
+        lastChoice={lastChoice}
+        onChange={handleChanges}
+        value={{
+          quiz_id: selected ?? 1,
+          answer_id: selectAnswer(selected ?? 1) ?? 0,
+        }}
+        handleNext={handleNext}
+        isLast={selected === question_ids.length}
+        handleSubmit={handleSubmit}
+      />
     </WrapperLayouts>
   )
 }

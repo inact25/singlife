@@ -1,11 +1,11 @@
 import { DefaultFilter } from '@models/common'
 
 export type ListQuiz = {
-  quest_id: number
+  question_id: number
   question: string
   choices: {
-    id: number
-    choice: string
+    c_id: number
+    c_text: string
   }[]
 }
 export type ListQuizParams = DefaultFilter

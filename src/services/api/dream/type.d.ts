@@ -6,4 +6,8 @@ export type ListDream = {
   description: string
   id: number
 }
+export type ListLatestDream = {
+  id: string
+  image: string
+}
 export type ListDreamParams = DefaultFilter

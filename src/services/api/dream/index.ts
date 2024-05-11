@@ -1,10 +1,16 @@
-import { ListDream, ListDreamParams } from '@services/api/dream/type'
+import {
+  ListDream,
+  ListDreamParams,
+  ListLatestDream,
+} from '@services/api/dream/type'
 import useLoading from '../../../hooks/useLoading.ts'
 import usePagination from '../../../hooks/usePagination.ts'
-import { getDreamList } from '@services/api/dream/actions.ts'
+import { getDreamList, getLatestDream } from '@services/api/dream/actions.ts'
+import { useState } from 'react'
 
 const useDream = () => {
   const { loading, on, off } = useLoading()
+  const [latestDream, setLatestDream] = useState<ListLatestDream[]>([])
   const { data, handleData, ...paginate } = usePagination<
     ListDream,
     ListDreamParams
@@ -28,10 +34,23 @@ const useDream = () => {
     })
     off()
   }
+  const getLatestDreamDo = async () => {
+    on()
+    try {
+      const response = await getLatestDream()
+      setLatestDream(response)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      off()
+    }
+  }
   return {
     loading,
     data,
+    latestDream,
     getDreamListDo,
+    getLatestDreamDo,
     paginate: {
       ...paginate,
     },
