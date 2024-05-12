@@ -65,7 +65,7 @@ const Question = () => {
   }, [quiz_service.data])
   return (
     <WrapperLayouts isFull={true}>
-      {quiz_service.data.map((record, index) => (
+      {quiz_service.data?.map((record, index) => (
         <RenderQuestion
           key={record.quest_id}
           record={record}

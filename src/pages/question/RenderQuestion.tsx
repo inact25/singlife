@@ -153,7 +153,7 @@ const RenderQuestion: React.FC<Props> = ({
                 animate={isActive ? 'open' : 'closed'}
                 variants={motionConfig}
               >
-                {record.choices.map((item) => (
+                {record.choices?.map((item) => (
                   <div className='flex gap-3 items-center mb-3' key={item.id}>
                     <Radio
                       color={colorPicker(index)}

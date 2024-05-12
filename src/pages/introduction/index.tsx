@@ -1,5 +1,5 @@
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
-import background from '@assets/svgs/introduction.svg'
+import background from '@assets/background/Intro.jpg'
 import Button from '@components/atom/button'
 import Buttonimage from '@components/atom/buttonimage'
 import { useNavigate } from 'react-router-dom'
@@ -47,28 +47,25 @@ const Introduction = () => {
     dream_v1.getDreamListDo()
   }, [dream_v1.paginate.filter])
   return (
-    <>
+    <div>
       <WrapperLayouts isFull={true}>
-        <div className='overflow-hidden max-h-screen'>
+        <div className='overflow-hidden min-h-screen' style={{background:`url(${background}) top center no-repeat`, backgroundSize:'cover'}}>
           <WrapperLayouts>
             <div className='head w-full max-h-[15vh] pt-5 '>
               <div className='text-left text-black absolute'>
                 <p className='body-2'>Welcome to</p>
                 <p className='body-2 font-bold'>The SingLife Dream Cube</p>
+                <div className="tagline mt-4">
+                  <h1>Let's <br/><b>Envision</b></h1>
+                </div>
               </div>
-            </div>
-          </WrapperLayouts>
-          <WrapperLayouts isFull={true}>
-            <div className='content w-full absolute top-10'>
-              <img
-                src={background}
-                className={classList[breakpoint ?? 'sm'].image}
-                alt='introduction'
-              />
             </div>
           </WrapperLayouts>
           <WrapperLayouts className={classList[breakpoint ?? 'sm'].footer}>
             <div className='footer'>
+              <div className="tagline mb-5 text-end">
+                <h1>Your <b>Finnancial</b><br/><b>Freedom</b>Dream</h1>
+              </div>
               <div className='action'>
                 <div className='mb-3'>
                   <Button
@@ -111,7 +108,7 @@ const Introduction = () => {
                     title={'Explore Dream Gallery'}
                     type='secondary'
                     onClick={handleExploreDreamGallery}
-                    images={dream_v1.data.map((item) => item.featured_image)}
+                    images={dream_v1.data?.map((item) => item.featured_image)}
                   />
                 </div>
               </div>
@@ -119,7 +116,7 @@ const Introduction = () => {
           </WrapperLayouts>
         </div>
       </WrapperLayouts>
-    </>
+    </div>
   )
 }
 

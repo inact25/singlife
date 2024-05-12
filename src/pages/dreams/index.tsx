@@ -45,7 +45,7 @@ const Dream = () => {
                 // count={numberComma(dream_v1.data.length)}
                 count={99999}
               />
-              {arrayEven(dream_v1.data).map((item) => (
+              {arrayEven(dream_v1.data)?.map((item) => (
                 <div key={item.id}>
                   <Gallery
                     onClick={() => handleYourDream(item.id)}
@@ -56,7 +56,7 @@ const Dream = () => {
               ))}
             </div>
             <div className='grid gap-4'>
-              {arrayOdd(dream_v1.data).map((item) => (
+              {arrayOdd(dream_v1.data)?.map((item) => (
                 <div key={item.id}>
                   <Gallery
                     onClick={() => handleYourDream(item.id)}
