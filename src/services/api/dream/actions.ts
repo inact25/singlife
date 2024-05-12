@@ -17,6 +17,15 @@ export const getDreamList = async (params: ListDreamParams | null) => {
       return response.data as PaginationResponse<ListDream>
     })
 }
+export const getDreamListV2 = async (params: ListDreamParams | null) => {
+  return rpc({
+    e: 'explore',
+    method: 'GET',
+    params: params,
+  }).then((response) => {
+    return response as ListLatestDream[]
+  })
+}
 
 export const getLatestDream = async () => {
   return rpc({
