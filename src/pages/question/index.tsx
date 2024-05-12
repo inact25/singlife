@@ -59,7 +59,7 @@ const Question = () => {
   }, [answers])
 
   useEffect(() => {
-    if (!selected && quiz_service.data.length > 0) {
+    if (!selected && quiz_service.data?.length > 0) {
       setSelected(quiz_service.data[0].quest_id)
     }
   }, [quiz_service.data])
@@ -78,7 +78,7 @@ const Question = () => {
             answer_id: selectAnswer(record.quest_id) ?? 0,
           }}
           handleNext={handleNext}
-          isLast={quiz_service.data.length - 1 === index}
+          isLast={quiz_service.data?.length - 1 === index}
           handleSubmit={handleSubmit}
         />
       ))}
