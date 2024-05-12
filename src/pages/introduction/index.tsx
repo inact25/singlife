@@ -64,7 +64,7 @@ const Introduction = () => {
           <WrapperLayouts className={classList[breakpoint ?? 'sm'].footer}>
             <div className='footer'>
               <div className="tagline mb-5 text-end">
-                <h1>Your <b>Finnancial</b><br/><b>Freedom</b>Dream</h1>
+                <h1>Your <b>Financial</b><br/><b>Freedom</b> Dream</h1>
               </div>
               <div className='action'>
                 <div className='mb-3'>
