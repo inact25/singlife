@@ -1,5 +1,5 @@
 const exceptText = (text: string, length: number) => {
-  return text.length > length ? text.substring(0, length) + '...' : text
+  return text?.length > length ? text.substring(0, length) + '...' : text
 }
 const arrayOdd = (arr: any[]) => {
   return arr.filter((_, i) => i % 2 === 0)
