@@ -6,14 +6,14 @@ type Props = {
   children: ReactNode
   isFull?: boolean
   className?: string
-  background?:string
+  background?: string
 }
 const WrapperLayouts = ({ children, isFull = false, className }: Props) => {
   const host = window.location.origin
   const responsive = useResponsive()
   if (responsive.breakpoint === 'xs' || responsive.breakpoint === 'sm') {
     return (
-      <div  className={`w-full  ${!isFull && 'p-5'} ${className}`}>
+      <div className={`w-full  ${!isFull && 'p-5'} ${className}`}>
         {children}
       </div>
     )

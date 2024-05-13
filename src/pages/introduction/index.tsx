@@ -48,22 +48,36 @@ const Introduction = () => {
   return (
     <div>
       <WrapperLayouts isFull={true}>
-        <div className='overflow-hidden min-h-screen' style={{background:`url(${background}) top center no-repeat`, backgroundSize:'cover'}}>
+        <div
+          className='overflow-hidden min-h-screen'
+          style={{
+            background: `url(${background}) top center no-repeat`,
+            backgroundSize: 'cover',
+          }}
+        >
           <WrapperLayouts>
             <div className='head w-full max-h-[15vh] pt-5 '>
               <div className='text-left text-black absolute'>
                 <p className='body-2'>Welcome to</p>
                 <p className='body-2 font-bold'>The SingLife Dream Cube</p>
-                <div className="tagline mt-4">
-                  <h1>Let's <br/><b>Envision</b></h1>
+                <div className='tagline mt-4'>
+                  <h1>
+                    {"Let's"}
+                    <br />
+                    <b>Envision</b>
+                  </h1>
                 </div>
               </div>
             </div>
           </WrapperLayouts>
           <WrapperLayouts className={classList[breakpoint ?? 'sm'].footer}>
             <div className='footer'>
-              <div className="tagline mb-5 text-end">
-                <h1>Your <b>Financial</b><br/><b>Freedom</b> Dream</h1>
+              <div className='tagline mb-5 text-end'>
+                <h1>
+                  Your <b>Financial</b>
+                  <br />
+                  <b>Freedom</b> Dream
+                </h1>
               </div>
               <div className='action'>
                 <div className='mb-3'>
