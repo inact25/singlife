@@ -1,39 +1,27 @@
 import {
   ListDream,
-  ListDreamParams,
+  ListDreamParamsV2,
   ListLatestDream,
 } from '@services/api/dream/type'
 import useLoading from '../../../hooks/useLoading.ts'
 import usePagination from '../../../hooks/usePagination.ts'
-import { getDreamList, getLatestDream } from '@services/api/dream/actions.ts'
+import { getDreamListV2, getLatestDream } from '@services/api/dream/actions.ts'
 import { useState } from 'react'
 
 const useDream = () => {
   const { loading, on, off } = useLoading()
   const [latestDream, setLatestDream] = useState<ListLatestDream[]>([])
+  const [totalDream, setTotalDream] = useState<number>(0)
   const { data, handleData, ...paginate } = usePagination<
     ListDream,
-    ListDreamParams
+    ListDreamParamsV2
   >({
     defaultFilter: {
       page: 1,
-      limit: 10,
-      order_by: 'created_at',
-      order: 'desc',
+      rows: 10,
     },
   })
 
-  const getDreamListDo = async () => {
-    on()
-    const response = await getDreamList(paginate.filter)
-    handleData(response.data)
-    paginate.handlePagination({
-      total: response.meta.total,
-      pageSize: response.meta.per_page,
-      current: response.meta.current_page,
-    })
-    off()
-  }
   const getLatestDreamDo = async () => {
     on()
     try {
@@ -45,12 +33,30 @@ const useDream = () => {
       off()
     }
   }
+  const getDreamListV2Do = async () => {
+    on()
+    try {
+      const response = await getDreamListV2(paginate.filter)
+      handleData(response.data)
+      paginate.handlePagination({
+        total: response.meta.total_pages,
+        pageSize: response.meta.per_page,
+        current: response.meta.cur_page,
+      })
+      setTotalDream(response.meta.total_dreams)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      off()
+    }
+  }
   return {
     loading,
     data,
     latestDream,
-    getDreamListDo,
+    totalDream,
     getLatestDreamDo,
+    getDreamListV2Do,
     paginate: {
       ...paginate,
     },

@@ -2,6 +2,7 @@ import http from '@utils/http.ts'
 import {
   ListDream,
   ListDreamParams,
+  ListDreamParamsV2,
   ListLatestDream,
 } from '@services/api/dream/type'
 import { PaginationResponse } from '@models/common'
@@ -17,13 +18,13 @@ export const getDreamList = async (params: ListDreamParams | null) => {
       return response.data as PaginationResponse<ListDream>
     })
 }
-export const getDreamListV2 = async (params: ListDreamParams | null) => {
+export const getDreamListV2 = async (params: ListDreamParamsV2 | null) => {
   return rpc({
     e: 'explore',
     method: 'GET',
     params: params,
   }).then((response) => {
-    return response as ListLatestDream[]
+    return response as PaginationResponse<ListDream>
   })
 }
 
