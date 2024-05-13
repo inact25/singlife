@@ -20,6 +20,7 @@ export type QuizSubmitBody = {
 export type QuizSubmitResponse = {
   show_image: string
   saved: boolean
-  image_filename: string
+  image: string
   entry_id: number
+  thumbnail: string
 }

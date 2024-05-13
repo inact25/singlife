@@ -9,43 +9,32 @@ type Props = {
 }
 const ArRender: React.FC<Props> = ({ params }) => {
   const aframe = useAframe()
-  // useEffect(() => {
-  //   console.log('_params', params?.param)
-  //   let counter = 0
-  //   const interval = setInterval(() => {
-  //     setText(`Counter: ${counter++}`)
-  //   }, 1000)
-  //   return () => clearInterval(interval)
-  // }, [params])
+  const [url, setUrl] = React.useState(null)
   useEffect(() => {
-    aframe.register('api', {
+    console.log('params', params?.url)
+    if (params?.url) {
+      setUrl(params.url)
+    }
+  }, [params])
+  useEffect(() => {
+    //reality ready
+    aframe.register('reality-ready', {
       init: function () {
-        console.log('scene-loaded')
-        const load = document.getElementById('loading')
-        setTimeout(() => {
-          load.style.display = 'none'
-          console.log('loading dissapear')
-        }, 1000)
+        const el = this.el
+        el.addEventListener('loaded', function () {
+          console.log('loaded')
+        })
       },
     })
   }, [])
-  useEffect(() => {}, [])
+  if (!url) {
+    return <div>Loading...</div>
+  }
   return (
     <>
-      <div id='loading' className='bg-white w-full h-full z-[99] absolute'>
-        <img
-          id='btn-close'
-          className='top-[50%] left-[50%] absolute z-[99]'
-          style={{ transform: 'translate(-50%, -50%)' }}
-          src='/loading-scene.png'
-        />
-      </div>
-      <AFrameScene loading-screen='enabled: false' api='true'>
+      <AFrameScene reality-ready>
         <a-assets>
-          <img
-            id='city'
-            src='https://static.8thwall.app/assets/skybox-4096-eyt9qsc8v8.jpg'
-          />
+          <img id='city' src={url} />
         </a-assets>
         <a-box
           id='box'
