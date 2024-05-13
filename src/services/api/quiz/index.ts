@@ -1,7 +1,6 @@
 import useLoading from '../../../hooks/useLoading.ts'
 import usePagination from '../../../hooks/usePagination.ts'
 import {
-  getQuizList,
   getQuizRPC,
   submitQuiz,
   submitQuizRPC,
@@ -26,17 +25,6 @@ const useQuiz = () => {
     },
   })
 
-  const getQuizListDo = async () => {
-    on()
-    const response = await getQuizList(paginate.filter)
-    handleData(response.data)
-    paginate.handlePagination({
-      total: response.meta.total,
-      pageSize: response.meta.per_page,
-      current: response.meta.current_page,
-    })
-    off()
-  }
   const submitQuizDo = async (body: QuizSubmitBody) => {
     on()
     const response = await submitQuiz(body)
@@ -68,7 +56,6 @@ const useQuiz = () => {
     loading,
     data,
     singleData,
-    getQuizListDo,
     submitQuizDo,
     getQuizRPCDo,
     submitQuizRPCDo,

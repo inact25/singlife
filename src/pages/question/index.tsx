@@ -53,6 +53,9 @@ const Question = () => {
       })
       .then((response) => {
         console.log('response', response)
+        if (response?.errors) {
+          return
+        }
         navigate({
           pathname: '/ar',
           search: `?url=${response?.image}`,

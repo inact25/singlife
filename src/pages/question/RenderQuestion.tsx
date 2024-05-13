@@ -10,10 +10,10 @@ import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Slidedot from '@components/atom/slidedot'
 import Radio from '@components/atom/radio'
 import Button from '@components/atom/button'
-import React, {useEffect, useState} from 'react'
-import {ListQuiz, QuizSubmitItem} from '@services/api/quiz/type'
+import React, { useEffect, useState } from 'react'
+import { ListQuiz, QuizSubmitItem } from '@services/api/quiz/type'
 import htmlParser from 'html-react-parser'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import useQuiz from '@services/api/quiz'
 
 type Props = {
@@ -175,20 +175,20 @@ const RenderQuestion: React.FC<Props> = ({
                   <div className='flex gap-3 items-center mb-3' key={item.c_id}>
                     <div>
                       <Radio
-                          color={colorPicker(index)}
-                          type='round'
-                          checked={isChecked(item.c_id)}
-                          onChange={() => {
-                            onChange &&
+                        color={colorPicker(index)}
+                        type='round'
+                        checked={isChecked(item.c_id)}
+                        onChange={() => {
+                          onChange &&
                             onChange({
                               quiz_id: record?.question_id,
                               answer_id: item.c_id,
                             })
-                          }}
+                        }}
                       />
                     </div>
                     <div>
-                    <p className='body-1 text-black'>{item.c_text}</p>
+                      <p className='body-1 text-black'>{item.c_text}</p>
                     </div>
                   </div>
                 ))}

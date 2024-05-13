@@ -26,11 +26,17 @@ export const rpc = async ({ e, method, params }: Props) => {
           return response.data
         })
     case 'POST':
+      const formData = new FormData()
+      Object.keys(params).forEach((key) => {
+        formData.append(key, params[key])
+      })
       return http
-        .post('/', body, {
+        .post('/', formData, {
           params: {
             e,
           },
+          //to x-www-form-urlencoded
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         })
         .then((response) => {
           return response.data
