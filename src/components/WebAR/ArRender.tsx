@@ -34,7 +34,7 @@ const ArRender: React.FC<Props> = ({ params }) => {
     <>
       <AFrameScene reality-ready>
         <a-assets>
-          <img id='city' src={url} />
+          <img crossOrigin='anonymous' id='city' src={url} />
         </a-assets>
         <a-box
           id='box'
