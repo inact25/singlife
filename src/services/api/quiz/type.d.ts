@@ -1,11 +1,11 @@
 import { DefaultFilter } from '@models/common'
 
 export type ListQuiz = {
-  quest_id: number
+  question_id: number
   question: string
   choices: {
-    id: number
-    choice: string
+    c_id: number
+    c_text: string
   }[]
 }
 export type ListQuizParams = DefaultFilter
@@ -18,6 +18,8 @@ export type QuizSubmitBody = {
 }
 
 export type QuizSubmitResponse = {
-  url: string
-  text: string
+  show_image: string
+  saved: boolean
+  image_filename: string
+  entry_id: number
 }

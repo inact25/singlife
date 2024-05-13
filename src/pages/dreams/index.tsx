@@ -20,7 +20,7 @@ const Dream = () => {
   // dream_v1.paginate.handleFilter("page", 1);
   // dream_v1.paginate.handleFilter("limit", 1);
   useEffect(() => {
-    dream_v1.getDreamListDo()
+    dream_v1.getDreamListV2Do()
   }, [dream_v1.paginate.filter])
   return (
     <>
@@ -40,17 +40,13 @@ const Dream = () => {
         <div className='my-5 overflow-y-auto max-h-[78vh] p-2 pb-16'>
           <div className='grid items-start grid-cols-2 gap-4'>
             <div className='grid gap-4'>
-              <Card
-                title={'Dreams generated'}
-                // count={numberComma(dream_v1.data?.length)}
-                count={99999}
-              />
+              <Card title={'Dreams generated'} count={dream_v1.totalDream} />
               {arrayEven(dream_v1.data)?.map((item) => (
                 <div key={item.id}>
                   <Gallery
                     onClick={() => handleYourDream(item.id)}
                     description={exceptText(item.description, 39)}
-                    image={item.featured_image}
+                    image={item.thumbnail}
                   />
                 </div>
               ))}
@@ -61,7 +57,7 @@ const Dream = () => {
                   <Gallery
                     onClick={() => handleYourDream(item.id)}
                     description={exceptText(item.description, 39)}
-                    image={item.featured_image}
+                    image={item.thumbnail}
                   />
                 </div>
               ))}

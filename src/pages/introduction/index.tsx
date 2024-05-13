@@ -11,7 +11,6 @@ import { RiChatSmile3Fill } from 'react-icons/ri'
 const Introduction = () => {
   const responsive = useResponsive()
   const { breakpoint } = responsive
-  console.log('breakpoint', breakpoint)
   const classList = {
     sm: {
       image: 'w-full absolute',
@@ -44,7 +43,7 @@ const Introduction = () => {
   }
 
   useEffect(() => {
-    dream_v1.getDreamListDo()
+    dream_v1.getLatestDreamDo()
   }, [dream_v1.paginate.filter])
   return (
     <div>
@@ -108,7 +107,7 @@ const Introduction = () => {
                     title={'Explore Dream Gallery'}
                     type='secondary'
                     onClick={handleExploreDreamGallery}
-                    images={dream_v1.data?.map((item) => item.featured_image)}
+                    images={dream_v1.latestDream.map((item) => item.image)}
                   />
                 </div>
               </div>

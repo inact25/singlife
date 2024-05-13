@@ -14,16 +14,17 @@ import React, { useEffect, useState } from 'react'
 import { ListQuiz, QuizSubmitItem } from '@services/api/quiz/type'
 import htmlParser from 'html-react-parser'
 import { motion } from 'framer-motion'
+import useQuiz from '@services/api/quiz'
 
 type Props = {
   selected: number
   handleBack?: (id: number) => void
-  record: ListQuiz
   onChange?: (values: QuizSubmitItem) => void
   value?: QuizSubmitItem
   index: number
   handleNext?: () => void
   isLast?: boolean
+  lastChoice?: number | null
   handleSubmit: () => void
 }
 const switchImage = (index: number) => {
@@ -77,36 +78,53 @@ const colorPicker = (index: number) => {
 const RenderQuestion: React.FC<Props> = ({
   selected,
   handleBack,
-  record,
   onChange,
   value,
   index,
   handleNext,
   isLast,
   handleSubmit,
+  lastChoice = 0,
 }) => {
+  const quiz_service = useQuiz()
+  const [record, setRecord] = useState<ListQuiz | null>(null)
   const [isActive, setIsActive] = useState(false)
-  const isShow = selected === record.quest_id
   const isChecked = (id: number) => {
     return value?.answer_id === id
   }
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsActive(true)
-    }, 1000)
-    return () => clearTimeout(timer)
-  }, [selected, record.quest_id])
+    if (record?.question_id) {
+      const timer = setTimeout(() => {
+        setIsActive(true)
+      }, 1000)
+      return () => clearTimeout(timer)
+    }
+  }, [record?.question_id])
   useEffect(() => {
     setIsActive(false)
   }, [selected])
-  if (!isShow) return null
+  useEffect(() => {
+    if (selected) {
+      quiz_service.getQuizRPCDo(selected, lastChoice ?? 0)
+    }
+  }, [selected])
+
+  useEffect(() => {
+    if (quiz_service.singleData) {
+      setRecord(quiz_service.singleData)
+    }
+  }, [quiz_service.singleData])
+
+  if (record === null) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className=''>
       <div className='absolute top-5 left-5 text-left z-10'>
         <Buttonicon
           icon={back}
-          onClick={() => handleBack && handleBack(record.quest_id - 1)}
+          onClick={() => handleBack && handleBack(record.question_id - 1)}
         />
       </div>
       <div
@@ -153,21 +171,21 @@ const RenderQuestion: React.FC<Props> = ({
                 animate={isActive ? 'open' : 'closed'}
                 variants={motionConfig}
               >
-                {record.choices?.map((item) => (
-                  <div className='flex gap-3 items-center mb-3' key={item.id}>
+                {record.choices.map((item) => (
+                  <div className='flex gap-3 items-center mb-3' key={item.c_id}>
                     <Radio
                       color={colorPicker(index)}
                       type='round'
-                      checked={isChecked(item.id)}
+                      checked={isChecked(item.c_id)}
                       onChange={() => {
                         onChange &&
                           onChange({
-                            quiz_id: record.quest_id,
-                            answer_id: item.id,
+                            quiz_id: record?.question_id,
+                            answer_id: item.c_id,
                           })
                       }}
                     />
-                    <p className='body-1 text-black'>{item.choice}</p>
+                    <p className='body-1 text-black'>{item.c_text}</p>
                   </div>
                 ))}
                 <div className='grid grid-cols-12 gap-3 items-center mt-10 mb-3'>

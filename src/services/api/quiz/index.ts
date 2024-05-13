@@ -1,6 +1,11 @@
 import useLoading from '../../../hooks/useLoading.ts'
 import usePagination from '../../../hooks/usePagination.ts'
-import { getQuizList, submitQuiz } from '@services/api/quiz/actions.ts'
+import {
+  getQuizList,
+  getQuizRPC,
+  submitQuiz,
+  submitQuizRPC,
+} from '@services/api/quiz/actions.ts'
 import {
   ListQuiz,
   ListQuizParams,
@@ -9,7 +14,7 @@ import {
 
 const useQuiz = () => {
   const { loading, on, off } = useLoading()
-  const { data, handleData, ...paginate } = usePagination<
+  const { data, singleData, handleData, ...paginate } = usePagination<
     ListQuiz,
     ListQuizParams
   >({
@@ -38,11 +43,35 @@ const useQuiz = () => {
     off()
     return response
   }
+  const submitQuizRPCDo = async (body: QuizSubmitBody) => {
+    on()
+    try {
+      return await submitQuizRPC(body)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      off()
+    }
+  }
+  const getQuizRPCDo = async (q_id: number, c_id?: number) => {
+    on()
+    try {
+      const response = await getQuizRPC({ q_id, c_id })
+      paginate.handleSingleData(response)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      off()
+    }
+  }
   return {
     loading,
     data,
+    singleData,
     getQuizListDo,
     submitQuizDo,
+    getQuizRPCDo,
+    submitQuizRPCDo,
     paginate: {
       ...paginate,
     },

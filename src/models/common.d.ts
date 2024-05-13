@@ -7,10 +7,11 @@ export type CommonResponse<T> = {
 export type PaginationResponse<T> = {
   data: T[]
   meta: {
-    current_page: number
-    last_page: number
+    total_dreams: number
+    cur_page: number
+    next_page: number
     per_page: number
-    total: number
+    total_pages: number
   }
 }
 
