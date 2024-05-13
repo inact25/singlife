@@ -4,8 +4,7 @@ import ArRender from '@components/WebAR/ArRender.tsx'
 const Ar = () => {
   const getAllQS = () => {
     const urlParams = new URLSearchParams(window.location.search)
-    const allQS = Object.fromEntries(urlParams.entries())
-    return allQS
+    return Object.fromEntries(urlParams.entries())
   }
 
   const qs = getAllQS()

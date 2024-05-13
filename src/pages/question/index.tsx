@@ -53,7 +53,10 @@ const Question = () => {
       })
       .then((response) => {
         console.log('response', response)
-        navigate('/ar')
+        navigate({
+          pathname: '/ar',
+          search: `?url=${response?.image}`,
+        })
       })
   }
   useEffect(() => {
