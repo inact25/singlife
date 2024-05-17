@@ -9,12 +9,14 @@ type Props = {
   description: string
   onClick?: () => void
   isActive?: boolean
+  title?: string
 }
 const Index: React.FC<Props> = ({
   image,
   description,
   isActive = false,
   onClick,
+  title,
 }) => {
   return (
     <div
@@ -36,9 +38,9 @@ const Index: React.FC<Props> = ({
           <Highlighter
             highlightStyle={{ padding: 5 }}
             highlightClassName='bg-singlife-red-800 text-white rounded-e-lg font-light text-[12px]'
-            searchWords={['Pierre Png’s', 'Dream']}
+            searchWords={[`${title ?? ''}`]}
             autoEscape={true}
-            textToHighlight='Pierre Png’s Dream'
+            textToHighlight={title ?? ''}
           />
         </div>
       )}
