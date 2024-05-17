@@ -7,7 +7,7 @@ type Props = {
 }
 const Index = ({ type = '360' }: Props) => {
   return (
-    <div className='rounded-2xl flex justify-center items-center px-5 py-10 bg-white/40 backdrop-blur-md'>
+      <div className='rounded-2xl flex jus    tify-center items-center px-5 py-10 bg-white/40 backdrop-blur-md'>
       <div className='w-full'>
         <div className='mb-5'>
           <img

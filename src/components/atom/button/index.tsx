@@ -3,8 +3,9 @@ type Props = {
   type?: 'primary' | 'secondary' | 'info' | 'warning' | 'default'
   onClick?: () => void
   color?: string
+  disabled?: boolean
 }
-const Index = ({ title, type = 'primary', onClick, color }: Props) => {
+const Index = ({title, type = 'primary', onClick, color, disabled}: Props) => {
   const btnMap = {
     primary: 'bg-singlife-red-800 text-white',
     secondary:
@@ -27,6 +28,7 @@ const Index = ({ title, type = 'primary', onClick, color }: Props) => {
   }
   return (
     <button
+        disabled={disabled}
       onClick={onClick}
       style={{ boxShadow: styleMap[type] }}
       className={`w-full px-5 py-3.5  text-[16px] font-semibold  rounded-full ${btnMap[type]}`}

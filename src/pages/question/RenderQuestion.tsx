@@ -10,10 +10,10 @@ import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Slidedot from '@components/atom/slidedot'
 import Radio from '@components/atom/radio'
 import Button from '@components/atom/button'
-import React, { useEffect, useState } from 'react'
-import { ListQuiz, QuizSubmitItem } from '@services/api/quiz/type'
+import React, {useEffect, useState} from 'react'
+import {ListQuiz, QuizSubmitItem} from '@services/api/quiz/type'
 import htmlParser from 'html-react-parser'
-import { motion } from 'framer-motion'
+import {motion} from 'framer-motion'
 import useQuiz from '@services/api/quiz'
 
 type Props = {
@@ -89,6 +89,7 @@ const RenderQuestion: React.FC<Props> = ({
   const quiz_service = useQuiz()
   const [record, setRecord] = useState<ListQuiz | null>(null)
   const [isActive, setIsActive] = useState(false)
+
   const isChecked = (id: number) => {
     return value?.answer_id === id
   }
@@ -197,7 +198,7 @@ const RenderQuestion: React.FC<Props> = ({
                     <Slidedot indexActive={index} color={colorPicker(index)} />
                   </div>
                   <div className='col-span-8'>
-                    <Button
+                    <Button disabled={value?.answer_id === 0}
                       type='default'
                       title={isLast ? 'Submit' : 'Next'}
                       onClick={isLast ? handleSubmit : handleNext}
