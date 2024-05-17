@@ -14,8 +14,8 @@ const Dream = () => {
   const handleBack = () => {
     navigate('/')
   }
-  const handleYourDream = (id: number) => {
-    navigate(`/your-dream/${id}`)
+  const handleYourDream = (id: number, url: string) => {
+    navigate(`/your-dream/${id}?url=${url}`)
   }
   // dream_v1.paginate.handleFilter("page", 1);
   // dream_v1.paginate.handleFilter("limit", 1);
@@ -45,7 +45,7 @@ const Dream = () => {
               {arrayEven(dream_v1.data)?.map((item) => (
                 <div key={item.id}>
                   <Gallery
-                    onClick={() => handleYourDream(item.id)}
+                    onClick={() => handleYourDream(item.id, item.image)}
                     description={exceptText(item.description, 39)}
                     image={item.thumbnail}
                   />
@@ -59,7 +59,10 @@ const Dream = () => {
                     isActive
                     title={dream_v1.singleData?.title}
                     onClick={() =>
-                      handleYourDream(parseInt(dream_v1.singleData?.id ?? '0'))
+                      handleYourDream(
+                        parseInt(dream_v1.singleData?.id ?? '0'),
+                        dream_v1.singleData?.image ?? '',
+                      )
                     }
                     description={exceptText(
                       dream_v1.singleData?.description ?? '',
@@ -72,7 +75,7 @@ const Dream = () => {
               {arrayOdd(dream_v1.data)?.map((item) => (
                 <div key={item.id}>
                   <Gallery
-                    onClick={() => handleYourDream(item.id)}
+                    onClick={() => handleYourDream(item.id, item.image)}
                     description={exceptText(item.description, 39)}
                     image={item.thumbnail}
                   />

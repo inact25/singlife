@@ -1,41 +1,63 @@
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
-import Mediapop from '../../components/atom/mediapop'
 import Buttonicon from '@components/atom/buttonicon'
 import back from '@assets/svgs/back.svg'
-import { useEffect } from 'react'
-import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
 import { useNavigate } from 'react-router-dom'
-import Swal from "sweetalert2";
+import ArRender from '@components/WebAR/ArRender.tsx'
+import MediaPopup from '@components/atom/mediapop'
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
+const componentSequence = ['waiting', 'tap', '360']
+const motionFade = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+}
 const YourDream = () => {
   const navigate = useNavigate()
+  const [currentComponent, setCurrentComponent] = useState<any>(
+    componentSequence[0],
+  )
+  const getAllQS = () => {
+    const urlParams = new URLSearchParams(window.location.search)
+    return Object.fromEntries(urlParams.entries())
+  }
+  const qs = getAllQS()
   useEffect(() => {
-    const timeout = setTimeout(() => bottomPopup(), 5000)
-    return () => {
-      clearTimeout(timeout)
-      Swal.close()
-    }
+    //change transition sequence each 3000
+    let index = 0
+    const interval = setInterval(() => {
+      index = index + 1
+      if (index >= componentSequence.length) {
+        index = 0
+      }
+      setCurrentComponent(componentSequence[index])
+    }, 3000)
+    return () => clearInterval(interval)
   }, [])
   return (
     <WrapperLayouts isFull={true}>
       <div className=''>
-        <div className='absolute top-5 left-5 text-left'>
-          <Buttonicon icon={back} onClick={() => {
-
-            navigate('/dreams')
-          }} />
+        <div className='absolute top-5 left-5 text-left z-10'>
+          <Buttonicon
+            icon={back}
+            onClick={() => {
+              navigate('/dreams')
+            }}
+          />
         </div>
-        <div
-          style={{
-            backgroundSize: 'cover',
-            background:
-              'url(https://images.unsplash.com/photo-1491884662610-dfcd28f30cfb?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) center center no-repeat',
-          }}
-          className='w-screen min-h-screen flex items-center'
-        >
+        <div className='w-screen min-h-screen flex items-center'>
           <div className='w-full'>
             <WrapperLayouts>
-              <Mediapop type={'360'} />
+              <motion.div
+                initial='hidden'
+                animate='visible'
+                variants={motionFade}
+                transition={{ duration: 0.5 }}
+                className='z-[999] relative'
+              >
+                <MediaPopup type={currentComponent} />
+              </motion.div>
+              <ArRender params={qs} />
             </WrapperLayouts>
           </div>
         </div>
