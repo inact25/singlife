@@ -5,6 +5,7 @@ import back from '@assets/svgs/back.svg'
 import { useEffect } from 'react'
 import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
 import { useNavigate } from 'react-router-dom'
+import Swal from "sweetalert2";
 
 const YourDream = () => {
   const navigate = useNavigate()
@@ -12,13 +13,17 @@ const YourDream = () => {
     const timeout = setTimeout(() => bottomPopup(), 5000)
     return () => {
       clearTimeout(timeout)
+      Swal.close()
     }
   }, [])
   return (
     <WrapperLayouts isFull={true}>
       <div className=''>
         <div className='absolute top-5 left-5 text-left'>
-          <Buttonicon icon={back} onClick={() => navigate('/dreams')} />
+          <Buttonicon icon={back} onClick={() => {
+
+            navigate('/dreams')
+          }} />
         </div>
         <div
           style={{
