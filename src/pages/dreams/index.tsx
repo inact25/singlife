@@ -21,6 +21,7 @@ const Dream = () => {
   // dream_v1.paginate.handleFilter("limit", 1);
   useEffect(() => {
     dream_v1.getDreamListV2Do()
+    dream_v1.getInfluencerDream()
   }, [dream_v1.paginate.filter])
   return (
     <>
@@ -52,6 +53,22 @@ const Dream = () => {
               ))}
             </div>
             <div className='grid gap-4'>
+              {dream_v1.singleData?.title && (
+                <div key='influencer'>
+                  <Gallery
+                    isActive
+                    title={dream_v1.singleData?.title}
+                    onClick={() =>
+                      handleYourDream(parseInt(dream_v1.singleData?.id ?? '0'))
+                    }
+                    description={exceptText(
+                      dream_v1.singleData?.description ?? '',
+                      39,
+                    )}
+                    image={dream_v1.singleData?.thumbnail ?? ''}
+                  />
+                </div>
+              )}
               {arrayOdd(dream_v1.data)?.map((item) => (
                 <div key={item.id}>
                   <Gallery

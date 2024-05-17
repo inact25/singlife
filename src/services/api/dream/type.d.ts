@@ -3,6 +3,7 @@ import { DefaultFilter } from '@models/common'
 export type ListDream = {
   id: string
   image: string
+  title: string
   influencer_name: string
   description: string
   thumbnail: string
