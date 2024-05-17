@@ -5,14 +5,18 @@ import {
 } from '@services/api/dream/type'
 import useLoading from '../../../hooks/useLoading.ts'
 import usePagination from '../../../hooks/usePagination.ts'
-import { getDreamListV2, getLatestDream } from '@services/api/dream/actions.ts'
+import {
+  getDreamFromInfluencer,
+  getDreamListV2,
+  getLatestDream,
+} from '@services/api/dream/actions.ts'
 import { useState } from 'react'
 
 const useDream = () => {
   const { loading, on, off } = useLoading()
   const [latestDream, setLatestDream] = useState<ListLatestDream[]>([])
   const [totalDream, setTotalDream] = useState<number>(0)
-  const { data, handleData, ...paginate } = usePagination<
+  const { data, handleData, singleData, ...paginate } = usePagination<
     ListDream,
     ListDreamParamsV2
   >({
@@ -50,13 +54,26 @@ const useDream = () => {
       off()
     }
   }
+  const getInfluencerDream = async () => {
+    on()
+    try {
+      const response = await getDreamFromInfluencer()
+      paginate.handleSingleData(response)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      off()
+    }
+  }
   return {
     loading,
     data,
     latestDream,
+    singleData,
     totalDream,
     getLatestDreamDo,
     getDreamListV2Do,
+    getInfluencerDream,
     paginate: {
       ...paginate,
     },
