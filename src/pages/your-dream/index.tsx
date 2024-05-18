@@ -28,7 +28,7 @@ const YourDream = () => {
   }
   const qs = getAllQS()
   return (
-    <WrapperLayouts isFull={true}>
+    <WrapperLayouts isFull={true} allDevice>
       <div className=''>
         <div className='absolute top-5 left-5 text-left z-10'>
           <Buttonicon
@@ -40,7 +40,7 @@ const YourDream = () => {
         </div>
         <div className='w-screen min-h-screen flex items-center'>
           <div className='w-full'>
-            <WrapperLayouts>
+            <WrapperLayouts allDevice>
               {showPopup && (
                 <motion.div
                   initial='hidden'
