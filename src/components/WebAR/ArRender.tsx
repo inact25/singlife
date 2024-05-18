@@ -269,23 +269,23 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
           {/* portal assets */}
           <a-asset-item
             id='portal-rim-model'
-            src='https://static.8thwall.app/assets/portal%20(1)-8fj5kci5t4.glb'
+            src='/portal.glb'
           ></a-asset-item>
           <a-asset-item
             id='moon-model'
-            src='https://static.8thwall.app/assets/moon-ground-5dc3hau3o2.glb'
+            src='/moon.glb'
           ></a-asset-item>
           <a-asset-item
             id='platform-model'
-            src='https://static.8thwall.app/assets/platform-cvp8cpu7n7.glb'
+            src='/platform.glb'
           ></a-asset-item>
           <a-asset-item
             id='flag-model'
-            src='https://static.8thwall.app/assets/flag%20(1)-1gepdc4al8.glb'
+            src='/flag.glb'
           ></a-asset-item>
           <a-asset-item
             id='rocks-model'
-            src='https://static.8thwall.app/assets/rocks-1phpku57lc.glb'
+            src='rocks.glb'
           ></a-asset-item>
           <img
             id='blob-shadow-img'
