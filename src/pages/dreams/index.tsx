@@ -19,8 +19,8 @@ const Dream = () => {
   const handleBack = () => {
     navigate('/')
   }
-  const handleYourDream = (id: number, url: string) => {
-    navigate(`/your-dream/${id}?url=${url}`)
+  const handleYourDream = (id: number) => {
+    navigate(`/your-dream/${id}`)
   }
 
   useEffect(() => {
@@ -68,7 +68,7 @@ const Dream = () => {
                 {arrayEven(dream_v1.data)?.map((item) => (
                   <div key={item.id}>
                     <Gallery
-                      onClick={() => handleYourDream(item.id, item.image)}
+                      onClick={() => handleYourDream(item.id)}
                       description={exceptText(item.description, 39)}
                       image={item.thumbnail}
                     />
@@ -84,7 +84,6 @@ const Dream = () => {
                       onClick={() =>
                         handleYourDream(
                           parseInt(dream_v1.singleData?.id ?? '0'),
-                          dream_v1.singleData?.image ?? '',
                         )
                       }
                       description={exceptText(
@@ -98,7 +97,7 @@ const Dream = () => {
                 {arrayOdd(dream_v1.data)?.map((item) => (
                   <div key={item.id}>
                     <Gallery
-                      onClick={() => handleYourDream(item.id, item.image)}
+                      onClick={() => handleYourDream(item.id)}
                       description={exceptText(item.description, 39)}
                       image={item.thumbnail}
                     />
