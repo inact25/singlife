@@ -4,6 +4,7 @@ import Dream from '@pages/dreams'
 import Question from '@pages/question'
 import YourDream from '@pages/your-dream'
 import Ar from '@pages/ar'
+import SamplePopup from '@pages/sample-popup'
 
 const routes: RouteObject[] = [
   {
@@ -25,6 +26,10 @@ const routes: RouteObject[] = [
   {
     path: '/ar',
     element: <Ar />,
+  },
+  {
+    path: 'sample',
+    element: <SamplePopup />,
   },
   {
     path: '*',
