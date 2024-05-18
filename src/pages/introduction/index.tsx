@@ -122,12 +122,6 @@ const Introduction = () => {
           </WrapperLayouts>
         </div>
       </WrapperLayouts>
-      {/*<Popup*/}
-      {/*  title={'Get Rewarded'}*/}
-      {/*  content={'Asdasd'}*/}
-      {/*  onPop={() => console.log('true')}*/}
-      {/*  open={true}*/}
-      {/*/>*/}
     </div>
   )
 }
