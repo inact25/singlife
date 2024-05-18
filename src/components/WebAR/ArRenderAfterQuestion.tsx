@@ -12,6 +12,10 @@ import platformGlb from '@assets/glbs/platform.glb'
 import rocksGlb from '@assets/glbs/rocks.glb'
 //flag
 import flagGlb from '@assets/glbs/flag.glb'
+
+import capture from '@assets/capture.png'
+
+import portalNew from '@assets/glbs/cube.glb'
 import {
   portalCameraComponent,
   promptFlowComponent,
@@ -60,6 +64,12 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         v.play()
       },
     })
+    aframe.register('custom-capture-btn', {
+      init() {
+        const btn = document.getElementById('recorder-button')
+        btn.innerHTML = `<img id="icon" src=${(capture)}>`
+      }
+    })
   }, [window?.XR8])
   useEffect(() => {
     console.log('window?.XR8', window?.XR8)
@@ -81,6 +91,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       </div>
       <AFrameScene
         responsive-immersive
+        custom-capture-btn
         xrextras-loading
         xrextras-runtime-error
         renderer='colorManagement: true;'
@@ -106,6 +117,22 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             src='https://static.8thwall.app/assets/blue-portal-lrmelmi6qc.mp4'
           ></video>
         </a-assets>
+
+        <xrextras-capture-button capture-mode="standard"></xrextras-capture-button>
+        <xrextras-capture-config
+        max-duration-ms="30000"
+        max-dimension="1280"
+        enable-end-card="true"
+        cover-image-url=""
+        end-card-call-to-action="Try it at:"
+        short-link=""
+        watermark-image-url="/logo.png"
+        watermark-max-width="800"
+        watermark-max-height="10"
+        watermark-location="bottomRight"
+        file-name-prefix="singlife-image-"
+      ></xrextras-capture-config>
+      <xrextras-capture-preview></xrextras-capture-preview>
 
         <a-camera
           id='camera'
@@ -185,7 +212,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         <a-light type='ambient' intensity='0.3'></a-light>
 
         <a-entity id='portal-contents'>
-          <a-entity
+          {/* <a-entity
             gltf-model={`url(${moonGlb})`}
             rotation='0 90 0'
             position='8 -0.5 -5'
@@ -208,9 +235,9 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             position='-200 150 -250'
             scale='120 80 1'
             shadow='receive: false'
-          ></a-plane>
+          ></a-plane> */}
 
-          <a-entity
+          {/* <a-entity
             gltf-model={`url(${flagGlb})`}
             rotation='0 30 0'
             reflections='type: static'
@@ -225,13 +252,13 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             position='-14 -1 -42'
             scale='0.75 0.25 0.75'
             shadow='receive: false'
-          ></a-entity>
+          ></a-entity> */}
           <a-sky src='#skybox-img' rotation='0 7 0'></a-sky>
         </a-entity>
 
         <a-entity
           id='portalRim'
-          gltf-model={`url(${portalGlb})`}
+          gltf-model={`url(${portalNew})`}
           spin='axis: x; speed: 14000'
           reflections='type: realtime'
           position='0 7.5 0'
@@ -240,14 +267,14 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           shadow='receive: false'
         ></a-entity>
 
-        <a-entity
+        {/* <a-entity
           id='portalVideo'
           auto-play-video='video: #portal-video'
           material='shader: chromakey; src: #portal-video; color: 0 0 0; blending: additive; side: front'
           geometry='primitive: plane; height: 1; width: 1;'
           position='0 7.5 0.1'
           scale='0.001 0.001 0.001'
-        ></a-entity>
+        ></a-entity> */}
 
         <a-circle
           id='portalShadow'

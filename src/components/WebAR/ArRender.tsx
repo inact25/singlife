@@ -245,6 +245,12 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
         v.play()
       },
     })
+    aframe.register('custom-capture-btn', {
+      init() {
+        const btn = document.getElementById('recorder-button')
+        btn.innerHTML = `<img id="icon" src=${require('/capture.png')}> Capture`
+      }
+    })
   }, [])
   if (!url || !moonGlb) {
     return <div className='relative top-[50%]'>Loading...</div>
@@ -266,10 +272,11 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
       </div>
       <AFrameScene
         responsive-immersive
+        custom-capture-btn
         xrextras-loading
         xrextras-runtime-error
         renderer='colorManagement: true;'
-        xrweb='allowedDevices: any; disableDefaultEnvironment: true;'
+        xrweb='allowedDevices: any; disableDefaultEnvironment: true; xrmeshfound.detail : { id, position, rotation, bufferGeometry }'
       >
         <a-assets>
           <img crossOrigin='anonymous' id='skybox-img' src={url} />
@@ -290,12 +297,30 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
             src='https://static.8thwall.app/assets/blue-portal-lrmelmi6qc.mp4'
           ></video>
         </a-assets>
-
+      
+  <xrextras-capture-button capture-mode="standard"></xrextras-capture-button>
+  
+ 
+  <xrextras-capture-config
+  max-duration-ms="30000"
+  max-dimension="1280"
+  enable-end-card="true"
+  cover-image-url=""
+  end-card-call-to-action="Try it at:"
+  short-link=""
+  watermark-image-url="/logo.png"
+  watermark-max-width="100"
+  watermark-max-height="10"
+  watermark-location="bottomRight"
+  file-name-prefix="singlife-image-"
+></xrextras-capture-config>
+  
+  
+  <xrextras-capture-preview></xrextras-capture-preview>
         <a-camera
           id='camera'
           position='0 9 11'
           raycaster='objects: .cantap'
-
         ></a-camera>
 
         <xrextras-opaque-background remove='true'>
