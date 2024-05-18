@@ -47,3 +47,15 @@ export const getDreamFromInfluencer = async () => {
     return response as ListDream
   })
 }
+
+export const getDetail = async (id: number) => {
+  return rpc({
+    e: 'detail',
+    method: 'GET',
+    params: {
+      id,
+    },
+  }).then((response) => {
+    return response as ListDream
+  })
+}

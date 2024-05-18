@@ -28,7 +28,6 @@ const Question = () => {
       return
     }
     const answer = answers.find((item) => item.quiz_id === id - 1)
-    console.log('answer', answer)
     setLastChoice(answer?.answer_id ?? 0)
     setSelected(id)
   }
@@ -57,8 +56,7 @@ const Question = () => {
           return
         }
         navigate({
-          pathname: `/your-dream/${response?.entry_id}`,
-          search: `?url=${response?.image}`,
+          pathname: `/question/finish/${response?.entry_id}`,
         })
       })
   }

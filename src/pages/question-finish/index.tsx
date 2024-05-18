@@ -2,24 +2,25 @@ import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Buttonicon from '@components/atom/buttonicon'
 import back from '@assets/svgs/back.svg'
 import { useNavigate, useParams } from 'react-router-dom'
+import ArRenderAfterQuestion from '@components/WebAR/ArRenderAfterQuestion.tsx'
 import MediaPopup from '@components/atom/mediapop'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import ArRender360 from '@components/WebAR/ArRender360.tsx'
 import useDream from '@services/api/dream'
 
 const motionFade = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 }
-const YourDream = () => {
+const QuestionFinish = () => {
   const params = useParams()
   const dream_v1 = useDream()
   const navigate = useNavigate()
   const [currentComponent, setCurrentComponent] = useState<any>('waiting')
   const [showPopup, setShowPopup] = useState<boolean>(true)
-  const ready = () => {
-    setCurrentComponent('360')
+  const ready = (values: any) => {
+    console.log('all', values)
+    setCurrentComponent('tap')
   }
   const hidePopup = () => {
     setShowPopup(false)
@@ -55,7 +56,7 @@ const YourDream = () => {
                   <MediaPopup type={currentComponent} />
                 </motion.div>
               )}
-              <ArRender360
+              <ArRenderAfterQuestion
                 params={{
                   url: dream_v1?.singleData?.image,
                 }}
@@ -69,4 +70,4 @@ const YourDream = () => {
   )
 }
 
-export default YourDream
+export default QuestionFinish
