@@ -256,6 +256,7 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
         <span id='promptText'></span>
       </div>
       <AFrameScene
+      responsive-immersive
         xrextras-loading
         xrextras-runtime-error
         renderer='colorManagement: true;'
