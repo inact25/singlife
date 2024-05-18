@@ -230,11 +230,12 @@ const ArRender: React.FC<Props> = ({ params }) => {
   }
   return (
     <>
-    <div id="overlay" style="display: none" className="absolute-fill">
+    <div id="overlay" style={{display: none}} className="absolute-fill">
       <img id="recenterButton" src="https://static.8thwall.app/assets/recenter-m71fa5ubcu.png" /> 
       <span id="promptText"></span>
     </div>
       <AFrameScene 
+      responsive-immersive
       xrextras-loading
       xrextras-runtime-error
       renderer="colorManagement: true;"
@@ -295,8 +296,7 @@ const ArRender: React.FC<Props> = ({ params }) => {
   <a-light type="ambient" intensity="0.3"></a-light>
 
   <a-entity id="portal-contents">
-      
-    <a-entity
+  <a-entity
       gltf-model="#moon-model"
       rotation="0 90 0"
       position="8 -0.5 -5"
@@ -313,9 +313,63 @@ const ArRender: React.FC<Props> = ({ params }) => {
       shadow="receive: false">
     </a-entity>
     
+    <a-plane
+      material="src: #satellite-img; transparent: true; roughness: 0.8; metalness: 0"
+      rotation="0 30 0"
+      position="-200 150 -250"
+      scale="120 80 1"
+      shadow="receive: false">
+     </a-plane>
+    
+     <a-entity
+      gltf-model="#flag-model"
+      rotation="0 30 0"
+      reflections="type: static"
+      position="-14 0 -43"
+      scale="5 5 5"
+      shadow="receive: false">
+     </a-entity>
+    
+     <a-entity
+      gltf-model="#rocks-model"
+      reflections="type: static"
+      position="-14 -1 -42"
+      scale="0.75 0.25 0.75"
+      shadow="receive: false">
+     </a-entity>
+    
      <a-sky id='image-360' radius='10' src='#portal-content'></a-sky>
     </a-entity>
-        
+
+   <a-entity
+    id="portalRim"
+    gltf-model="#portal-rim-model"
+    spin="axis: x; speed: 14000"
+    reflections="type: realtime"
+    position="0 7.5 0"
+    rotation="90 -90 -90"
+    scale="0.001 0.001 0.001"
+    shadow="receive: false">
+  </a-entity>
+
+  <a-entity
+    id="portalVideo"
+    auto-play-video="video: #portal-video"
+    material="shader: chromakey; src: #portal-video; color: 0 0 0; blending: additive; side: front"
+    geometry="primitive: plane; height: 1; width: 1;"
+    position="0 7.5 0.1"
+    scale="0.001 0.001 0.001">
+  </a-entity>
+
+  <a-circle
+    id="portalShadow"
+    radius="0.5"
+    material="src: #blob-shadow-img; opacity: 0.65; roughness: 0.8; metalness: 0"
+    position="0 0.01 1.25"
+    rotation="-90 0 0"
+    scale="0.001 0.001 0.001">
+  </a-circle>
+
       </AFrameScene>
     </>
   )
