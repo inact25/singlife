@@ -57,7 +57,7 @@ const Question = () => {
           return
         }
         navigate({
-          pathname: '/ar',
+          pathname: `/your-dream/${response?.entry_id}`,
           search: `?url=${response?.image}`,
         })
       })
