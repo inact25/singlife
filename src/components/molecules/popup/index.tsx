@@ -5,23 +5,26 @@ type Props = {
   open: boolean
   content: any
   title: string
+  isFloating?: boolean
 }
 
-const Index = ({ onPop, open, content, title }: Props) => {
+const Index = ({ onPop, open, content, title, isFloating = false }: Props) => {
   return (
     <div>
-      <div className='w-full fixed bottom-0'>
+      <div className={!isFloating ? `w-full  fixed bottom-0` : `mt-[25%] px-5`}>
         <div
-          onClick={onPop}
-          className='cursor-pointer rounded-t-[32px] head bg-black w-full'
+          onClick={() => !isFloating && onPop()}
+          className={`cursor-pointer rounded-t-[32px]  head bg-black w-full`}
         >
-          <div className='text-white absolute right-5 top-5 text-[24px]'>
-            <IoCloseOutline />
-          </div>
+          {open && !isFloating && (
+            <div className='text-white absolute right-5 top-5 text-[24px]'>
+              <IoCloseOutline />
+            </div>
+          )}
           <h3 className='title p-4 pt-6 text-white'>{title}</h3>
         </div>
         <div
-          className={`${open ? 'block' : 'hidden'} content bg-white text-black p-5`}
+          className={`${open ? 'block' : 'hidden'} ${isFloating ? 'rounded-b-[32px] bg-white/60 backdrop-blur-md' : 'bg-white'} min-h-[238px] content text-black p-5`}
         >
           <div>{content}</div>
         </div>

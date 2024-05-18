@@ -5,35 +5,28 @@ import { useNavigate } from 'react-router-dom'
 import ArRender from '@components/WebAR/ArRender.tsx'
 import MediaPopup from '@components/atom/mediapop'
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-const componentSequence = ['waiting', 'tap', '360']
 const motionFade = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 }
 const YourDream = () => {
   const navigate = useNavigate()
-  const [currentComponent, setCurrentComponent] = useState<any>(
-    componentSequence[0],
-  )
+  const [currentComponent, setCurrentComponent] = useState<any>('waiting')
+  const [showPopup, setShowPopup] = useState<boolean>(true)
+  const ready = (values: any) => {
+    console.log('all', values)
+    setCurrentComponent('tap')
+  }
+  const hidePopup = () => {
+    setShowPopup(false)
+  }
   const getAllQS = () => {
     const urlParams = new URLSearchParams(window.location.search)
     return Object.fromEntries(urlParams.entries())
   }
   const qs = getAllQS()
-  useEffect(() => {
-    //change transition sequence each 3000
-    let index = 0
-    const interval = setInterval(() => {
-      index = index + 1
-      if (index >= componentSequence.length) {
-        index = 0
-      }
-      setCurrentComponent(componentSequence[index])
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
   return (
     <WrapperLayouts isFull={true}>
       <div className=''>
@@ -48,16 +41,19 @@ const YourDream = () => {
         <div className='w-screen min-h-screen flex items-center'>
           <div className='w-full'>
             <WrapperLayouts>
-              <motion.div
-                initial='hidden'
-                animate='visible'
-                variants={motionFade}
-                transition={{ duration: 0.5 }}
-                className='z-[999] relative'
-              >
-                <MediaPopup type={currentComponent} />
-              </motion.div>
-              <ArRender params={qs} />
+              {showPopup && (
+                <motion.div
+                  initial='hidden'
+                  animate='visible'
+                  variants={motionFade}
+                  transition={{ duration: 0.5 }}
+                  className='z-[999] relative'
+                  onClick={hidePopup}
+                >
+                  <MediaPopup type={currentComponent} />
+                </motion.div>
+              )}
+              <ArRender params={qs} callback={ready} />
             </WrapperLayouts>
           </div>
         </div>
