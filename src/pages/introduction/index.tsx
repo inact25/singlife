@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import useDream from '@services/api/dream'
 import { useEffect } from 'react'
 import useResponsive from '../../hooks/useResponsive.ts'
-import { RiChatSmile3Fill } from 'react-icons/ri'
+import Freedom from '@assets/svgs/Your Financial Freedom Dream.svg'
+import Envision from '@assets/svgs/Envision.svg'
 
 const Introduction = () => {
   const responsive = useResponsive()
@@ -58,26 +59,18 @@ const Introduction = () => {
           <WrapperLayouts>
             <div className='head w-full max-h-[15vh] pt-5 '>
               <div className='text-left text-black absolute'>
-                <p className='body-2'>Welcome to</p>
-                <p className='body-2 font-bold'>The SingLife Dream Cube</p>
                 <div className='tagline mt-4'>
-                  <h1>
-                    {"Let's"}
-                    <br />
-                    <b>Envision</b>
-                  </h1>
+                  <div className='tagline mb-5 relative start-0'>
+                    <img src={Envision} alt={'freedom'} />
+                  </div>
                 </div>
               </div>
             </div>
           </WrapperLayouts>
           <WrapperLayouts className={classList[breakpoint ?? 'sm'].footer}>
             <div className='footer'>
-              <div className='tagline mb-5 text-end'>
-                <h1>
-                  Your <b>Financial</b>
-                  <br />
-                  <b>Freedom</b> Dream
-                </h1>
+              <div className='tagline mb-5 relative end-0 flex justify-end'>
+                <img src={Freedom} alt={'freedom'} />
               </div>
               <div className='action'>
                 <div className='mb-3'>
@@ -87,35 +80,35 @@ const Introduction = () => {
                     type='primary'
                   />
                 </div>
-                <div className='mb-3'>
-                  <Button
-                    onClick={() => console.log('')}
-                    title={
-                      <span className='flex items-center gap-2 justify-center'>
-                        <span className='text-[18px]'>
-                          <RiChatSmile3Fill />
-                        </span>{' '}
-                        Talk to a Financial Advisor
-                      </span>
-                    }
-                    type='secondary'
-                  />
-                </div>
-                <div className='divider my-2 grid items-center grid-cols-10'>
-                  <span className={'col-span-4'}>
-                    <hr />
-                  </span>
-                  <span
-                    className={
-                      'font-semibold text-black text-[14px] col-span-2'
-                    }
-                  >
-                    Or
-                  </span>
-                  <span className={'col-span-4'}>
-                    <hr />
-                  </span>
-                </div>
+                {/*<div className='mb-3'>*/}
+                {/*  <Button*/}
+                {/*    onClick={() => console.log('')}*/}
+                {/*    title={*/}
+                {/*      <span className='flex items-center gap-2 justify-center'>*/}
+                {/*        <span className='text-[18px]'>*/}
+                {/*          <RiChatSmile3Fill />*/}
+                {/*        </span>{' '}*/}
+                {/*        Talk to a Financial Advisor*/}
+                {/*      </span>*/}
+                {/*    }*/}
+                {/*    type='secondary'*/}
+                {/*  />*/}
+                {/*</div>*/}
+                {/*<div className='divider my-2 grid items-center grid-cols-10'>*/}
+                {/*  <span className={'col-span-4'}>*/}
+                {/*    <hr />*/}
+                {/*  </span>*/}
+                {/*  <span*/}
+                {/*    className={*/}
+                {/*      'font-semibold text-black text-[14px] col-span-2'*/}
+                {/*    }*/}
+                {/*  >*/}
+                {/*    Or*/}
+                {/*  </span>*/}
+                {/*  <span className={'col-span-4'}>*/}
+                {/*    <hr />*/}
+                {/*  </span>*/}
+                {/*</div>*/}
                 <div className='mb-3'>
                   <Buttonimage
                     title={'Explore Dream Gallery'}

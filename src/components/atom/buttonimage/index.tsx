@@ -9,7 +9,8 @@ type Props = {
 const Index = ({ title, type = 'primary', onClick, images }: Props) => {
   const btnMap = {
     primary: 'bg-singlife-red-800',
-    secondary: 'bg-[#FFD6D9] text-black font-semibold',
+    secondary:
+      'bg-transparent border border-singlife-red-800 text-singlife-red-800 text-singlife-red-800',
     info: 'bg-singlife-turqoise-800',
     default: 'bg-singlife-purle-800',
     warning: 'bg-singlife-orange-800',
@@ -23,7 +24,7 @@ const Index = ({ title, type = 'primary', onClick, images }: Props) => {
   return (
     <button
       onClick={onClick}
-      className={`flex w-full items-center gap-5 justify-center py-1 rounded-full ${btnMap[type]}`}
+      className={`flex w-full items-center gap-5 justify-center py-1 max-h-[52px] rounded-full ${btnMap[type]}`}
     >
       <div className='text-[16px] font-bold p-3.5'>{title}</div>
       <div className='flex text-[12px]  w-fit pe-2'>
