@@ -1,3 +1,5 @@
+import { IoCloseOutline } from 'react-icons/io5'
+
 type Props = {
   onPop: () => void
   open: boolean
@@ -11,10 +13,12 @@ const Index = ({ onPop, open, content, title }: Props) => {
       <div className='w-full fixed bottom-0'>
         <div
           onClick={onPop}
-          className='cursor-pointer rounded-t-[32px] head bg-black w-full pt-2'
+          className='cursor-pointer rounded-t-[32px] head bg-black w-full'
         >
-          <div className='rounded-full line border border-b-2 mt-2 m-auto w-[60px]' />
-          <h3 className='title p-4 pt-6'>{title}</h3>
+          <div className='text-white absolute right-5 top-5 text-[24px]'>
+            <IoCloseOutline />
+          </div>
+          <h3 className='title p-4 pt-6 text-white'>{title}</h3>
         </div>
         <div
           className={`${open ? 'block' : 'hidden'} content bg-white text-black p-5`}
