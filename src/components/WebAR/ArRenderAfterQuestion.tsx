@@ -24,7 +24,7 @@ type Props = {
   params: any
   callback: (e: any) => void
 }
-const ArRender: React.FC<Props> = ({ params, callback }) => {
+const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   const aframe = useAframe()
   const [url, setUrl] = React.useState(null)
   useEffect(() => {
@@ -64,9 +64,6 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
   useEffect(() => {
     console.log('window?.XR8', window?.XR8)
   }, [window?.XR8])
-  if (!url) {
-    return <div>Loading...</div>
-  }
   return (
     <>
       <div
@@ -265,4 +262,4 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
   )
 }
 
-export default ArRender
+export default ArRenderAfterQuestion

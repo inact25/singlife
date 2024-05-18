@@ -4,6 +4,7 @@ import Dream from '@pages/dreams'
 import Question from '@pages/question'
 import YourDream from '@pages/your-dream'
 import SamplePopup from '@pages/sample-popup'
+import QuestionFinish from '@pages/question-finish'
 
 const routes: RouteObject[] = [
   {
@@ -17,6 +18,10 @@ const routes: RouteObject[] = [
   {
     path: '/questions',
     element: <Question />,
+  },
+  {
+    path: '/question/finish/:id',
+    element: <QuestionFinish />,
   },
   {
     path: '/your-dream/:id',
