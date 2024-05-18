@@ -24,6 +24,7 @@ const Before = () => {
   return (
     <div>
       <div className='caption mb-5'>
+        {/* eslint-disable-next-line react/no-unescaped-entities */}
         <p className='body-1'>We'll need some permissions</p>
       </div>
       <div className='caption mb-5'>
@@ -45,6 +46,7 @@ const Before = () => {
     </div>
   )
 }
+// @ts-ignore
 const Rewarded = () => {
   return (
     <div>
@@ -62,6 +64,7 @@ const Rewarded = () => {
   )
 }
 
+// @ts-ignore
 const Captured = () => {
   return (
     <div>
