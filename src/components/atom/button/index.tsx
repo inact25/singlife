@@ -37,7 +37,7 @@ const Index = ({
       disabled={disabled}
       onClick={onClick}
       style={{ boxShadow: styleMap[type] }}
-      className={`w-full px-5 py-3.5  text-[16px] font-semibold  rounded-full ${!disabled ? btnMap[type] : 'bg-[#dbdbdb]'}`}
+      className={`w-full px-5 py-3.5  text-[16px] font-semibold  rounded-full ${!disabled ? btnMap[type] : 'bg-[#dbdbdb] text-white'}`}
     >
       {title}
     </button>
