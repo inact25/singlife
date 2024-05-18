@@ -174,3 +174,27 @@ h3 {
     50% {transform: scale(0.8);}
     100% {transform: scale(1);}
   }
+
+  /* motion sensor */
+  #requestingCameraPermissions{
+    background-color: white !important; 
+  }
+
+  #requestingCameraIcon{
+    background-color: white !important;
+  }
+  #loadBackground{
+    background-color: white !important;
+  }
+
+  .prompt-box-8w{
+
+  }
+
+  .prompt-button-8w{
+
+  }
+
+  .button-primary-8w{
+
+  }
