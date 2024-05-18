@@ -12,6 +12,13 @@ import platformGlb from '@assets/glbs/platform.glb'
 import rocksGlb from '@assets/glbs/rocks.glb'
 //flag
 import flagGlb from '@assets/glbs/flag.glb'
+import {
+  portalCameraComponent,
+  promptFlowComponent,
+  spinComponent,
+  tapToPlacePortalComponent,
+} from '@components/WebAR/partials/portal-component.ts'
+import {responsiveImmersiveComponent} from '@components/WebAR/partials/immersive-component.ts'
 
 type Props = {
   params: any
@@ -21,7 +28,6 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
   const aframe = useAframe()
   const [url, setUrl] = React.useState(null)
   useEffect(() => {
-    console.log('params', params?.url)
     if (params?.url) {
       setUrl(params.url)
     }
@@ -36,206 +42,15 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
         })
       },
     })
-    aframe.register('portal-camera', {
-      schema: {
-        width: { default: 10 },
-        height: { default: 10 },
-      },
-      init() {
-        this.camera = this.el
-        this.contents = document.getElementById('portal-contents')
-        this.walls = document.getElementById('hider-walls')
-        this.portalWall = document.getElementById('portal-wall')
-        this.portalVideo = document.getElementById('portalVideo')
-        this.isInPortalSpace = false
-        this.wasOutside = true
-      },
 
-      tick() {
-        const { position } = this.camera.object3D
-        const isOutside = position.z > 0
-        const withinPortalBounds =
-          position.y < this.data.height &&
-          Math.abs(position.x) < this.data.width / 2
-        if (this.wasOutside !== isOutside && withinPortalBounds) {
-          this.isInPortalSpace = !isOutside
-        }
-        this.contents.object3D.visible = this.isInPortalSpace || isOutside
-        this.walls.object3D.visible = !this.isInPortalSpace && isOutside
-        this.portalWall.object3D.visible = this.isInPortalSpace && !isOutside
-        this.portalVideo.object3D.visible = isOutside
-        this.wasOutside = isOutside
-      },
-    })
-    aframe.register('spin', {
-      schema: {
-        speed: { default: 2000 },
-        direction: { default: 'normal' },
-        axis: { default: 'y' },
-      },
-      init() {
-        const { el } = this
-        el.setAttribute('animation__spin', {
-          property: `object3D.rotation.${this.data.axis}`,
-          from: 0,
-          to: 360,
-          dur: this.data.speed,
-          dir: this.data.direction,
-          loop: true,
-          easing: 'linear',
-        })
-      },
-    })
-    aframe.register('prompt-flow', {
-      init() {
-        this.prompt = document.getElementById('promptText')
-        this.overlay = document.getElementById('overlay')
+    aframe.register('portal-camera', portalCameraComponent)
+    aframe.register('spin', spinComponent)
 
-        this.el.sceneEl.addEventListener('realityready', () => {
-          this.overlay.style.display = 'block'
-          this.prompt.innerHTML = 'Tap to Place<br>Moon Portal'
-          this.prompt.classList.add('fly-in')
-        })
+    aframe.register('prompt-flow', promptFlowComponent)
+    aframe.register('tap-to-place-portal', tapToPlacePortalComponent)
 
-        this.el.addEventListener('dismissPrompt', () => {
-          this.prompt.classList.remove('fly-in')
-          this.prompt.classList.add('fly-out')
-        })
-      },
-    })
-    aframe.register('tap-to-place-portal', {
-      init() {
-        const { sceneEl } = this.el
-        const recenterBtn = document.getElementById('recenterButton')
+    aframe.register('responsive-immersive', responsiveImmersiveComponent)
 
-        this.camera = document.getElementById('camera')
-        this.contents = document.getElementById('portal-contents')
-        this.walls = document.getElementById('hider-walls')
-        this.portalWall = document.getElementById('portal-wall')
-        this.isInPortalSpace = false
-        this.wasOutside = true
-
-        const portalHiderRing =
-          this.el.sceneEl.querySelector('#portalHiderRing')
-        const portalRim = this.el.sceneEl.querySelector('#portalRim')
-        const portalVideo = this.el.sceneEl.querySelector('#portalVideo')
-        const portalShadow = this.el.sceneEl.querySelector('#portalShadow')
-
-        const handleClickEvent = (e) => {
-          if (!e.touches || e.touches.length < 2) {
-            recenterBtn.classList.add('pulse-once')
-            sceneEl.emit('recenter')
-            setTimeout(() => {
-              recenterBtn.classList.remove('pulse-once')
-            }, 200)
-          }
-        }
-
-        const firstPlaceEvent = (e) => {
-          sceneEl.emit('recenter')
-          sceneEl.emit('dismissPrompt')
-
-          portalHiderRing.setAttribute('animation__1', {
-            property: 'radius-inner',
-            dur: 1500,
-            from: '0.001',
-            to: '3.5',
-            easing: 'easeOutElastic',
-          })
-
-          portalRim.setAttribute('animation__2', {
-            property: 'scale',
-            dur: 1500,
-            from: '0.001 0.001 0.001',
-            to: '4.3 4.3 4.3',
-            easing: 'easeOutElastic',
-          })
-
-          portalVideo.setAttribute('animation__3', {
-            property: 'scale',
-            dur: 1500,
-            from: '0.001 0.001 0.001',
-            to: '7 7 1',
-            easing: 'easeOutElastic',
-          })
-
-          portalShadow.setAttribute('animation__4', {
-            property: 'scale',
-            dur: 1500,
-            from: '0.001 0.001 0.001',
-            to: '15.5 2 11',
-            easing: 'easeOutElastic',
-          })
-          sceneEl.removeEventListener('click', firstPlaceEvent)
-          recenterBtn.addEventListener('click', handleClickEvent, true)
-        }
-
-        sceneEl.addEventListener('click', firstPlaceEvent)
-      },
-    })
-    aframe.register('responsive-immersive', {
-      init() {
-        const onAttach = ({ sessionAttributes }) => {
-          const hiderWalls = document.getElementById('hider-walls')
-          const scene = this.el
-          const s = sessionAttributes
-          if (
-            !s.cameraLinkedToViewer &&
-            !s.controlsCamera &&
-            !s.fillsCameraTexture &&
-            !s.supportsHtmlEmbedded &&
-            s.supportsHtmlOverlay &&
-            !s.usesMediaDevices &&
-            !s.usesWebXr
-          ) {
-            // Desktop-specific behavior goes here
-          } else if (
-            s.cameraLinkedToViewer &&
-            s.controlsCamera &&
-            !s.fillsCameraTexture &&
-            s.supportsHtmlEmbedded &&
-            !s.supportsHtmlOverlay &&
-            !s.usesMediaDevices &&
-            s.usesWebXr
-          ) {
-            // HMD-specific behavior goes here
-            if (this.el.sceneEl.xrSession.environmentBlendMode === 'opaque') {
-              // VR HMD (i.e. Oculus Quest) behavior goes here
-            } else if (
-              this.el.sceneEl.xrSession.environmentBlendMode === 'additive' ||
-              'alpha-blend'
-            ) {
-              // AR HMD (i.e. Quest 3, Hololens) behavior goes here
-              scene.setAttribute('tap-to-place-portal', '')
-              scene.setAttribute('prompt-flow', '')
-              scene.sceneEl.camera.el.setAttribute('portal-camera', '')
-            }
-          } else if (
-            !s.cameraLinkedToViewer &&
-            !s.controlsCamera &&
-            s.fillsCameraTexture &&
-            !s.supportsHtmlEmbedded &&
-            s.supportsHtmlOverlay &&
-            s.usesMediaDevices &&
-            !s.usesWebXr
-          ) {
-            // Mobile-specific behavior goes here
-            scene.setAttribute('tap-to-place-portal', '')
-            scene.setAttribute('prompt-flow', '')
-            scene.sceneEl.camera.el.setAttribute('portal-camera', '')
-          }
-        }
-
-        const onxrloaded = () => {
-          XR8.addCameraPipelineModules([
-            { name: 'responsiveImmersive', onAttach },
-          ])
-        }
-        window.XR8
-          ? onxrloaded()
-          : window.addEventListener('xrloaded', onxrloaded)
-      },
-    })
     aframe.register('auto-play-video', {
       schema: {
         video: { type: 'string' },
@@ -245,8 +60,11 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
         v.play()
       },
     })
-  }, [])
-  if (!url || !moonGlb) {
+  }, [window?.XR8])
+  useEffect(() => {
+    console.log('window?.XR8', window?.XR8)
+  }, [window?.XR8])
+  if (!url) {
     return <div>Loading...</div>
   }
   return (
@@ -295,7 +113,6 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
         <a-camera
           id='camera'
           position='0 9 11'
-          raycaster='objects: .cantap'
           cursor='fuse: false; rayOrigin: mouse;'
         ></a-camera>
 
