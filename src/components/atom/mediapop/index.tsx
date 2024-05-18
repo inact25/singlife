@@ -5,7 +5,7 @@ import tap from '@assets/svgs/tap.svg'
 type Props = {
   type?: '360' | 'waiting' | 'tap'
 }
-const Index = ({ type = '360' }: Props) => {
+const MediaPopup = ({ type = '360' }: Props) => {
   return (
     <div className='rounded-2xl flex justify-center items-center px-5 py-10 bg-white/40 backdrop-blur-md'>
       <div className='w-full'>
@@ -32,4 +32,4 @@ const Index = ({ type = '360' }: Props) => {
   )
 }
 
-export default Index
+export default MediaPopup

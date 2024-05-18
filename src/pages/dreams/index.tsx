@@ -19,13 +19,17 @@ const Dream = () => {
   const handleBack = () => {
     navigate('/')
   }
-  const handleYourDream = (id: number) => {
-    navigate(`/your-dream/${id}`)
+  const handleYourDream = (id: number, url: string) => {
+    navigate(`/your-dream/${id}?url=${url}`)
   }
 
   useEffect(() => {
     dream_v1.getDreamListV2Do()
   }, [dream_v1.paginate.filter])
+
+  useEffect(() => {
+    dream_v1.getInfluencerDream()
+  }, [])
 
   useEffect(() => {
     const data = dream_v1.paginate.pagination
@@ -64,7 +68,7 @@ const Dream = () => {
                 {arrayEven(dream_v1.data)?.map((item) => (
                   <div key={item.id}>
                     <Gallery
-                      onClick={() => handleYourDream(item.id)}
+                      onClick={() => handleYourDream(item.id, item.image)}
                       description={exceptText(item.description, 39)}
                       image={item.thumbnail}
                     />
@@ -72,10 +76,29 @@ const Dream = () => {
                 ))}
               </div>
               <div className='grid gap-4'>
+                {dream_v1.singleData?.title && (
+                  <div key='influencer'>
+                    <Gallery
+                      isActive
+                      title={dream_v1.singleData?.title}
+                      onClick={() =>
+                        handleYourDream(
+                          parseInt(dream_v1.singleData?.id ?? '0'),
+                          dream_v1.singleData?.image ?? '',
+                        )
+                      }
+                      description={exceptText(
+                        dream_v1.singleData?.description ?? '',
+                        39,
+                      )}
+                      image={dream_v1.singleData?.thumbnail ?? ''}
+                    />
+                  </div>
+                )}
                 {arrayOdd(dream_v1.data)?.map((item) => (
                   <div key={item.id}>
                     <Gallery
-                      onClick={() => handleYourDream(item.id)}
+                      onClick={() => handleYourDream(item.id, item.image)}
                       description={exceptText(item.description, 39)}
                       image={item.thumbnail}
                     />

@@ -89,6 +89,7 @@ const RenderQuestion: React.FC<Props> = ({
   const quiz_service = useQuiz()
   const [record, setRecord] = useState<ListQuiz | null>(null)
   const [isActive, setIsActive] = useState(false)
+
   const isChecked = (id: number) => {
     return value?.answer_id === id
   }
@@ -198,6 +199,7 @@ const RenderQuestion: React.FC<Props> = ({
                   </div>
                   <div className='col-span-8'>
                     <Button
+                      disabled={value?.answer_id === 0}
                       type='default'
                       title={isLast ? 'Submit' : 'Next'}
                       onClick={isLast ? handleSubmit : handleNext}

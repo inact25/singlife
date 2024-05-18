@@ -37,3 +37,13 @@ export const getLatestDream = async () => {
     return response as ListLatestDream[]
   })
 }
+
+export const getDreamFromInfluencer = async () => {
+  return rpc({
+    e: 'influencer',
+    method: 'GET',
+    params: {},
+  }).then((response) => {
+    return response as ListDream
+  })
+}
