@@ -247,7 +247,7 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
     })
   }, [])
   if (!url || !moonGlb) {
-    return <div>Loading...</div>
+    return <div className='relative top-[50%]'>Loading...</div>
   }
   return (
     <>
@@ -270,7 +270,6 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
         xrextras-runtime-error
         renderer='colorManagement: true;'
         xrweb='allowedDevices: any; disableDefaultEnvironment: true;'
-        reality-ready
       >
         <a-assets>
           <img crossOrigin='anonymous' id='skybox-img' src={url} />
@@ -296,7 +295,7 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
           id='camera'
           position='0 9 11'
           raycaster='objects: .cantap'
-          cursor='fuse: false; rayOrigin: mouse;'
+
         ></a-camera>
 
         <xrextras-opaque-background remove='true'>
