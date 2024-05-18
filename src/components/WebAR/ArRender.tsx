@@ -379,6 +379,8 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
           shadow
         ></a-entity>
 
+<a-light type="ambient" intensity="0.3"></a-light>
+
   <a-entity id="portal-contents">
   <a-entity
       gltf-model="#moon-model"
