@@ -17,6 +17,8 @@ import MediaPopup from '@components/atom/mediapop'
 
 // portal video
 import portalVideo from '@assets/portal-video.mp4'
+import {bottomPopup} from '@utils/bottomPopup/bottomPopup.ts'
+import Swal from 'sweetalert2'
 
 type Props = {
   params: any
@@ -35,6 +37,18 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
     aframe.register('reality-ready', {
       init: function () {
         const el = this.el
+        el.addEventListener('hasClicked', (x) => {
+          console.log('portal summon', x)
+          setTimeout(() => {
+            bottomPopup({
+              title: 'Walk into the portal to experience your dream',
+              useButton: false,
+            })
+            setTimeout(() => {
+              Swal.close()
+            }, 3000)
+          }, 3000)
+        })
         el.addEventListener('realityready', function () {
           callback && callback(true)
         })
@@ -109,12 +123,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             id='satellite-img'
             src='https://static.8thwall.app/assets/satellite-92l691o6f5.png'
           />
-          <video
-            id='portal-video'
-            muted
-            loop='true'
-            src={portalVideo}
-          ></video>
+          <video id='portal-video' muted loop='true' src={portalVideo}></video>
         </a-assets>
 
         <xrextras-capture-button capture-mode='standard'></xrextras-capture-button>
@@ -166,18 +175,16 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               position='30 50 50'
               xrextras-hider-material
             ></a-box>
-      
+
             <a-ring
               id='portalHiderRing'
               radius-inner='0.001'
               radius-outer='100'
               scale='1 1 1'
-              position="0 9 -0.02187"
-              geometry="radiusOuter: 15"
+              position='0 9 -0.02187'
+              geometry='radiusOuter: 15'
               xrextras-hider-material
             ></a-ring>
-            
-            
           </a-entity>
 
           <a-entity id='portal-wall'>
@@ -265,7 +272,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           gltf-model={`url(${portalSpin})`}
           reflections='type: realtime'
           shadow='receive: false'
-          visible="false"
+          visible='false'
           scale='2 2 2 '
         ></a-entity>
         <a-entity

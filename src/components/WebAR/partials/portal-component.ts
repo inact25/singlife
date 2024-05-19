@@ -53,6 +53,11 @@ const tapToPlacePortalComponent = {
     const portalShadow = this.el.sceneEl.querySelector('#portalShadow')
 
     const handleClickEvent = (e) => {
+      //create new event
+      const event = new CustomEvent('hasClicked', {
+        status: true,
+      })
+      sceneEl.dispatchEvent(event)
       if (!e.touches || e.touches.length < 2) {
         recenterBtn.classList.add('pulse-once')
         sceneEl.emit('recenter')
@@ -115,6 +120,11 @@ const tapToPlacePortalComponent = {
       })
       sceneEl.removeEventListener('click', firstPlaceEvent)
       recenterBtn.addEventListener('click', handleClickEvent, true)
+      const event = new CustomEvent('hasClicked', {
+        status: true,
+      })
+      sceneEl.dispatchEvent(event)
+      //push new event
     }
 
     sceneEl.addEventListener('click', firstPlaceEvent)

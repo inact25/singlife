@@ -4,8 +4,13 @@ import './styles.css'
 type Props = {
   title?: string
   desc?: string
+  useButton?: boolean
 }
-const bottomPopup = ({ title = '', desc = 'Create your own dream' }: Props) => {
+const bottomPopup = ({
+  title = '',
+  desc = 'Create your own dream',
+  useButton = true,
+}: Props) => {
   return Swal.fire({
     customClass: {
       container: 'p-0',
@@ -30,7 +35,7 @@ const bottomPopup = ({ title = '', desc = 'Create your own dream' }: Props) => {
     },
     position: 'bottom',
     title: title,
-    showConfirmButton: true,
+    showConfirmButton: useButton,
     confirmButtonText: desc,
     allowOutsideClick: false,
   })
