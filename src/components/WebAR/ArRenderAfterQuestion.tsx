@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 // @ts-nocheck
 import useAframe from '@hooks/useAframe.ts'
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import AFrameScene from '@components/libs/AFrameScene'
 import capture from '@assets/capture.svg'
 import portalSpin from '@assets/glbs/portal-new.glb'
@@ -13,19 +13,20 @@ import {
   spinComponent,
   tapToPlacePortalComponent,
 } from '@components/WebAR/partials/portal-component.ts'
-import { responsiveImmersiveComponent } from '@components/WebAR/partials/immersive-component.ts'
+import {responsiveImmersiveComponent} from '@components/WebAR/partials/immersive-component.ts'
 import MediaPopup from '@components/atom/mediapop'
 
 // portal video
 import portalVideo from '@assets/portal-video.mp4'
-import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
+import {bottomPopup} from '@utils/bottomPopup/bottomPopup.ts'
 import Popup from '@components/molecules/popup'
 import Button from '@components/atom/button'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Swal from 'sweetalert2'
-import { useParams } from 'react-router-dom'
-import { FaFacebookF, FaLink, FaWhatsapp } from 'react-icons/fa6'
-import { HiGiftTop } from 'react-icons/hi2'
+import {useParams} from 'react-router-dom'
+import {FaLink} from 'react-icons/fa6'
+import {HiGiftTop} from 'react-icons/hi2'
+import {FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton,} from 'react-share'
 
 type Props = {
   params: any
@@ -35,6 +36,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   const aframe = useAframe()
   const [url, setUrl] = React.useState(null)
   const [reward, setReward] = useState(0)
+  const shareUrl = window.location.href
   useEffect(() => {
     if (params?.url) {
       setUrl(params.url)
@@ -333,17 +335,26 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       </WrapperLayouts>
       {reward === 2 && (
         <div className='absolute top-5 right-5'>
-          <div className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-[#1877F2] text-white rounded-full flex items-center justify-center'>
-            <span className='text-[24px]'>
-              <FaFacebookF />
-            </span>
+          <div>
+            <FacebookShareButton
+              url={shareUrl}
+              className='Demo__some-network__share-button'
+            >
+              <FacebookIcon size={48} round />
+            </FacebookShareButton>
           </div>
-          <div className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-[#25D366] text-white rounded-full flex items-center justify-center'>
-            <span className='text-[24px]'>
-              <FaWhatsapp />
-            </span>
+          <div>
+            <WhatsappShareButton
+              url={shareUrl}
+              className='Demo__some-network__share-button'
+            >
+              <WhatsappIcon size={48} round />
+            </WhatsappShareButton>
           </div>
-          <div className='h-[48px] mb-3 [:&>svg]:text-[24px] shadow-sm w-[48px] bg-white text-black rounded-full flex items-center justify-center'>
+          <div
+            onClick={() => navigator.clipboard.writeText(shareUrl)}
+            className='h-[48px] mb-3 [:&>svg]:text-[24px] shadow-sm w-[48px] bg-white text-black rounded-full flex items-center justify-center'
+          >
             <span className='text-[24px]'>
               <FaLink />
             </span>
