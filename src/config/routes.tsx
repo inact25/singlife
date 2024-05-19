@@ -5,6 +5,7 @@ import Question from '@pages/question'
 import YourDream from '@pages/your-dream'
 import SamplePopup from '@pages/sample-popup'
 import QuestionFinish from '@pages/question-finish'
+import Detector from '@pages/detector'
 
 const routes: RouteObject[] = [
   {
@@ -30,6 +31,10 @@ const routes: RouteObject[] = [
   {
     path: 'sample',
     element: <SamplePopup />,
+  },
+  {
+    path: 'tracking',
+    element: <Detector />,
   },
   {
     path: '*',

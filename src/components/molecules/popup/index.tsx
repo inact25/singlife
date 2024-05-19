@@ -24,7 +24,7 @@ const Index = ({ onPop, open, content, title, isFloating = false }: Props) => {
           <h3 className='title p-4 pt-6 text-white'>{title}</h3>
         </div>
         <div
-          className={`${open ? 'block' : 'hidden'} ${isFloating ? 'rounded-b-[32px] bg-white/60 backdrop-blur-md' : 'bg-white'} min-h-[238px] content text-black p-5`}
+          className={`${open ? 'block' : 'hidden'} ${isFloating ? 'rounded-b-[32px] bg-white/60 ' : 'bg-white'} min-h-[238px] content text-black p-5`}
         >
           <div>{content}</div>
         </div>
