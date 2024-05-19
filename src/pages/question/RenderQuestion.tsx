@@ -117,7 +117,7 @@ const RenderQuestion: React.FC<Props> = ({
   }, [quiz_service.singleData])
 
   if (record === null) {
-    return <div>Loading...</div>
+    return <div></div>
   }
 
   return (
