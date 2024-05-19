@@ -140,6 +140,10 @@ h3 {
   pointer-events: auto;
 }
 
+#imagePreview{
+  max-width: 70vw;
+}
+
 /* ANIMATIONS */
 
 .fly-in {

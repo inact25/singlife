@@ -91,7 +91,7 @@ const tapToPlacePortalComponent = {
             property: 'radius-inner',
             dur: 3000,
             from: '0.001',
-            to: '3.5',
+            to: '5',
             easing: 'easeOutElastic',
           })
         }, 3000)

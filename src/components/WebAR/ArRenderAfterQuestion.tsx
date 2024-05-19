@@ -99,7 +99,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         useButton: false,
         floating: true,
         dark: false,
-      }), 6000)
+      }), 4000)
     }
   }, [reward]);
 
@@ -158,8 +158,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
 
           <xrextras-capture-button capture-mode='standard'></xrextras-capture-button>
           <xrextras-capture-config
-            max-duration-ms='30000'
-            max-dimension='1280'
+            max-duration-ms='15000'
+            max-dimension='900'
             enable-end-card='true'
             cover-image-url=''
             end-card-call-to-action='Try it at:'
