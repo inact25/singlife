@@ -71,6 +71,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       },
     })
 
+
     aframe.register('portal-camera', portalCameraComponent)
     aframe.register('spin', spinComponent)
 
@@ -97,18 +98,15 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   }, [window?.XR8])
 
   useEffect(() => {
-    if (reward === 2) {
-      setTimeout(
-        () =>
-          bottomPopup({
-            title:
-              'Tap the camera button to take a photo or hold it to take a video',
-            useButton: false,
-            floating: true,
-            dark: false,
-          }),
-        6000,
-      )
+    if(reward === 2){
+      setTimeout(() => bottomPopup({
+        title: 'Tap the camera button to take a photo or hold it to take a video',
+        useButton: false,
+        floating: true,
+        dark: false,
+      }), 6000)
+    } else {
+      Swal.close()
     }
   }, [reward])
 
@@ -381,7 +379,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               <FaLink />
             </span>
           </div>
-          <div className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-black text-white rounded-full flex items-center justify-center'>
+          <div onClick={()=>setReward(1)} className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-black text-white rounded-full flex items-center justify-center'>
             <span className='text-[24px]'>
               <HiGiftTop />
             </span>
