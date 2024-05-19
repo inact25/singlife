@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import { useScroll, useScrolling, useWindowSize } from 'react-use'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import placeholder from '@assets/anim/imageplaceholder.gif'
+import useAccelerometer from '@utils/useAccelerometer.ts'
 
 const Dream = () => {
   const scrollRef = useRef(null)
@@ -17,11 +18,15 @@ const Dream = () => {
   const { height } = useWindowSize()
   const navigate = useNavigate()
   const dream_v1 = useDream()
+  const motion = useAccelerometer()
   const handleBack = () => {
     navigate('/')
   }
   const handleYourDream = (id: number) => {
-    navigate(`/tracking/explore-${id}`)
+    if (motion.y === undefined) {
+      return navigate(`/tracking/explore-${id}`)
+    }
+    navigate(`/your-dream/${id}`)
   }
 
   useEffect(() => {
@@ -56,7 +61,7 @@ const Dream = () => {
             <div className='grid grid-cols-12 justify-between pt-5'>
               <div className='col-span-4 text-left'>
                 <div className='top-5 rounded-full left-5 absolute z-50 shadow-md'>
-                <Buttonicon icon={back} onClick={handleBack} />
+                  <Buttonicon icon={back} onClick={handleBack} />
                 </div>
               </div>
               <div className='col-span-8'>
