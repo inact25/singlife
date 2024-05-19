@@ -373,7 +373,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               <FaLink />
             </span>
           </div>
-          <div className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-black text-white rounded-full flex items-center justify-center'>
+          <div onClick={()=>setReward(1)} className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-black text-white rounded-full flex items-center justify-center'>
             <span className='text-[24px]'>
               <HiGiftTop />
             </span>
