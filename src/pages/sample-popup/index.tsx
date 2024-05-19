@@ -9,7 +9,7 @@ const Index = () => {
   return (
     <div>
       <Popup
-        title={'Get Rewarded'}
+        title={'Before We Begin...'}
         isFloating={true}
         content={<Before />}
         onPop={() => setopen(!open)}
