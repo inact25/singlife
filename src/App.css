@@ -3,261 +3,102 @@
 @tailwind utilities;
 
 @layer base {
-    @font-face {
-        font-family: "F37Gruffy";
-        src: local("F37Gruffy"),
-        url("./assets/fontface/F37Gruffy/F37Gruffy-Regular.otf") format("opentype");
-        font-weight: normal;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "F37Gruffy";
-        src: local("F37Gruffy-Bold"),
-        url("./assets/fontface/F37Gruffy/F37Gruffy-Bold.otf") format("opentype");
-        font-weight: bold;
-        font-style: normal;
-    }
+  @font-face {
+    font-family: 'F37Gruffy';
+    src:
+      local('F37Gruffy'),
+      url('./assets/fontface/F37Gruffy/F37Gruffy-Regular.otf')
+        format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'F37Gruffy';
+    src:
+      local('F37Gruffy-Bold'),
+      url('./assets/fontface/F37Gruffy/F37Gruffy-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+  }
 }
 
 * {
-    font-family: F37Gruffy, serif;
+  font-family: F37Gruffy, serif;
 }
 
 #root {
-    text-align: center;
-    background: #ffe9ec;
-    height: 100vh;
-    overflow: hidden;
+  text-align: center;
+  background: #ffe9ec;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
 }
 
 .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
 
 .logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
 .display {
-    font-weight: bold;
-    font-size: 34px;
-    line-height: 48px;
+  font-weight: bold;
+  font-size: 34px;
+  line-height: 48px;
 }
 
 .cta-1 {
-    font-size: 16px;
-    line-height: 22px;
+  font-size: 16px;
+  line-height: 22px;
 }
 
 .cta-2 {
-    font-size: 12px;
-    line-height: 22px;
+  font-size: 12px;
+  line-height: 22px;
 }
 
-
 h1 {
-    font-size: 30px;
-    line-height: 48px;
+  font-size: 30px;
+  line-height: 48px;
 }
 
 h2 {
-    font-size: 28px;
-    line-height: 40px;
+  font-size: 28px;
+  line-height: 40px;
 }
 
 h3 {
-    font-size: 22px;
-    line-height: 28px;
+  font-size: 22px;
+  line-height: 28px;
 }
 
 .body-1 {
-    font-size: 16px;
-    line-height: 22px;
+  font-size: 16px;
+  line-height: 22px;
 }
 
 .body-2 {
-    font-size: 14px;
-    line-height: 20px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .note {
-    font-size: 12px;
-    line-height: 16px;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .image-screen {
-    background-size: cover !important;
+  background-size: cover !important;
 }
 
 @keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-        animation: logo-spin infinite 20s linear;
-    }
-}
-
-.card {
-    padding: 2em;
-}
-
-.read-the-docs {
-    color: #888;
-}
-
-.absolute-fill {
-    z-index: 10;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    pointer-events: none;
-}
-
-#recenterButton {
-    position: absolute;
-    z-index: 5;
-    left: 2vh;
-    bottom: 2vh;
-    max-width: 50px;
-    pointer-events: auto;
-}
-
-
-/* ANIMATIONS */
-
-.fly-in {
-    animation: fly-in 1.5s ease-out both;
-}
-
-@keyframes fly-in {
-    0% {
-        transform: translate(-100%, 0%);
-        opacity: 0;
-    }
-    70% {
-        opacity: 1;
-    }
-    100% {
-        transform: translate(-50%, 0%);
-        opacity: 1;
-    }
-}
-
-.fade-out {
-    animation: fade-out 1s ease-out both;
-}
-
-@keyframes fade-out {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-.pulse-once {
-    animation: pulse-once 0.2s cubic-bezier(0.785, 0.135, 0.150, 0.860) both;
-}
-
-@keyframes pulse-once {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.8);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* motion sensor */
-#requestingCameraPermissions {
-    background-color: white !important;
-}
-
-#requestingCameraIcon {
-    background-color: white !important;
-}
-
-#loadBackground {
-    background-color: white !important;
-}
-
-#loadImage{
-    background-color: white !important;
-}
-
-.prompt-box-8w {
-
-}
-
-.prompt-button-8w {
-
-}
-
-.button-primary-8w {
-
-}
-
-/* custom btn capture */
-#icon {
-    height: 200px;
-    width: 200px;
-    max-width: max-content;
-}
-
-.recorder-container {
-    all: unset;
-    position: absolute;
-    bottom: 17%;
-    right: 50%;
-    transform: translateX(50%);
-    width: 100px;
-    height: 50px;
-    z-index: 1;
-    background: transparent;
-    color: transparent;
-}
-
-.progress-container {
-    display: none;
-}
-
-#recorder-button {
-    height: 120px;
-    width: 120px;
-    width: 100%;
-    border-radius: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    background: transparent;
-    color: transparent;
-}
-
-.spinner{
-animation: spin 6s linear infinite;
-
-@keyframes spin {
   from {
     transform: rotate(0deg);
   }
@@ -265,9 +106,166 @@ animation: spin 6s linear infinite;
     transform: rotate(360deg);
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.absolute-fill {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+#recenterButton {
+  position: absolute;
+  z-index: 5;
+  left: 2vh;
+  bottom: 2vh;
+  max-width: 50px;
+  pointer-events: auto;
+}
+
+/* ANIMATIONS */
+
+.fly-in {
+  animation: fly-in 1.5s ease-out both;
+}
+
+@keyframes fly-in {
+  0% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 0%);
+    opacity: 1;
+  }
+}
+
+.fade-out {
+  animation: fade-out 1s ease-out both;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.pulse-once {
+  animation: pulse-once 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) both;
+}
+
+@keyframes pulse-once {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* motion sensor */
+#requestingCameraPermissions {
+  background-color: white !important;
+}
+
+#requestingCameraIcon {
+  background-color: white !important;
+}
+
+#loadBackground {
+  background-color: white !important;
+}
+
+#loadImage {
+  background-color: white !important;
+}
+
+.prompt-box-8w {
+}
+
+.prompt-button-8w {
+}
+
+.button-primary-8w {
+}
+
+/* custom btn capture */
+#icon {
+  height: 200px;
+  width: 200px;
+  max-width: max-content;
+}
+
+.recorder-container {
+  all: unset;
+  position: absolute;
+  bottom: 17%;
+  right: 50%;
+  transform: translateX(50%);
+  width: 100px;
+  height: 50px;
+  z-index: 1;
+  background: transparent;
+  color: transparent;
+}
+
+.progress-container {
+  display: none;
+}
+
+#recorder-button {
+  height: 120px;
+  width: 120px;
+  width: 100%;
+  border-radius: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: transparent;
+  color: transparent;
+}
+
+.spinner {
+  animation: spin 6s linear infinite;
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 #actionButton {
-    /* change color of action button */
-    background-color: #FF0008 !important;
-  }
+  /* change color of action button */
+  background-color: #ff0008 !important;
+}

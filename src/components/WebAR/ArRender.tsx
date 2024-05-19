@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 // @ts-nocheck
 import useAframe from '@hooks/useAframe.ts'
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import AFrameScene from '@components/libs/AFrameScene'
 import moonGlb from '@assets/glbs/moon.glb'
 //portal
@@ -249,7 +249,7 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
       init() {
         const btn = document.getElementById('recorder-button')
         btn.innerHTML = `<img id="icon" src=${require('/capture.png')}> Capture`
-      }
+      },
     })
   }, [])
   if (!url || !moonGlb) {
@@ -297,26 +297,24 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
             src='https://static.8thwall.app/assets/blue-portal-lrmelmi6qc.mp4'
           ></video>
         </a-assets>
-      
-  <xrextras-capture-button capture-mode="standard"></xrextras-capture-button>
-  
- 
-  <xrextras-capture-config
-  max-duration-ms="30000"
-  max-dimension="1280"
-  enable-end-card="true"
-  cover-image-url=""
-  end-card-call-to-action="Try it at:"
-  short-link=""
-  watermark-image-url="/logo.png"
-  watermark-max-width="100"
-  watermark-max-height="10"
-  watermark-location="bottomRight"
-  file-name-prefix="singlife-image-"
-></xrextras-capture-config>
-  
-  
-  <xrextras-capture-preview></xrextras-capture-preview>
+
+        <xrextras-capture-button capture-mode='standard'></xrextras-capture-button>
+
+        <xrextras-capture-config
+          max-duration-ms='30000'
+          max-dimension='1280'
+          enable-end-card='true'
+          cover-image-url=''
+          end-card-call-to-action='Try it at:'
+          short-link=''
+          watermark-image-url='/logo.png'
+          watermark-max-width='100'
+          watermark-max-height='10'
+          watermark-location='bottomRight'
+          file-name-prefix='singlife-image-'
+        ></xrextras-capture-config>
+
+        <xrextras-capture-preview></xrextras-capture-preview>
         <a-camera
           id='camera'
           position='0 9 11'

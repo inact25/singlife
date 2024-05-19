@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 // @ts-nocheck
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import AFrameScene from '@components/libs/AFrameScene'
 import useAframe from '@hooks/useAframe.ts'
 
