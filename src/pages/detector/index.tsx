@@ -6,7 +6,7 @@ import Popup from '@components/molecules/popup'
 import Question3 from '@assets/background/Question3.jpg'
 
 const Index = () => {
-  const [open, setopen] = useState(true)
+  const [open] = useState(true)
 
   useEffect(() => {
     if (navigator.mediaDevices.getUserMedia !== null) {
@@ -32,7 +32,7 @@ const Index = () => {
             title={'Get Rewarded'}
             isFloating={true}
             content={<Before />}
-            onPop={() => handlePromptConfirm}
+            onPop={() => console.log('')}
             open={open}
           />
         </div>
