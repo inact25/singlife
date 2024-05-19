@@ -55,7 +55,9 @@ const Dream = () => {
           >
             <div className='grid grid-cols-12 justify-between pt-5'>
               <div className='col-span-4 text-left'>
+                <div className='top-5 left-5 absolute z-50 shadow-md'>
                 <Buttonicon icon={back} onClick={handleBack} />
+                </div>
               </div>
               <div className='col-span-8'>
                 <h2 className='text-right text-black'>
