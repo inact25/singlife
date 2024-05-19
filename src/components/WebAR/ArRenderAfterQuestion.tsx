@@ -36,6 +36,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   const aframe = useAframe()
   const [url, setUrl] = React.useState(null)
   const [reward, setReward] = useState(0)
+  const [isLinkCopied, setIsLinkCopied] = useState(false)
   const shareUrl = () => {
     const host = window.location.host
     const path = '/your-dream'
@@ -114,9 +115,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       if (btn) btn.style = "display:none;"
       if (progressbtn) progressbtn.style = "display:none;"
       Swal.close()
-      return () => clearTimeout();
     }
-    return () => clearTimeout();
+    return () => Swal.close();
   }, [reward])
 
   useEffect(() => {
@@ -378,13 +378,28 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               <WhatsappIcon size={48} round />
             </WhatsappShareButton>
           </div>
-          <div
-            onClick={() => navigator.clipboard.writeText(shareUrl())}
-            className='h-[48px] mb-3 [:&>svg]:text-[24px] shadow-sm w-[48px] bg-white text-black rounded-full flex items-center justify-center'
-          >
-            <span className='text-[24px]'>
-              <FaLink />
-            </span>
+          <div className='flex items-center'>
+            {isLinkCopied &&
+                <div
+                    className="note  absolute bg-white/80 right-[3.5rem] mt-[-1rem] px-4 py-3 rounded-full w-fit min-w-[120px]">Link
+                  copied
+                </div>
+            }
+            <div
+                onClick={() => {
+                  navigator.clipboard.writeText(shareUrl()).then(() => {
+                    setIsLinkCopied(true)
+                    setTimeout(() => setIsLinkCopied(false), 2000)
+                  })
+
+                }}
+                className='h-[48px] mb-3 [:&>svg]:text-[24px] shadow-sm w-[48px] bg-white text-black rounded-full flex items-center justify-center'
+            >
+              <span className='text-[24px]'>
+                <FaLink/>
+              </span>
+            </div>
+
           </div>
           <div onClick={()=>setReward(1)} className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-black text-white rounded-full flex items-center justify-center'>
             <span className='text-[24px]'>
