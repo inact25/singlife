@@ -102,7 +102,9 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       }), 6000)
     } else {
       Swal.close()
+      return () => clearTimeout();
     }
+    return () => clearTimeout();
   }, [reward]);
 
 
