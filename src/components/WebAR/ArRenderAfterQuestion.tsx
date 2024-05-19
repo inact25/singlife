@@ -3,7 +3,7 @@
 import useAframe from '@hooks/useAframe.ts'
 import React, {useEffect, useState} from 'react'
 import AFrameScene from '@components/libs/AFrameScene'
-import capture from '@assets/capture.png'
+import capture from '@assets/capture.svg'
 import portalSpin from '@assets/glbs/portal-new.glb'
 import portalBox from '@assets/glbs/box.glb'
 import imgReward from '@assets/svgs/rewarded.svg'
@@ -140,21 +140,26 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             ></video>
           </a-assets>
 
-          <xrextras-capture-button capture-mode='standard'></xrextras-capture-button>
-          <xrextras-capture-config
-            max-duration-ms='30000'
-            max-dimension='1280'
-            enable-end-card='true'
-            cover-image-url=''
-            end-card-call-to-action='Try it at:'
-            short-link=''
-            watermark-image-url='/logo.png'
-            watermark-max-width='800'
-            watermark-max-height='10'
-            watermark-location='bottomRight'
-            file-name-prefix='singlife-image-'
-          ></xrextras-capture-config>
-          <xrextras-capture-preview></xrextras-capture-preview>
+        <xrextras-capture-button capture-mode='standard'></xrextras-capture-button>
+        <xrextras-capture-config
+          max-duration-ms='30000'
+          max-dimension='1280'
+          enable-end-card='true'
+          cover-image-url=''
+          end-card-call-to-action='Try it at:'
+          short-link=''
+          watermark-image-url='/logo.png'
+          watermark-max-width='800'
+          watermark-max-height='10'
+          watermark-location='bottomRight'
+          file-name-prefix='singlife-image-'
+          footer-image-url="/logo.png"
+        ></xrextras-capture-config>
+        <xrextras-capture-preview
+          action-button-share-text="test"
+          action-button-view-text="View"
+          finalize-text="Exporting..."
+        ></xrextras-capture-preview>
 
           <a-camera
             id='camera'
