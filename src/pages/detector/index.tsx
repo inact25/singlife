@@ -57,7 +57,7 @@ const Before = () => {
     }
   }
 
-  const motionSensor = (onGranted: () => void) => {
+  const motionSensor = () => {
     // @ts-ignore
     if (typeof DeviceOrientationEvent?.requestPermission === 'function') {
       // @ts-ignore
@@ -65,7 +65,7 @@ const Before = () => {
         .then((permissionState: string) => {
           if (permissionState === 'granted') {
             window.addEventListener('deviceorientation', () => {})
-            onGranted()
+            requestPermission()
           }
         })
         .catch(console.error)
@@ -80,7 +80,7 @@ const Before = () => {
         video: true,
         audio: true,
       })
-      motionSensor(onGranted)
+
       onGranted()
       stream.getTracks().forEach((track) => track.stop())
     } catch (error) {
@@ -116,11 +116,7 @@ const Before = () => {
         </p>
       </div>
       <div className='action-button flex gap-5 z-40 relative'>
-        <Button
-          title='Enable access'
-          onClick={requestPermission}
-          type='primary'
-        />
+        <Button title='Enable access' onClick={motionSensor} type='primary' />
       </div>
     </div>
   )
