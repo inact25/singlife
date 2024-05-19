@@ -58,16 +58,20 @@ const Before = () => {
   }
 
   const motionSensor = () => {
-    // @ts-ignore
-    DeviceMotionEvent.requestPermission()
-      .then((response: any) => {
-        if (response == 'granted') {
-          requestPermission()
-        }
-      })
-      .catch(() => {
-        onDenied()
-      })
+    if (navigator.userAgent.toLowerCase().includes('android')) {
+      requestPermission()
+    } else {
+      // @ts-ignore
+      DeviceMotionEvent.requestPermission()
+        .then((response: any) => {
+          if (response == 'granted') {
+            requestPermission()
+          }
+        })
+        .catch(() => {
+          onDenied()
+        })
+    }
   }
 
   const requestPermission = async () => {
