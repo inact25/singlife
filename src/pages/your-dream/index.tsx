@@ -45,7 +45,7 @@ const YourDream = () => {
       console.log('show popup')
       setTimeout(() => {
         bottomPopup({
-          text: dream_v1.singleData?.description ?? '',
+          title: dream_v1.singleData?.description ?? '',
         }).then((res) => {
           if (res) {
             navigate('/questions')

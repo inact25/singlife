@@ -2,9 +2,10 @@ import Swal from 'sweetalert2'
 import './styles.css'
 
 type Props = {
-  text?: string
+  title?: string
+  desc?: string
 }
-const bottomPopup = ({ text = '' }: Props) => {
+const bottomPopup = ({ title = '', desc = 'Create your own dream' }: Props) => {
   return Swal.fire({
     customClass: {
       container: 'p-0',
@@ -28,9 +29,9 @@ const bottomPopup = ({ text = '' }: Props) => {
     `,
     },
     position: 'bottom',
-    title: text,
+    title: title,
     showConfirmButton: true,
-    confirmButtonText: 'Create your own dream',
+    confirmButtonText: desc,
     allowOutsideClick: false,
   })
 }
