@@ -6,6 +6,7 @@ import {
 import useLoading from '../../../hooks/useLoading.ts'
 import usePagination from '../../../hooks/usePagination.ts'
 import {
+  getDetail,
   getDreamFromInfluencer,
   getDreamListV2,
   getLatestDream,
@@ -65,6 +66,17 @@ const useDream = () => {
       off()
     }
   }
+  const getDetailDo = async (id: number) => {
+    on()
+    try {
+      const response = await getDetail(id)
+      paginate.handleSingleData(response)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      off()
+    }
+  }
   return {
     loading,
     data,
@@ -74,6 +86,7 @@ const useDream = () => {
     getLatestDreamDo,
     getDreamListV2Do,
     getInfluencerDream,
+    getDetailDo,
     paginate: {
       ...paginate,
     },

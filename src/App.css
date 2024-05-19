@@ -174,3 +174,63 @@ h3 {
     50% {transform: scale(0.8);}
     100% {transform: scale(1);}
   }
+
+  /* motion sensor */
+  #requestingCameraPermissions{
+    background-color: white !important; 
+  }
+
+  #requestingCameraIcon{
+    background-color: white !important;
+  }
+  #loadBackground{
+    background-color: white !important;
+  }
+
+  
+  .prompt-box-8w{
+
+  }
+
+  .prompt-button-8w{
+
+  }
+
+  .button-primary-8w{
+
+  }
+
+  /* custom btn capture */
+  #icon {
+    height: 150px;
+    width: auto;
+    max-width: max-content;
+  }
+  .recorder-container {
+    all: unset;
+    position: absolute;
+    bottom: 7%;
+    right: 50%;
+    transform: translateX(50%);
+    width: 100px;
+    height: 50px;
+    z-index: 1;
+    background: transparent;
+    color: transparent;
+  }
+  
+  .progress-container {
+    display: none;
+  }
+  
+  #recorder-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 2rem;
+    background: transparent;
+    color: transparent;
+  }

@@ -3,6 +3,15 @@
 import useAframe from '@hooks/useAframe.ts'
 import React, {useEffect} from 'react'
 import AFrameScene from '@components/libs/AFrameScene'
+import moonGlb from '@assets/glbs/moon.glb'
+//portal
+import portalGlb from '@assets/glbs/portal.glb'
+//platform
+import platformGlb from '@assets/glbs/platform.glb'
+//rocks
+import rocksGlb from '@assets/glbs/rocks.glb'
+//flag
+import flagGlb from '@assets/glbs/flag.glb'
 
 type Props = {
   params: any
@@ -236,9 +245,15 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
         v.play()
       },
     })
+    aframe.register('custom-capture-btn', {
+      init() {
+        const btn = document.getElementById('recorder-button')
+        btn.innerHTML = `<img id="icon" src=${require('/capture.png')}> Capture`
+      }
+    })
   }, [])
-  if (!url) {
-    return <div>Loading...</div>
+  if (!url || !moonGlb) {
+    return <div className='relative top-[50%]'>Loading...</div>
   }
   return (
     <>
@@ -256,36 +271,17 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
         <span id='promptText'></span>
       </div>
       <AFrameScene
+        responsive-immersive
+        custom-capture-btn
         xrextras-loading
         xrextras-runtime-error
         renderer='colorManagement: true;'
-        xrweb='allowedDevices: any; disableDefaultEnvironment: true;'
-        reality-ready
+        xrweb='allowedDevices: any; disableDefaultEnvironment: true; xrmeshfound.detail : { id, position, rotation, bufferGeometry }'
       >
         <a-assets>
           <img crossOrigin='anonymous' id='skybox-img' src={url} />
 
           {/* portal assets */}
-          <a-asset-item
-            id='portal-rim-model'
-            src='https://static.8thwall.app/assets/portal%20(1)-8fj5kci5t4.glb'
-          ></a-asset-item>
-          <a-asset-item
-            id='moon-model'
-            src='https://static.8thwall.app/assets/moon-ground-5dc3hau3o2.glb'
-          ></a-asset-item>
-          <a-asset-item
-            id='platform-model'
-            src='https://static.8thwall.app/assets/platform-cvp8cpu7n7.glb'
-          ></a-asset-item>
-          <a-asset-item
-            id='flag-model'
-            src='https://static.8thwall.app/assets/flag%20(1)-1gepdc4al8.glb'
-          ></a-asset-item>
-          <a-asset-item
-            id='rocks-model'
-            src='https://static.8thwall.app/assets/rocks-1phpku57lc.glb'
-          ></a-asset-item>
           <img
             id='blob-shadow-img'
             src='https://static.8thwall.app/assets/blob-shadow-5ez3hboap2.png'
@@ -301,12 +297,30 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
             src='https://static.8thwall.app/assets/blue-portal-lrmelmi6qc.mp4'
           ></video>
         </a-assets>
-
+      
+  <xrextras-capture-button capture-mode="standard"></xrextras-capture-button>
+  
+ 
+  <xrextras-capture-config
+  max-duration-ms="30000"
+  max-dimension="1280"
+  enable-end-card="true"
+  cover-image-url=""
+  end-card-call-to-action="Try it at:"
+  short-link=""
+  watermark-image-url="/logo.png"
+  watermark-max-width="100"
+  watermark-max-height="10"
+  watermark-location="bottomRight"
+  file-name-prefix="singlife-image-"
+></xrextras-capture-config>
+  
+  
+  <xrextras-capture-preview></xrextras-capture-preview>
         <a-camera
           id='camera'
           position='0 9 11'
           raycaster='objects: .cantap'
-          cursor='fuse: false; rayOrigin: mouse;'
         ></a-camera>
 
         <xrextras-opaque-background remove='true'>
@@ -382,7 +396,7 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
 
         <a-entity id='portal-contents'>
           <a-entity
-            gltf-model='#moon-model'
+            gltf-model={`url(${moonGlb})`}
             rotation='0 90 0'
             position='8 -0.5 -5'
             scale='0.5 0.5 0.5'
@@ -390,7 +404,7 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
           ></a-entity>
 
           <a-entity
-            gltf-model='#platform-model'
+            gltf-model={`url(${platformGlb})`}
             rotation='0 -90 0'
             reflections='type: static'
             position='-0.4 0 -10'
@@ -398,8 +412,61 @@ const ArRender: React.FC<Props> = ({ params, callback }) => {
             shadow='receive: false'
           ></a-entity>
 
-          <a-sky id='image-360' radius='10' src='#portal-content'></a-sky>
+          <a-plane
+            material='src: #satellite-img; transparent: true; roughness: 0.8; metalness: 0'
+            rotation='0 30 0'
+            position='-200 150 -250'
+            scale='120 80 1'
+            shadow='receive: false'
+          ></a-plane>
+
+          <a-entity
+            gltf-model={`url(${flagGlb})`}
+            rotation='0 30 0'
+            reflections='type: static'
+            position='-14 0 -43'
+            scale='5 5 5'
+            shadow='receive: false'
+          ></a-entity>
+
+          <a-entity
+            gltf-model={`url(${rocksGlb})`}
+            reflections='type: static'
+            position='-14 -1 -42'
+            scale='0.75 0.25 0.75'
+            shadow='receive: false'
+          ></a-entity>
+          <a-sky src='#skybox-img' rotation='0 7 0'></a-sky>
         </a-entity>
+
+        <a-entity
+          id='portalRim'
+          gltf-model={`url(${portalGlb})`}
+          spin='axis: x; speed: 14000'
+          reflections='type: realtime'
+          position='0 7.5 0'
+          rotation='90 -90 -90'
+          scale='0.001 0.001 0.001'
+          shadow='receive: false'
+        ></a-entity>
+
+        <a-entity
+          id='portalVideo'
+          auto-play-video='video: #portal-video'
+          material='shader: chromakey; src: #portal-video; color: 0 0 0; blending: additive; side: front'
+          geometry='primitive: plane; height: 1; width: 1;'
+          position='0 7.5 0.1'
+          scale='0.001 0.001 0.001'
+        ></a-entity>
+
+        <a-circle
+          id='portalShadow'
+          radius='0.5'
+          material='src: #blob-shadow-img; opacity: 0.65; roughness: 0.8; metalness: 0'
+          position='0 0.01 1.25'
+          rotation='-90 0 0'
+          scale='0.001 0.001 0.001'
+        ></a-circle>
       </AFrameScene>
     </>
   )

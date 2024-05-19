@@ -7,11 +7,22 @@ type Props = {
   isFull?: boolean
   className?: string
   background?: string
+  allDevice?: boolean
 }
-const WrapperLayouts = ({ children, isFull = false, className }: Props) => {
+const WrapperLayouts = ({
+  children,
+  isFull = false,
+  className,
+  allDevice,
+}: Props) => {
   const host = window.location.origin
   const responsive = useResponsive()
-  if (responsive.breakpoint === 'xs' || responsive.breakpoint === 'sm') {
+  console.log('allDevice', allDevice)
+  if (
+    responsive.breakpoint === 'xs' ||
+    responsive.breakpoint === 'sm' ||
+    allDevice
+  ) {
     return (
       <div className={`w-full  ${!isFull && 'p-5'} ${className}`}>
         {children}
