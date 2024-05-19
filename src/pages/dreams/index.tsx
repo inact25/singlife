@@ -3,10 +3,10 @@ import Buttonicon from '@components/atom/buttonicon'
 import Gallery from '@components/atom/gallery'
 import Card from '@components/atom/card'
 import useDream from '@services/api/dream'
-import { useEffect, useRef } from 'react'
-import { arrayEven, arrayOdd, exceptText } from '@utils/helper.ts'
-import { useNavigate } from 'react-router-dom'
-import { useScroll, useScrolling, useWindowSize } from 'react-use'
+import {useEffect, useRef} from 'react'
+import {arrayEven, arrayOdd, exceptText} from '@utils/helper.ts'
+import {useNavigate} from 'react-router-dom'
+import {useScroll, useScrolling, useWindowSize} from 'react-use'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import placeholder from '@assets/anim/imageplaceholder.gif'
 import useAccelerometer from '@utils/useAccelerometer.ts'
@@ -24,9 +24,9 @@ const Dream = () => {
   }
   const handleYourDream = (id: number) => {
     if (motion.y === undefined) {
-      return navigate(`/tracking/explore-${id}`)
+      return window.open(`/tracking/explore-${id}`, "_self")
     }
-    navigate(`/your-dream/${id}`)
+    window.open(`/your-dream/${id}`, "_self")
   }
 
   useEffect(() => {
