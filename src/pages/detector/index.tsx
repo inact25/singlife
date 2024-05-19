@@ -1,12 +1,12 @@
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import Camera from '@assets/svgs/camera.svg'
 import Rotate from '@assets/svgs/rotate.svg'
 import Button from '@components/atom/button'
 import Popup from '@components/molecules/popup'
 import Question3 from '@assets/background/Question3.jpg'
 import useAccelerometer from '@utils/useAccelerometer.ts'
-import {bottomPopup} from '@utils/bottomPopup/bottomPopup.ts'
-import {useParams} from 'react-router-dom'
+import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
+import { useParams } from 'react-router-dom'
 
 const Index = () => {
   const [open, setOpen] = useState(false)
@@ -47,12 +47,12 @@ const Before = () => {
   }
   const onGranted = () => {
     if (params.purpose?.split('-')[0] === 'explore') {
-
       window.open(`/your-dream/${params.purpose?.split('-')[1]}`, '_self')
     }
     if (params.purpose?.split('-')[0] === 'question') {
       window.open(
-          `/question/finish/${params.purpose?.split('-')[1]}-${params.purpose?.split('-')[2]}`, '_self'
+        `/question/finish/${params.purpose?.split('-')[1]}-${params.purpose?.split('-')[2]}`,
+        '_self',
       )
     }
   }
