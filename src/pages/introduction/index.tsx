@@ -46,12 +46,18 @@ const Introduction = () => {
   }
 
   useEffect(() => {
-    setTimeout(() => setIsSplash(false), 3000)
+    const data = sessionStorage.getItem('splash')
+    if (data) setIsSplash(false)
+    setTimeout(() => {
+      setIsSplash(false)
+      sessionStorage.setItem('splash', 'yes')
+    }, 3000)
   }, [])
 
   useEffect(() => {
     dream_v1.getLatestDreamDo()
   }, [dream_v1.paginate.filter])
+
   return (
     <div>
       {isSplash ? (
