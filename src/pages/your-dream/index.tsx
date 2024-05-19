@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import ArRender360 from '@components/WebAR/ArRender360.tsx'
 import useDream from '@services/api/dream'
+import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
 
 const motionFade = {
   hidden: { opacity: 0 },
@@ -24,11 +25,35 @@ const YourDream = () => {
   const hidePopup = () => {
     setShowPopup(false)
   }
+  const popupHideAfter = (second: number) => {
+    setTimeout(() => {
+      hidePopup()
+    }, second)
+  }
   useEffect(() => {
     if (params?.id) {
       dream_v1.getDetailDo(parseInt(params?.id, 10))
     }
   }, [params?.id])
+  useEffect(() => {
+    if (currentComponent === '360') {
+      popupHideAfter(3000)
+    }
+  }, [currentComponent])
+  useEffect(() => {
+    if (!showPopup && currentComponent === '360') {
+      console.log('show popup')
+      setTimeout(() => {
+        bottomPopup({
+          title: dream_v1.singleData?.description ?? '',
+        }).then((res) => {
+          if (res) {
+            navigate('/questions')
+          }
+        })
+      }, 5000)
+    }
+  }, [showPopup])
   return (
     <WrapperLayouts isFull={true} allDevice>
       <div className=''>
