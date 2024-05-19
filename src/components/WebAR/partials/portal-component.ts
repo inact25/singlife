@@ -54,7 +54,7 @@ const tapToPlacePortalComponent = {
 
     const handleClickEvent = (e) => {
       //create new event
-      const event = new CustomEvent('hasClicked', {
+      const event = new CustomEvent('clcik', {
         status: true,
       })
       sceneEl.dispatchEvent(event)
@@ -71,20 +71,14 @@ const tapToPlacePortalComponent = {
       sceneEl.emit('recenter')
       sceneEl.emit('dismissPrompt')
 
-      portalHiderRing.setAttribute('animation__1', {
-        property: 'radius-inner',
-        dur: 1500,
-        from: '0.001',
-        to: '3.5',
-        easing: 'easeOutElastic',
-      })
+
 
       portalBox.setAttribute('animation-mixer', {
         clip: '*',
         loop: 'once',
         clampWhenFinished: true,
       })
-
+      portalBox.setAttribute('visible', true)
       // Mulai animasi pada target2 setelah animasi target1 selesai
       setTimeout(() => {
         portalRim.setAttribute('visible', true)
@@ -94,13 +88,15 @@ const tapToPlacePortalComponent = {
           clampWhenFinished: true,
           timeScale: 2,
         })
-        portalRim.setAttribute('animation__5', {
-          property: 'radius-inner',
-          dur: 1500,
-          from: '0.001',
-          to: '3.5',
-          easing: 'easeOutElastic',
-        })
+        setTimeout(()=> {
+          portalHiderRing.setAttribute('animation__1', {
+            property: 'radius-inner',
+            dur: 3000,
+            from: '0.001',
+            to: '3.5',
+            easing: 'easeOutElastic',
+          })
+        }, 3000)
       }, 3000) // Jeda 3000 milidetik (3 detik)
 
       portalVideo.setAttribute('animation__3', {

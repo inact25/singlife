@@ -132,8 +132,8 @@ h3 {
 #recenterButton {
     position: absolute;
     z-index: 5;
-    left: 2vh;
-    bottom: 2vh;
+    right: 2vh;
+    top: 2vh;
     max-width: 50px;
     pointer-events: auto;
 }
@@ -201,6 +201,9 @@ h3 {
     background-color: white !important;
 }
 
+#loadImage{
+    background-color: white !important;
+}
 
 .prompt-box-8w {
 
@@ -216,15 +219,15 @@ h3 {
 
 /* custom btn capture */
 #icon {
-    height: 150px;
-    width: auto;
+    height: 120px;
+    width: 120px;
     max-width: max-content;
 }
 
 .recorder-container {
     all: unset;
     position: absolute;
-    bottom: 7%;
+    bottom: 17%;
     right: 50%;
     transform: translateX(50%);
     width: 100px;

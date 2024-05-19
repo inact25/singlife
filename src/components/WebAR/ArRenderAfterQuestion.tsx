@@ -47,7 +47,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             setTimeout(() => {
               Swal.close()
             }, 3000)
-          }, 3000)
+          }, 8000)
         })
         el.addEventListener('realityready', function () {
           callback && callback(true)
@@ -105,7 +105,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       <AFrameScene
         responsive-immersive
         custom-capture-btn
-        xrextras-loading
         xrextras-runtime-error
         renderer='colorManagement: true;'
         xrweb='allowedDevices: any; disableDefaultEnvironment: true;'
@@ -180,7 +179,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               id='portalHiderRing'
               radius-inner='0.001'
               radius-outer='100'
-              scale='1 1 1'
+              scale='0.85 0.85 0.85'
               position='0 9 -0.02187'
               geometry='radiusOuter: 15'
               xrextras-hider-material
@@ -280,6 +279,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           gltf-model={`url(${portalBox})`}
           reflections='type: realtime'
           shadow='receive: false'
+          visible='false'
         ></a-entity>
 
         <a-entity
