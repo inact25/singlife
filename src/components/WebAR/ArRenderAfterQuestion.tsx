@@ -226,15 +226,15 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
 
           <a-entity
             light='
-      type: directional;
-      castShadow: true;
-      shadowMapHeight:2048;
-      shadowMapWidth:2048;
-      shadowCameraTop: 35;
-      shadowCameraBottom: -20;
-      shadowCameraRight: 40;
-      shadowCameraLeft: -10;
-      target: #portalRim'
+            type: directional;
+            castShadow: true;
+            shadowMapHeight:2048;
+            shadowMapWidth:2048;
+            shadowCameraTop: 35;
+            shadowCameraBottom: -20;
+            shadowCameraRight: 40;
+            shadowCameraLeft: -10;
+            target: #portalRim'
             xrextras-attach='target: portalRim; offset: 18 7 14'
             shadow
           ></a-entity>

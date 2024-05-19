@@ -154,7 +154,7 @@ const RenderQuestion: React.FC<Props> = ({
             className={`content absolute bottom-0 text-start bg-white rounded-t-[32px] w-full`}
           >
             <WrapperLayouts>
-              <h2 className={`title mt-5 text-black`}>
+              <h2 className={`title mt-5 text-black w-[150px]`}>
                 {htmlParser(record.question)}
                 {!isActive && (
                   <div className='w-full m-auto my-5'>

@@ -132,8 +132,8 @@ h3 {
 #recenterButton {
     position: absolute;
     z-index: 5;
-    right: 2vh;
-    top: 2vh;
+    left: 2vh;
+    bottom: 2vh;
     max-width: 50px;
     pointer-events: auto;
 }
