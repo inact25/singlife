@@ -92,13 +92,13 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
     aframe.register('custom-capture-btn', {
       init() {
         const btn = document.getElementById('recorder-button')
-        btn.innerHTML = `<img id="icon" style="display: none" src=${capture}>`
+        btn.innerHTML = `<img id="icon-capture-btn" style="display: none" src=${capture}>`
       },
     })
   }, [window?.XR8])
 
   useEffect(() => {
-    const btn = document.querySelector('#icon');
+    const btn = document.querySelector('#icon-capture-btn');
     if(reward === 2){
       btn.style = "display:block;"
      const popup = setTimeout(() => bottomPopup({
