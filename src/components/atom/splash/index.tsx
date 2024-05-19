@@ -1,4 +1,5 @@
 import logo from '@assets/svgs/logo.svg'
+import logoSpin from '@assets/svgs/logo-spin.svg'
 import WrapperLayouts from '../../../layouts/wrapper/wrapper.layouts.tsx'
 
 const Index = () => {
@@ -10,6 +11,7 @@ const Index = () => {
           <h3 className='font-bold mb-10 text-white'>
             The Singlife Dream Cube
           </h3>
+          <img className='m-auto animate-spin' src={logoSpin} alt='splash' />
           <img className='m-auto' src={logo} alt='splash' />
         </div>
       </div>
