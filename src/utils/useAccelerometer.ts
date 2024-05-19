@@ -21,6 +21,7 @@ const useAccelerometer = ({
     })
 
   useEffect(() => {
+    // @ts-ignore
     let sensor: Accelerometer | null = null
 
     try {
