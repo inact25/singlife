@@ -58,7 +58,6 @@ const Before = () => {
   }
 
   const motionSensor = () => {
-    // allow motion event
     // @ts-ignore
     DeviceMotionEvent.requestPermission()
       .then((response: any) => {
@@ -69,7 +68,9 @@ const Before = () => {
           })
         }
       })
-      .catch(console.error)
+      .catch(() => {
+        onDenied()
+      })
   }
 
   const requestPermission = async () => {
