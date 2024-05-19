@@ -88,7 +88,7 @@ const tapToPlacePortalComponent = {
           loop: 'once',
           clampWhenFinished: true,
           timeScale: 2,
-        });
+        })
         portalRim.setAttribute('animation__5', {
           property: 'radius-inner',
           dur: 1500,
@@ -96,7 +96,7 @@ const tapToPlacePortalComponent = {
           to: '3.5',
           easing: 'easeOutElastic',
         })
-      }, 3000); // Jeda 3000 milidetik (3 detik)
+      }, 3000) // Jeda 3000 milidetik (3 detik)
 
       portalVideo.setAttribute('animation__3', {
         property: 'scale',
@@ -128,12 +128,9 @@ const promptFlowComponent = {
 
     this.el.sceneEl.addEventListener('realityready', () => {
       this.overlay.style.display = 'block'
-      this.prompt.innerHTML = ''
-      this.prompt.classList.add('fly-in')
     })
 
     this.el.addEventListener('dismissPrompt', () => {
-      this.prompt.classList.remove('fly-in')
       this.prompt.classList.add('fade-out')
     })
   },
