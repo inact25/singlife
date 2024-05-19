@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 // @ts-nocheck
 import useAframe from '@hooks/useAframe.ts'
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import AFrameScene from '@components/libs/AFrameScene'
 import capture from '@assets/capture.svg'
 import portalSpin from '@assets/glbs/portal-new.glb'
@@ -13,19 +13,19 @@ import {
   spinComponent,
   tapToPlacePortalComponent,
 } from '@components/WebAR/partials/portal-component.ts'
-import {responsiveImmersiveComponent} from '@components/WebAR/partials/immersive-component.ts'
+import { responsiveImmersiveComponent } from '@components/WebAR/partials/immersive-component.ts'
 import MediaPopup from '@components/atom/mediapop'
 
 // portal video
 import portalVideo from '@assets/portal-video.mp4'
-import {bottomPopup} from '@utils/bottomPopup/bottomPopup.ts'
+import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
 import Popup from '@components/molecules/popup'
 import Button from '@components/atom/button'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Swal from 'sweetalert2'
-import {useParams} from 'react-router-dom'
-import {FaFacebookF, FaLink, FaWhatsapp} from 'react-icons/fa6'
-import {HiGiftTop} from 'react-icons/hi2'
+import { useParams } from 'react-router-dom'
+import { FaFacebookF, FaLink, FaWhatsapp } from 'react-icons/fa6'
+import { HiGiftTop } from 'react-icons/hi2'
 
 type Props = {
   params: any
@@ -140,26 +140,26 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             ></video>
           </a-assets>
 
-        <xrextras-capture-button capture-mode='standard'></xrextras-capture-button>
-        <xrextras-capture-config
-          max-duration-ms='30000'
-          max-dimension='1280'
-          enable-end-card='true'
-          cover-image-url=''
-          end-card-call-to-action='Try it at:'
-          short-link=''
-          watermark-image-url='/logo.png'
-          watermark-max-width='800'
-          watermark-max-height='10'
-          watermark-location='bottomRight'
-          file-name-prefix='singlife-image-'
-          footer-image-url="/logo.png"
-        ></xrextras-capture-config>
-        <xrextras-capture-preview
-          action-button-share-text="test"
-          action-button-view-text="View"
-          finalize-text="Exporting..."
-        ></xrextras-capture-preview>
+          <xrextras-capture-button capture-mode='standard'></xrextras-capture-button>
+          <xrextras-capture-config
+            max-duration-ms='30000'
+            max-dimension='1280'
+            enable-end-card='true'
+            cover-image-url=''
+            end-card-call-to-action='Try it at:'
+            short-link=''
+            watermark-image-url='/logo.png'
+            watermark-max-width='800'
+            watermark-max-height='10'
+            watermark-location='bottomRight'
+            file-name-prefix='singlife-image-'
+            footer-image-url='/logo.png'
+          ></xrextras-capture-config>
+          <xrextras-capture-preview
+            action-button-share-text='test'
+            action-button-view-text='View'
+            finalize-text='Exporting...'
+          ></xrextras-capture-preview>
 
           <a-camera
             id='camera'
@@ -226,15 +226,15 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
 
           <a-entity
             light='
-      type: directional;
-      castShadow: true;
-      shadowMapHeight:2048;
-      shadowMapWidth:2048;
-      shadowCameraTop: 35;
-      shadowCameraBottom: -20;
-      shadowCameraRight: 40;
-      shadowCameraLeft: -10;
-      target: #portalRim'
+            type: directional;
+            castShadow: true;
+            shadowMapHeight:2048;
+            shadowMapWidth:2048;
+            shadowCameraTop: 35;
+            shadowCameraBottom: -20;
+            shadowCameraRight: 40;
+            shadowCameraLeft: -10;
+            target: #portalRim'
             xrextras-attach='target: portalRim; offset: 18 7 14'
             shadow
           ></a-entity>

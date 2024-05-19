@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import RenderQuestion from './RenderQuestion.tsx'
 import useQuiz from '@services/api/quiz'
-import {QuizSubmitItem} from '@services/api/quiz/type'
-import {useNavigate} from 'react-router-dom'
+import { QuizSubmitItem } from '@services/api/quiz/type'
+import { useNavigate } from 'react-router-dom'
 
 const question_ids = [1, 2, 3]
 const Question = () => {

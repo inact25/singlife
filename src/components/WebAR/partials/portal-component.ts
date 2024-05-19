@@ -71,8 +71,6 @@ const tapToPlacePortalComponent = {
       sceneEl.emit('recenter')
       sceneEl.emit('dismissPrompt')
 
-
-
       portalBox.setAttribute('animation-mixer', {
         clip: '*',
         loop: 'once',
@@ -88,7 +86,7 @@ const tapToPlacePortalComponent = {
           clampWhenFinished: true,
           timeScale: 2,
         })
-        setTimeout(()=> {
+        setTimeout(() => {
           portalHiderRing.setAttribute('animation__1', {
             property: 'radius-inner',
             dur: 3000,
