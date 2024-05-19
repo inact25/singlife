@@ -1,11 +1,11 @@
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Buttonicon from '@components/atom/buttonicon'
 import back from '@assets/svgs/back.svg'
-import { useNavigate, useParams } from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import ArRenderAfterQuestion from '@components/WebAR/ArRenderAfterQuestion.tsx'
 import MediaPopup from '@components/atom/mediapop'
-import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import {motion} from 'framer-motion'
+import {useEffect, useState} from 'react'
 import useDream from '@services/api/dream'
 
 const motionFade = {
@@ -15,7 +15,6 @@ const motionFade = {
 const QuestionFinish = () => {
   const params = useParams()
   const dream_v1 = useDream()
-  const navigate = useNavigate()
   const [currentComponent] = useState<any>('waiting')
   const [showPopup, setShowPopup] = useState<boolean>(true)
   const ready = (values: any) => {
@@ -37,7 +36,7 @@ const QuestionFinish = () => {
           <Buttonicon
             icon={back}
             onClick={() => {
-              navigate('/dreams')
+              window.open('/dreams', '_self')
             }}
           />
         </div>

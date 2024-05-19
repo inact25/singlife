@@ -52,6 +52,7 @@ const YourDream = () => {
           }
         })
       }, 5000)
+
     }
   }, [showPopup])
   return (
@@ -61,7 +62,7 @@ const YourDream = () => {
           <Buttonicon
             icon={back}
             onClick={() => {
-              navigate('/dreams')
+              window.open('/dreams','_self')
             }}
           />
         </div>
