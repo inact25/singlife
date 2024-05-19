@@ -36,7 +36,12 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   const aframe = useAframe()
   const [url, setUrl] = React.useState(null)
   const [reward, setReward] = useState(0)
-  const shareUrl = window.location.href
+  const shareUrl = () => {
+    const host = window.location.host
+    const path = '/your-dream'
+    const id = params?.id
+    return `https://${host}${path}/${id}`
+  }
   useEffect(() => {
     if (params?.url) {
       setUrl(params.url)
@@ -66,7 +71,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       },
     })
 
-
     aframe.register('portal-camera', portalCameraComponent)
     aframe.register('spin', spinComponent)
 
@@ -93,16 +97,20 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   }, [window?.XR8])
 
   useEffect(() => {
-    if(reward === 2){
-      setTimeout(() => bottomPopup({
-        title: 'Tap the camera button to take a photo or hold it to take a video',
-        useButton: false,
-        floating: true,
-        dark: false,
-      }), 6000)
+    if (reward === 2) {
+      setTimeout(
+        () =>
+          bottomPopup({
+            title:
+              'Tap the camera button to take a photo or hold it to take a video',
+            useButton: false,
+            floating: true,
+            dark: false,
+          }),
+        6000,
+      )
     }
-  }, [reward]);
-
+  }, [reward])
 
   useEffect(() => {
     console.log('window?.XR8', window?.XR8)
@@ -348,10 +356,10 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         )}
       </WrapperLayouts>
       {reward === 2 && (
-          <div className='absolute top-5 right-5 z-50 '>
+        <div className='absolute top-5 right-5 z-50 '>
           <div>
             <FacebookShareButton
-              url={shareUrl}
+              url={shareUrl()}
               className='Demo__some-network__share-button'
             >
               <FacebookIcon size={48} round />
@@ -359,14 +367,14 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           </div>
           <div>
             <WhatsappShareButton
-              url={shareUrl}
+              url={shareUrl()}
               className='Demo__some-network__share-button'
             >
               <WhatsappIcon size={48} round />
             </WhatsappShareButton>
           </div>
           <div
-            onClick={() => navigator.clipboard.writeText(shareUrl)}
+            onClick={() => navigator.clipboard.writeText(shareUrl())}
             className='h-[48px] mb-3 [:&>svg]:text-[24px] shadow-sm w-[48px] bg-white text-black rounded-full flex items-center justify-center'
           >
             <span className='text-[24px]'>
