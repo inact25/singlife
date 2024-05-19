@@ -7,6 +7,7 @@ type Props = {
   useButton?: boolean
   floating?: boolean
   dark?: boolean
+  timer?: number
 }
 const bottomPopup = ({
   title = '',
@@ -14,6 +15,7 @@ const bottomPopup = ({
   useButton = true,
   floating = false,
   dark = true,
+                       timer
 }: Props) => {
   return Swal.fire({
     customClass: {
@@ -43,6 +45,7 @@ const bottomPopup = ({
     confirmButtonText: desc,
     allowOutsideClick: false,
     backdrop: false,
+    timer: timer && timer
   })
 }
 
