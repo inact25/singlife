@@ -89,6 +89,13 @@ const tapToPlacePortalComponent = {
           clampWhenFinished: true,
           timeScale: 2,
         });
+        portalRim.setAttribute('animation__5', {
+          property: 'radius-inner',
+          dur: 1500,
+          from: '0.001',
+          to: '3.5',
+          easing: 'easeOutElastic',
+        })
       }, 3000); // Jeda 3000 milidetik (3 detik)
 
       portalVideo.setAttribute('animation__3', {

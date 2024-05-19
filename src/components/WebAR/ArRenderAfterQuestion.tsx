@@ -261,6 +261,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           reflections='type: realtime'
           shadow='receive: false'
           visible="false"
+          position='0 7.5 -0.2'
         ></a-entity>
         <a-entity
           id='portalBox'
