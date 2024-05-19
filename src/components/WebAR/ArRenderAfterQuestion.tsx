@@ -9,7 +9,8 @@ import AFrameScene from '@components/libs/AFrameScene'
 //flag
 import capture from '@assets/capture.png'
 
-import portalNew from '@assets/glbs/cube.glb'
+import portalSpin from '@assets/glbs/portal-new.glb'
+import portalBox from '@assets/glbs/box.glb'
 import {
   portalCameraComponent,
   promptFlowComponent,
@@ -258,12 +259,17 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
 
         <a-entity
           id='portalRim'
-          gltf-model={`url(${portalGlb})`}
+          gltf-model={`url(${portalSpin})`}
           spin='axis: x; speed: 14000'
           reflections='type: realtime'
-          position='0 7.5 0'
-          rotation='90 -90 -90'
-          scale='0.001 0.001 0.001'
+          animation-mixer="clip: *; loop: once; clampWhenFinished:  true"
+          shadow='receive: false'
+        ></a-entity>
+        <a-entity
+          id='portalBox'
+          gltf-model={`url(${portalBox})`}
+          reflections='type: realtime'
+          animation-mixer="clip: *; loop: once; clampWhenFinished:  true"
           shadow='receive: false'
         ></a-entity>
 
