@@ -47,8 +47,9 @@ const tapToPlacePortalComponent = {
     this.wasOutside = true
 
     const portalHiderRing = this.el.sceneEl.querySelector('#portalHiderRing')
-    const portalRim = this.el.sceneEl.querySelector('#portalRim')
-    const portalVideo = this.el.sceneEl.querySelector('#portalVideo')
+    // const portalRim = this.el.sceneEl.querySelector('#portalRim')
+    // const portalBox = this.el.sceneEl.querySelector('#portalBox')
+    // const portalVideo = this.el.sceneEl.querySelector('#portalVideo')
     const portalShadow = this.el.sceneEl.querySelector('#portalShadow')
 
     const handleClickEvent = (e) => {
@@ -70,22 +71,6 @@ const tapToPlacePortalComponent = {
         dur: 1500,
         from: '0.001',
         to: '3.5',
-        easing: 'easeOutElastic',
-      })
-
-      portalRim.setAttribute('animation__2', {
-        property: 'scale',
-        dur: 1500,
-        from: '0.001 0.001 0.001',
-        to: '4.3 4.3 4.3',
-        easing: 'easeOutElastic',
-      })
-
-      portalVideo.setAttribute('animation__3', {
-        property: 'scale',
-        dur: 1500,
-        from: '0.001 0.001 0.001',
-        to: '7 7 1',
         easing: 'easeOutElastic',
       })
 
