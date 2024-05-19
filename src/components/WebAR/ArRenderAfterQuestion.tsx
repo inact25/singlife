@@ -3,12 +3,7 @@
 import useAframe from '@hooks/useAframe.ts'
 import React, {useEffect} from 'react'
 import AFrameScene from '@components/libs/AFrameScene'
-//portal
-//platform
-//rocks
-//flag
 import capture from '@assets/capture.png'
-
 import portalSpin from '@assets/glbs/portal-new.glb'
 import portalBox from '@assets/glbs/box.glb'
 import {
@@ -19,6 +14,9 @@ import {
 } from '@components/WebAR/partials/portal-component.ts'
 import {responsiveImmersiveComponent} from '@components/WebAR/partials/immersive-component.ts'
 import MediaPopup from '@components/atom/mediapop'
+
+// portal video
+import portalVideo from '@assets/portal-video.mp4'
 
 type Props = {
   params: any
@@ -115,7 +113,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             id='portal-video'
             muted
             loop='true'
-            src='https://static.8thwall.app/assets/blue-portal-lrmelmi6qc.mp4'
+            src={portalVideo}
           ></video>
         </a-assets>
 
@@ -278,7 +276,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           auto-play-video='video: #portal-video'
           material='shader: chromakey; src: #portal-video; color: 0 0 0; blending: additive; side: front'
           geometry='primitive: plane; height: 1; width: 1;'
-          position='0 7.5 0.1'
           scale='0.001 0.001 0.001'
         ></a-entity>
 
