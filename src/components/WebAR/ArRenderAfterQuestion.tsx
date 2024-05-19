@@ -100,7 +100,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   useEffect(() => {
     const btn = document.querySelector('#icon-capture-btn');
     if(reward === 2){
-      btn.style = "display:block;"
+      if (btn) btn.style = "display:block;"
       setTimeout(() => bottomPopup({
         title: 'Tap the camera button to take a photo or hold it to take a video',
         useButton: false,
@@ -109,7 +109,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         timer: 3000
       }), 4000)
     } else {
-      btn.style = "display:none;"
+      if (btn) btn.style = "display:none;"
       Swal.close()
       return () => clearTimeout();
     }
