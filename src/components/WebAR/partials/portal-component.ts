@@ -24,11 +24,13 @@ const portalCameraComponent = {
     if (this.wasOutside !== isOutside && withinPortalBounds) {
       this.isInPortalSpace = !isOutside
     }
-    this.contents.object3D.visible = this.isInPortalSpace || isOutside
-    this.walls.object3D.visible = !this.isInPortalSpace && isOutside
-    this.portalWall.object3D.visible = this.isInPortalSpace && !isOutside
-    this.portalVideo.object3D.visible = isOutside
-    this.wasOutside = isOutside
+    if (this?.portalVideo?.object3D) {
+      this.contents.object3D.visible = this.isInPortalSpace || isOutside
+      this.walls.object3D.visible = !this.isInPortalSpace && isOutside
+      this.portalWall.object3D.visible = this.isInPortalSpace && !isOutside
+      this.portalVideo.object3D.visible = isOutside
+      this.wasOutside = isOutside
+    }
   },
 }
 
@@ -115,7 +117,7 @@ const promptFlowComponent = {
 
     this.el.addEventListener('dismissPrompt', () => {
       this.prompt.classList.remove('fly-in')
-      this.prompt.classList.add('fly-out')
+      this.prompt.classList.add('fade-out')
     })
   },
 }

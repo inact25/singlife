@@ -3,16 +3,10 @@
 import useAframe from '@hooks/useAframe.ts'
 import React, {useEffect} from 'react'
 import AFrameScene from '@components/libs/AFrameScene'
-import moonGlb from '@assets/glbs/moon.glb'
 //portal
-import portalGlb from '@assets/glbs/portal.glb'
 //platform
-import platformGlb from '@assets/glbs/platform.glb'
 //rocks
-import rocksGlb from '@assets/glbs/rocks.glb'
 //flag
-import flagGlb from '@assets/glbs/flag.glb'
-
 import capture from '@assets/capture.png'
 
 import portalNew from '@assets/glbs/cube.glb'
@@ -23,6 +17,7 @@ import {
   tapToPlacePortalComponent,
 } from '@components/WebAR/partials/portal-component.ts'
 import {responsiveImmersiveComponent} from '@components/WebAR/partials/immersive-component.ts'
+import MediaPopup from '@components/atom/mediapop'
 
 type Props = {
   params: any
@@ -67,8 +62,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
     aframe.register('custom-capture-btn', {
       init() {
         const btn = document.getElementById('recorder-button')
-        btn.innerHTML = `<img id="icon" src=${(capture)}>`
-      }
+        btn.innerHTML = `<img id="icon" src=${capture}>`
+      },
     })
   }, [window?.XR8])
   useEffect(() => {
@@ -87,7 +82,12 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           id='recenterButton'
           src='https://static.8thwall.app/assets/recenter-m71fa5ubcu.png'
         />
-        <span id='promptText'></span>
+        <div
+          id='promptText'
+          className='relative z-10 min-h-screen flex justify-center items-center px-5'
+        >
+          <MediaPopup type='tap' className='w-full' />
+        </div>
       </div>
       <AFrameScene
         responsive-immersive
@@ -118,21 +118,21 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           ></video>
         </a-assets>
 
-        <xrextras-capture-button capture-mode="standard"></xrextras-capture-button>
+        <xrextras-capture-button capture-mode='standard'></xrextras-capture-button>
         <xrextras-capture-config
-        max-duration-ms="30000"
-        max-dimension="1280"
-        enable-end-card="true"
-        cover-image-url=""
-        end-card-call-to-action="Try it at:"
-        short-link=""
-        watermark-image-url="/logo.png"
-        watermark-max-width="800"
-        watermark-max-height="10"
-        watermark-location="bottomRight"
-        file-name-prefix="singlife-image-"
-      ></xrextras-capture-config>
-      <xrextras-capture-preview></xrextras-capture-preview>
+          max-duration-ms='30000'
+          max-dimension='1280'
+          enable-end-card='true'
+          cover-image-url=''
+          end-card-call-to-action='Try it at:'
+          short-link=''
+          watermark-image-url='/logo.png'
+          watermark-max-width='800'
+          watermark-max-height='10'
+          watermark-location='bottomRight'
+          file-name-prefix='singlife-image-'
+        ></xrextras-capture-config>
+        <xrextras-capture-preview></xrextras-capture-preview>
 
         <a-camera
           id='camera'
