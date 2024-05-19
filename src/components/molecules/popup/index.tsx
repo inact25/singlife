@@ -1,7 +1,7 @@
 import { IoCloseOutline } from 'react-icons/io5'
 
 type Props = {
-  onPop: () => void
+  onPop?: () => void
   open: boolean
   content: any
   title: string
