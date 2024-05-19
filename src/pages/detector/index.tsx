@@ -8,77 +8,15 @@ import Question3 from '@assets/background/Question3.jpg'
 const Index = () => {
   const [open, setopen] = useState(true)
 
-  const handlePromptConfirm = () => {
-    setopen(false)
-    requestPermissions()
-  }
-
-  const requestPermissions = async () => {
-    try {
-      // Request accelerometer permission
-      if (navigator.permissions) {
-        const accelerometerPermission = await navigator.permissions.query({
-          // @ts-ignore
-          name: 'accelerometer',
-        })
-        if (accelerometerPermission.state === 'granted') {
-          startAccelerometer()
-        } else if (accelerometerPermission.state === 'prompt') {
-          accelerometerPermission.onchange = () => {
-            if (accelerometerPermission.state === 'granted') {
-              startAccelerometer()
-            }
-          }
-        } else {
-          console.error('Accelerometer permission denied')
-        }
-
-        // Request camera permission
-        const cameraPermission = await navigator.permissions.query({
-          // @ts-ignore
-          name: 'camera',
-        })
-        if (cameraPermission.state === 'granted') {
-          console.log('granted')
-        } else if (cameraPermission.state === 'prompt') {
-          cameraPermission.onchange = () => {
-            if (cameraPermission.state === 'granted') {
-              console.log('granted')
-            }
-          }
-        } else {
-          console.error('Camera permission denied')
-        }
-      }
-    } catch (error) {
-      console.error('Error checking permissions:', error)
-    }
-  }
-
-  const startAccelerometer = () => {
-    if ('Accelerometer' in window) {
-      // @ts-ignore
-      const sensor = new Accelerometer()
-      sensor.start()
-      sensor.onreading = () => {
-        console.log(`Acceleration along the X-axis: ${sensor.x}`)
-        console.log(`Acceleration along the Y-axis: ${sensor.y}`)
-        console.log(`Acceleration along the Z-axis: ${sensor.z}`)
-      }
-      sensor.onerror = (event: Event) => {
-        console.error(
-          (event as ErrorEvent).error.name,
-          (event as ErrorEvent).error.message,
-        )
-      }
-    } else {
-      console.error('Accelerometer not supported')
-    }
-  }
-
   useEffect(() => {
-    setopen(true)
-  }, [])
+    if (navigator.mediaDevices.getUserMedia !== null) {
+      var options = {
+        video: true,
+        accelerometer: true,
+      }
+      navigator.mediaDevices.getUserMedia(options)
+    }
+  })
 
   return (
     <div>

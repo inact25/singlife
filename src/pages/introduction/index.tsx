@@ -54,7 +54,7 @@ const Introduction = () => {
   }, [dream_v1.paginate.filter])
   return (
     <div>
-      {!isSplash ? (
+      {isSplash ? (
         <Splash />
       ) : (
         <WrapperLayouts isFull={true}>
