@@ -100,6 +100,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         floating: true,
         dark: false,
       }), 6000)
+    } else {
+      Swal.close()
     }
   }, [reward]);
 
