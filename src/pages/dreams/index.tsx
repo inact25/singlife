@@ -8,6 +8,7 @@ import { arrayEven, arrayOdd, exceptText } from '@utils/helper.ts'
 import { useNavigate } from 'react-router-dom'
 import { useScroll, useScrolling, useWindowSize } from 'react-use'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
+import placeholder from '@assets/anim/imageplaceholder.gif'
 
 const Dream = () => {
   const scrollRef = useRef(null)
@@ -70,7 +71,7 @@ const Dream = () => {
                     <Gallery
                       onClick={() => handleYourDream(item.id)}
                       description={exceptText(item.description, 39)}
-                      image={item.thumbnail}
+                      image={item.thumbnail || placeholder}
                     />
                   </div>
                 ))}
