@@ -36,6 +36,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   const aframe = useAframe()
   const [url, setUrl] = React.useState(null)
   const [reward, setReward] = useState(0)
+  const [rewardShowUp, setRewardShowUp] = useState(false)
   const [isLinkCopied, setIsLinkCopied] = useState(false)
   const shareUrl = () => {
     const host = window.location.host
@@ -72,7 +73,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       },
     })
 
-
     aframe.register('portal-camera', portalCameraComponent)
     aframe.register('spin', spinComponent)
 
@@ -99,24 +99,30 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   }, [window?.XR8])
 
   useEffect(() => {
-    const btn = document.querySelector('#icon-capture-btn');
+    const btn = document.querySelector('#icon-capture-btn')
     const progressbtn = document.querySelector('.recorder-container')
-    if(reward === 2){
-      if (btn) btn.style = "display:block;"
-      if (progressbtn) progressbtn.style = "display:block;"
-      setTimeout(() => bottomPopup({
-        title: 'Tap the camera button to take a photo or hold it to take a video',
-        useButton: false,
-        floating: true,
-        dark: false,
-        timer: 3000
-      }), 4000)
+    if (reward === 2 && !rewardShowUp) {
+      if (btn) btn.style = 'display:block;'
+      if (progressbtn) progressbtn.style = 'display:block;'
+      setTimeout(
+        () =>
+          bottomPopup({
+            title:
+              'Tap the camera button to take a photo or hold it to take a video',
+            useButton: false,
+            floating: true,
+            dark: false,
+            timer: 3000,
+          }),
+        4000,
+      )
+      setRewardShowUp(true)
     } else {
-      if (btn) btn.style = "display:none;"
-      if (progressbtn) progressbtn.style = "display:none;"
+      if (btn) btn.style = 'display:none;'
+      if (progressbtn) progressbtn.style = 'display:none;'
       Swal.close()
     }
-    return () => Swal.close();
+    return () => Swal.close()
   }, [reward])
 
   useEffect(() => {
@@ -379,29 +385,29 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             </WhatsappShareButton>
           </div>
           <div className='flex items-center'>
-            {isLinkCopied &&
-                <div
-                    className="note  absolute bg-white/80 right-[3.5rem] mt-[-1rem] px-4 py-3 rounded-full w-fit min-w-[120px]">Link
-                  copied
-                </div>
-            }
+            {isLinkCopied && (
+              <div className='note  absolute bg-white/80 right-[3.5rem] mt-[-1rem] px-4 py-3 rounded-full w-fit min-w-[120px]'>
+                Link copied
+              </div>
+            )}
             <div
-                onClick={() => {
-                  navigator.clipboard.writeText(shareUrl()).then(() => {
-                    setIsLinkCopied(true)
-                    setTimeout(() => setIsLinkCopied(false), 2000)
-                  })
-
-                }}
-                className='h-[48px] mb-3 [:&>svg]:text-[24px] shadow-sm w-[48px] bg-white text-black rounded-full flex items-center justify-center'
+              onClick={() => {
+                navigator.clipboard.writeText(shareUrl()).then(() => {
+                  setIsLinkCopied(true)
+                  setTimeout(() => setIsLinkCopied(false), 2000)
+                })
+              }}
+              className='h-[48px] mb-3 [:&>svg]:text-[24px] shadow-sm w-[48px] bg-white text-black rounded-full flex items-center justify-center'
             >
               <span className='text-[24px]'>
-                <FaLink/>
+                <FaLink />
               </span>
             </div>
-
           </div>
-          <div onClick={()=>setReward(1)} className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-black text-white rounded-full flex items-center justify-center'>
+          <div
+            onClick={() => setReward(1)}
+            className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-black text-white rounded-full flex items-center justify-center'
+          >
             <span className='text-[24px]'>
               <HiGiftTop />
             </span>
