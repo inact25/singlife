@@ -56,12 +56,31 @@ const Before = () => {
       })
     }
   }
+
+  const motionSensor = (onGranted: () => void) => {
+    // @ts-ignore
+    if (typeof DeviceOrientationEvent?.requestPermission === 'function') {
+      // @ts-ignore
+      DeviceOrientationEvent?.requestPermission()
+        .then((permissionState: string) => {
+          if (permissionState === 'granted') {
+            window.addEventListener('deviceorientation', () => {})
+            onGranted()
+          }
+        })
+        .catch(console.error)
+    } else {
+      // handle regular non iOS 13+ devices
+    }
+  }
+
   const requestPermission = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: true,
         audio: true,
       })
+      motionSensor(onGranted)
       onGranted()
       stream.getTracks().forEach((track) => track.stop())
     } catch (error) {
