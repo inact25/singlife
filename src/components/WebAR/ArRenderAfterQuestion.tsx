@@ -98,6 +98,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   }, [window?.XR8])
 
   useEffect(() => {
+    const btn = document.querySelector('#icon');
+    btn.style = "display:block;"
     if(reward === 2){
       setTimeout(() => bottomPopup({
         title: 'Tap the camera button to take a photo or hold it to take a video',
@@ -106,6 +108,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         dark: false,
       }), 4000)
     } else {
+      btn.style = "display:none;"
       Swal.close()
       return () => clearTimeout();
     }
