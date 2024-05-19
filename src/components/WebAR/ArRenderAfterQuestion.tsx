@@ -3,7 +3,7 @@
 import useAframe from '@hooks/useAframe.ts'
 import React, {useEffect} from 'react'
 import AFrameScene from '@components/libs/AFrameScene'
-import capture from '@assets/capture.png'
+import capture from '@assets/capture.svg'
 import portalSpin from '@assets/glbs/portal-new.glb'
 import portalBox from '@assets/glbs/box.glb'
 import {
@@ -138,8 +138,13 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           watermark-max-height='10'
           watermark-location='bottomRight'
           file-name-prefix='singlife-image-'
+          footer-image-url="/logo.png"
         ></xrextras-capture-config>
-        <xrextras-capture-preview></xrextras-capture-preview>
+        <xrextras-capture-preview
+          action-button-share-text="test"
+          action-button-view-text="View"
+          finalize-text="Exporting..."
+        ></xrextras-capture-preview>
 
         <a-camera
           id='camera'

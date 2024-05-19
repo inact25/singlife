@@ -219,8 +219,8 @@ h3 {
 
 /* custom btn capture */
 #icon {
-    height: 120px;
-    width: 120px;
+    height: 200px;
+    width: 200px;
     max-width: max-content;
 }
 
@@ -242,13 +242,14 @@ h3 {
 }
 
 #recorder-button {
+    height: 120px;
+    width: 120px;
     width: 100%;
+    border-radius: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 2rem;
     background: transparent;
     color: transparent;
 }
@@ -265,3 +266,8 @@ animation: spin 6s linear infinite;
   }
 }
 }
+
+#actionButton {
+    /* change color of action button */
+    background-color: #FF0008 !important;
+  }
