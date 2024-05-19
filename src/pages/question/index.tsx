@@ -55,7 +55,10 @@ const Question = () => {
         if (response?.errors) {
           return
         }
-        navigate(`/tracking/question-${response?.entry_id}`)
+        console.log(response)
+        navigate(
+          `/tracking/question-${response?.entry_id}-${response?.dream_no}`,
+        )
       })
   }
   useEffect(() => {

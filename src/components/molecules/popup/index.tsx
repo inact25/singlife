@@ -11,7 +11,13 @@ type Props = {
 const Index = ({ onPop, open, content, title, isFloating = false }: Props) => {
   return (
     <div>
-      <div className={!isFloating ? `w-full  fixed bottom-0` : `mt-[25%] px-5`}>
+      <div
+        className={
+          !isFloating
+            ? `w-full  fixed bottom-0 left-0 z-[999]`
+            : `mt-[25%] px-5`
+        }
+      >
         <div
           onClick={() => !isFloating && onPop && onPop()}
           className={`cursor-pointer rounded-t-[32px]  head bg-black w-full`}

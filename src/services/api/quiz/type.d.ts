@@ -24,4 +24,5 @@ export type QuizSubmitResponse = {
   entry_id: number
   thumbnail: string
   errors?: any
+  dream_no?: string
 }
