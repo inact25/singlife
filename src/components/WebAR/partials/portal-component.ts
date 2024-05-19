@@ -47,9 +47,9 @@ const tapToPlacePortalComponent = {
     this.wasOutside = true
 
     const portalHiderRing = this.el.sceneEl.querySelector('#portalHiderRing')
-    // const portalRim = this.el.sceneEl.querySelector('#portalRim')
-    // const portalBox = this.el.sceneEl.querySelector('#portalBox')
-    // const portalVideo = this.el.sceneEl.querySelector('#portalVideo')
+    const portalRim = this.el.sceneEl.querySelector('#portalRim')
+    const portalBox = this.el.sceneEl.querySelector('#portalBox')
+    const portalVideo = this.el.sceneEl.querySelector('#portalVideo')
     const portalShadow = this.el.sceneEl.querySelector('#portalShadow')
 
     const handleClickEvent = (e) => {
@@ -66,11 +66,36 @@ const tapToPlacePortalComponent = {
       sceneEl.emit('recenter')
       sceneEl.emit('dismissPrompt')
 
-      portalHiderRing.setAttribute('animation__1', {
-        property: 'radius-inner',
+      // portalHiderRing.setAttribute('animation__1', {
+      //   property: 'radius-inner',
+      //   dur: 1500,
+      //   from: '0.001',
+      //   to: '3.5',
+      //   easing: 'easeOutElastic',
+      // })
+
+      portalBox.setAttribute('animation-mixer', {
+        clip: '*',
+        loop: 'once',
+        clampWhenFinished: true,
+      })
+
+      // Mulai animasi pada target2 setelah animasi target1 selesai
+      setTimeout(() => {
+        portalRim.setAttribute('visible', true)
+        portalRim.setAttribute('animation-mixer', {
+          clip: '*',
+          loop: 'once',
+          clampWhenFinished: true,
+          timeScale: 2,
+        });
+      }, 3000); // Jeda 3000 milidetik (3 detik)
+
+      portalVideo.setAttribute('animation__3', {
+        property: 'scale',
         dur: 1500,
-        from: '0.001',
-        to: '3.5',
+        from: '0.001 0.001 0.001',
+        to: '7 7 1',
         easing: 'easeOutElastic',
       })
 

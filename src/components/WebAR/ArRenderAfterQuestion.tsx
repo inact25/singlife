@@ -258,16 +258,14 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         <a-entity
           id='portalRim'
           gltf-model={`url(${portalSpin})`}
-          spin='axis: x; speed: 14000'
           reflections='type: realtime'
-          animation-mixer="clip: *; loop: once; clampWhenFinished:  true"
           shadow='receive: false'
+          visible="false"
         ></a-entity>
         <a-entity
           id='portalBox'
           gltf-model={`url(${portalBox})`}
           reflections='type: realtime'
-          animation-mixer="clip: *; loop: once; clampWhenFinished:  true"
           shadow='receive: false'
         ></a-entity>
 
