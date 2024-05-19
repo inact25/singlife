@@ -380,7 +380,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           <div className='flex items-center'>
             {isLinkCopied &&
                 <div
-                    className="absolute bg-white/80 right-[3.5rem] mt-[-1rem] px-4 py-2 rounded-full w-fit min-w-[120px]">Link
+                    className="note  absolute bg-white/80 right-[3.5rem] mt-[-1rem] px-4 py-3 rounded-full w-fit min-w-[120px]">Link
                   copied
                 </div>
             }
