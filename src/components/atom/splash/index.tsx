@@ -11,7 +11,7 @@ const Index = () => {
           <h3 className='font-bold mb-10 text-white'>
             The Singlife Dream Cube
           </h3>
-          <img className='m-auto animate-spin' src={logoSpin} alt='splash' />
+          <img className='m-auto spinner' src={logoSpin} alt='splash' />
           <img className='m-auto' src={logo} alt='splash' />
         </div>
       </div>
