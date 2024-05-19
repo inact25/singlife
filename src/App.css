@@ -140,8 +140,8 @@ h3 {
   pointer-events: auto;
 }
 
-#imagePreview{
-  max-width: 70vw;
+#videoPreview, #imagePreview {
+  max-width: 65vw !important;
 }
 
 /* ANIMATIONS */
@@ -220,19 +220,19 @@ h3 {
 }
 
 /* custom btn capture */
-.icon-capture-btn {
-  height: 200px;
-  width: 200px;
+.capture-icon {
   max-width: max-content;
+  position: absolute;
+  top: -21vh;
 }
 
 .recorder-container {
   all: unset;
   position: absolute;
-  bottom: 17%;
+  bottom: 20%;
   right: 50%;
   transform: translateX(50%);
-  width: 100px;
+  width: 200px;
   height: 50px;
   z-index: 1;
   background: transparent;
@@ -240,18 +240,20 @@ h3 {
 }
 
 .progress-container {
-  display: none;
+  position: absolute;
+  top: -12vh;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  transform: scale(1);
+  transition: 0.3s transform, 0.3s opacity;
 }
 
 #recorder-button {
-  height: 120px;
-  width: 120px;
   width: 100%;
-  border-radius: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
   background: transparent;
   color: transparent;
 }
@@ -272,4 +274,9 @@ h3 {
 #actionButton {
   /* change color of action button */
   background-color: #ff0008 !important;
+  position: absolute;
+  bottom: 5vh;
+}
+#actionButtonImg{
+  display: none;
 }

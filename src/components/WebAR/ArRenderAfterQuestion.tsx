@@ -92,15 +92,17 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
     aframe.register('custom-capture-btn', {
       init() {
         const btn = document.getElementById('recorder-button')
-        btn.innerHTML = `<img id="icon-capture-btn" class="capture-icon" style="display: none" src=${capture}>`
+        btn.innerHTML = `<img id="icon-capture-btn" class="capture-icon" src=${capture}>`
       },
     })
   }, [window?.XR8])
 
   useEffect(() => {
     const btn = document.querySelector('#icon-capture-btn');
+    const progressbtn = document.querySelector('.recorder-container')
     if(reward === 2){
       if (btn) btn.style = "display:block;"
+      if (progressbtn) progressbtn.style = "display:block;"
       setTimeout(() => bottomPopup({
         title: 'Tap the camera button to take a photo or hold it to take a video',
         useButton: false,
@@ -110,6 +112,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       }), 4000)
     } else {
       if (btn) btn.style = "display:none;"
+      if (progressbtn) progressbtn.style = "display:none;"
       Swal.close()
       return () => clearTimeout();
     }
@@ -172,19 +175,17 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           <xrextras-capture-config
             max-duration-ms='15000'
             max-dimension='900'
-            enable-end-card='true'
             cover-image-url=''
             end-card-call-to-action='Try it at:'
-            short-link=''
             watermark-image-url='/logo.png'
             watermark-max-width='800'
             watermark-max-height='10'
-            watermark-location='bottomRight'
+            watermark-location='topRight'
             file-name-prefix='singlife-image-'
             footer-image-url='/logo.png'
           ></xrextras-capture-config>
           <xrextras-capture-preview
-            action-button-share-text='Share Dreams'
+            action-button-share-text='Share Your Dreams'
             action-button-view-text='View'
             finalize-text='Exporting...'
           ></xrextras-capture-preview>
