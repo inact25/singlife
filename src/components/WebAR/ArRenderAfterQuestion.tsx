@@ -23,7 +23,7 @@ import Popup from '@components/molecules/popup'
 import Button from '@components/atom/button'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Swal from 'sweetalert2'
-import {useNavigate} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 
 type Props = {
   params: any
@@ -113,7 +113,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         <AFrameScene
           responsive-immersive
           custom-capture-btn
-          xrextras-loading
           xrextras-runtime-error
           renderer='colorManagement: true;'
           xrweb='allowedDevices: any; disableDefaultEnvironment: true;'
@@ -193,7 +192,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
                 id='portalHiderRing'
                 radius-inner='0.001'
                 radius-outer='100'
-                scale='1 1 1'
+                scale='0.85 0.85 0.85'
                 position='0 9 -0.02187'
                 geometry='radiusOuter: 15'
                 xrextras-hider-material
@@ -293,6 +292,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             gltf-model={`url(${portalBox})`}
             reflections='type: realtime'
             shadow='receive: false'
+            visible='false'
           ></a-entity>
 
           <a-entity
@@ -329,8 +329,9 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
 }
 
 const Rewarded = () => {
-  const navigate = useNavigate()
-  const id = dream_v1.singleData.id
+  const params = useParams()
+  const dream_no = params?.id?.split('-')[1]
+  const entry_id = params?.id?.split('-')[0]
   return (
     <div>
       <div className='icon flex justify-center mb-4'>
@@ -343,14 +344,18 @@ const Rewarded = () => {
         <Button
           title='Learn more'
           onClick={() =>
-            navigate(`https://www.singlife.com/leadgendreamcube/?ffdream=${id}`)
+            window.open(
+              `https://www.singlife.com/leadgendreamcube/?ffdream=${dream_no}&entry_id=${entry_id}`,
+              '_blank',
+            )
           }
           type='secondaryWhite'
         />
         <Button
           onClick={() =>
-            navigate(
-              `https:// www.singlife.com/leadgendreamcube/?ffdream=${id}`,
+            window.open(
+              `https://www.singlife.com/leadgendreamcube/?ffdream=${dream_no}&entry_id=${entry_id}`,
+              '_blank',
             )
           }
           title='Sign up'

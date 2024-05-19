@@ -52,7 +52,7 @@ const Before = () => {
     }
     if (params.purpose?.split('-')[0] === 'question') {
       navigate({
-        pathname: `/question/finish/${params.purpose?.split('-')[1]}`,
+        pathname: `/question/finish/${params.purpose?.split('-')[1]}-${params.purpose?.split('-')[2]}`,
       })
     }
   }
