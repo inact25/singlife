@@ -28,7 +28,7 @@ const Index = () => {
         <div className='w-full mt-[-5rem]'>
           {open && (
             <Popup
-              title={'Get Rewarded'}
+              title={'Before We Begin...'}
               isFloating={true}
               content={<Before />}
               open={true}
