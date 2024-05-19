@@ -63,8 +63,8 @@ const Before = () => {
     DeviceMotionEvent.requestPermission()
       .then((response: any) => {
         if (response == 'granted') {
-          window.addEventListener('devicemotion', (e) => {
-            alert(e)
+          window.addEventListener('devicemotion', () => {
+            // alert(e)
             requestPermission()
           })
         }
