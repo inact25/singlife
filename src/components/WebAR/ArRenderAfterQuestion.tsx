@@ -92,7 +92,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
     aframe.register('custom-capture-btn', {
       init() {
         const btn = document.getElementById('recorder-button')
-        btn.innerHTML = `<img id="icon-capture-btn" style="display: none" src=${capture}>`
+        btn.innerHTML = `<img id="icon-capture-btn" class="capture-icon" style="display: none" src=${capture}>`
       },
     })
   }, [window?.XR8])
