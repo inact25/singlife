@@ -58,20 +58,26 @@ const Before = () => {
   }
 
   const motionSensor = () => {
+    // allow motion event
     // @ts-ignore
-    if (typeof DeviceOrientationEvent?.requestPermission === 'function') {
+    window.navigator.permissions
       // @ts-ignore
-      DeviceOrientationEvent?.requestPermission()
-        .then((permissionState: string) => {
-          if (permissionState === 'granted') {
-            window.addEventListener('deviceorientation', () => {})
-            requestPermission()
-          }
-        })
-        .catch(console.error)
-    } else {
-      // handle regular non iOS 13+ devices
-    }
+      .query({ name: 'accelerometer' })
+      .then((result) => {
+        if (result.state === 'granted') {
+          window.navigator.permissions
+            // @ts-ignore
+            .query({ name: 'gyroscope' })
+            .then((res) => {
+              if (res.state === 'granted') {
+                requestPermission()
+              }
+            })
+        }
+      })
+      .catch(() => {
+        onDenied()
+      })
   }
 
   const requestPermission = async () => {
@@ -100,7 +106,7 @@ const Before = () => {
   return (
     <div>
       <div className='caption mb-5'>
-        <p className='body-1'>We'll need some permissions</p>
+        <p className='body-1'>{`We'll`} need some permissions</p>
       </div>
       <div className='caption mb-5'>
         <img className='m-auto mb-5' src={Camera} alt='' />
