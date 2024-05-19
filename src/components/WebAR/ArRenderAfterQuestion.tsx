@@ -166,22 +166,17 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               position='30 50 50'
               xrextras-hider-material
             ></a-box>
-            <a-entity
-            id='portalRim'
-            gltf-model={`url(${portalSpin})`}
-            reflections='type: realtime'
-            shadow='receive: false'
-            visible="false"
-            position='0 7.5 -0.2'
-            >
+      
             <a-ring
               id='portalHiderRing'
               radius-inner='0.001'
               radius-outer='100'
-              position='0 7.5 -0.2'
+              scale='1 1 1'
+              position="0 9 -0.02187"
+              geometry="radiusOuter: 15"
               xrextras-hider-material
             ></a-ring>
-            </a-entity>
+            
             
           </a-entity>
 
@@ -265,14 +260,14 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           <a-sky src='#skybox-img' rotation='0 7 0'></a-sky>
         </a-entity>
 
-        {/* <a-entity
+        <a-entity
           id='portalRim'
           gltf-model={`url(${portalSpin})`}
           reflections='type: realtime'
           shadow='receive: false'
           visible="false"
-          position='0 7.5 -0.2'
-        ></a-entity> */}
+          scale='2 2 2 '
+        ></a-entity>
         <a-entity
           id='portalBox'
           gltf-model={`url(${portalBox})`}
