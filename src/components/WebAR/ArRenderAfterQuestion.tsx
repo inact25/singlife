@@ -258,7 +258,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
 
         <a-entity
           id='portalRim'
-          gltf-model={`url(${portalNew})`}
+          gltf-model={`url(${portalGlb})`}
           spin='axis: x; speed: 14000'
           reflections='type: realtime'
           position='0 7.5 0'
@@ -267,14 +267,14 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           shadow='receive: false'
         ></a-entity>
 
-        {/* <a-entity
+        <a-entity
           id='portalVideo'
           auto-play-video='video: #portal-video'
           material='shader: chromakey; src: #portal-video; color: 0 0 0; blending: additive; side: front'
           geometry='primitive: plane; height: 1; width: 1;'
           position='0 7.5 0.1'
           scale='0.001 0.001 0.001'
-        ></a-entity> */}
+        ></a-entity>
 
         <a-circle
           id='portalShadow'
