@@ -11,6 +11,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 const Index = () => {
   const [open, setOpen] = useState(false)
   const motion = useAccelerometer()
+  console.log(motion)
   useEffect(() => {
     setTimeout(() => setOpen(true), 2000)
   }, [])
@@ -25,9 +26,6 @@ const Index = () => {
         className='image-screen w-screen min-h-screen flex items-center'
       >
         <div className='w-full mt-[-5rem]'>
-          <div>
-            x:{motion.x} - y:{motion.y} - z:{motion.z}
-          </div>
           {open && (
             <Popup
               title={'Get Rewarded'}
