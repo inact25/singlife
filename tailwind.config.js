@@ -3,6 +3,7 @@ export default {
   darkMode: 'selector',
   content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   safelist: [
+    '!bg-singlife-red-800',
     'bg-singlife-red-800',
     'bg-singlife-red-200',
     'bg-singlife-turquoise-800',
