@@ -4,10 +4,13 @@ import tap from '@assets/svgs/tap.svg'
 
 type Props = {
   type?: '360' | 'waiting' | 'tap'
+  className?: string
 }
-const MediaPopup = ({ type = '360' }: Props) => {
+const MediaPopup = ({ type = '360', className }: Props) => {
   return (
-    <div className='rounded-2xl flex justify-center items-center px-5 py-10 bg-white/40 backdrop-blur-md'>
+    <div
+      className={`rounded-2xl flex justify-center items-center px-5 py-10 bg-white/40 backdrop-blur-md ${className}`}
+    >
       <div className='w-full'>
         <div className='mb-5'>
           <img

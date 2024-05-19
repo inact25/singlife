@@ -16,11 +16,11 @@ const QuestionFinish = () => {
   const params = useParams()
   const dream_v1 = useDream()
   const navigate = useNavigate()
-  const [currentComponent, setCurrentComponent] = useState<any>('waiting')
+  const [currentComponent] = useState<any>('waiting')
   const [showPopup, setShowPopup] = useState<boolean>(true)
   const ready = (values: any) => {
     console.log('all', values)
-    setCurrentComponent('tap')
+    hidePopup()
   }
   const hidePopup = () => {
     setShowPopup(false)
