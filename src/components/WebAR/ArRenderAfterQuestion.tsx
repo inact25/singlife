@@ -86,7 +86,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
     aframe.register('custom-capture-btn', {
       init() {
         const btn = document.getElementById('recorder-button')
-        btn.innerHTML = `<img id="icon" src=${capture}>`
+        btn.innerHTML = `<img id="icon" style="display: none" src=${capture}>`
       },
     })
   }, [window?.XR8])
@@ -201,8 +201,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
                 id='portalHiderRing'
                 radius-inner='0.001'
                 radius-outer='100'
-                scale='0.85 0.85 0.85'
-                position='0 9 -0.02187'
+                scale='1 1 1'
+                position='0 10 -0.02187'
                 geometry='radiusOuter: 15'
                 xrextras-hider-material
               ></a-ring>
@@ -294,7 +294,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             reflections='type: realtime'
             shadow='receive: false'
             visible='false'
-            scale='2 2 2 '
+            scale='2.2 2.2 2.2'
           ></a-entity>
           <a-entity
             id='portalBox'
