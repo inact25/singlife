@@ -66,6 +66,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       },
     })
 
+
     aframe.register('portal-camera', portalCameraComponent)
     aframe.register('spin', spinComponent)
 
@@ -90,6 +91,19 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       },
     })
   }, [window?.XR8])
+
+  useEffect(() => {
+    if(reward === 2){
+      setTimeout(() => bottomPopup({
+        title: 'Tap the camera button to take a photo or hold it to take a video',
+        useButton: false,
+        floating: true,
+        dark: false,
+      }), 6000)
+    }
+  }, [reward]);
+
+
   useEffect(() => {
     console.log('window?.XR8', window?.XR8)
   }, [window?.XR8])
@@ -334,7 +348,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         )}
       </WrapperLayouts>
       {reward === 2 && (
-        <div className='absolute top-5 right-5'>
+          <div className='absolute top-5 right-5 z-50 '>
           <div>
             <FacebookShareButton
               url={shareUrl}
