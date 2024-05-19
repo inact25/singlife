@@ -33,7 +33,7 @@ const routes: RouteObject[] = [
     element: <SamplePopup />,
   },
   {
-    path: 'tracking',
+    path: 'tracking/:purpose',
     element: <Detector />,
   },
   {

@@ -55,9 +55,7 @@ const Question = () => {
         if (response?.errors) {
           return
         }
-        navigate({
-          pathname: `/question/finish/${response?.entry_id}`,
-        })
+        navigate(`/tracking/question-${response?.entry_id}`)
       })
   }
   useEffect(() => {

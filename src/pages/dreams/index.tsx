@@ -20,7 +20,7 @@ const Dream = () => {
     navigate('/')
   }
   const handleYourDream = (id: number) => {
-    navigate(`/your-dream/${id}`)
+    navigate(`/tracking/explore-${id}`)
   }
 
   useEffect(() => {

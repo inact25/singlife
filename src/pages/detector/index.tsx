@@ -6,6 +6,7 @@ import Popup from '@components/molecules/popup'
 import Question3 from '@assets/background/Question3.jpg'
 import useAccelerometer from '@utils/useAccelerometer.ts'
 import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const Index = () => {
   const [open, setOpen] = useState(false)
@@ -42,16 +43,26 @@ const Index = () => {
 }
 
 const Before = () => {
+  const params = useParams()
+  const navigate = useNavigate()
   const onDenied = () => {
     bottomPopup({ title: 'Permission Access Denied', desc: 'Okey' })
   }
   const onGranted = () => {
-    bottomPopup({ title: 'Permission Access Granted', desc: 'Okey' })
+    if (params.purpose?.split('-')[0] === 'explore') {
+      navigate(`/your-dream/${params.purpose?.split('-')[1]}`)
+    }
+    if (params.purpose?.split('-')[0] === 'question') {
+      navigate({
+        pathname: `/question/finish/${params.purpose?.split('-')[1]}`,
+      })
+    }
   }
   const requestPermission = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: true,
+        audio: true,
       })
       onGranted()
       stream.getTracks().forEach((track) => track.stop())
