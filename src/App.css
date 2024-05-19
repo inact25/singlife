@@ -220,7 +220,7 @@ h3 {
 }
 
 /* custom btn capture */
-#icon {
+.icon-capture-btn {
   height: 200px;
   width: 200px;
   max-width: max-content;
