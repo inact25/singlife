@@ -60,24 +60,16 @@ const Before = () => {
   const motionSensor = () => {
     // allow motion event
     // @ts-ignore
-    window.navigator.permissions
-      // @ts-ignore
-      .query({ name: 'accelerometer' })
-      .then((result) => {
-        if (result.state === 'granted') {
-          window.navigator.permissions
-            // @ts-ignore
-            .query({ name: 'gyroscope' })
-            .then((res) => {
-              if (res.state === 'granted') {
-                requestPermission()
-              }
-            })
+    DeviceMotionEvent.requestPermission()
+      .then((response: any) => {
+        if (response == 'granted') {
+          window.addEventListener('devicemotion', (e) => {
+            alert(e)
+            requestPermission()
+          })
         }
       })
-      .catch(() => {
-        onDenied()
-      })
+      .catch(console.error)
   }
 
   const requestPermission = async () => {
