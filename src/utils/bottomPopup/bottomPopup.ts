@@ -42,6 +42,7 @@ const bottomPopup = ({
     showConfirmButton: useButton,
     confirmButtonText: desc,
     allowOutsideClick: false,
+    backdrop:false
   })
 }
 

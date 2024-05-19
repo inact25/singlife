@@ -1,13 +1,11 @@
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
-import Buttonicon from '@components/atom/buttonicon'
-import back from '@assets/svgs/back.svg'
-import { useNavigate, useParams } from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import MediaPopup from '@components/atom/mediapop'
-import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import {motion} from 'framer-motion'
+import {useEffect, useState} from 'react'
 import ArRender360 from '@components/WebAR/ArRender360.tsx'
 import useDream from '@services/api/dream'
-import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
+import {bottomPopup} from '@utils/bottomPopup/bottomPopup.ts'
 
 const motionFade = {
   hidden: { opacity: 0 },
@@ -58,14 +56,14 @@ const YourDream = () => {
   return (
     <WrapperLayouts isFull={true} allDevice>
       <div className=''>
-        <div className='absolute top-5 left-5 text-left z-10'>
-          <Buttonicon
-            icon={back}
-            onClick={() => {
-              window.open('/dreams','_self')
-            }}
-          />
-        </div>
+        {/*<div className='absolute top-5 left-5 text-left z-10'>*/}
+        {/*  <Buttonicon*/}
+        {/*    icon={back}*/}
+        {/*    onClick={() => {*/}
+        {/*      window.open('/dreams','_self')*/}
+        {/*    }}*/}
+        {/*  />*/}
+        {/*</div>*/}
         <div className='w-screen min-h-screen flex items-center'>
           <div className='w-full'>
             <WrapperLayouts allDevice>
