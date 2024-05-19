@@ -24,6 +24,8 @@ import Button from '@components/atom/button'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Swal from 'sweetalert2'
 import {useParams} from 'react-router-dom'
+import {FaFacebookF, FaLink, FaWhatsapp} from 'react-icons/fa6'
+import {HiGiftTop} from 'react-icons/hi2'
 
 type Props = {
   params: any
@@ -32,7 +34,7 @@ type Props = {
 const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   const aframe = useAframe()
   const [url, setUrl] = React.useState(null)
-  const [reward, setReward] = useState(false)
+  const [reward, setReward] = useState(0)
   useEffect(() => {
     if (params?.url) {
       setUrl(params.url)
@@ -54,7 +56,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             })
           }, 3000)
           setTimeout(() => Swal.close(), 6000)
-          setTimeout(() => setReward(true), 15000)
+          setTimeout(() => setReward(1), 15000)
         })
         el.addEventListener('realityready', function () {
           callback && callback(true)
@@ -314,16 +316,40 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         </AFrameScene>
       </>
       <WrapperLayouts isFull>
-        {reward && (
+        {reward === 1 && (
           <Popup
             title={'Get Rewarded'}
             isFloating={false}
-            onPop={() => setReward(!reward)}
+            onPop={() => setReward(2)}
             content={<Rewarded />}
             open={true}
           />
         )}
       </WrapperLayouts>
+      {reward === 2 && (
+        <div className='absolute top-5 right-5'>
+          <div className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-[#1877F2] text-white rounded-full flex items-center justify-center'>
+            <span className='text-[24px]'>
+              <FaFacebookF />
+            </span>
+          </div>
+          <div className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-[#25D366] text-white rounded-full flex items-center justify-center'>
+            <span className='text-[24px]'>
+              <FaWhatsapp />
+            </span>
+          </div>
+          <div className='h-[48px] mb-3 [:&>svg]:text-[24px] shadow-sm w-[48px] bg-white text-black rounded-full flex items-center justify-center'>
+            <span className='text-[24px]'>
+              <FaLink />
+            </span>
+          </div>
+          <div className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-black text-white rounded-full flex items-center justify-center'>
+            <span className='text-[24px]'>
+              <HiGiftTop />
+            </span>
+          </div>
+        </div>
+      )}
     </>
   )
 }
