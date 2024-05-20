@@ -89,9 +89,9 @@ const tapToPlacePortalComponent = {
         setTimeout(() => {
           portalHiderRing.setAttribute('animation__1', {
             property: 'radius-inner',
-            dur: 3000,
+            dur: 2000,
             from: '0.001',
-            to: '5',
+            to: '3.5',
             easing: 'easeOutElastic',
           })
         }, 3000)

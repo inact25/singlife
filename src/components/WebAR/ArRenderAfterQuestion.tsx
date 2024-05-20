@@ -150,8 +150,11 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           </div>
         </div>
         <AFrameScene
+        stats
           responsive-immersive
           custom-capture-btn
+          renderer="antialias: true;
+                   colorManagement: true;"
           xrweb='allowedDevices: any; disableDefaultEnvironment: true;'
           reality-ready
         >
@@ -233,8 +236,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
                 radius-inner='0.001'
                 radius-outer='100'
                 scale='1 1 1'
-                position='0 10 -0.02187'
-                geometry='radiusOuter: 15'
+                position="0 7.5 -0.2"
                 xrextras-hider-material
               ></a-ring>
             </a-entity>
@@ -260,7 +262,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           <a-entity
             light='
             type: directional;
-            castShadow: true;
+            intensity: 6;
+            castShadow: false;
             shadowMapHeight:2048;
             shadowMapWidth:2048;
             shadowCameraTop: 35;
@@ -269,10 +272,11 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             shadowCameraLeft: -10;
             target: #portalRim'
             xrextras-attach='target: portalRim; offset: 18 7 14'
-            shadow
+            
           ></a-entity>
 
-          <a-light type='ambient' intensity='0.3'></a-light>
+
+          <a-light type='ambient' intensity='1'></a-light>
 
           <a-entity id='portal-contents'>
             {/* <a-entity
@@ -325,7 +329,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             reflections='type: realtime'
             shadow='receive: false'
             visible='false'
-            scale='2.2 2.2 2.2'
+            scale='1.75 1.75 1.75'
           ></a-entity>
           <a-entity
             id='portalBox'
