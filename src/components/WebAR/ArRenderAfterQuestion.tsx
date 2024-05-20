@@ -143,8 +143,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       )
       setRewardShowUp(true)
     } else {
-      if (btn) btn.style = 'display:none;'
-      if (progressbtn) progressbtn.style = 'display:none;'
       Swal.close()
     }
     return () => Swal.close()
