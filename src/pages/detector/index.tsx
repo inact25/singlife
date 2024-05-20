@@ -15,7 +15,7 @@ const Index = () => {
   console.log(accelerometer)
   const image = sessionStorage.getItem("image")
   useEffect(() => {
-    setTimeout(() => setOpen(true), 2000)
+    setTimeout(() => setOpen(true), 500)
   }, [])
 
   return (
