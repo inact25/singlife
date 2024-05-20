@@ -74,7 +74,7 @@ const YourDream = () => {
                   variants={motionFade}
                   transition={{ duration: 0.5 }}
                   className='z-[999] relative'
-                  onClick={hidePopup}
+                  onClick={() => currentComponent === "tap" && hidePopup()}
                 >
                   <MediaPopup type={currentComponent} />
                 </motion.div>
