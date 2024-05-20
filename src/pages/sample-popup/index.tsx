@@ -2,10 +2,19 @@ import Camera from '@assets/svgs/camera.svg'
 import Rotate from '@assets/svgs/rotate.svg'
 import Button from '@components/atom/button'
 import Popup from '@components/molecules/popup'
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
+import {bottomPopup} from "@utils/bottomPopup/bottomPopup.ts";
 
 const Index = () => {
   const [open, setopen] = useState(true)
+    useEffect(() => {
+        bottomPopup({
+            title: 'Walk into the portal to experience your dream',
+            useButton: false,
+            floating: true,
+            dark: false,
+        })
+    }, []);
   return (
     <div>
       <Popup

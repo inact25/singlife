@@ -19,9 +19,9 @@ const bottomPopup = ({
 }: Props) => {
   return Swal.fire({
     customClass: {
-      container: `${floating ? 'p-3' : 'p-0'}`,
-      popup: `rounded-b-none rounded-t-[32px] ${dark ? 'bg-black/50' : 'bg-white/60'} ${floating ? 'bottom-2  !rounded-[5rem]' : ''}`,
-      title: `${dark ? 'body-1 font-medium text-white ' : 'text-black note font-light'} ${floating ? 'pt-5' : 'pt-10'}`,
+      container: `${floating ? 'p-5' : 'p-0'}`,
+      popup: `!shadow-md rounded-b-none rounded-t-[32px] ${dark ? 'bg-black/50' : 'bg-white/60'} ${floating ? 'bottom-12  !rounded-[5rem]' : ''}`,
+      title: `${dark ? 'body font-medium text-white' : 'text-black note font-light'} ${floating ? 'pt-3 pb-1 mb-[-.75rem]' : 'pt-10'}`,
       actions: 'w-full px-5',
       confirmButton: 'w-full rounded-full !bg-singlife-red-800',
     },
