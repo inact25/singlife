@@ -21,7 +21,7 @@ const bottomPopup = ({
     customClass: {
       container: `${floating ? 'p-5' : 'p-0'}`,
       popup: `!shadow-md rounded-b-none rounded-t-[32px] ${dark ? 'bg-black/50' : 'bg-white/60'} ${floating ? 'bottom-14  !rounded-[5rem]' : ''}`,
-      title: `${dark ? 'body font-medium text-white' : 'text-black note font-light'} ${floating ? 'pt-3 pb-1 mb-[-.75rem]' : 'pt-10'}`,
+      title: `${dark ? 'note font-medium text-white' : 'text-black note font-light'} ${floating ? 'pt-3 pb-1 mb-[-.75rem]' : 'pt-10'}`,
       actions: 'w-full px-5',
       confirmButton: 'w-full rounded-full !bg-singlife-red-800',
     },
