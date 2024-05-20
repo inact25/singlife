@@ -62,10 +62,13 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               useButton: false,
               floating: true,
               dark: false,
-            })
+              timer: 5000,
+            }).then(r => {
+              if (r.isDismissed ) {
+              setTimeout(() => setReward(1), 6000)
+              }
+              })
           }, 3000)
-          setTimeout(() => Swal.close(), 6000)
-          setTimeout(() => setReward(1), 15000)
         })
         el.addEventListener('realityready', function () {
           callback && callback(true)
@@ -112,9 +115,9 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             useButton: false,
             floating: true,
             dark: false,
-            timer: 3000,
+            timer: 5000,
           }),
-        4000,
+        500,
       )
       setRewardShowUp(true)
     } else {
