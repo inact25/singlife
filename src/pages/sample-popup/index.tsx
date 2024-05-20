@@ -1,3 +1,14 @@
+
+const Index = () => {
+    return (
+        <div>
+            sample
+        </div>
+    );
+};
+
+export default Index;
+
 // import Button from '@components/atom/button'
 // import Popup from '@components/molecules/popup'
 // import {useEffect, useState} from 'react'
