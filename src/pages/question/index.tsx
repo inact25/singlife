@@ -52,6 +52,7 @@ const Question = () => {
       })
       .then((response) => {
         console.log('response', response)
+        sessionStorage.removeItem('image')
         if (response?.errors) {
           return
         }
