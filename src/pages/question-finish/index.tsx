@@ -1,11 +1,11 @@
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Buttonicon from '@components/atom/buttonicon'
 import back from '@assets/svgs/back.svg'
-import { useParams } from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import ArRenderAfterQuestion from '@components/WebAR/ArRenderAfterQuestion.tsx'
 import MediaPopup from '@components/atom/mediapop'
-import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import {motion} from 'framer-motion'
+import {useEffect, useState} from 'react'
 import useDream from '@services/api/dream'
 
 const motionFade = {
@@ -50,7 +50,7 @@ const QuestionFinish = () => {
                   variants={motionFade}
                   transition={{ duration: 0.5 }}
                   className='z-[999] relative'
-                  onClick={hidePopup}
+                  onClick={() => currentComponent === "tap" && hidePopup}
                 >
                   <MediaPopup type={currentComponent} />
                 </motion.div>

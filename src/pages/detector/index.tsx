@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react'
+import {useEffect, useState} from 'react'
 import Camera from '@assets/svgs/camera.svg'
 import Rotate from '@assets/svgs/rotate.svg'
 import Button from '@components/atom/button'
 import Popup from '@components/molecules/popup'
 import Question3 from '@assets/background/Question3.jpg'
 import useAccelerometer from '@utils/useAccelerometer.ts'
-import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
-import { useParams } from 'react-router-dom'
+import {bottomPopup} from '@utils/bottomPopup/bottomPopup.ts'
+import {useParams} from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const Index = () => {
   const [open, setOpen] = useState(false)
-  const motion = useAccelerometer()
-  console.log(motion)
+  const accelerometer = useAccelerometer()
+  console.log(accelerometer)
   const image = sessionStorage.getItem("image")
   useEffect(() => {
     setTimeout(() => setOpen(true), 2000)
@@ -28,12 +29,22 @@ const Index = () => {
       >
         <div className='w-full mt-[-5rem]'>
           {open && (
-            <Popup
-              title={'Before We Begin...'}
-              isFloating={true}
-              content={<Before />}
-              open={true}
-            />
+              <motion.div
+                  initial={{opacity: 0, scale:0.75}}
+                  animate={{opacity: 1, scale:1}}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20
+                  }}
+              >
+                <Popup
+                    title={'Before We Begin...'}
+                    isFloating={true}
+                    content={<Before/>}
+                    open={true}
+                />
+              </motion.div>
           )}
         </div>
       </div>

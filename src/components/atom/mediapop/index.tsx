@@ -1,6 +1,7 @@
 import l360 from '@assets/svgs/l360.svg'
 import waiting from '@assets/svgs/waiting.svg'
 import tap from '@assets/svgs/tap.svg'
+import {motion} from 'framer-motion'
 
 type Props = {
   type?: '360' | 'waiting' | 'tap'
@@ -8,12 +9,27 @@ type Props = {
 }
 const MediaPopup = ({ type = '360', className }: Props) => {
   return (
-    <div
+
+      <motion.div
+          initial={{scale: .75, opacity: 0}}
+          animate={{scale: 1, opacity: 1}}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20
+          }}
       className={`rounded-2xl flex justify-center items-center px-5 py-10 bg-white/40 backdrop-blur-md ${className}`}
     >
       <div className='w-full'>
         <div className='mb-5'>
-          <img
+          <motion.img
+              animate={{
+                scale: [.95, 1, .95]
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 2,
+              }}
             className='m-auto'
             width={88}
             height={88}
@@ -31,7 +47,7 @@ const MediaPopup = ({ type = '360', className }: Props) => {
           </p>
         </div>
       </div>
-    </div>
+      </motion.div>
   )
 }
 
