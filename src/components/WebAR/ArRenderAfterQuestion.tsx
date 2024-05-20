@@ -99,8 +99,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   }, [window?.XR8])
 
   useEffect(() => {
-    const btn = document.querySelector('#icon-capture-btn')
-    const progressbtn = document.querySelector('.recorder-container')
+    const btn = document.querySelector('.capture-icon')
+    const progressbtn = document.querySelector('.progress-container')
     if (reward === 2 && !rewardShowUp) {
       if (btn) btn.style = 'display:block;'
       if (progressbtn) progressbtn.style = 'display:block;'

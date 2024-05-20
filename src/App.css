@@ -224,6 +224,7 @@ h3 {
   max-width: max-content;
   position: absolute;
   top: -21vh;
+  display: none;
 }
 
 .recorder-container {
@@ -247,6 +248,7 @@ h3 {
   height: 150px;
   transform: scale(1);
   transition: 0.3s transform, 0.3s opacity;
+  display: none;
 }
 
 #recorder-button {
