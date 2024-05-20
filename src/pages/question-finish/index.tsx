@@ -50,7 +50,7 @@ const QuestionFinish = () => {
                   variants={motionFade}
                   transition={{ duration: 0.5 }}
                   className='z-[999] relative'
-                  onClick={() => currentComponent === "tap" && hidePopup}
+                  onClick={() => currentComponent === "tap" && hidePopup()}
                 >
                   <MediaPopup type={currentComponent} />
                 </motion.div>

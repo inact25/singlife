@@ -6,6 +6,9 @@ import {useEffect, useState} from 'react'
 import ArRender360 from '@components/WebAR/ArRender360.tsx'
 import useDream from '@services/api/dream'
 import {bottomPopup} from '@utils/bottomPopup/bottomPopup.ts'
+import Buttonicon from "@components/atom/buttonicon";
+import back from '@assets/svgs/back.svg'
+
 
 const motionFade = {
   hidden: { opacity: 0 },
@@ -56,14 +59,14 @@ const YourDream = () => {
   return (
     <WrapperLayouts isFull={true} allDevice>
       <div className=''>
-        {/*<div className='absolute top-5 left-5 text-left z-10'>*/}
-        {/*  <Buttonicon*/}
-        {/*    icon={back}*/}
-        {/*    onClick={() => {*/}
-        {/*      window.open('/dreams','_self')*/}
-        {/*    }}*/}
-        {/*  />*/}
-        {/*</div>*/}
+        <div className='absolute top-5 left-5 text-left z-10'>
+          <Buttonicon
+            icon={back}
+            onClick={() => {
+              window.open('/dreams','_self')
+            }}
+          />
+        </div>
         <div className='w-screen min-h-screen flex items-center'>
           <div className='w-full'>
             <WrapperLayouts allDevice>
@@ -74,7 +77,7 @@ const YourDream = () => {
                   variants={motionFade}
                   transition={{ duration: 0.5 }}
                   className='z-[999] relative'
-                  onClick={hidePopup}
+                  onClick={() => currentComponent === "tap" && hidePopup()}
                 >
                   <MediaPopup type={currentComponent} />
                 </motion.div>

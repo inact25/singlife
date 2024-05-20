@@ -6,7 +6,9 @@ import AFrameScene from '@components/libs/AFrameScene'
 import capture from '@assets/capture.svg'
 import portalSpin from '@assets/glbs/portal-new.glb'
 import portalBox from '@assets/glbs/box.glb'
+import {motion} from 'framer-motion'
 import imgReward from '@assets/svgs/rewarded.svg'
+
 import {
   portalCameraComponent,
   promptFlowComponent,
@@ -32,6 +34,26 @@ type Props = {
   params: any
   callback: (e: any) => void
 }
+
+const motionConfig = {
+  closed: {
+    left:0,
+    position: 'absolute',
+    bottom: -500,
+    width: '100%',
+    zIndex:99999,
+
+  },
+  //open visible
+  open: {
+    zIndex:99999,
+    left:0,
+    position: 'absolute',
+    bottom: 0,
+    width: '100%'
+  },
+}
+
 const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   const aframe = useAframe()
   const [url, setUrl] = React.useState(null)
@@ -361,15 +383,22 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         </AFrameScene>
       </>
       <WrapperLayouts isFull>
-        {reward === 1 && (
+        <motion.div
+            initial={'closed'}
+            animate={reward === 1 ? "open" : "closed"}
+            transition={{type:'spring',damping:25}}
+            variants={motionConfig}
+
+        >
           <Popup
             title={'Get Rewarded'}
             isFloating={false}
             onPop={() => setReward(2)}
             content={<Rewarded />}
             open={true}
+            isParentAnimate
           />
-        )}
+        </motion.div>
       </WrapperLayouts>
       {reward === 2 && (
         <div className='absolute top-5 right-5 z-50 '>

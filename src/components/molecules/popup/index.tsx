@@ -5,16 +5,17 @@ type Props = {
   open: boolean
   content: any
   title: string
-  isFloating?: boolean
+  isFloating?: boolean,
+  isParentAnimate?:boolean
 }
 
-const Index = ({ onPop, open, content, title, isFloating = false }: Props) => {
+const Index = ({ onPop,isParentAnimate, open, content, title, isFloating = false }: Props) => {
   return (
-    <div>
+    <div className='w-full'>
       <div
         className={
           !isFloating
-            ? `w-full  fixed bottom-0 left-0 z-[999]`
+            ? `w-full  ${!isParentAnimate && 'fixed bottom-0'} left-0 z-[99999]`
             : `mt-[25%] px-5`
         }
       >
