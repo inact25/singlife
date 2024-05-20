@@ -9,7 +9,6 @@ import {useNavigate} from 'react-router-dom'
 import {useScroll, useScrolling, useWindowSize} from 'react-use'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import placeholder from '@assets/anim/imageplaceholder.gif'
-import useAccelerometer from '@utils/useAccelerometer.ts'
 
 const Dream = () => {
   const scrollRef = useRef(null)
@@ -18,15 +17,12 @@ const Dream = () => {
   const { height } = useWindowSize()
   const navigate = useNavigate()
   const dream_v1 = useDream()
-  const motion = useAccelerometer()
   const handleBack = () => {
     navigate('/')
   }
-  const handleYourDream = (id: number) => {
-    if (motion.y === undefined) {
+  const handleYourDream = (id: number, image: string) => {
+      sessionStorage.setItem('image', image)
       return window.open(`/tracking/explore-${id}`, "_self")
-    }
-    window.open(`/your-dream/${id}`, "_self")
   }
 
   useEffect(() => {
@@ -76,7 +72,7 @@ const Dream = () => {
                 {arrayEven(dream_v1.data)?.map((item) => (
                   <div key={item.id}>
                     <Gallery
-                      onClick={() => handleYourDream(item.id)}
+                        onClick={() => handleYourDream(item.id, item.image)}
                       description={exceptText(item.description, 39)}
                       image={item.thumbnail || placeholder}
                     />
@@ -91,7 +87,7 @@ const Dream = () => {
                       title={dream_v1.singleData?.title}
                       onClick={() =>
                         handleYourDream(
-                          parseInt(dream_v1.singleData?.id ?? '0'),
+                          parseInt(dream_v1.singleData?.id ?? '0'), dream_v1.singleData?.image || ''
                         )
                       }
                       description={exceptText(
@@ -105,7 +101,7 @@ const Dream = () => {
                 {arrayOdd(dream_v1.data)?.map((item) => (
                   <div key={item.id}>
                     <Gallery
-                      onClick={() => handleYourDream(item.id)}
+                      onClick={() => handleYourDream(item.id, item.image)}
                       description={exceptText(item.description, 39)}
                       image={item.thumbnail}
                     />

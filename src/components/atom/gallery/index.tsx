@@ -2,7 +2,6 @@ import Buttonicon from '@components/atom/buttonicon'
 import expand from '@assets/svgs/expand.svg'
 import expandWhite from '@assets/svgs/expand-white.svg'
 import React from 'react'
-import Highlighter from 'react-highlight-words'
 
 type Props = {
   image: string
@@ -34,14 +33,15 @@ const Index: React.FC<Props> = ({
         />
       </div>
       {isActive && (
-        <div className='absolute left-[8px] top-[8px] w-[60%] text-left'>
-          <Highlighter
-            highlightStyle={{ padding: 5 }}
-            highlightClassName='bg-singlife-red-800 text-white rounded-e-lg font-light text-[12px]'
-            searchWords={[`${title ?? ''}`]}
-            autoEscape={true}
-            textToHighlight={title ?? ''}
-          />
+          <div className='absolute left-[14px] top-[14px] w-[60%] text-left text-white note'>
+            {title}
+            {/*<Highlighter*/}
+            {/*  highlightStyle={{ padding: 5 }}*/}
+            {/*  highlightClassName='bg-singlife-red-800 text-white rounded-e-lg font-light text-[12px]'*/}
+            {/*  searchWords={[`${title ?? ''}`]}*/}
+            {/*  autoEscape={true}*/}
+            {/*  textToHighlight={title ?? ''}*/}
+            {/*/>*/}
         </div>
       )}
       <div

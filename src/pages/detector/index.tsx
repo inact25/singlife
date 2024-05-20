@@ -12,6 +12,7 @@ const Index = () => {
   const [open, setOpen] = useState(false)
   const motion = useAccelerometer()
   console.log(motion)
+  const image = sessionStorage.getItem("image")
   useEffect(() => {
     setTimeout(() => setOpen(true), 2000)
   }, [])
@@ -21,7 +22,7 @@ const Index = () => {
       <div
         style={{
           backgroundSize: 'cover',
-          background: `url(${Question3}) center center no-repeat`,
+          background: `url(${image ?? Question3}) center center no-repeat`,
         }}
         className='image-screen w-screen min-h-screen flex items-center'
       >
