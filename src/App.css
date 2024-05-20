@@ -297,6 +297,7 @@ h3 {
   background-color: #ff0008 !important;
   position: absolute;
   bottom: 5vh;
+  min-height: 50px;
 }
 #actionButtonImg{
   display: none;

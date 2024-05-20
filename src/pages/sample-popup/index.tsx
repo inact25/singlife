@@ -1,8 +1,14 @@
+import {useEffect} from "react";
+import {bottomPopup} from "@utils/bottomPopup/bottomPopup.ts";
 
 const Index = () => {
+    useEffect(() => {
+        console.log("triger")
+        bottomPopup({title:"anjir"})
+    }, []);
     return (
         <div>
-            sample
+            samples
         </div>
     );
 };

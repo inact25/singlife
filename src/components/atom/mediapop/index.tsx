@@ -9,7 +9,6 @@ type Props = {
 }
 const MediaPopup = ({ type = '360', className }: Props) => {
   return (
-
       <motion.div
           initial={{scale: .75, opacity: 0}}
           animate={{scale: 1, opacity: 1}}
