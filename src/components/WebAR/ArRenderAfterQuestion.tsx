@@ -152,8 +152,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         <AFrameScene
           responsive-immersive
           custom-capture-btn
-          xrextras-runtime-error
-          renderer='colorManagement: true;'
           xrweb='allowedDevices: any; disableDefaultEnvironment: true;'
           reality-ready
         >

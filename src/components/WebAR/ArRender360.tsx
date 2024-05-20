@@ -26,9 +26,6 @@ const ArRender360: React.FC<Props> = ({ params, callback }) => {
   return (
     <>
       <AFrameScene
-        xrextras-runtime-error
-        renderer='colorManagement: true;'
-        xrweb='allowedDevices: any; disableDefaultEnvironment: true;'
         reality-ready
       >
         <a-assets>
