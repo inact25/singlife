@@ -37,20 +37,19 @@ type Props = {
 
 const motionConfig = {
   closed: {
-    left:0,
+    left: 0,
     position: 'absolute',
     bottom: -500,
     width: '100%',
-    zIndex:99999,
-
+    zIndex: 99999,
   },
   //open visible
   open: {
-    zIndex:99999,
-    left:0,
+    zIndex: 99999,
+    left: 0,
     position: 'absolute',
     bottom: 0,
-    width: '100%'
+    width: '100%',
   },
 }
 
@@ -62,9 +61,9 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   const [isLinkCopied, setIsLinkCopied] = useState(false)
   const shareUrl = () => {
     const host = window.location.host
-    const path = '/your-dream'
+    const path = '/share'
     const id = params?.id
-    return `https://${host}${path}/${id}`
+    return `https://${host}${path}/explore-${id}`
   }
   useEffect(() => {
     if (params?.url) {
@@ -85,11 +84,11 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               floating: true,
               dark: false,
               timer: 5000,
-            }).then(r => {
-              if (r.isDismissed ) {
-              setTimeout(() => setReward(1), 6000)
+            }).then((r) => {
+              if (r.isDismissed) {
+                setTimeout(() => setReward(1), 6000)
               }
-              })
+            })
           }, 3000)
         })
         el.addEventListener('realityready', function () {
@@ -173,11 +172,11 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           </div>
         </div>
         <AFrameScene
-        stats
+          stats
           responsive-immersive
           custom-capture-btn
-          renderer="antialias: true;
-                   colorManagement: true;"
+          renderer='antialias: true;
+                   colorManagement: true;'
           xrweb='allowedDevices: any; disableDefaultEnvironment: true;'
           reality-ready
         >
@@ -259,7 +258,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
                 radius-inner='0.001'
                 radius-outer='100'
                 scale='1 1 1'
-                position="0 7.5 -0.2"
+                position='0 7.5 -0.2'
                 xrextras-hider-material
               ></a-ring>
             </a-entity>
@@ -295,9 +294,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             shadowCameraLeft: -10;
             target: #portalRim'
             xrextras-attach='target: portalRim; offset: 18 7 14'
-            
           ></a-entity>
-
 
           <a-light type='ambient' intensity='1'></a-light>
 
@@ -382,11 +379,10 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       </>
       <WrapperLayouts isFull>
         <motion.div
-            initial={'closed'}
-            animate={reward === 1 ? "open" : "closed"}
-            transition={{type:'spring',damping:25}}
-            variants={motionConfig}
-
+          initial={'closed'}
+          animate={reward === 1 ? 'open' : 'closed'}
+          transition={{ type: 'spring', damping: 25 }}
+          variants={motionConfig}
         >
           <Popup
             title={'Get Rewarded'}
@@ -399,7 +395,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         </motion.div>
       </WrapperLayouts>
       {reward === 2 && (
-        <div className='absolute top-5 right-5 z-50 '>
+        <div className='absolute top-5 right-3 z-50 '>
           <div>
             <FacebookShareButton
               url={shareUrl()}

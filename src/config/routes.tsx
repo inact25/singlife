@@ -37,6 +37,10 @@ const routes: RouteObject[] = [
     element: <Detector />,
   },
   {
+    path: 'share/:purpose',
+    element: <Detector />,
+  },
+  {
     path: '*',
     element: <h1>Not Found</h1>,
   },
