@@ -26,7 +26,6 @@ const ArRender360: React.FC<Props> = ({ params, callback }) => {
   return (
     <>
       <AFrameScene
-      stats
       xrweb
         reality-ready
       >

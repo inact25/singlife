@@ -1,7 +1,7 @@
 import l360 from '@assets/svgs/l360.svg'
 import waiting from '@assets/svgs/waiting.svg'
 import tap from '@assets/svgs/tap.svg'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 
 type Props = {
   type?: '360' | 'waiting' | 'tap'
