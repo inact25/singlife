@@ -11,9 +11,9 @@ import imgReward from '@assets/svgs/rewarded.svg'
 
 import {
   portalCameraComponent,
+  tapToPlacePortalComponent,
   promptFlowComponent,
   spinComponent,
-  tapToPlacePortalComponent,
 } from '@components/WebAR/partials/portal-component.ts'
 import {responsiveImmersiveComponent} from '@components/WebAR/partials/immersive-component.ts'
 import MediaPopup from '@components/atom/mediapop'
@@ -105,6 +105,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
     aframe.register('tap-to-place-portal', tapToPlacePortalComponent)
 
     aframe.register('responsive-immersive', responsiveImmersiveComponent)
+    
+  
 
     aframe.register('auto-play-video', {
       schema: {
@@ -173,11 +175,9 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           </div>
         </div>
         <AFrameScene
-        stats
           responsive-immersive
           custom-capture-btn
-          renderer="antialias: true;
-                   colorManagement: true;"
+          renderer="colorManagement: true"
           xrweb='allowedDevices: any; disableDefaultEnvironment: true;'
           reality-ready
         >
@@ -222,7 +222,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
 
           <a-camera
             id='camera'
-            position='0 9 11'
+            position='0 8 8'
             cursor='fuse: false; rayOrigin: mouse;'
           ></a-camera>
 
@@ -283,23 +283,21 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           </xrextras-opaque-background>
 
           <a-entity
-            light='
-            type: directional;
-            intensity: 6;
-            castShadow: false;
-            shadowMapHeight:2048;
-            shadowMapWidth:2048;
-            shadowCameraTop: 35;
-            shadowCameraBottom: -20;
-            shadowCameraRight: 40;
-            shadowCameraLeft: -10;
-            target: #portalRim'
-            xrextras-attach='target: portalRim; offset: 18 7 14'
-            
+  
+          light="
+          type: directional;
+          intensity: 1;
+          castShadow: true;
+          shadowMapHeight: 1024;
+          shadowMapWidth: 1024;
+          shadowCameraTop: 20;
+          shadowBias: 0;
+          target: #PortalRim;"
+            xrextras-attach='target: portalRim; offset: 45 0 45'
+            position="3 90 3"
           ></a-entity>
-
-
-          <a-light type='ambient' intensity='1'></a-light>
+  
+          <a-light type='ambient' intensity= '1'  ></a-light>
 
           <a-entity id='portal-contents'>
             {/* <a-entity
@@ -349,22 +347,25 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           <a-entity
             id='portalRim'
             gltf-model={`url(${portalSpin})`}
-            reflections='type: realtime'
+            reflections='type: static'
             shadow='receive: false'
             visible='false'
+            position='0 0.5 -0.2'
             scale='1.75 1.75 1.75'
           ></a-entity>
           <a-entity
             id='portalBox'
             gltf-model={`url(${portalBox})`}
-            reflections='type: realtime'
+            reflections='type: static'
             shadow='receive: false'
             visible='false'
+            position='0 0.4 -0.1'
+            scale='1.6 1.6 1.6'
           ></a-entity>
 
           <a-entity
             id='portalVideo'
-            auto-play-video='video: #portal-video'
+            
             material='shader: chromakey; src: #portal-video; color: 0 0 0; blending: additive; side: front'
             geometry='primitive: plane; height: 1; width: 1;'
             scale='0.001 0.001 0.001'
@@ -378,6 +379,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             rotation='-90 0 0'
             scale='0.001 0.001 0.001'
           ></a-circle>
+   
         </AFrameScene>
       </>
       <WrapperLayouts isFull>

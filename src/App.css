@@ -229,7 +229,7 @@ h3 {
 .recorder-container {
   all: unset;
   position: absolute;
-  bottom: 22%;
+  bottom: 2vh;
   right: 50%;
   transform: translateX(50%);
   width: 80px;

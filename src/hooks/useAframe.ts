@@ -14,9 +14,20 @@ const useAframe = () => {
       globalComponent.add(name)
     }
   }
+  const system = (name: string, component: any) => {
+    if (AFRAME) {
+      if (globalComponent.has(name)) {
+        console.warn('Component already registered')
+        return
+      }
+      AFRAME.registerSystem(name, component)
+      globalComponent.add(name)
+    }
+  }
   return {
     AFRAME,
     register,
+    system
   }
 }
 
