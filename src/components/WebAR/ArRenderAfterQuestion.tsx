@@ -209,9 +209,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             watermark-image-url='/logo.png'
             watermark-max-width='800'
             watermark-max-height='10'
-            watermark-location='topRight'
+            watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
-            footer-image-url='/logo.png'
           ></xrextras-capture-config>
           <xrextras-capture-preview
             action-button-share-text='Share Your Dreams'
