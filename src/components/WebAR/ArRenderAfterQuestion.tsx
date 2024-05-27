@@ -86,7 +86,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               timer: 5000,
             }).then((r) => {
               if (r.isDismissed) {
-                setTimeout(() => setReward(1), 6000)
+                setTimeout(() => setReward(1), 15000)
               }
             })
           }, 3000)
