@@ -154,7 +154,7 @@ const RenderQuestion: React.FC<Props> = ({
             className={`content absolute bottom-0 text-start bg-white rounded-t-[32px] w-full`}
           >
             <WrapperLayouts>
-              <h2 className={`title mt-5 text-black w-[300px]`}>
+              <h2 className={`title text-black w-[300px]`}>
                 {htmlParser(record.question)}
                 {!isActive && (
                   <div className='w-full m-auto my-5 overflow-hidden'>
@@ -167,7 +167,7 @@ const RenderQuestion: React.FC<Props> = ({
                 )}
               </h2>
               <motion.div
-                className='content mt-10'
+                className='content pt-[24px]'
                 initial={'closed'}
                 animate={isActive ? 'open' : 'closed'}
                 variants={motionConfig}
@@ -193,7 +193,7 @@ const RenderQuestion: React.FC<Props> = ({
                     </div>
                   </div>
                 ))}
-                <div className='grid grid-cols-12 gap-3 items-center mt-10 mb-3'>
+                <div className='grid grid-cols-12 gap-3 items-center pt-[24px]'>
                   <div className='col-span-4'>
                     <Slidedot indexActive={index} color={colorPicker(index)} />
                   </div>

@@ -19,7 +19,7 @@ const Index = ({
   disabled,
 }: Props) => {
   const btnMap = {
-    primary: 'bg-singlife-red-800 text-white',
+    primary: 'bg-singlife-red-800 text-white h-[56px]',
     secondary:
       'bg-[#FFE9EC] border border-singlife-red-800 text-singlife-red-800',
     secondaryWhite:

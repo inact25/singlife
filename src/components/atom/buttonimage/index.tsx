@@ -24,10 +24,10 @@ const Index = ({ title, type = 'primary', onClick, images }: Props) => {
   return (
     <button
       onClick={onClick}
-      className={`flex w-full items-center gap-5 justify-center py-1 max-h-[52px] rounded-full ${btnMap[type]}`}
+      className={`flex w-full items-center gap-5 justify-center py-1 h-[52px] rounded-full ${btnMap[type]}`}
     >
-      <div className='text-[16px] font-bold p-3.5'>{title}</div>
-      <div className='flex text-[12px]  w-fit pe-2'>
+      <div className='text-[16px] font-bold '>{title}</div>
+      <div className='flex text-[12px]  w-fit'>
         {filterLimit(3, images ?? [])?.map((image, index) => (
           <img
             key={index}

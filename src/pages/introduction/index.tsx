@@ -87,8 +87,8 @@ const Introduction = () => {
                 <div className='tagline mb-5 relative end-0 flex justify-end'>
                   <img src={Freedom} alt={'freedom'} />
                 </div>
-                <div className='action'>
-                  <div className='mb-[4px]'>
+                <div className='action flex flex-col gap-y-[8px]'>
+                  <div>
                     <Button
                       onClick={handleGetStarted}
                       title='Get started'
@@ -124,7 +124,7 @@ const Introduction = () => {
                   {/*    <hr />*/}
                   {/*  </span>*/}
                   {/*</div>*/}
-                  <div className='mt-[4px]'>
+                  <div>
                     <Buttonimage
                       title={'Explore dream gallery'}
                       type='secondary'
