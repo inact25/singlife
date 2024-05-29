@@ -3,10 +3,10 @@ import Buttonicon from '@components/atom/buttonicon'
 import Gallery from '@components/atom/gallery'
 import Card from '@components/atom/card'
 import useDream from '@services/api/dream'
-import {useEffect, useRef} from 'react'
-import {arrayEven, arrayOdd, exceptText} from '@utils/helper.ts'
-import {useNavigate} from 'react-router-dom'
-import {useScroll, useScrolling, useWindowSize} from 'react-use'
+import { useEffect, useRef } from 'react'
+import { arrayEven, arrayOdd, exceptText } from '@utils/helper.ts'
+import { useNavigate } from 'react-router-dom'
+import { useScroll, useScrolling, useWindowSize } from 'react-use'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import placeholder from '@assets/anim/imageplaceholder.gif'
 
@@ -21,8 +21,8 @@ const Dream = () => {
     navigate('/')
   }
   const handleYourDream = (id: number, image: string) => {
-      sessionStorage.setItem('image', image)
-      return window.open(`/tracking/explore-${id}`, "_self")
+    sessionStorage.setItem('image', image)
+    return window.open(`/tracking/explore-${id}`, '_self')
   }
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const Dream = () => {
   return (
     <>
       <WrapperLayouts isFull={true}>
-        <div className='min-h-screen'>
+        <div className='min-h-[100dvh]'>
           <div
             className='mb-5 overflow-y-auto max-h-[100dvh] p-[10px] pb-16'
             ref={scrollRef}
@@ -87,7 +87,8 @@ const Dream = () => {
                       title={dream_v1.singleData?.title}
                       onClick={() =>
                         handleYourDream(
-                          parseInt(dream_v1.singleData?.id ?? '0'), dream_v1.singleData?.image || ''
+                          parseInt(dream_v1.singleData?.id ?? '0'),
+                          dream_v1.singleData?.image || '',
                         )
                       }
                       description={exceptText(

@@ -33,15 +33,15 @@ const Index: React.FC<Props> = ({
         />
       </div>
       {isActive && (
-          <div className='absolute left-[14px] top-[14px] w-[60%] text-left text-white note'>
-            {title}
-            {/*<Highlighter*/}
-            {/*  highlightStyle={{ padding: 5 }}*/}
-            {/*  highlightClassName='bg-singlife-red-800 text-white rounded-e-lg font-light text-[12px]'*/}
-            {/*  searchWords={[`${title ?? ''}`]}*/}
-            {/*  autoEscape={true}*/}
-            {/*  textToHighlight={title ?? ''}*/}
-            {/*/>*/}
+        <div className='absolute left-[14px] top-[14px] w-[60%] text-left text-white note'>
+          {title}
+          {/*<Highlighter*/}
+          {/*  highlightStyle={{ padding: 5 }}*/}
+          {/*  highlightClassName='bg-singlife-red-800 text-white rounded-e-lg font-light text-[12px]'*/}
+          {/*  searchWords={[`${title ?? ''}`]}*/}
+          {/*  autoEscape={true}*/}
+          {/*  textToHighlight={title ?? ''}*/}
+          {/*/>*/}
         </div>
       )}
       <div
