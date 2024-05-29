@@ -135,7 +135,7 @@ h3 {
   position: absolute;
   z-index: 5;
   left: 2vh;
-  bottom: 2vh;
+  bottom: 2.2vh;
   max-width: 50px;
   pointer-events: auto;
 }
@@ -240,7 +240,7 @@ h3 {
 
 .progress-container {
   position: absolute;
-  top: -2.3vh;
+  top: -2.2vh;
   left: 0;
   width: 100%;
   height: 80px;
@@ -256,7 +256,7 @@ h3 {
 
 .recording .progress-container, .loading .progress-container {
   opacity: 1;
-  transform: scale(1.5);
+  transform: scale(1.15);
 }
 .progress-track {
   stroke: white;
@@ -266,9 +266,6 @@ h3 {
   transition: 0.8s stroke;
   stroke: red;
 }
-
-
-
 
 #recorder-button {
   width: 100%;
@@ -298,7 +295,13 @@ h3 {
   position: absolute;
   bottom: 5vh;
   min-height: 50px;
+  border-radius: 28px;
+  padding: 12px 16px 12px 16px;
 }
 #actionButtonImg{
   display: none;
+}
+
+.top-bar{
+  background: #00000099;
 }

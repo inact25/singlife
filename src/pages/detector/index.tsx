@@ -25,7 +25,7 @@ const Index = () => {
           backgroundSize: 'cover',
           background: `url(${image ?? Question3}) center center no-repeat`,
         }}
-        className='image-screen w-screen min-h-screen flex items-center'
+        className='image-screen w-screen min-h-[100dvh] flex items-center'
       >
         <div className='w-full mt-[-5rem]'>
           {open && (

@@ -133,7 +133,7 @@ const RenderQuestion: React.FC<Props> = ({
           backgroundSize: 'cover',
           background: `url(${switchImage(index)}) center center no-repeat`,
         }}
-        className='image-screen w-screen min-h-screen flex items-center'
+        className='image-screen w-screen min-h-[100dvh] flex items-center'
       >
         <div className='w-full'>
           <div

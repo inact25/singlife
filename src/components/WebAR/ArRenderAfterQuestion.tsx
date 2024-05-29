@@ -205,15 +205,15 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           <xrextras-capture-button capture-mode='standard'></xrextras-capture-button>
           <xrextras-capture-config
             max-duration-ms='15000'
-            max-dimension='900'
+            max-dimension='1280'
             cover-image-url=''
             end-card-call-to-action='Try it at:'
-            watermark-image-url='/logo.png'
-            watermark-max-width='800'
-            watermark-max-height='10'
+            watermark-image-url='/logo_horizontal.png'
+            watermark-max-width='100'
+            watermark-max-height='7'
             watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
-            footer-image-url='/logo.png'
+            footer-image-url='/logo_horizontal.png'
           ></xrextras-capture-config>
           <xrextras-capture-preview
             action-button-share-text='Share Your Dreams'

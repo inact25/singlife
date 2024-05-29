@@ -30,7 +30,7 @@ const WrapperLayouts = ({
   )
 }
   return (
-      <div className='flex min-h-screen justify-center items-center'>
+      <div className='flex min-h-[100dvh] justify-center items-center'>
         <div>
           <div className='min-h-[680px] min-w-[680px] flex justify-center items-center'
                style={{background: `url(${mainImg})`}}>
