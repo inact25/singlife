@@ -165,7 +165,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           />
           <div
             id='promptText'
-            className='relative z-10 min-h-[100dph] flex justify-center items-center px-5'
+            className='relative z-10 min-h-[100dvh] flex justify-center items-center px-5'
           >
             <MediaPopup type='tap' className='w-full' />
           </div>

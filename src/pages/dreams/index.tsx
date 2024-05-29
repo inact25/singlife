@@ -49,7 +49,7 @@ const Dream = () => {
   return (
     <>
       <WrapperLayouts isFull={true}>
-        <div className='min-h-[100dph]'>
+        <div className='min-h-[100dvh]'>
           <div
             className='my-5 overflow-y-auto max-h-[95vh] p-2 pb-16'
             ref={scrollRef}

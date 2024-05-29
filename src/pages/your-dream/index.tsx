@@ -65,7 +65,7 @@ const YourDream = () => {
             }}
           />
         </div>
-        <div className='w-screen min-h-[100dph] flex items-center'>
+        <div className='w-screen min-h-[100dvh] flex items-center'>
           <div className='w-full'>
             <WrapperLayouts allDevice>
               {showPopup && (
