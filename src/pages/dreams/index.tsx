@@ -3,10 +3,10 @@ import Buttonicon from '@components/atom/buttonicon'
 import Gallery from '@components/atom/gallery'
 import Card from '@components/atom/card'
 import useDream from '@services/api/dream'
-import {useEffect, useRef} from 'react'
-import {arrayEven, arrayOdd, exceptText} from '@utils/helper.ts'
-import {useNavigate} from 'react-router-dom'
-import {useScroll, useScrolling, useWindowSize} from 'react-use'
+import { useEffect, useRef } from 'react'
+import { arrayEven, arrayOdd, exceptText } from '@utils/helper.ts'
+import { useNavigate } from 'react-router-dom'
+import { useScroll, useScrolling, useWindowSize } from 'react-use'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import placeholder from '@assets/anim/imageplaceholder.gif'
 
@@ -21,8 +21,8 @@ const Dream = () => {
     navigate('/')
   }
   const handleYourDream = (id: number, image: string) => {
-      sessionStorage.setItem('image', image)
-      return window.open(`/tracking/explore-${id}`, "_self")
+    sessionStorage.setItem('image', image)
+    return window.open(`/tracking/explore-${id}`, '_self')
   }
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const Dream = () => {
   return (
     <>
       <WrapperLayouts isFull={true}>
-        <div className='min-h-screen'>
+        <div className='min-h-[100dph]'>
           <div
             className='my-5 overflow-y-auto max-h-[95vh] p-2 pb-16'
             ref={scrollRef}
@@ -72,7 +72,7 @@ const Dream = () => {
                 {arrayEven(dream_v1.data)?.map((item) => (
                   <div key={item.id}>
                     <Gallery
-                        onClick={() => handleYourDream(item.id, item.image)}
+                      onClick={() => handleYourDream(item.id, item.image)}
                       description={exceptText(item.description, 39)}
                       image={item.thumbnail || placeholder}
                     />
@@ -87,7 +87,8 @@ const Dream = () => {
                       title={dream_v1.singleData?.title}
                       onClick={() =>
                         handleYourDream(
-                          parseInt(dream_v1.singleData?.id ?? '0'), dream_v1.singleData?.image || ''
+                          parseInt(dream_v1.singleData?.id ?? '0'),
+                          dream_v1.singleData?.image || '',
                         )
                       }
                       description={exceptText(

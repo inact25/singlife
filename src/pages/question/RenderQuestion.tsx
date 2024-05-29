@@ -15,6 +15,8 @@ import { ListQuiz, QuizSubmitItem } from '@services/api/quiz/type'
 import htmlParser from 'html-react-parser'
 import { motion } from 'framer-motion'
 import useQuiz from '@services/api/quiz'
+import womenLeader from '@assets/lottie/Woman on ladder.json'
+import { Player } from '@lottiefiles/react-lottie-player'
 
 type Props = {
   selected: number
@@ -93,6 +95,7 @@ const RenderQuestion: React.FC<Props> = ({
   const isChecked = (id: number) => {
     return value?.answer_id === id
   }
+
   useEffect(() => {
     if (record?.question_id) {
       const timer = setTimeout(() => {
@@ -139,16 +142,30 @@ const RenderQuestion: React.FC<Props> = ({
           <div
             className={` ${index === 0 ? 'mt-[-15rem]' : index === 1 ? 'absolute -top-10 right-0' : 'absolute top-16 right-0'}`}
           >
-            <motion.img
-              transition={{
-                y: motionImageConfig.transition.y,
-              }}
-              animate={{
-                y: motionImageConfig.animate.y,
-              }}
-              src={index === 0 ? object1 : index === 1 ? object2 : object3}
-              alt={''}
-            />
+            {index === 2 && (
+              <div>
+                <Player
+                  autoplay={true}
+                  loop={true}
+                  controls={false}
+                  src={womenLeader}
+                  style={{ height: '100%', width: '80vw', marginLeft: 'auto' }}
+                />
+              </div>
+            )}
+            {index !== 2 && (
+              <motion.img
+                transition={{
+                  y: motionImageConfig.transition.y,
+                }}
+                animate={{
+                  y: motionImageConfig.animate.y,
+                }}
+                src={index === 0 ? object1 : index === 1 ? object2 : object3}
+                alt={''}
+                style={{ maxWidth: '80vw' }}
+              />
+            )}
           </div>
           <div
             className={`content absolute bottom-0 text-start bg-white rounded-t-[32px] w-full`}

@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
 // @ts-nocheck
 import useAframe from '@hooks/useAframe.ts'
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import AFrameScene from '@components/libs/AFrameScene'
 import capture from '@assets/capture.svg'
 import portalSpin from '@assets/glbs/portal-new.glb'
 import portalBox from '@assets/glbs/box.glb'
-import { motion } from 'framer-motion'
+import {motion} from 'framer-motion'
 import imgReward from '@assets/svgs/rewarded.svg'
 import {
   portalCameraComponent,
@@ -14,25 +14,20 @@ import {
   spinComponent,
   tapToPlacePortalComponent,
 } from '@components/WebAR/partials/portal-component.ts'
-import { responsiveImmersiveComponent } from '@components/WebAR/partials/immersive-component.ts'
+import {responsiveImmersiveComponent} from '@components/WebAR/partials/immersive-component.ts'
 import MediaPopup from '@components/atom/mediapop'
 
 // portal video
 import portalVideo from '@assets/portal-video.mp4'
-import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
+import {bottomPopup} from '@utils/bottomPopup/bottomPopup.ts'
 import Popup from '@components/molecules/popup'
 import Button from '@components/atom/button'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Swal from 'sweetalert2'
-import { useParams } from 'react-router-dom'
-import { FaLink } from 'react-icons/fa6'
-import { HiGiftTop } from 'react-icons/hi2'
-import {
-  FacebookIcon,
-  FacebookShareButton,
-  WhatsappIcon,
-  WhatsappShareButton,
-} from 'react-share'
+import {useParams} from 'react-router-dom'
+import {FaLink} from 'react-icons/fa6'
+import {HiGiftTop} from 'react-icons/hi2'
+import {FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton,} from 'react-share'
 
 type Props = {
   params: any
@@ -170,7 +165,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           />
           <div
             id='promptText'
-            className='relative z-10 min-h-screen flex justify-center items-center px-5'
+            className='relative z-10 min-h-[100dph] flex justify-center items-center px-5'
           >
             <MediaPopup type='tap' className='w-full' />
           </div>
