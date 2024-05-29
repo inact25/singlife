@@ -88,10 +88,10 @@ const Introduction = () => {
                   <img src={Freedom} alt={'freedom'} />
                 </div>
                 <div className='action'>
-                  <div className='mb-3'>
+                  <div className='mb-[4px]'>
                     <Button
                       onClick={handleGetStarted}
-                      title='Get Started'
+                      title='Get started'
                       type='primary'
                     />
                   </div>
@@ -124,9 +124,9 @@ const Introduction = () => {
                   {/*    <hr />*/}
                   {/*  </span>*/}
                   {/*</div>*/}
-                  <div className='mb-3'>
+                  <div className='mt-[4px]'>
                     <Buttonimage
-                      title={'Explore Dream Gallery'}
+                      title={'Explore dream gallery'}
                       type='secondary'
                       onClick={handleExploreDreamGallery}
                       images={dream_v1.latestDream.map((item) => item.image)}
