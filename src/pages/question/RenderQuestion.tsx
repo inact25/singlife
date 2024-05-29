@@ -97,7 +97,7 @@ const RenderQuestion: React.FC<Props> = ({
     if (record?.question_id) {
       const timer = setTimeout(() => {
         setIsActive(true)
-      }, 2000)
+      }, 2500)
       return () => clearTimeout(timer)
     }
   }, [record?.question_id])
@@ -154,7 +154,9 @@ const RenderQuestion: React.FC<Props> = ({
             className={`content absolute bottom-0 text-start bg-white rounded-t-[32px] w-full`}
           >
             <WrapperLayouts>
-              <h2 className={`title text-black w-[300px]`}>
+              <h2
+                className={`title text-black w-[300px] ${isActive ? 'pb-[24px] ' : 'pb-0'}`}
+              >
                 {htmlParser(record.question)}
                 {!isActive && (
                   <div className='w-full m-auto my-5 overflow-hidden'>

@@ -51,35 +51,35 @@ const Dream = () => {
       <WrapperLayouts isFull={true}>
         <div className='min-h-screen'>
           <div
-            className='my-5 overflow-y-auto max-h-[95vh] p-2 pb-16'
+            className='mb-5 overflow-y-auto max-h-[100dvh] p-[10px] pb-16'
             ref={scrollRef}
           >
-            <div className='grid grid-cols-12 justify-between pt-5'>
+            <div className='grid grid-cols-12 justify-between '>
               <div className='col-span-4 text-left'>
                 <div className='top-5 rounded-full left-5 absolute z-50 shadow-md'>
                   <Buttonicon icon={back} onClick={handleBack} />
                 </div>
               </div>
               <div className='col-span-8'>
-                <h2 className='text-right text-black'>
+                <h2 className='text-right text-black pr-[14px]'>
                   Discover <br /> what others are dreaming about
                 </h2>
               </div>
             </div>
-            <div className='grid items-start grid-cols-2 gap-4 mt-10'>
-              <div className='grid gap-4'>
+            <div className='grid items-start grid-cols-2 gap-[8px] mt-[24px]'>
+              <div className='grid gap-[8px]'>
                 <Card title={'Dreams generated'} count={dream_v1.totalDream} />
                 {arrayEven(dream_v1.data)?.map((item) => (
                   <div key={item.id}>
                     <Gallery
-                        onClick={() => handleYourDream(item.id, item.image)}
-                      description={exceptText(item.description, 39)}
+                      onClick={() => handleYourDream(item.id, item.image)}
+                      description={exceptText(item.description, 35, 2)}
                       image={item.thumbnail || placeholder}
                     />
                   </div>
                 ))}
               </div>
-              <div className='grid gap-4'>
+              <div className='grid gap-[8px]'>
                 {dream_v1.singleData?.title && (
                   <div key='influencer'>
                     <Gallery
@@ -102,7 +102,7 @@ const Dream = () => {
                   <div key={item.id}>
                     <Gallery
                       onClick={() => handleYourDream(item.id, item.image)}
-                      description={exceptText(item.description, 39)}
+                      description={exceptText(item.description, 35, 2)}
                       image={item.thumbnail}
                     />
                   </div>

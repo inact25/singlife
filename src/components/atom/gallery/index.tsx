@@ -45,7 +45,7 @@ const Index: React.FC<Props> = ({
         </div>
       )}
       <div
-        className={`font-medium backdrop-blur-md text-start text-[14px] absolute bottom-0 px-3.5 ${!isActive ? 'bg-white/70 text-black ' : 'bg-singlife-red-800 text-white'}  w-full rounded-b-xl py-5`}
+        className={`font-medium backdrop-blur-md text-start text-[14px]  p-[16px] absolute bottom-0  ${!isActive ? 'bg-white/70 text-black ' : 'bg-singlife-red-800 text-white'}  w-full rounded-b-xl `}
       >
         {description}
       </div>
