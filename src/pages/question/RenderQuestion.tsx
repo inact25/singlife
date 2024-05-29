@@ -97,7 +97,7 @@ const RenderQuestion: React.FC<Props> = ({
     if (record?.question_id) {
       const timer = setTimeout(() => {
         setIsActive(true)
-      }, 2500)
+      }, 2000)
       return () => clearTimeout(timer)
     }
   }, [record?.question_id])
@@ -167,7 +167,7 @@ const RenderQuestion: React.FC<Props> = ({
                 )}
               </h2>
               <motion.div
-                className='content pt-[24px]'
+                className='content'
                 initial={'closed'}
                 animate={isActive ? 'open' : 'closed'}
                 variants={motionConfig}
