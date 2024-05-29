@@ -100,7 +100,7 @@ const RenderQuestion: React.FC<Props> = ({
     if (record?.question_id) {
       const timer = setTimeout(() => {
         setIsActive(true)
-      }, 2500)
+      }, 2000)
       return () => clearTimeout(timer)
     }
   }, [record?.question_id])

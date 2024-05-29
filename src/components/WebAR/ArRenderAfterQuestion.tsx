@@ -205,7 +205,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             end-card-call-to-action='Try it at:'
             watermark-image-url='/logo_horizontal.png'
             watermark-max-width='100'
-            watermark-max-height='7'
+            watermark-max-height='12'
             watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
             footer-image-url='/logo_horizontal.png'
@@ -253,28 +253,16 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               <a-ring
                 id='portalHiderRing'
                 radius-inner='0.001'
-                radius-outer='100'
-                scale='1 1 1'
-                position='0 7.5 -0.2'
+                radius-outer='120'
+                scale='1.5 1.5 0'
+                position='0 9.5 -5'
                 xrextras-hider-material
               ></a-ring>
             </a-entity>
 
             <a-entity id='portal-wall'>
-              <a-circle
-                radius='5.2'
-                rotation='0 180 0'
-                position='0 7.5 0'
-                scale='0.8 0.8 0'
-                xrextras-hider-material
-              ></a-circle>
-              <a-circle
-                radius='5.2'
-                rotation='0 180 0'
-                position='0 7.5 0.25'
-                scale='0.8 0.8 0'
-                xrextras-hider-material
-              ></a-circle>
+            <a-circle radius="5.2" rotation="0 180 0" position="0 7.5 0" scale="0.8 0.8 0" xrextras-hider-material></a-circle>
+            <a-circle radius="5.2" rotation="0 180 0" position="0 7.5 0.25" scale="0.8 0.8 0" xrextras-hider-material></a-circle>
             </a-entity>
           </xrextras-opaque-background>
 
@@ -345,8 +333,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             reflections='type: static'
             shadow='receive: false'
             visible='false'
-            position='0 0.5 -0.2'
-            scale='1.75 1.75 1.75'
+            position='0 -4 -4.5'
+            scale='3 3 3'
           ></a-entity>
           <a-entity
             id='portalBox'
@@ -354,13 +342,13 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             reflections='type: static'
             shadow='receive: false'
             visible='false'
-            position='0 0.4 -0.1'
-            scale='1.6 1.6 1.6'
+            position='0 0 -0.8'
+            scale='1.2 1.2 1.2'
           ></a-entity>
 
           <a-entity
             id='portalVideo'
-            material='shader: chromakey; src: #portal-video; color: 0 0 0; blending: additive; side: front'
+            material='shader: chromakey;  color: 0 0 0; blending: additive; side: front'
             geometry='primitive: plane; height: 1; width: 1;'
             scale='0.001 0.001 0.001'
           ></a-entity>
