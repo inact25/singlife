@@ -65,7 +65,7 @@ const Introduction = () => {
       ) : (
         <WrapperLayouts isFull={true}>
           <div
-            className='overflow-hidden min-h-screen'
+            className='overflow-hidden min-h-[100dvh]'
             style={{
               background: `url(${background}) top center no-repeat`,
               backgroundSize: 'cover',

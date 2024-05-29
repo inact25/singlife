@@ -97,7 +97,7 @@ const RenderQuestion: React.FC<Props> = ({
     if (record?.question_id) {
       const timer = setTimeout(() => {
         setIsActive(true)
-      }, 1000)
+      }, 2500)
       return () => clearTimeout(timer)
     }
   }, [record?.question_id])
@@ -157,7 +157,7 @@ const RenderQuestion: React.FC<Props> = ({
               <h2 className={`title mt-5 text-black w-[300px]`}>
                 {htmlParser(record.question)}
                 {!isActive && (
-                  <div className='w-full m-auto my-5'>
+                  <div className='w-full m-auto my-5 overflow-hidden'>
                     <Slidedot
                       position={'center'}
                       color={colorPicker(index)}
