@@ -1,34 +1,38 @@
 /* eslint-disable prettier/prettier */
 // @ts-nocheck
 import useAframe from '@hooks/useAframe.ts'
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import AFrameScene from '@components/libs/AFrameScene'
 import capture from '@assets/capture.svg'
 import portalSpin from '@assets/glbs/portal-new.glb'
 import portalBox from '@assets/glbs/box.glb'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import imgReward from '@assets/svgs/rewarded.svg'
-
 import {
   portalCameraComponent,
-  tapToPlacePortalComponent,
   promptFlowComponent,
   spinComponent,
+  tapToPlacePortalComponent,
 } from '@components/WebAR/partials/portal-component.ts'
-import {responsiveImmersiveComponent} from '@components/WebAR/partials/immersive-component.ts'
+import { responsiveImmersiveComponent } from '@components/WebAR/partials/immersive-component.ts'
 import MediaPopup from '@components/atom/mediapop'
 
 // portal video
 import portalVideo from '@assets/portal-video.mp4'
-import {bottomPopup} from '@utils/bottomPopup/bottomPopup.ts'
+import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
 import Popup from '@components/molecules/popup'
 import Button from '@components/atom/button'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Swal from 'sweetalert2'
-import {useParams} from 'react-router-dom'
-import {FaLink} from 'react-icons/fa6'
-import {HiGiftTop} from 'react-icons/hi2'
-import {FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton,} from 'react-share'
+import { useParams } from 'react-router-dom'
+import { FaLink } from 'react-icons/fa6'
+import { HiGiftTop } from 'react-icons/hi2'
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from 'react-share'
 
 type Props = {
   params: any
@@ -104,8 +108,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
     aframe.register('tap-to-place-portal', tapToPlacePortalComponent)
 
     aframe.register('responsive-immersive', responsiveImmersiveComponent)
-    
-  
 
     aframe.register('auto-play-video', {
       schema: {
@@ -176,7 +178,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         <AFrameScene
           responsive-immersive
           custom-capture-btn
-          renderer="colorManagement: true"
+          renderer='colorManagement: true'
           xrweb='allowedDevices: any; disableDefaultEnvironment: true;'
           reality-ready
         >
@@ -211,7 +213,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             watermark-max-height='10'
             watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
-            footer-image-url="/logo.png"
+            footer-image-url='/logo.png'
           ></xrextras-capture-config>
           <xrextras-capture-preview
             action-button-share-text='Share Your Dreams'
@@ -282,8 +284,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           </xrextras-opaque-background>
 
           <a-entity
-  
-          light="
+            light='
           type: directional;
           intensity: 1;
           castShadow: true;
@@ -291,12 +292,12 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           shadowMapWidth: 1024;
           shadowCameraTop: 20;
           shadowBias: 0;
-          target: #PortalRim;"
+          target: #PortalRim;'
             xrextras-attach='target: portalRim; offset: 45 0 45'
-            position="3 90 3"
+            position='3 90 3'
           ></a-entity>
-  
-          <a-light type='ambient' intensity= '1'  ></a-light>
+
+          <a-light type='ambient' intensity='1'></a-light>
 
           <a-entity id='portal-contents'>
             {/* <a-entity
@@ -364,7 +365,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
 
           <a-entity
             id='portalVideo'
-            
             material='shader: chromakey; src: #portal-video; color: 0 0 0; blending: additive; side: front'
             geometry='primitive: plane; height: 1; width: 1;'
             scale='0.001 0.001 0.001'
@@ -378,7 +378,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             rotation='-90 0 0'
             scale='0.001 0.001 0.001'
           ></a-circle>
-   
         </AFrameScene>
       </>
       <WrapperLayouts isFull>
