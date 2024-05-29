@@ -456,7 +456,7 @@ const Rewarded = () => {
       <div className='caption mb-8'>
         <p className='note'>Get $20 voucher when you sign up</p>
       </div>
-      <div className='action-button flex gap-5'>
+      <div className='action-button flex gap-4'>
         <Button
           title='Learn more'
           onClick={() =>
