@@ -1,13 +1,11 @@
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
-import background from '@assets/background/Intro.jpg'
+import background from '@assets/svgs/homepage.svg'
 import Button from '@components/atom/button'
 import Buttonimage from '@components/atom/buttonimage'
 import { useNavigate } from 'react-router-dom'
 import useDream from '@services/api/dream'
 import { useEffect, useState } from 'react'
 import useResponsive from '../../hooks/useResponsive.ts'
-import Freedom from '@assets/svgs/Your Financial Freedom Dream.svg'
-import Envision from '@assets/svgs/Envision.svg'
 import Splash from '@components/atom/splash'
 
 const Introduction = () => {
@@ -16,8 +14,8 @@ const Introduction = () => {
   const [isSplash, setIsSplash] = useState(true)
   const classList = {
     sm: {
-      image: 'w-full absolute',
-      footer: 'fixed inset-x-0 bottom-0',
+      image: 'w-full z',
+      footer: 'relative inset-x-0 bottom-0',
     },
     md: {
       image: 'w-full',
@@ -33,7 +31,7 @@ const Introduction = () => {
     },
     xs: {
       image: 'w-full absolute',
-      footer: 'fixed inset-x-0 bottom-0',
+      footer: 'relative inset-x-0 bottom-0',
     },
   }
   const dream_v1 = useDream()
@@ -64,7 +62,7 @@ const Introduction = () => {
         <Splash />
       ) : (
         <WrapperLayouts isFull={true}>
-          <div
+          {/* <div
             className='overflow-hidden min-h-[100dvh]'
             style={{
               width: '1000dvw',
@@ -73,23 +71,10 @@ const Introduction = () => {
               backgroundRepeat: 'no-repeat',
               backgroundSize: '100dvw',
             }}
-          >
-            <WrapperLayouts>
-              <div className='head w-full max-h-[15vh] pt-5 '>
-                <div className='text-left text-black absolute'>
-                  <div className='tagline mt-4'>
-                    <div className='tagline mb-5 relative start-0'>
-                      <img src={Envision} alt={'freedom'} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </WrapperLayouts>
+          > */}
+          <img src={background} className='w-[100dvw] h-[80dvh]'/>
             <WrapperLayouts className={classList[breakpoint ?? 'sm'].footer}>
               <div className='footer'>
-                <div className='tagline mb-5 relative end-0 flex justify-end'>
-                  <img src={Freedom} alt={'freedom'} />
-                </div>
                 <div className='action flex flex-col gap-y-[8px]'>
                   <div>
                     <Button
@@ -138,7 +123,7 @@ const Introduction = () => {
                 </div>
               </div>
             </WrapperLayouts>
-          </div>
+          {/* </div> */}
         </WrapperLayouts>
       )}
     </div>

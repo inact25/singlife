@@ -26,7 +26,7 @@ const WrapperLayouts = ({
       allDevice
   ) {
   return (
-    <div className={`w-full  ${!isFull && 'p-[24px]'} ${className}`}>{children}</div>
+    <div className={`w-full  ${!isFull && 'px-[24px] py-[0]'} ${className}`}>{children}</div>
   )
 }
   return (
