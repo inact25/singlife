@@ -306,3 +306,13 @@ h3 {
 .top-bar{
   background: #00000099;
 }
+
+.custom-viewport{
+  height: 85dvh;
+}
+
+@media screen and (max-height: 650px){
+  .custom-viewport{
+    height: 80dvh;
+  } 
+}
