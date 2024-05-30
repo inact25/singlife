@@ -165,7 +165,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           />
           <div
             id='promptText'
-            className='relative z-10 min-h-[100dvh] flex justify-center items-center px-5'
+            className='relative z-10 min-h-[100dvh] flex justify-center items-center mt-[-10px] px-5'
           >
             <MediaPopup type='tap' className='w-full' />
           </div>
@@ -261,8 +261,20 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             </a-entity>
 
             <a-entity id='portal-wall'>
-            <a-circle radius="5.2" rotation="0 180 0" position="0 7.5 0" scale="0.8 0.8 0" xrextras-hider-material></a-circle>
-            <a-circle radius="5.2" rotation="0 180 0" position="0 7.5 0.25" scale="0.8 0.8 0" xrextras-hider-material></a-circle>
+              <a-circle
+                radius='5.2'
+                rotation='0 180 0'
+                position='0 7.5 0'
+                scale='0.8 0.8 0'
+                xrextras-hider-material
+              ></a-circle>
+              <a-circle
+                radius='5.2'
+                rotation='0 180 0'
+                position='0 7.5 0.25'
+                scale='0.8 0.8 0'
+                xrextras-hider-material
+              ></a-circle>
             </a-entity>
           </xrextras-opaque-background>
 
