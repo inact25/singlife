@@ -67,8 +67,11 @@ const Introduction = () => {
           <div
             className='overflow-hidden min-h-[100dvh]'
             style={{
-              background: `url(${background}) top center no-repeat`,
-              backgroundSize: 'cover',
+              width: '1000dvw',
+              position: 'fixed',
+              backgroundImage: `url(${background})`,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: '100dvw',
             }}
           >
             <WrapperLayouts>
