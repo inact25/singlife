@@ -124,9 +124,11 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   useEffect(() => {
     const btn = document.querySelector('.capture-icon')
     const progressbtn = document.querySelector('.progress-container')
+
     if (reward === 2 && !rewardShowUp) {
       if (btn) btn.style = 'display:block;'
       if (progressbtn) progressbtn.style = 'display:block;'
+
       setTimeout(
         () =>
           bottomPopup({
@@ -147,8 +149,34 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   }, [reward])
 
   useEffect(() => {
+    setInterval(() => {
+      const btnRecord = document.querySelector('.recorder-container')
+      const preview = document.querySelector('#previewContainer')
+      if (preview.className !== '') {
+        btnRecord.style = 'display:none;'
+      } else {
+        btnRecord.style = 'display:block;'
+      }
+    }, [200])
+  }, [])
+
+  useEffect(() => {
     console.log('window?.XR8', window?.XR8)
   }, [window?.XR8])
+
+  useEffect(() => {
+    const btnRecord = document.querySelector('.recorder-container')
+    const preview = document.querySelector('#videoPreview, #imagePreview')
+    // btnRecord.style.display = 'none !important'
+    //
+    // if (btnRecord && preview) {
+    //   if (!!preview.src.length) {
+    //   } else {
+    //     btnRecord.style.display = 'block !important'
+    //   }
+    // }
+  }, [])
+
   return (
     <>
       <>
