@@ -4,8 +4,9 @@ import question1 from '@assets/background/Question1.jpg'
 import question2 from '@assets/background/Question2.jpg'
 import question3 from '@assets/background/Question3.jpg'
 import object1 from '@assets/svgs/object1.svg'
-import object2 from '@assets/svgs/object2.svg'
-import object3 from '@assets/svgs/object3.svg'
+import object2 from '@assets/svgs/women-balloon.svg'
+import object3 from '@assets/svgs/man-balloon.svg'
+import object4 from '@assets/svgs/object3.svg'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Slidedot from '@components/atom/slidedot'
 import Radio from '@components/atom/radio'
@@ -140,7 +141,7 @@ const RenderQuestion: React.FC<Props> = ({
       >
         <div className='w-full'>
           <div
-            className={` ${index === 0 ? 'mt-[-15rem]' : index === 1 ? 'absolute -top-10 right-0' : 'absolute top-16 right-0'}`}
+            className={` ${index === 0 ? 'mt-[-15rem]' : index === 1 ? 'absolute -top-10 right-0' : 'absolute women-ladder right-0'}`}
           >
             {index === 2 && (
               <div>
@@ -149,7 +150,7 @@ const RenderQuestion: React.FC<Props> = ({
                   loop={true}
                   controls={false}
                   src={womenLeader}
-                  style={{ height: '100%', width: '80vw', marginLeft: 'auto' }}
+                  style={{ height: '100%', width: '100vw', marginLeft: 'auto' }}
                 />
               </div>
             )}
@@ -161,9 +162,15 @@ const RenderQuestion: React.FC<Props> = ({
                 animate={{
                   y: motionImageConfig.animate.y,
                 }}
-                src={index === 0 ? object1 : index === 1 ? object2 : object3}
+                src={
+                  index === 0
+                    ? object1
+                    : index === 1
+                      ? object3
+                      : object4
+                }
                 alt={''}
-                style={{ maxWidth: '80vw' }}
+                style={{ maxWidth: '100vw' }}
               />
             )}
           </div>
@@ -172,11 +179,11 @@ const RenderQuestion: React.FC<Props> = ({
           >
             <WrapperLayouts>
               <h2
-                className={`title text-black w-[300px] ${isActive ? 'pb-[24px] ' : 'pb-0'}`}
+                className={`title text-black w-[300px] ${isActive ? 'custom-popup' : 'pb-0'}`}
               >
                 {htmlParser(record.question)}
                 {!isActive && (
-                  <div className='w-full m-auto my-5 overflow-hidden'>
+                  <div className='w-full custom-padding-quiz overflow-hidden'>
                     <Slidedot
                       position={'center'}
                       color={colorPicker(index)}
