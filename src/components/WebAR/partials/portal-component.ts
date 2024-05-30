@@ -86,13 +86,17 @@ const tapToPlacePortalComponent = {
           clampWhenFinished: true,
           timeScale: 2,
         })
+        portalRim.setAttribute('position', '0 -2 -2')
+        setTimeout(() => {
+          portalRim.setAttribute('position', '0 -2 -5')
+        }, 3500)
         setTimeout(() => {
           portalHiderRing.setAttribute('animation__1', {
             property: 'radius-inner',
-            dur: 2000,
+            dur: 500,
             from: '0.001',
             to: '3.5',
-            easing: 'easeOutElastic',
+            easing: 'linear',
           })
         }, 3000)
       }, 3000) // Jeda 3000 milidetik (3 detik)

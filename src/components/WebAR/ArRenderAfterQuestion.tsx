@@ -254,7 +254,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             <a-entity id='hider-walls'>
               <a-box
                 scale='100 1 100'
-                position='0 -1 49'
+                position='0 -1 42'
                 xrextras-hider-material
               ></a-box>
               <a-box
@@ -264,7 +264,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               ></a-box>
               <a-box
                 scale='100 1 100'
-                position='0 100 49'
+                position='0 100 50'
                 xrextras-hider-material
               ></a-box>
               <a-box
@@ -274,7 +274,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               ></a-box>
               <a-box
                 scale='1 100 100'
-                position='30 50 50'
+                position='30 0 50'
                 xrextras-hider-material
               ></a-box>
 
@@ -282,8 +282,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
                 id='portalHiderRing'
                 radius-inner='0.001'
                 radius-outer='120'
-                scale='1.5 1.5 0'
-                position='0 9.5 -5'
+                scale='1.2 1.2 0'
+                position='0 9 -5'
                 xrextras-hider-material
               ></a-ring>
             </a-entity>
@@ -323,47 +323,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           <a-light type='ambient' intensity='1'></a-light>
 
           <a-entity id='portal-contents'>
-            {/* <a-entity
-            gltf-model={`url(${moonGlb})`}
-            rotation='0 90 0'
-            position='8 -0.5 -5'
-            scale='0.5 0.5 0.5'
-            shadow='cast: false'
-          ></a-entity>
-
-          <a-entity
-            gltf-model={`url(${platformGlb})`}
-            rotation='0 -90 0'
-            reflections='type: static'
-            position='-0.4 0 -10'
-            scale='9 9 9'
-            shadow='receive: false'
-          ></a-entity>
-
-          <a-plane
-            material='src: #satellite-img; transparent: true; roughness: 0.8; metalness: 0'
-            rotation='0 30 0'
-            position='-200 150 -250'
-            scale='120 80 1'
-            shadow='receive: false'
-          ></a-plane> */}
-
-            {/* <a-entity
-            gltf-model={`url(${flagGlb})`}
-            rotation='0 30 0'
-            reflections='type: static'
-            position='-14 0 -43'
-            scale='5 5 5'
-            shadow='receive: false'
-          ></a-entity>
-
-          <a-entity
-            gltf-model={`url(${rocksGlb})`}
-            reflections='type: static'
-            position='-14 -1 -42'
-            scale='0.75 0.25 0.75'
-            shadow='receive: false'
-          ></a-entity> */}
             <a-sky src='#skybox-img' rotation='0 7 0'></a-sky>
           </a-entity>
 
@@ -372,8 +331,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             gltf-model={`url(${portalSpin})`}
             reflections='type: static'
             shadow='receive: false'
-            visible='false'
-            position='0 0.5 -2'
+            visible='false' 
             scale='2.5 2.5 2.5'
           ></a-entity>
           <a-entity
@@ -382,7 +340,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             reflections='type: static'
             shadow='receive: false'
             visible='false'
-            position='0 0 -0.8'
+            position='0 0 0'
             scale='1.2 1.2 1.2'
           ></a-entity>
 
