@@ -282,8 +282,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
                 id='portalHiderRing'
                 radius-inner='0.001'
                 radius-outer='120'
-                scale='1.2 1.2 0'
-                position='0 9 -5'
+                scale='1.3 1.3 0'
+                position='0 11.5 -5'
                 xrextras-hider-material
               ></a-ring>
             </a-entity>
@@ -332,7 +332,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             reflections='type: static'
             shadow='receive: false'
             visible='false' 
-            scale='2.5 2.5 2.5'
+            scale='3 3 3'
           ></a-entity>
           <a-entity
             id='portalBox'
