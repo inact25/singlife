@@ -5,7 +5,6 @@ import Buttonimage from '@components/atom/buttonimage'
 import { useNavigate } from 'react-router-dom'
 import useDream from '@services/api/dream'
 import { useEffect, useState } from 'react'
-import useResponsive from '../../hooks/useResponsive.ts'
 import Splash from '@components/atom/splash'
 
 const Introduction = () => {
