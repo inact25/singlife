@@ -55,7 +55,7 @@ const Index = () => {
 const Before = () => {
   const params = useParams()
   const onDenied = () => {
-    bottomPopup({ title: 'Permission Access Denied', desc: 'Okey' })
+    bottomPopup({ title: 'Permission access denied', desc: 'Okay' })
   }
   const onGranted = () => {
     if (params.purpose?.split('-')[0] === 'explore') {
