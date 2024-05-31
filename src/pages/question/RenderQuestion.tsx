@@ -11,13 +11,13 @@ import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Slidedot from '@components/atom/slidedot'
 import Radio from '@components/atom/radio'
 import Button from '@components/atom/button'
-import React, { useEffect, useState } from 'react'
-import { ListQuiz, QuizSubmitItem } from '@services/api/quiz/type'
+import React, {useEffect, useState} from 'react'
+import {ListQuiz, QuizSubmitItem} from '@services/api/quiz/type'
 import htmlParser from 'html-react-parser'
-import { motion } from 'framer-motion'
+import {motion} from 'framer-motion'
 import useQuiz from '@services/api/quiz'
 import womenLeader from '@assets/lottie/Woman on ladder.json'
-import { Player } from '@lottiefiles/react-lottie-player'
+import {Player} from '@lottiefiles/react-lottie-player'
 
 type Props = {
   selected: number
@@ -154,7 +154,35 @@ const RenderQuestion: React.FC<Props> = ({
                 />
               </div>
             )}
-            {index !== 2 && (
+            {index === 1 && (
+                <div className={'flex justify-between w-[100dvw]  gap-10'}>
+                  <div style={{marginTop:'10rem'}}>
+                    <motion.img
+                        transition={{
+                          y: motionImageConfig.transition.y,
+                        }}
+                        animate={{
+                          y: motionImageConfig.animate.y,
+                        }}
+                        src={object2}
+                        alt={''}
+                        style={{maxWidth: '50vw'}}
+                    />
+                  </div>
+                  <motion.img
+                      transition={{
+                        y: motionImageConfig.transition.y,
+                      }}
+                      animate={{
+                        y: motionImageConfig.animate.y,
+                      }}
+                      src={object3}
+                      alt={''}
+                      style={{maxWidth: '50vw'}}
+                  />
+                </div>
+            )}
+            {index !== 2 && index !== 1 && (
               <motion.img
                 transition={{
                   y: motionImageConfig.transition.y,
