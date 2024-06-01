@@ -231,11 +231,12 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             max-dimension='1280'
             cover-image-url=''
             end-card-call-to-action='Try it at:'
+            watermark-image-url='/logo_horizontal.png'
             watermark-max-width='100'
             watermark-max-height='12'
             watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
-            footer-image-url='/logo_horizontal.png'
+            
           ></xrextras-capture-config>
           <xrextras-capture-preview
             action-button-share-text='Share Your Dreams'
