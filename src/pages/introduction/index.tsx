@@ -33,7 +33,7 @@ const Introduction = () => {
 
   return (
     <div>
-      {isSplash ? (
+      {!isSplash ? (
         <Splash />
       ) : (
         <WrapperLayouts isFull={true}>
