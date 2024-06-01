@@ -231,7 +231,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             max-dimension='1280'
             cover-image-url=''
             end-card-call-to-action='Try it at:'
-            watermark-image-url='/black-watermark.png'
             watermark-max-width='100'
             watermark-max-height='12'
             watermark-location='bottomMiddle'
