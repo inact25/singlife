@@ -233,7 +233,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             end-card-call-to-action='Try it at:'
             watermark-max-width='100'
             watermark-max-height='12'
-            watermark-image-url="/watermark-1.png"
+            watermark-image-url="/frame1.png"
             watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
             footer-image-url='/logo_horizontal.png'
@@ -282,8 +282,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
                 id='portalHiderRing'
                 radius-inner='0.001'
                 radius-outer='120'
-                scale='1.7 1.7 0'
-                position='0 13 -5'
+                scale='1.3 1.3 0'
+                position='0 7 -5'
                 xrextras-hider-material
               ></a-ring>
             </a-entity>
@@ -331,8 +331,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             gltf-model={`url(${portalSpin})`}
             reflections='type: static'
             shadow='receive: false'
-            visible='false' 
-            scale='4 4 4'
+            visible='false'
+            scale='2 2 2'
           ></a-entity>
           <a-entity
             id='portalBox'
