@@ -231,9 +231,9 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             max-dimension='1280'
             cover-image-url=''
             end-card-call-to-action='Try it at:'
-            
             watermark-max-width='100'
             watermark-max-height='12'
+            watermark-image-url="/watermark-1.png"
             watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
             footer-image-url='/logo_horizontal.png'
@@ -332,7 +332,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             reflections='type: static'
             shadow='receive: false'
             visible='false' 
-            scale='3 3 3'
+            scale='4 4 4'
           ></a-entity>
           <a-entity
             id='portalBox'
