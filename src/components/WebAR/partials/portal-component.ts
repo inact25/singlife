@@ -88,7 +88,13 @@ const tapToPlacePortalComponent = {
         })
         portalRim.setAttribute('position', '0 0 0')
         setTimeout(() => {
-          portalRim.setAttribute('position', '0 -2 -5')
+          // portalRim.setAttribute('position', '0 -2 -5')
+          portalRim.setAttribute('animation',{
+            property: 'position',
+            dur: 2000,
+            to: '0 -2 -5',
+            easing: 'linear',
+          })
         }, 3500)
         setTimeout(() => {
           portalHiderRing.setAttribute('animation__1', {
@@ -98,7 +104,7 @@ const tapToPlacePortalComponent = {
             to: '3.5',
             easing: 'linear',
           })
-        }, 3000)
+        }, 5000)
       }, 3000) // Jeda 3000 milidetik (3 detik)
 
       portalVideo.setAttribute('animation__3', {
