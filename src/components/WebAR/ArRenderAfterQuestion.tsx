@@ -282,8 +282,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
                 id='portalHiderRing'
                 radius-inner='0.001'
                 radius-outer='120'
-                scale='1.3 1.3 0'
-                position='0 11.5 -5'
+                scale='1.7 1.7 0'
+                position='0 13 -5'
                 xrextras-hider-material
               ></a-ring>
             </a-entity>

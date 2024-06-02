@@ -88,7 +88,7 @@ const tapToPlacePortalComponent = {
         })
         portalRim.setAttribute('position', '0 0 0')
         setTimeout(() => {
-          portalRim.setAttribute('position', '0 -2 -5')
+          portalRim.setAttribute('position', '0 -5 -5')
         }, 3500)
         setTimeout(() => {
           portalHiderRing.setAttribute('animation__1', {
