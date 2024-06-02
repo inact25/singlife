@@ -337,6 +337,12 @@ h3 {
   @apply bottom-[25dvh]
 }
 
+@media screen and (max-height: 600px){
+  .custom-viewport{
+    height: 78dvh;
+  } 
+}
+
 @media screen and (max-height: 700px){
   .custom-viewport{
     height: 80dvh;
