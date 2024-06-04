@@ -32,7 +32,7 @@ const Question = () => {
     setSelected(id)
   }
   const handleNext = () => {
-    const next = (selected ?? 0) + 1
+    const next = (selected ?? 1) + 1
     const isAvailable = question_ids.find((item) => item === next)
     if (!isAvailable) {
       console.log('Route to get started')
