@@ -28,6 +28,7 @@ import {useParams} from 'react-router-dom'
 import {FaLink} from 'react-icons/fa6'
 import {HiGiftTop} from 'react-icons/hi2'
 import {FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton,} from 'react-share'
+import Recenter from '../../assets/svgs/recenter.svg'
 
 type Props = {
   params: any
@@ -189,7 +190,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         >
           <img
             id='recenterButton'
-            src='https://static.8thwall.app/assets/recenter-m71fa5ubcu.png'
+            src={Recenter}
           />
           <div
             id='promptText'
