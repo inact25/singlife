@@ -112,7 +112,9 @@ const Before = () => {
   return (
     <div>
       <div className='caption mb-5'>
-        <p className='body-1'>{`We'll`} need some permissions</p>
+        <p className='body-1'>
+          We'll need BOTH of <br /> the following permissions:
+        </p>
       </div>
       <div className='caption mb-5'>
         <img className='m-auto mb-5' src={Camera} alt='' />

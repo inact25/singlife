@@ -441,7 +441,7 @@ const Rewarded = () => {
         <img src={imgReward} alt='' />
       </div>
       <div className='caption mb-8'>
-        <p className='note'>Get $20 voucher when you sign up</p>
+        <p className='note'>Get a Financial Freedom Starter Kit and a $20 voucher</p>
       </div>
       <div className='action-button flex gap-[16px]'>
         <Button
