@@ -17,8 +17,7 @@ const QuestionFinish = () => {
   const dream_v1 = useDream()
   const [currentComponent] = useState<any>('waiting')
   const [showPopup, setShowPopup] = useState<boolean>(true)
-  const ready = (values: any) => {
-    console.log('all', values)
+  const ready = () => {
     hidePopup()
   }
   const hidePopup = () => {

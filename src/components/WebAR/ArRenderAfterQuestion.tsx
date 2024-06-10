@@ -59,6 +59,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   const [reward, setReward] = useState(0)
   const [rewardShowUp, setRewardShowUp] = useState(false)
   const [isLinkCopied, setIsLinkCopied] = useState(false)
+  const [isPopupShow, setIsPopupShow] = useState(false)
   const shareUrl = () => {
     const host = window.location.host
     const path = '/share'
@@ -78,17 +79,9 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         el.addEventListener('hasClicked', (x) => {
           console.log('portal summon', x)
           setTimeout(() => {
-            bottomPopup({
-              title: 'Walk into the portal to experience your dream',
-              useButton: false,
-              floating: true,
-              dark: false,
-              timer: 5000,
-            }).then((r) => {
-              if (r.isDismissed) {
-                setTimeout(() => setReward(1), 15000)
-              }
-            })
+            setTimeout(()=>{
+              setIsPopupShow(true)
+            },6000)
           }, 3000)
         })
         el.addEventListener('realityready', function () {
@@ -427,6 +420,10 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           </div>
         </div>
       )}
+      <MediaPopup type='move' show={isPopupShow} onClick={()=>{
+        setIsPopupShow(false)
+        setTimeout(() => setReward(1), 15000)
+      }}/>
     </>
   )
 }

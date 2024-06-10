@@ -1,14 +1,13 @@
-import {useEffect} from "react";
-import {bottomPopup} from "@utils/bottomPopup/bottomPopup.ts";
+import {useState} from "react";
+import MediaPopup from "@components/atom/mediapop";
 
 const Index = () => {
-    useEffect(() => {
-        console.log("triger")
-        bottomPopup({title:"anjir"})
-    }, []);
+    const [isPopupShow, setIsPopupShow] = useState(true)
     return (
         <div>
-            samples
+            <MediaPopup type='move' show={isPopupShow} onClick={() => {
+                setIsPopupShow(false)
+            }}/>
         </div>
     );
 };
