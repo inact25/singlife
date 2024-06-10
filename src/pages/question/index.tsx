@@ -28,7 +28,7 @@ const Question = () => {
       return
     }
     const answer = answers.find((item) => item.quiz_id === id - 1)
-    setLastChoice(answer?.answer_id ?? 0)
+    setLastChoice(answer?.answer_id ?? 1)
     setSelected(id)
   }
   const handleNext = () => {
@@ -39,7 +39,7 @@ const Question = () => {
       return
     }
     const answer = answers.find((item) => item.quiz_id === selected)
-    setLastChoice(answer?.answer_id ?? 0)
+    setLastChoice(answer?.answer_id ?? 1)
     setSelected(next)
   }
   const selectAnswer = (id: number) => {
@@ -51,7 +51,6 @@ const Question = () => {
         answers,
       })
       .then((response) => {
-        console.log('response', response)
         sessionStorage.removeItem('image')
         if (response?.errors) {
           return
