@@ -54,7 +54,7 @@ const tapToPlacePortalComponent = {
 
     const handleClickEvent = (e) => {
       //create new event
-      const event = new CustomEvent('clcik', {
+      const event = new CustomEvent('click', {
         status: true,
       })
       sceneEl.dispatchEvent(event)
