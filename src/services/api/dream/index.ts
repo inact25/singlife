@@ -1,17 +1,14 @@
-import {
-  ListDream,
-  ListDreamParamsV2,
-  ListLatestDream,
-} from '@services/api/dream/type'
+import {ListDream, ListDreamParamsV2, ListLatestDream,} from '@services/api/dream/type'
 import useLoading from '../../../hooks/useLoading.ts'
 import usePagination from '../../../hooks/usePagination.ts'
 import {
   getDetail,
+  getDetailInfluencer,
   getDreamFromInfluencer,
   getDreamListV2,
   getLatestDream,
 } from '@services/api/dream/actions.ts'
-import { useState } from 'react'
+import {useState} from 'react'
 
 const useDream = () => {
   const { loading, on, off } = useLoading()
@@ -66,10 +63,10 @@ const useDream = () => {
       off()
     }
   }
-  const getDetailDo = async (id: number) => {
+  const getDetailDo = async (id: number, purpose: 'standard' | 'influencer') => {
     on()
     try {
-      const response = await getDetail(id)
+      const response = purpose === "standard" ? await getDetail(id) : await getDetailInfluencer(id)
       paginate.handleSingleData(response)
     } catch (e) {
       console.log(e)

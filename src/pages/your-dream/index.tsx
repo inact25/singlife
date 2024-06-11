@@ -1,11 +1,11 @@
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
-import { useNavigate, useParams } from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import MediaPopup from '@components/atom/mediapop'
-import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import {motion} from 'framer-motion'
+import {useEffect, useState} from 'react'
 import ArRender360 from '@components/WebAR/ArRender360.tsx'
 import useDream from '@services/api/dream'
-import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
+import {bottomPopup} from '@utils/bottomPopup/bottomPopup.ts'
 import Buttonicon from '@components/atom/buttonicon'
 import back from '@assets/svgs/back.svg'
 
@@ -14,6 +14,7 @@ const motionFade = {
   visible: { opacity: 1 },
 }
 const YourDream = () => {
+  console.log("youurr")
   const params = useParams()
   const dream_v1 = useDream()
   const navigate = useNavigate()
@@ -32,7 +33,12 @@ const YourDream = () => {
   }
   useEffect(() => {
     if (params?.id) {
-      dream_v1.getDetailDo(parseInt(params?.id, 10))
+      if (params?.id?.includes('-')) {
+        dream_v1.getDetailDo(parseInt(params?.id?.split("-")[0], 10), "influencer")
+      } else {
+        dream_v1.getDetailDo(parseInt(params?.id, 10), "standard")
+
+      }
     }
   }, [params?.id])
   useEffect(() => {
@@ -42,7 +48,6 @@ const YourDream = () => {
   }, [currentComponent])
   useEffect(() => {
     if (!showPopup && currentComponent === '360') {
-      console.log('show popup')
       setTimeout(() => {
         bottomPopup({
           title: dream_v1.singleData?.description ?? '',

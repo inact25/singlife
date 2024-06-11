@@ -3,10 +3,10 @@ import Buttonicon from '@components/atom/buttonicon'
 import Gallery from '@components/atom/gallery'
 import Card from '@components/atom/card'
 import useDream from '@services/api/dream'
-import { useEffect, useRef } from 'react'
-import { arrayEven, arrayOdd, exceptText } from '@utils/helper.ts'
-import { useNavigate } from 'react-router-dom'
-import { useScroll, useScrolling, useWindowSize } from 'react-use'
+import {useEffect, useRef} from 'react'
+import {arrayEven, arrayOdd, exceptText} from '@utils/helper.ts'
+import {useNavigate} from 'react-router-dom'
+import {useScroll, useScrolling, useWindowSize} from 'react-use'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import placeholder from '@assets/anim/imageplaceholder.gif'
 
@@ -20,9 +20,9 @@ const Dream = () => {
   const handleBack = () => {
     navigate('/')
   }
-  const handleYourDream = (id: number, image: string) => {
+  const handleYourDream = (id: number, image: string, source: "standard" | "influencer") => {
     sessionStorage.setItem('image', image)
-    return window.open(`/tracking/explore-${id}`, '_self')
+    return window.open(`/tracking/explore-${id}${source === "influencer" ? "-influencer" : ""}`, '_self')
   }
 
   useEffect(() => {
@@ -36,7 +36,6 @@ const Dream = () => {
   useEffect(() => {
     const data = dream_v1.paginate.pagination
     if (y >= height * (data.pageSize / 10) && !scrolling) {
-      console.log(data.total, data.current)
       if (data.total > data.current) {
         dream_v1.paginate.handleFilter(
           'rows',
@@ -72,7 +71,7 @@ const Dream = () => {
                 {arrayEven(dream_v1.data)?.map((item) => (
                   <div key={item.id}>
                     <Gallery
-                      onClick={() => handleYourDream(item.id, item.image)}
+                      onClick={() => handleYourDream(item.id, item.image, "standard")}
                       description={exceptText(item.description, 35, 2)}
                       image={item.thumbnail || placeholder}
                     />
@@ -88,7 +87,7 @@ const Dream = () => {
                       onClick={() =>
                         handleYourDream(
                           parseInt(dream_v1.singleData?.id ?? '0'),
-                          dream_v1.singleData?.image || '',
+                          dream_v1.singleData?.image || '', "influencer"
                         )
                       }
                       description={exceptText(
@@ -102,7 +101,7 @@ const Dream = () => {
                 {arrayOdd(dream_v1.data)?.map((item) => (
                   <div key={item.id}>
                     <Gallery
-                      onClick={() => handleYourDream(item.id, item.image)}
+                      onClick={() => handleYourDream(item.id, item.image,"standard")}
                       description={exceptText(item.description, 35, 2)}
                       image={item.thumbnail}
                     />

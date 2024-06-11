@@ -25,7 +25,7 @@ const QuestionFinish = () => {
   }
   useEffect(() => {
     if (params?.id) {
-      dream_v1.getDetailDo(parseInt(params?.id?.split('-')[0], 10))
+      dream_v1.getDetailDo(parseInt(params?.id?.split('-')[0], 10),"standard")
     }
   }, [params?.id])
   return (
