@@ -39,7 +39,7 @@ const switchImage = (index: number) => {
     case 2:
       return question3
     default:
-      return question1
+      return question3
   }
 }
 const motionConfig = {
