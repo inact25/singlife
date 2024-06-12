@@ -2,7 +2,7 @@ import Buttonicon from '@components/atom/buttonicon'
 import back from '@assets/svgs/back.svg'
 import question1 from '@assets/background/background-1.svg'
 import question2 from '@assets/background/background-2.svg'
-import question3 from '@assets/background/background-3.svg'
+import question3 from '@assets/background/Question3.jpg'
 import object1 from '@assets/svgs/object1.svg'
 import object2 from '@assets/svgs/women-balloon.svg'
 import object3 from '@assets/svgs/man-balloon.svg'
@@ -39,7 +39,7 @@ const switchImage = (index: number) => {
     case 2:
       return question3
     default:
-      return question3
+      return question1
   }
 }
 const motionConfig = {
