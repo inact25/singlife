@@ -60,6 +60,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   const [rewardShowUp, setRewardShowUp] = useState(false)
   const [isLinkCopied, setIsLinkCopied] = useState(false)
   const [isPopupShow, setIsPopupShow] = useState(false)
+  
   const shareUrl = () => {
     const host = window.location.host
     const path = '/share'
@@ -438,7 +439,7 @@ const Rewarded = () => {
         <img src={imgReward} alt='' />
       </div>
       <div className='caption mb-8'>
-        <p className='note'>Get a Financial Freedom Starter Kit and a $20 voucher</p>
+        <p className='note'>Get a Financial Freedom Starter Kit <br /> and a $20 voucher</p>
       </div>
       <div className='action-button flex gap-[16px]'>
         <Button
