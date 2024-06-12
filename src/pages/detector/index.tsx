@@ -59,7 +59,10 @@ const Before = () => {
   }
   const onGranted = () => {
     if (params.purpose?.split('-')[0] === 'explore') {
-      window.open(`/your-dream/${params.purpose?.split('-')[1]}`, '_self')
+      window.open(
+        `/your-dream/explore-${params.purpose?.split('-')[1]}`,
+        '_self',
+      )
     }
     if (params.purpose?.split('-')[0] === 'question') {
       window.open(
