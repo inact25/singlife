@@ -319,6 +319,8 @@ h3 {
 
 .top-bar{
   background: #00000099;
+  height: 100dvh;
+  width: 100dvw;
 }
 
 .custom-viewport{

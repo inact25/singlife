@@ -17,7 +17,7 @@ const ArRender360: React.FC<Props> = ({ params, callback }) => {
     }
   }, [params])
   useEffect(() => {
-    aframe.register('reality-ready', {
+    aframe.register('reality', {
       init: function () {
         this.el.addEventListener('realityready', callback)
       },
@@ -27,7 +27,7 @@ const ArRender360: React.FC<Props> = ({ params, callback }) => {
     <>
       <AFrameScene
       xrweb
-        reality-ready
+        reality
       >
         <a-assets>
           <img crossOrigin='anonymous' id='city' src={url} />
