@@ -82,6 +82,10 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           setTimeout(() => {
             setTimeout(()=>{
               setIsPopupShow(true)
+              setTimeout(() => {
+                setIsPopupShow(false)
+                setTimeout(() => setReward(1), 15000)
+              }, 2500)
             },6000)
           }, 3000)
         })
@@ -421,10 +425,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           </div>
         </div>
       )}
-      <MediaPopup type='move' show={isPopupShow} onClick={()=>{
-        setIsPopupShow(false)
-        setTimeout(() => setReward(1), 15000)
-      }}/>
+      <MediaPopup type='move' show={isPopupShow}/>
     </>
   )
 }
