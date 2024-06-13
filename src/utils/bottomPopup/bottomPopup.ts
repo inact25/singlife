@@ -41,7 +41,7 @@ const bottomPopup = ({
       animate__faster
     `,
     },
-    html:'<div class="absolute bottom-[-18px] left-0 right-0 text-white shadow-2xl" style="text-shadow: 1px 1px 2px lightgray;">▼</div>',
+    html:'<div class="absolute bottom-[-19px] left-0 right-0 text-white opacity-60 shadow-2xl" style="text-shadow: 1px 1px 2px lightgray;">▼</div>',
     position: 'bottom',
     title: title,
     showConfirmButton: useButton,
