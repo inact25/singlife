@@ -132,7 +132,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         () =>
           bottomPopup({
             title:
-              'Tap the camera button to take a photo or hold it to take a video',
+              'Tap the camera button to take a<br/>photo or hold it to take a video',
             useButton: false,
             floating: true,
             dark: false,
@@ -231,7 +231,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             cover-image-url=''
             end-card-call-to-action='Try it at:'
             watermark-max-width='100'
-            watermark-max-height='12'
+            watermark-max-height='25'
             watermark-image-url="/frame1.png"
             watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
