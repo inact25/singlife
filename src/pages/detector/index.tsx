@@ -60,7 +60,7 @@ const Before = () => {
   const onGranted = () => {
     if (params.purpose?.split('-')[0] === 'explore') {
       window.open(
-        `/your-dream/explore-${params.purpose?.split('-')[1]}`,
+        `/your-dream/explore-${params.purpose?.split('-')[1]}-${params.purpose?.split('-')[2]}`,
         '_self',
       )
     }
