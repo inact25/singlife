@@ -128,7 +128,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         () =>
           bottomPopup({
             title:
-              'Tap the camera button to take a photo or hold it to take a video',
+              'Tap the camera button to take a<br/>photo or hold it to take a video',
             useButton: false,
             floating: true,
             dark: false,
