@@ -1,8 +1,18 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import MediaPopup from "@components/atom/mediapop";
+import {bottomPopup} from "@utils/bottomPopup/bottomPopup.ts";
 
 const Index = () => {
     const [isPopupShow, setIsPopupShow] = useState(true)
+    useEffect(() => {
+        bottomPopup({
+            title:
+                'Tap the camera button to take a<br/>photo or hold it to take a video',
+            useButton: false,
+            floating: true,
+            dark: false,
+        })
+    }, []);
     return (
         <div>
             <MediaPopup type='move' show={isPopupShow} onClick={() => {
