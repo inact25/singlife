@@ -131,6 +131,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       setTimeout(
         () =>
           bottomPopup({
+            className:'callout',
             title:
               'Tap the camera button to take a<br/>photo or hold it to take a video',
             useButton: false,

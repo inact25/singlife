@@ -84,6 +84,7 @@ h3 {
   line-height: 22px;
 }
 
+
 .body-2 {
   font-size: 14px;
   line-height: 20px;
@@ -367,4 +368,26 @@ h3 {
     color: transparent;
     bottom: 5dvh;
   }
+}
+
+/* SPEECH BOX */
+.callout .swal2-popup {
+  position: relative;
+}
+
+/* CALLOUT */
+.callout .swal2-popup::after {
+  display: block;
+  width: 0;
+  content: "";
+  border: 15px solid transparent;
+  position: absolute;
+}
+
+.callout .swal2-popup.swal2-modal::after {
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+  border-top-color: #ffffff99;
+  border-bottom: 0;
+  bottom: -15px;
+  left: calc(50% - 15px);
 }
