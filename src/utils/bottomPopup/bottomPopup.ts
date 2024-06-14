@@ -8,6 +8,7 @@ type Props = {
   floating?: boolean
   dark?: boolean
   timer?: number
+  className?: string
 }
 const bottomPopup = ({
   title = '',
@@ -15,12 +16,13 @@ const bottomPopup = ({
   useButton = true,
   floating = false,
   dark = true,
+  className = 'normal',
   timer,
 }: Props) => {
   return Swal.fire({
     customClass: {
-      container: `${floating ? 'p-5' : 'p-0'}`,
-      popup: `!shadow-md rounded-b-none !border-0  rounded-t-[32px] ${dark ? 'bg-black/50' : 'bg-white/60'} ${floating ? 'bottom-[5rem]  !rounded-[5rem]' : ''}`,
+      container: `${className} ${floating ? 'p-5' : 'p-0'}`,
+      popup: `!shadow-sm rounded-b-none !border-0  rounded-t-[32px] ${dark ? 'bg-black/50' : 'bg-white/60'} ${floating ? 'bottom-[5rem]  !rounded-[5rem]' : ''}`,
       title: `${dark ? 'note font-medium text-white' : 'text-black note font-light'} ${floating ? 'pt-3 pb-1 mb-[-.75rem]' : 'pt-10'}`,
       actions: 'w-full px-5',
       confirmButton:
