@@ -232,7 +232,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             cover-image-url=''
             end-card-call-to-action='Try it at:'
             watermark-max-width='100'
-            watermark-max-height='18'
+            watermark-max-height='15'
             watermark-image-url="/frame1.png"
             watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
