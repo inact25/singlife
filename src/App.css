@@ -306,13 +306,14 @@ h3 {
 }
 
 #actionButton {
-  /* change color of action button */
   background-color: #ff0008 !important;
   position: absolute;
   bottom: 5vh;
-  min-height: 50px;
+  width: 216px;
+  min-height: 46px;
   border-radius: 28px;
-  padding: 12px 16px 12px 16px;
+  text-align: center;
+  padding: 12px 16px;
 }
 #actionButtonImg{
   display: none;
