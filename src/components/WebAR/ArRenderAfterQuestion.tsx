@@ -239,7 +239,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             footer-image-url='/logo_horizontal.png'
           ></xrextras-capture-config>
           <xrextras-capture-preview
-            action-button-share-text='Share Your Dreams'
+            action-button-share-text='Share your dream'
             action-button-view-text='View'
             finalize-text='Exporting...'
           ></xrextras-capture-preview>
