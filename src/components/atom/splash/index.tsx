@@ -13,7 +13,7 @@ const Index = () => {
             The Singlife Dream Cube
           </h3>
           <img className='m-auto spinner' src={logoSpin} alt='splash' />
-          <img className='m-auto' src={logo} alt='splash' />
+          <img className='m-auto pt-[12px]' src={logo} alt='splash' />
         </div>
       </div>
     </WrapperLayouts>

@@ -58,8 +58,8 @@ const motionImageConfig = {
     y: {
       repeat: Infinity,
       repeatType: 'loop',
-      duration: 1.5,
-      ease: 'easeOut',
+      duration: 1,
+      ease: 'linear',
     },
   },
   animate: {

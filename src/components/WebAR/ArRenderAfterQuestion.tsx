@@ -232,7 +232,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             cover-image-url=''
             end-card-call-to-action='Try it at:'
             watermark-max-width='100'
-            watermark-max-height='19'
+            watermark-max-height='18'
             watermark-image-url="/frame1.png"
             watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
@@ -379,7 +379,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         </motion.div>
       </WrapperLayouts>
       {reward === 2 && (
-        <div className='absolute top-5 right-3 z-50 '>
+        <div className='flex flex-col gap-y-[16px] absolute top-5 right-3 z-50 '>
           <div>
             <FacebookShareButton
               url={shareUrl()}
