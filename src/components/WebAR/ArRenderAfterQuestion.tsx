@@ -25,8 +25,8 @@ import Button from '@components/atom/button'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Swal from 'sweetalert2'
 import {useParams} from 'react-router-dom'
-import {FaLink} from 'react-icons/fa6'
-import {HiGiftTop} from 'react-icons/hi2'
+import FaLink from '../../assets/svgs/link-copy.svg'
+import HiGiftTop from '../../assets/svgs/gift.svg'
 import {FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton,} from 'react-share'
 import Recenter from '../../assets/svgs/recenter.svg'
 
@@ -379,13 +379,13 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         </motion.div>
       </WrapperLayouts>
       {reward === 2 && (
-        <div className='flex flex-col gap-y-[16px] absolute top-5 right-3 z-50 '>
+        <div className='flex flex-col gap-y-[10px] absolute top-5 right-3 z-50 '>
           <div>
             <FacebookShareButton
               url={shareUrl()}
               className='Demo__some-network__share-button'
             >
-              <FacebookIcon size={48} round />
+              <FacebookIcon size={60} round />
             </FacebookShareButton>
           </div>
           <div>
@@ -393,12 +393,12 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               url={shareUrl()}
               className='Demo__some-network__share-button'
             >
-              <WhatsappIcon size={48} round />
+              <WhatsappIcon size={60} round />
             </WhatsappShareButton>
           </div>
           <div className='flex items-center'>
             {isLinkCopied && (
-              <div className='note  absolute bg-white/80 right-[3.5rem] mt-[-1rem] px-4 py-3 rounded-full w-fit min-w-[120px]'>
+              <div className='note  absolute bg-white/80 right-[4rem] mt-[-1rem] px-4 py-3 rounded-full w-fit min-w-[120px]'>
                 Link copied
               </div>
             )}
@@ -409,19 +409,19 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
                   setTimeout(() => setIsLinkCopied(false), 2000)
                 })
               }}
-              className='h-[48px] mb-3 [:&>svg]:text-[24px] shadow-sm w-[48px] bg-white text-black rounded-full flex items-center justify-center'
+              className='h-[60px] mb-3 [:&>svg]:text-[24px] shadow-sm w-[60px] bg-white text-black rounded-full flex items-center justify-center'
             >
               <span className='text-[24px]'>
-                <FaLink />
+                <img src={FaLink} />
               </span>
             </div>
           </div>
           <div
             onClick={() => setReward(1)}
-            className='h-[48px] mb-3 [:&>svg]:text-[24px] w-[48px] shadow-sm bg-black text-white rounded-full flex items-center justify-center'
+            className='h-[60px] mb-3 [:&>svg]:text-[24px] w-[60px] shadow-sm bg-black text-white rounded-full flex items-center justify-center'
           >
             <span className='text-[24px]'>
-              <HiGiftTop />
+              <img src={HiGiftTop} />
             </span>
           </div>
         </div>
