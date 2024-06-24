@@ -1,8 +1,10 @@
 import './App.css'
 import { useEffect } from 'react'
 import Question from './pages/question'
+import useAdobe from '@hooks/useAdobe.ts'
 
 function App() {
+  const adobe_v1 = useAdobe()
   useEffect(() => {
     if (
       localStorage.theme === 'dark' ||
@@ -13,6 +15,13 @@ function App() {
     } else {
       document.documentElement.classList.remove('dark')
     }
+  }, [])
+  //listen route change
+  useEffect(() => {
+    adobe_v1.push({
+      type: 'page',
+    })
+    adobe_v1.apply()
   }, [])
   return (
     <div>
