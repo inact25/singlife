@@ -246,7 +246,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
 
           <a-camera
             id='camera'
-            position='0 10 10'
+            position='0 7 7'
             cursor='fuse: false; rayOrigin: mouse;'
           ></a-camera>
 
@@ -283,23 +283,23 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
                 radius-inner='0.001'
                 radius-outer='120'
                 scale='1.3 1.3 0'
-                position='0 7 -10'
+                position='0 7 -4'
                 xrextras-hider-material
               ></a-ring>
             </a-entity>
 
             <a-entity id='portal-wall'>
               <a-circle
-                radius='5.2'
+                radius='6'
                 rotation='0 180 0'
-                position='0 7.5 -5'
+                position='0 7.5 0'
                 scale='0.8 0.8 0'
                 xrextras-hider-material
               ></a-circle>
               <a-circle
-                radius='5.2'
+                radius='6'
                 rotation='0 180 0'
-                position='0 7.5 -5.25'
+                position='0 7.5 0.25'
                 scale='0.8 0.8 0'
                 xrextras-hider-material
               ></a-circle>
@@ -339,7 +339,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             gltf-model={`url(${portalBox})`}
             reflections='type: static'
             shadow='receive: false'
-            position='0 0 -5'
+            position='0 0 -1'
             scale='1.2 1.2 1.2'
           ></a-entity>
 

@@ -86,13 +86,13 @@ const tapToPlacePortalComponent = {
           clampWhenFinished: true,
           timeScale: 2,
         })
-        portalRim.setAttribute('position', '0 0 -5')
+        portalRim.setAttribute('position', '0 0 -4')
         setTimeout(() => {
           // portalRim.setAttribute('position', '0 -2 -5')
           portalRim.setAttribute('animation',{
             property: 'position',
             dur: 2000,
-            to: '0 -2 -10',
+            to: '0 -2 -4',
             easing: 'linear',
           })
         }, 3500)
