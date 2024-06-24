@@ -246,7 +246,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
 
           <a-camera
             id='camera'
-            position='0 8 8'
+            position='0 10 10'
             cursor='fuse: false; rayOrigin: mouse;'
           ></a-camera>
 
@@ -283,7 +283,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
                 radius-inner='0.001'
                 radius-outer='120'
                 scale='1.3 1.3 0'
-                position='0 7 -5'
+                position='0 7 -10'
                 xrextras-hider-material
               ></a-ring>
             </a-entity>
@@ -292,14 +292,14 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               <a-circle
                 radius='5.2'
                 rotation='0 180 0'
-                position='0 7.5 0'
+                position='0 7.5 -5'
                 scale='0.8 0.8 0'
                 xrextras-hider-material
               ></a-circle>
               <a-circle
                 radius='5.2'
                 rotation='0 180 0'
-                position='0 7.5 0.25'
+                position='0 7.5 -5.25'
                 scale='0.8 0.8 0'
                 xrextras-hider-material
               ></a-circle>
@@ -323,7 +323,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           <a-light type='ambient' intensity='1'></a-light>
 
           <a-entity id='portal-contents'>
-            <a-sky src='#skybox-img' rotation='0 7 0'></a-sky>
+            <a-sky src='#skybox-img' rotation='0 0 0'></a-sky>
           </a-entity>
 
           <a-entity
@@ -339,8 +339,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             gltf-model={`url(${portalBox})`}
             reflections='type: static'
             shadow='receive: false'
-            visible='false'
-            position='0 0 0'
+            position='0 0 -5'
             scale='1.2 1.2 1.2'
           ></a-entity>
 
@@ -349,13 +348,14 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             material='shader: chromakey;  color: 0 0 0; blending: additive; side: front'
             geometry='primitive: plane; height: 1; width: 1;'
             scale='0.001 0.001 0.001'
+            visible='false'
           ></a-entity>
 
           <a-circle
             id='portalShadow'
             radius='0.5'
-            material='src: #blob-shadow-img; opacity: 0.65; roughness: 0.8; metalness: 0'
-            position='0 0.01 1.25'
+            material='src: #blob-shadow-img; opacity: 0; roughness: 0; metalness: 0'
+            position='0 0.01 -5'
             rotation='-90 0 0'
             scale='0.001 0.001 0.001'
           ></a-circle>

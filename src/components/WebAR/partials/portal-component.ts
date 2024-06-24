@@ -70,13 +70,13 @@ const tapToPlacePortalComponent = {
     const firstPlaceEvent = (e) => {
       sceneEl.emit('recenter')
       sceneEl.emit('dismissPrompt')
-
+      
       portalBox.setAttribute('animation-mixer', {
         clip: '*',
         loop: 'once',
         clampWhenFinished: true,
       })
-      portalBox.setAttribute('visible', true)
+      
       // Mulai animasi pada target2 setelah animasi target1 selesai
       setTimeout(() => {
         portalRim.setAttribute('visible', true)
@@ -86,13 +86,13 @@ const tapToPlacePortalComponent = {
           clampWhenFinished: true,
           timeScale: 2,
         })
-        portalRim.setAttribute('position', '0 0 0')
+        portalRim.setAttribute('position', '0 0 -5')
         setTimeout(() => {
           // portalRim.setAttribute('position', '0 -2 -5')
           portalRim.setAttribute('animation',{
             property: 'position',
             dur: 2000,
-            to: '0 -2 -5',
+            to: '0 -2 -10',
             easing: 'linear',
           })
         }, 3500)
