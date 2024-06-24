@@ -1,16 +1,16 @@
 /* eslint-disable prettier/prettier */
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
-import { useEffect, useState } from 'react'
+import {useEffect, useState} from 'react'
 import RenderQuestion from './RenderQuestion.tsx'
 import useQuiz from '@services/api/quiz'
-import { QuizSubmitItem } from '@services/api/quiz/type'
-import { useNavigate } from 'react-router-dom'
+import {QuizSubmitItem} from '@services/api/quiz/type'
+import {useNavigate} from 'react-router-dom'
 
 const question_ids = [1, 2, 3]
 const Question = () => {
   const navigate = useNavigate()
   const quiz_service = useQuiz()
-  const [selected, setSelected] = useState<number | null>(null)
+  const [selected, setSelected] = useState<number | null>(1)
   const [lastChoice, setLastChoice] = useState<number | null>(null)
   const [answers, setAnswers] = useState<QuizSubmitItem[]>([])
   const pushAnswer = (values: QuizSubmitItem) => {
@@ -23,11 +23,11 @@ const Question = () => {
   const handleBack = (id: number) => {
     const isAvailable = question_ids.find((item) => item === id)
     if (!isAvailable) {
-      console.log('Route to get started')
       navigate('/')
       return
     }
     const answer = answers.find((item) => item.quiz_id === id - 1)
+    console.log(answer)
     setLastChoice(answer?.answer_id ?? 1)
     setSelected(id)
   }
@@ -35,7 +35,6 @@ const Question = () => {
     const next = (selected ?? 1) + 1
     const isAvailable = question_ids.find((item) => item === next)
     if (!isAvailable) {
-      console.log('Route to get started')
       return
     }
     const answer = answers.find((item) => item.quiz_id === selected)
@@ -64,6 +63,7 @@ const Question = () => {
   useEffect(() => {
     // quiz_service.getQuizListDo()
   }, [quiz_service.paginate.filter])
+
   return (
     <WrapperLayouts isFull={true}>
       <RenderQuestion
