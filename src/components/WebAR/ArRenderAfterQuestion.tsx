@@ -448,7 +448,7 @@ const Rewarded = () => {
           title='Learn more'
           onClick={() =>
             window.open(
-              `https://www.singlife.com/leadgendreamcube/?ffdream=${dream_no}&entry_id=${entry_id}`,
+              `www.singlife.com/ffi`,
               '_blank',
             )
           }
@@ -457,7 +457,7 @@ const Rewarded = () => {
         <Button
           onClick={() =>
             window.open(
-              `https://www.singlife.com/leadgendreamcube/?ffdream=${dream_no}&entry_id=${entry_id}`,
+              `https://aem-staging.singlife.com/en/form/dream-cube`,
               '_blank',
             )
           }
