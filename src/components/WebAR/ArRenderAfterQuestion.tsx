@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
 // @ts-nocheck
 import useAframe from '@hooks/useAframe.ts'
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import AFrameScene from '@components/libs/AFrameScene'
 import capture from '@assets/capture.svg'
 import portalSpin from '@assets/glbs/portal-new.glb'
 import portalBox from '@assets/glbs/box.glb'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import imgReward from '@assets/svgs/rewarded.svg'
 import {
   portalCameraComponent,
@@ -14,20 +14,25 @@ import {
   spinComponent,
   tapToPlacePortalComponent,
 } from '@components/WebAR/partials/portal-component.ts'
-import {responsiveImmersiveComponent} from '@components/WebAR/partials/immersive-component.ts'
+import { responsiveImmersiveComponent } from '@components/WebAR/partials/immersive-component.ts'
 import MediaPopup from '@components/atom/mediapop'
 
 // portal video
 import portalVideo from '@assets/portal-video.mp4'
-import {bottomPopup} from '@utils/bottomPopup/bottomPopup.ts'
+import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
 import Popup from '@components/molecules/popup'
 import Button from '@components/atom/button'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Swal from 'sweetalert2'
-import {useParams} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import FaLink from '../../assets/svgs/link-copy.svg'
 import HiGiftTop from '../../assets/svgs/gift.svg'
-import {FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton,} from 'react-share'
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from 'react-share'
 import Recenter from '../../assets/svgs/recenter.svg'
 
 type Props = {
@@ -60,7 +65,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
   const [rewardShowUp, setRewardShowUp] = useState(false)
   const [isLinkCopied, setIsLinkCopied] = useState(false)
   const [isPopupShow, setIsPopupShow] = useState(false)
-  
+
   const shareUrl = () => {
     const host = window.location.host
     const path = '/share'
@@ -80,13 +85,13 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         el.addEventListener('hasClicked', (x) => {
           console.log('portal summon', x)
           setTimeout(() => {
-            setTimeout(()=>{
+            setTimeout(() => {
               setIsPopupShow(true)
               setTimeout(() => {
                 setIsPopupShow(false)
                 setTimeout(() => setReward(1), 15000)
               }, 2500)
-            },6000)
+            }, 6000)
           }, 3000)
         })
         el.addEventListener('realityready', function () {
@@ -131,7 +136,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
       setTimeout(
         () =>
           bottomPopup({
-            className:'callout',
+            className: 'callout',
             title:
               'Tap the camera button to take a<br/>photo or hold it to take a video',
             useButton: false,
@@ -187,10 +192,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           }}
           className='absolute-fill'
         >
-          <img
-            id='recenterButton'
-            src={Recenter}
-          />
+          <img id='recenterButton' src={Recenter} />
           <div
             id='promptText'
             className='relative z-10 min-h-[100dvh] flex justify-center items-center mt-[-10px] px-5'
@@ -233,7 +235,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             end-card-call-to-action='Try it at:'
             watermark-max-width='100'
             watermark-max-height='18'
-            watermark-image-url="/frame1.png"
+            watermark-image-url='/frame1.png'
             watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
             footer-image-url='/logo_horizontal.png'
@@ -426,7 +428,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
           </div>
         </div>
       )}
-      <MediaPopup type='move' show={isPopupShow}/>
+      <MediaPopup type='move' show={isPopupShow} />
     </>
   )
 }
@@ -441,17 +443,14 @@ const Rewarded = () => {
         <img src={imgReward} alt='' />
       </div>
       <div className='caption mb-8'>
-        <p className='note'>Get a Financial Freedom Starter Kit <br /> and a $20 voucher</p>
+        <p className='note'>
+          Get a Financial Freedom Starter Kit <br /> and a $20 voucher
+        </p>
       </div>
       <div className='action-button flex gap-[16px]'>
         <Button
           title='Learn more'
-          onClick={() =>
-            window.open(
-              `www.singlife.com/ffi`,
-              '_blank',
-            )
-          }
+          onClick={() => window.open(`https://www.singlife.com/ffi`, '_blank')}
           type='secondaryWhite'
         />
         <Button
