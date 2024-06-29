@@ -450,13 +450,18 @@ const Rewarded = () => {
       <div className='action-button flex gap-[16px]'>
         <Button
           title='Learn more'
-          onClick={() => window.open(`https://www.singlife.com/ffi`, '_blank')}
+          onClick={() =>
+            window.open(
+              `https://www.singlife.com/ffi?ffdream=${dream_no}&entry_id=${entry_id}`,
+              '_blank',
+            )
+          }
           type='secondaryWhite'
         />
         <Button
           onClick={() =>
             window.open(
-              `https://aem-staging.singlife.com/en/form/dream-cube`,
+              `https://aem-staging.singlife.com/en/form/dream-cube?ffdream=${dream_no}&entry_id=${entry_id}`,
               '_blank',
             )
           }
