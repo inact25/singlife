@@ -137,7 +137,7 @@ const RenderQuestion: React.FC<Props> = ({
   return (
       <>
         {isLoading ?
-            <div className='flex h-screen justify-center items-center'>
+            <div className='flex h-[100dvh] justify-center items-center'>
                 <Player
                     autoplay={true}
                     loop={true}
