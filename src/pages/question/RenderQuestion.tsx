@@ -17,6 +17,7 @@ import htmlParser from 'html-react-parser'
 import {motion} from 'framer-motion'
 import useQuiz from '@services/api/quiz'
 import womenLeader from '@assets/lottie/Woman on ladder.json'
+import loading from '@assets/lottie/loading.json'
 import {Player} from '@lottiefiles/react-lottie-player'
 
 type Props = {
@@ -92,6 +93,7 @@ const RenderQuestion: React.FC<Props> = ({
   const quiz_service = useQuiz()
   const [record, setRecord] = useState<ListQuiz | null>(null)
   const [isActive, setIsActive] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const isChecked = (id: number) => {
     return value?.answer_id === id
@@ -111,6 +113,14 @@ const RenderQuestion: React.FC<Props> = ({
   useEffect(() => {
     if (selected) {
       quiz_service.getQuizRPCDo(selected, lastChoice ?? 0)
+
+      const timeOut = setTimeout(() => {
+        setIsLoading(false);
+      }, 2500);
+
+      return () => {
+        clearTimeout(timeOut);
+      };
     }
   }, [selected])
 
@@ -125,7 +135,18 @@ const RenderQuestion: React.FC<Props> = ({
   }
 
   return (
-    <div className=''>
+      <>
+        {isLoading ?
+            <div className='flex h-screen justify-center items-center'>
+                <Player
+                    autoplay={true}
+                    loop={true}
+                    controls={false}
+                    src={loading}
+                    style={{height: 256, width: 256}}
+                />
+            </div> :
+            <div className=''>
       <div className='absolute top-5 left-5 text-left z-10'>
         <Buttonicon
           icon={back}
@@ -267,6 +288,8 @@ const RenderQuestion: React.FC<Props> = ({
         </div>
       </div>
     </div>
+        }
+      </>
   )
 }
 

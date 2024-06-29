@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import RenderQuestion from './RenderQuestion.tsx'
 import useQuiz from '@services/api/quiz'
 import {QuizSubmitItem} from '@services/api/quiz/type'
@@ -60,26 +60,26 @@ const Question = () => {
         )
       })
   }
-  useEffect(() => {
-    // quiz_service.getQuizListDo()
-  }, [quiz_service.paginate.filter])
+
 
   return (
     <WrapperLayouts isFull={true}>
-      <RenderQuestion
-        handleBack={handleBack}
-        selected={selected ?? 1}
-        index={selected ? selected - 1 : 0}
-        lastChoice={lastChoice}
-        onChange={handleChanges}
-        value={{
-          quiz_id: selected ?? 1,
-          answer_id: selectAnswer(selected ?? 1) ?? 0,
-        }}
-        handleNext={handleNext}
-        isLast={selected === question_ids.length}
-        handleSubmit={handleSubmit}
-      />
+      <div>
+        <RenderQuestion
+            handleBack={handleBack}
+            selected={selected ?? 1}
+            index={selected ? selected - 1 : 0}
+            lastChoice={lastChoice}
+            onChange={handleChanges}
+            value={{
+              quiz_id: selected ?? 1,
+              answer_id: selectAnswer(selected ?? 1) ?? 0,
+            }}
+            handleNext={handleNext}
+            isLast={selected === question_ids.length}
+            handleSubmit={handleSubmit}
+        />
+      </div>
     </WrapperLayouts>
   )
 }
