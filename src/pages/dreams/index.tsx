@@ -3,13 +3,12 @@ import Buttonicon from '@components/atom/buttonicon'
 import Gallery from '@components/atom/gallery'
 import Card from '@components/atom/card'
 import useDream from '@services/api/dream'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { arrayEven, arrayOdd, exceptText } from '@utils/helper.ts'
 import { useNavigate } from 'react-router-dom'
 import { useScroll, useScrolling, useWindowSize } from 'react-use'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import placeholder from '@assets/anim/imageplaceholder.gif'
-import MediaPopup from '@components/atom/mediapop'
 
 const Dream = () => {
   const scrollRef = useRef(null)
@@ -18,8 +17,6 @@ const Dream = () => {
   const { height } = useWindowSize()
   const navigate = useNavigate()
   const dream_v1 = useDream()
-  const [isLoading, setIsLoading] = useState(true)
-
   const handleBack = () => {
     navigate('/')
   }
@@ -40,13 +37,7 @@ const Dream = () => {
   }, [dream_v1.paginate.filter])
 
   useEffect(() => {
-    const timeOut = setTimeout(() => {
-      setIsLoading(false)
-    }, 2500)
     dream_v1.getInfluencerDream()
-    return () => {
-      clearTimeout(timeOut)
-    }
   }, [])
 
   useEffect(() => {
@@ -64,83 +55,74 @@ const Dream = () => {
   return (
     <>
       <WrapperLayouts isFull={true}>
-        {isLoading ? (
-          <div className='min-h-[100dvh] flex justify-center items-center'>
-            <MediaPopup show={true} type='loader' className='w-[325px]' />
-          </div>
-        ) : (
-          <div className='min-h-[100dvh]'>
-            <div
-              className='mb-5 overflow-y-auto max-h-[100dvh] p-[10px] pb-16'
-              ref={scrollRef}
-            >
-              <div className='grid grid-cols-12 justify-between '>
-                <div className='col-span-4 text-left'>
-                  <div className='top-5 rounded-full left-5 absolute z-50 shadow-md'>
-                    <Buttonicon icon={back} onClick={handleBack} />
-                  </div>
-                </div>
-                <div className='col-span-8'>
-                  <h2 className='text-right text-black pr-[14px]'>
-                    Discover <br /> what others are dreaming about
-                  </h2>
+        <div className='min-h-[100dvh]'>
+          <div
+            className='mb-5 overflow-y-auto max-h-[100dvh] p-[10px] pb-16'
+            ref={scrollRef}
+          >
+            <div className='grid grid-cols-12 justify-between '>
+              <div className='col-span-4 text-left'>
+                <div className='top-5 rounded-full left-5 absolute z-50 shadow-md'>
+                  <Buttonicon icon={back} onClick={handleBack} />
                 </div>
               </div>
-              <div className='grid items-start grid-cols-2 gap-[8px] mt-[24px]'>
-                <div className='grid gap-[8px]'>
-                  <Card
-                    title={'Dreams generated'}
-                    count={dream_v1.totalDream}
-                  />
-                  {arrayEven(dream_v1.data)?.map((item) => (
-                    <div key={item.id}>
-                      <Gallery
-                        onClick={() =>
-                          handleYourDream(item.id, item.image, 'standard')
-                        }
-                        description={exceptText(item.description, 35, 2)}
-                        image={item.thumbnail || placeholder}
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div className='grid gap-[8px]'>
-                  {dream_v1.singleData?.title && (
-                    <div key='influencer'>
-                      <Gallery
-                        isActive
-                        title={dream_v1.singleData?.title}
-                        onClick={() =>
-                          handleYourDream(
-                            parseInt(dream_v1.singleData?.id ?? '0'),
-                            dream_v1.singleData?.image || '',
-                            'influencer',
-                          )
-                        }
-                        description={exceptText(
-                          dream_v1.singleData?.description ?? '',
-                          39,
-                        )}
-                        image={dream_v1.singleData?.thumbnail ?? ''}
-                      />
-                    </div>
-                  )}
-                  {arrayOdd(dream_v1.data)?.map((item) => (
-                    <div key={item.id}>
-                      <Gallery
-                        onClick={() =>
-                          handleYourDream(item.id, item.image, 'standard')
-                        }
-                        description={exceptText(item.description, 35, 2)}
-                        image={item.thumbnail}
-                      />
-                    </div>
-                  ))}
-                </div>
+              <div className='col-span-8'>
+                <h2 className='text-right text-black pr-[14px]'>
+                  Discover <br /> what others are dreaming about
+                </h2>
+              </div>
+            </div>
+            <div className='grid items-start grid-cols-2 gap-[8px] mt-[24px]'>
+              <div className='grid gap-[8px]'>
+                <Card title={'Dreams generated'} count={dream_v1.totalDream} />
+                {arrayEven(dream_v1.data)?.map((item) => (
+                  <div key={item.id}>
+                    <Gallery
+                      onClick={() =>
+                        handleYourDream(item.id, item.image, 'standard')
+                      }
+                      description={exceptText(item.description, 35, 2)}
+                      image={item.thumbnail || placeholder}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className='grid gap-[8px]'>
+                {dream_v1.singleData?.title && (
+                  <div key='influencer'>
+                    <Gallery
+                      isActive
+                      title={dream_v1.singleData?.title}
+                      onClick={() =>
+                        handleYourDream(
+                          parseInt(dream_v1.singleData?.id ?? '0'),
+                          dream_v1.singleData?.image || '',
+                          'influencer',
+                        )
+                      }
+                      description={exceptText(
+                        dream_v1.singleData?.description ?? '',
+                        39,
+                      )}
+                      image={dream_v1.singleData?.thumbnail ?? ''}
+                    />
+                  </div>
+                )}
+                {arrayOdd(dream_v1.data)?.map((item) => (
+                  <div key={item.id}>
+                    <Gallery
+                      onClick={() =>
+                        handleYourDream(item.id, item.image, 'standard')
+                      }
+                      description={exceptText(item.description, 35, 2)}
+                      image={item.thumbnail}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        )}
+        </div>
       </WrapperLayouts>
     </>
   )

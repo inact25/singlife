@@ -18,6 +18,7 @@ import { motion } from 'framer-motion'
 import useQuiz from '@services/api/quiz'
 import womenLeader from '@assets/lottie/Woman on ladder.json'
 import { Player } from '@lottiefiles/react-lottie-player'
+import MediaPopup from '@components/atom/mediapop'
 
 type Props = {
   selected: number
@@ -92,6 +93,7 @@ const RenderQuestion: React.FC<Props> = ({
   const quiz_service = useQuiz()
   const [record, setRecord] = useState<ListQuiz | null>(null)
   const [isActive, setIsActive] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const isChecked = (id: number) => {
     return value?.answer_id === id
@@ -111,6 +113,14 @@ const RenderQuestion: React.FC<Props> = ({
   useEffect(() => {
     if (selected) {
       quiz_service.getQuizRPCDo(selected, lastChoice ?? 0)
+
+      const timeOut = setTimeout(() => {
+        setIsLoading(false)
+      }, 2500)
+
+      return () => {
+        clearTimeout(timeOut)
+      }
     }
   }, [selected])
 
@@ -126,42 +136,59 @@ const RenderQuestion: React.FC<Props> = ({
 
   return (
     <>
-      <div className=''>
-        <div className='absolute top-5 left-5 text-left z-10'>
-          <Buttonicon
-            icon={back}
-            onClick={() => handleBack && handleBack(record.question_id - 1)}
-          />
+      {isLoading ? (
+        <div className='min-h-[100dvh] flex justify-center items-center'>
+          <MediaPopup className='max-w-[350px]' show={true} type='loader' />
         </div>
-        <div
-          style={{
-            backgroundSize: 'cover',
-            background: `url(${switchImage(index)}) center center no-repeat`,
-          }}
-          className='image-screen w-screen min-h-[100dvh] flex items-center'
-        >
-          <div className='w-full'>
-            <div
-              className={` ${index === 0 ? 'mt-[-15rem]' : index === 1 ? 'absolute -top-10 right-0' : 'absolute women-ladder right-0'}`}
-            >
-              {index === 2 && (
-                <div>
-                  <Player
-                    autoplay={true}
-                    loop={true}
-                    controls={false}
-                    src={womenLeader}
-                    style={{
-                      height: '100%',
-                      width: '100vw',
-                      marginLeft: 'auto',
-                    }}
-                  />
-                </div>
-              )}
-              {index === 1 && (
-                <div className={'flex justify-between w-[100dvw]  gap-10'}>
-                  <div style={{ marginTop: '10rem' }}>
+      ) : (
+        <div className=''>
+          <div className='absolute top-5 left-5 text-left z-10'>
+            <Buttonicon
+              icon={back}
+              onClick={() => handleBack && handleBack(record.question_id - 1)}
+            />
+          </div>
+          <div
+            style={{
+              backgroundSize: 'cover',
+              background: `url(${switchImage(index)}) center center no-repeat`,
+            }}
+            className='image-screen w-screen min-h-[100dvh] flex items-center'
+          >
+            <div className='w-full'>
+              <div
+                className={` ${index === 0 ? 'mt-[-15rem]' : index === 1 ? 'absolute -top-10 right-0' : 'absolute women-ladder right-0'}`}
+              >
+                {index === 2 && (
+                  <div>
+                    <Player
+                      autoplay={true}
+                      loop={true}
+                      controls={false}
+                      src={womenLeader}
+                      style={{
+                        height: '100%',
+                        width: '100vw',
+                        marginLeft: 'auto',
+                      }}
+                    />
+                  </div>
+                )}
+                {index === 1 && (
+                  <div className={'flex justify-between w-[100dvw]  gap-10'}>
+                    <div style={{ marginTop: '10rem' }}>
+                      <motion.img
+                        transition={{
+                          y: motionImageConfig.transition.y,
+                        }}
+                        animate={{
+                          y: motionImageConfig.animate.y,
+                        }}
+                        src={object2}
+                        alt={''}
+                        style={{ maxWidth: '50vw' }}
+                      />
+                    </div>
                     <motion.img
                       transition={{
                         y: motionImageConfig.transition.y,
@@ -169,11 +196,13 @@ const RenderQuestion: React.FC<Props> = ({
                       animate={{
                         y: motionImageConfig.animate.y,
                       }}
-                      src={object2}
+                      src={object3}
                       alt={''}
                       style={{ maxWidth: '50vw' }}
                     />
                   </div>
+                )}
+                {index !== 2 && index !== 1 && (
                   <motion.img
                     transition={{
                       y: motionImageConfig.transition.y,
@@ -181,97 +210,86 @@ const RenderQuestion: React.FC<Props> = ({
                     animate={{
                       y: motionImageConfig.animate.y,
                     }}
-                    src={object3}
+                    src={
+                      index === 0 ? object1 : index === 1 ? object3 : object4
+                    }
                     alt={''}
-                    style={{ maxWidth: '50vw' }}
+                    style={{ maxWidth: '100vw' }}
                   />
-                </div>
-              )}
-              {index !== 2 && index !== 1 && (
-                <motion.img
-                  transition={{
-                    y: motionImageConfig.transition.y,
-                  }}
-                  animate={{
-                    y: motionImageConfig.animate.y,
-                  }}
-                  src={index === 0 ? object1 : index === 1 ? object3 : object4}
-                  alt={''}
-                  style={{ maxWidth: '100vw' }}
-                />
-              )}
-            </div>
-            <div
-              className={`content absolute bottom-0 text-start bg-white rounded-t-[32px] w-full`}
-            >
-              <WrapperLayouts>
-                <h2
-                  className={`title text-black w-[300px] ${isActive ? 'custom-popup' : 'pb-0'}`}
-                >
-                  {htmlParser(record.question)}
-                  {!isActive && (
-                    <div className='w-full custom-padding-quiz overflow-hidden'>
-                      <Slidedot
-                        position={'center'}
-                        color={colorPicker(index)}
-                        indexActive={index}
-                      />
-                    </div>
-                  )}
-                </h2>
-                <motion.div
-                  className='content'
-                  initial={'closed'}
-                  animate={isActive ? 'open' : 'closed'}
-                  variants={motionConfig}
-                >
-                  {record.choices.map((item) => (
-                    <div
-                      className='flex gap-3 items-center mb-3'
-                      key={item.c_id}
-                    >
-                      <div>
-                        <Radio
+                )}
+              </div>
+              <div
+                className={`content absolute bottom-0 text-start bg-white rounded-t-[32px] w-full`}
+              >
+                <WrapperLayouts>
+                  <h2
+                    className={`title text-black w-[300px] ${isActive ? 'custom-popup' : 'pb-0'}`}
+                  >
+                    {htmlParser(record.question)}
+                    {!isActive && (
+                      <div className='w-full custom-padding-quiz overflow-hidden'>
+                        <Slidedot
+                          position={'center'}
                           color={colorPicker(index)}
-                          type='round'
-                          checked={isChecked(item.c_id)}
-                          onChange={() => {
-                            onChange &&
-                              onChange({
-                                quiz_id: record?.question_id,
-                                answer_id: item.c_id,
-                              })
-                          }}
+                          indexActive={index}
                         />
                       </div>
-                      <div>
-                        <p className='body-1 text-black'>{item.c_text}</p>
+                    )}
+                  </h2>
+                  <motion.div
+                    className='content'
+                    initial={'closed'}
+                    animate={isActive ? 'open' : 'closed'}
+                    variants={motionConfig}
+                  >
+                    {record.choices.map((item) => (
+                      <div
+                        className='flex gap-3 items-center mb-3'
+                        key={item.c_id}
+                      >
+                        <div>
+                          <Radio
+                            color={colorPicker(index)}
+                            type='round'
+                            checked={isChecked(item.c_id)}
+                            onChange={() => {
+                              onChange &&
+                                onChange({
+                                  quiz_id: record?.question_id,
+                                  answer_id: item.c_id,
+                                })
+                            }}
+                          />
+                        </div>
+                        <div>
+                          <p className='body-1 text-black'>{item.c_text}</p>
+                        </div>
+                      </div>
+                    ))}
+                    <div className='grid grid-cols-12 gap-3 items-center pt-[24px]'>
+                      <div className='col-span-4'>
+                        <Slidedot
+                          indexActive={index}
+                          color={colorPicker(index)}
+                        />
+                      </div>
+                      <div className='col-span-8'>
+                        <Button
+                          disabled={value?.answer_id === 0}
+                          type='default'
+                          title={isLast ? 'Submit' : 'Next'}
+                          onClick={isLast ? handleSubmit : handleNext}
+                          color={colorPicker(index)}
+                        />
                       </div>
                     </div>
-                  ))}
-                  <div className='grid grid-cols-12 gap-3 items-center pt-[24px]'>
-                    <div className='col-span-4'>
-                      <Slidedot
-                        indexActive={index}
-                        color={colorPicker(index)}
-                      />
-                    </div>
-                    <div className='col-span-8'>
-                      <Button
-                        disabled={value?.answer_id === 0}
-                        type='default'
-                        title={isLast ? 'Submit' : 'Next'}
-                        onClick={isLast ? handleSubmit : handleNext}
-                        color={colorPicker(index)}
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              </WrapperLayouts>
+                  </motion.div>
+                </WrapperLayouts>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   )
 }
