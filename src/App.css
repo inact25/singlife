@@ -3,212 +3,209 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: 'F37Gruffy';
-    src:
-      local('F37Gruffy'),
-      url('./assets/fontface/F37Gruffy/F37Gruffy-Regular.otf')
-        format('opentype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'F37Gruffy';
-    src:
-      local('F37Gruffy-Bold'),
-      url('./assets/fontface/F37Gruffy/F37Gruffy-Bold.otf') format('opentype');
-    font-weight: bold;
-    font-style: normal;
-  }
+    @font-face {
+        font-family: 'F37Gruffy';
+        src: local('F37Gruffy'),
+        url('./assets/fontface/F37Gruffy/F37Gruffy-Regular.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'F37Gruffy';
+        src: local('F37Gruffy-Bold'),
+        url('./assets/fontface/F37Gruffy/F37Gruffy-Bold.otf') format('opentype');
+        font-weight: bold;
+        font-style: normal;
+    }
 }
 
 * {
-  font-family: F37Gruffy, serif;
+    font-family: F37Gruffy, serif;
 }
 
 #root {
-  text-align: center;
-  background: #ffe9ec;
-  height: 100dvh;
-  overflow: hidden;
+    text-align: center;
+    background: #ffe9ec;
+    height: 100dvh;
+    overflow: hidden;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+    filter: drop-shadow(0 0 2em #646cffaa);
 }
 
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+    filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
 .display {
-  font-weight: bold;
-  font-size: 34px;
-  line-height: 48px;
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 48px;
 }
 
 .cta-1 {
-  font-size: 16px;
-  line-height: 22px;
+    font-size: 16px;
+    line-height: 22px;
 }
 
 .cta-2 {
-  font-size: 12px;
-  line-height: 22px;
+    font-size: 12px;
+    line-height: 22px;
 }
 
 h1 {
-  font-size: 30px;
-  line-height: 48px;
+    font-size: 30px;
+    line-height: 48px;
 }
 
 h2 {
-  font-size: 28px;
-  line-height: 40px;
+    font-size: 28px;
+    line-height: 40px;
 }
 
 h3 {
-  font-size: 22px;
-  line-height: 28px;
+    font-size: 22px;
+    line-height: 28px;
 }
 
 .body-1 {
-  font-size: 16px;
-  line-height: 22px;
+    font-size: 16px;
+    line-height: 22px;
 }
 
 
 .body-2 {
-  font-size: 14px;
-  line-height: 20px;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .note {
-  font-size: 12px;
-  line-height: 16px;
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .image-screen {
-  background-size: cover !important;
+    background-size: cover !important;
 }
 
 @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
 }
 
 .card {
-  padding: 2em;
+    padding: 2em;
 }
 
 .read-the-docs {
-  color: #888;
+    color: #888;
 }
 
 .absolute-fill {
-  z-index: 10;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  pointer-events: none;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
 }
 
 #recenterButton {
-  position: absolute;
-  z-index: 5;
-  right: 2vh;
-  bottom: 2.5vh;
-  max-width: 50px;
-  pointer-events: auto;
+    position: absolute;
+    z-index: 5;
+    right: 2vh;
+    bottom: 2.5vh;
+    max-width: 50px;
+    pointer-events: auto;
 }
 
 #videoPreview, #imagePreview {
-  max-width: 58vw !important;
+    max-width: 58vw !important;
 }
 
 /* ANIMATIONS */
 
 .fly-in {
-  animation: fly-in 1.5s ease-out both;
+    animation: fly-in 1.5s ease-out both;
 }
 
 @keyframes fly-in {
-  0% {
-    transform: translate(-100%, 0%);
-    opacity: 0;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, 0%);
-    opacity: 1;
-  }
+    0% {
+        transform: translate(-100%, 0%);
+        opacity: 0;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, 0%);
+        opacity: 1;
+    }
 }
 
 .fade-out {
-  animation: fade-out 1s ease-out both;
+    animation: fade-out 1s ease-out both;
 }
 
 @keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 .pulse-once {
-  animation: pulse-once 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) both;
+    animation: pulse-once 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) both;
 }
 
 @keyframes pulse-once {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.8);
-  }
-  100% {
-    transform: scale(1);
-  }
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* motion sensor */
 #requestingCameraPermissions {
-  background-color: white !important;
+    background-color: white !important;
 }
 
 #requestingCameraIcon {
-  background-color: white !important;
+    background-color: white !important;
 }
 
 #loadBackground {
-  background-color: white !important;
+    background-color: white !important;
 }
 
 #loadImage {
-  background-color: white !important;
+    background-color: white !important;
 }
 
 .prompt-box-8w {
@@ -222,185 +219,186 @@ h3 {
 
 /* custom btn capture */
 .capture-icon {
-  max-width: max-content;
-  position: absolute;
-  display: none;
+    max-width: max-content;
+    position: absolute;
+    display: none;
 }
 
 .recorder-container {
-  all: unset;
-  position: absolute;
-  bottom: 2.5dvh;
-  right: 50%;
-  transform: translateX(50%);
-  width: 80px;
-  height: 50px;
-  z-index: 1;
+    all: unset;
+    position: absolute;
+    bottom: 2.5dvh;
+    right: 50%;
+    transform: translateX(50%);
+    width: 80px;
+    height: 50px;
+    z-index: 1;
 
 }
 
 .progress-container {
-  position: absolute;
-  top: -2.6dvh;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  transform: scale(1);
-  transition: 0.3s transform, 0.3s opacity;
-  display: none;
+    position: absolute;
+    top: -2.6dvh;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    transform: scale(1);
+    transition: 0.3s transform, 0.3s opacity;
+    display: none;
 }
 
 .progress-bar {
-  opacity: 0;
-  transition: 0;
-  transform-origin: 50% 50%;
-  stroke: red;
-  transform: rotate(-90deg);
-  stroke-dasharray: 100.531 100.531;
-  stroke-dashoffset: 100;
+    opacity: 0;
+    transition: 0;
+    transform-origin: 50% 50%;
+    stroke: red;
+    transform: rotate(-90deg);
+    stroke-dasharray: 100.531 100.531;
+    stroke-dashoffset: 100;
 }
 
 .progress-track, .progress-bar, .loading-circle {
-  fill: transparent;
-  stroke-width: 2;
+    fill: transparent;
+    stroke-width: 2;
 }
 
 .recording .progress-container, .loading .progress-container {
-  opacity: 1;
-  transform: scale(1.15);
+    opacity: 1;
+    transform: scale(1.15);
 }
+
 .progress-track {
-  stroke: white;
+    stroke: white;
 }
 
 .recording .progress-track, .loading .progress-track {
-  transition: 0.8s stroke;
-  stroke: white;
+    transition: 0.8s stroke;
+    stroke: white;
 }
 
 .active:not(.fixed-mode) #recorder-button {
-  background: red;
+    background: red;
 }
 
 #recorder-button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  color: transparent;
-  bottom: 10dvh;
-}
-
-.spinner {
-  animation: spin 6s linear infinite;
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-}
-
-.bottom-bar {
-  width: 100dvw;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#actionButton {
-  background-color: #ff0008 !important;
-  position: absolute !important;
-  margin-top: -8rem;
-  left: auto;
-  right: auto;
-  margin-left: -3rem;
-  width: 220px !important;
-  height: 60px !important;
-  border-radius: 28px !important;
-  text-align: center !important;
-  padding: 12px 16px !important;
-  /*margin: auto !important;*/
-}
-
-#actionButtonImg{
-  display: none;
-}
-
-.top-bar{
-  min-height: 100dvh;
-  background: rgba(0, 0, 0, 0.65);
-}
-
-.custom-viewport{
-  height: 80dvh;
-}
-
-.custom-popup{
-  padding-bottom: 24px;
-}
-
-.custom-padding-quiz{
-  @apply m-auto my-[4px]
-}
-
-.women-ladder{
-  @apply bottom-[25dvh]
-}
-
-@media screen and (max-height: 600px){
-  .custom-viewport{
-    height: 78dvh;
-  } 
-}
-
-@media screen and (max-height: 700px){
-  .custom-viewport{
-    height: 80dvh;
-  } 
-  
-  .custom-popup{
-    padding-bottom: 24px;
-  }
-
-  .women-ladder{
-    @apply bottom-[20dvh]
-  }
-  
-  #recorder-button {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
     color: transparent;
-    bottom: 5dvh;
-  }
+    bottom: 10dvh;
+}
+
+.spinner {
+    animation: spin 6s linear infinite;
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.bottom-bar {
+    width: 100dvw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#actionButton {
+    background-color: #ff0008 !important;
+    position: absolute !important;
+    margin-top: -8rem;
+    left: auto;
+    right: auto;
+    margin-left: -3rem;
+    min-width: 220px !important;
+    height: 60px !important;
+    border-radius: 28px !important;
+    text-align: center !important;
+    padding: 12px 16px !important;
+    /*margin: auto !important;*/
+}
+
+#actionButtonImg {
+    display: none;
+}
+
+.top-bar {
+    min-height: 100dvh;
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.custom-viewport {
+    height: 80dvh;
+}
+
+.custom-popup {
+    padding-bottom: 24px;
+}
+
+.custom-padding-quiz {
+    @apply m-auto my-[4px]
+}
+
+.women-ladder {
+    @apply bottom-[25dvh]
+}
+
+@media screen and (max-height: 600px) {
+    .custom-viewport {
+        height: 78dvh;
+    }
+}
+
+@media screen and (max-height: 700px) {
+    .custom-viewport {
+        height: 80dvh;
+    }
+
+    .custom-popup {
+        padding-bottom: 24px;
+    }
+
+    .women-ladder {
+        @apply bottom-[20dvh]
+    }
+
+    #recorder-button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        color: transparent;
+        bottom: 5dvh;
+    }
 }
 
 /* SPEECH BOX */
 .callout .swal2-popup {
-  position: relative;
+    position: relative;
 }
 
 /* CALLOUT */
 .callout .swal2-popup::after {
-  display: block;
-  width: 0;
-  content: "";
-  border: 15px solid transparent;
-  position: absolute;
+    display: block;
+    width: 0;
+    content: "";
+    border: 15px solid transparent;
+    position: absolute;
 }
 
 .callout .swal2-popup.swal2-modal::after {
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
-  border-top-color: #ffffff99;
-  border-bottom: 0;
-  bottom: -15px;
-  left: calc(50% - 15px);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+    border-top-color: #ffffff99;
+    border-bottom: 0;
+    bottom: -15px;
+    left: calc(50% - 15px);
 }
