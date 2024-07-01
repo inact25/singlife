@@ -18,7 +18,7 @@ const getMessageByType = (type: string = ''): string => {
     waiting: 'Loading your dream world',
     move: 'Look around to explore',
     loader:
-      'For the best experience, be in a well-lit and spacious environment. If loading is slow, please refresh your browser.',
+      'For the best experience, be in a well-lit and<br/> spacious environment. <br/><br/>If loading is slow, please refresh your browser.',
   }
 
   return messages[type] || 'Tap the floor to start'
@@ -98,7 +98,10 @@ const MediaPopup = ({
           />
         </div>
         <div>
-          <p className='note text-black'>{message}</p>
+          <p
+            className='note text-black'
+            dangerouslySetInnerHTML={{ __html: message }}
+          />
         </div>
       </div>
     </motion.div>
