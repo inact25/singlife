@@ -2,8 +2,8 @@
 // @ts-nocheck
 const portalCameraComponent = {
   schema: {
-    width: { default: 20 },
-    height: { default: 20 },
+    width: {default: 10},
+    height: {default: 10},
   },
   init() {
     this.camera = this.el
@@ -16,21 +16,18 @@ const portalCameraComponent = {
   },
 
   tick() {
-    const { position } = this.camera.object3D
+    const {position} = this.camera.object3D
     const isOutside = position.z > 0
     const withinPortalBounds =
-      position.y < this.data.height &&
-      Math.abs(position.x) < this.data.width / 2
+      position.y < this.data.height && Math.abs(position.x) < this.data.width / 2
     if (this.wasOutside !== isOutside && withinPortalBounds) {
       this.isInPortalSpace = !isOutside
     }
-    if (this?.portalVideo?.object3D) {
-      this.contents.object3D.visible = this.isInPortalSpace || isOutside
-      this.walls.object3D.visible = !this.isInPortalSpace && isOutside
-      this.portalWall.object3D.visible = this.isInPortalSpace && !isOutside
-      this.portalVideo.object3D.visible = isOutside
-      this.wasOutside = isOutside
-    }
+    this.contents.object3D.visible = this.isInPortalSpace || isOutside
+    this.walls.object3D.visible = !this.isInPortalSpace && isOutside
+    this.portalWall.object3D.visible = this.isInPortalSpace && !isOutside
+    this.portalVideo.object3D.visible = isOutside
+    this.wasOutside = isOutside
   },
 }
 
