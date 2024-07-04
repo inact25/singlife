@@ -350,7 +350,6 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             material='src: #video; shader: chromakey;  color: 0 0 0; blending: additive; side: front'
             geometry='primitive: plane; height: 2; width: 2;'
             scale='0.001 0.001 0.001'
-            visible='false'
           ></a-entity>
 
           <a-circle
