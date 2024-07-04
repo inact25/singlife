@@ -18,7 +18,7 @@ import { responsiveImmersiveComponent } from '@components/WebAR/partials/immersi
 import MediaPopup from '@components/atom/mediapop'
 
 // portal video
-import portalVideo from '@assets/portal-video.mp4'
+import portalVideo from '@assets/red_portal.mp4'
 import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
 import Popup from '@components/molecules/popup'
 import Button from '@components/atom/button'
@@ -347,8 +347,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
 
           <a-entity
             id='portalVideo'
-            material='shader: chromakey;  color: 0 0 0; blending: additive; side: front'
-            geometry='primitive: plane; height: 1; width: 1;'
+            material='src: #video; shader: chromakey;  color: 0 0 0; blending: additive; side: front'
+            geometry='primitive: plane; height: 2; width: 2;'
             scale='0.001 0.001 0.001'
             visible='false'
           ></a-entity>
