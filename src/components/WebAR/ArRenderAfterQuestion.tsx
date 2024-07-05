@@ -350,7 +350,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             auto-play-video="video: #portal-video"
             material="shader: chromakey; src: #portal-video; color: 0 0 0; blending: additive; side: front"
             geometry='primitive: plane; height: 0.9; width: 0.9;'
-            position="0 7.5 0.1"
+            position="0 7.5 -3.8"
             scale='0.001 0.001 0.001'
           ></a-entity>
 
