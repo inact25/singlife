@@ -235,7 +235,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             end-card-call-to-action='Try it at:'
             watermark-max-width='100'
             watermark-max-height='18'
-            watermark-image-url='/frame1.png'
+            watermark-image-url='/singlife-watermark-new.png'
             watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
             footer-image-url='/logo_horizontal.png'
@@ -445,7 +445,7 @@ const Rewarded = () => {
       </div>
       <div className='caption mb-8'>
         <p className='note'>
-          Get a Financial Freedom Starter Kit <br /> and a $20 voucher
+          Get a Financial Freedom Starter Plan <br /> and a $20 voucher
         </p>
       </div>
       <div className='action-button flex gap-[16px]'>
