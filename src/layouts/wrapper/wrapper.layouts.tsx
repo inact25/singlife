@@ -19,7 +19,7 @@ const WrapperLayouts = ({
   className,
                           allDevice,
 }: Props) => {
-  const host = window.location.origin
+  // const host = window.location.origin
   const responsive = useResponsive()
   if (
       responsive.breakpoint === 'xs' ||
