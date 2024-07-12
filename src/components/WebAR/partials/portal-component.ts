@@ -92,22 +92,21 @@ const tapToPlacePortalComponent = {
             to: '0 -2 -4',
             easing: 'linear',
           })
+        }, 3500)
+        setTimeout(() => {
+          portalHiderRing.setAttribute('animation__1', {
+            property: 'radius-inner',
+            dur: 1500,
+            from: '0.001',
+            to: '3.5',
+            easing: 'linear',
+          })
 
           portalVideo.setAttribute('animation__3', {
             property: 'scale',
             dur: 1500,
             from: '0.001 0.001 0.001',
             to: '7 7 1',
-            easing: 'easeOutElastic',
-          })
-          
-        }, 3500)
-        setTimeout(() => {
-          portalHiderRing.setAttribute('animation__1', {
-            property: 'radius-inner',
-            dur: 500,
-            from: '0.001',
-            to: '3.5',
             easing: 'linear',
           })
 
@@ -123,7 +122,6 @@ const tapToPlacePortalComponent = {
 
 
 
-      
       portalShadow.setAttribute('animation__4', {
         property: 'scale',
         dur: 1500,
