@@ -102,13 +102,7 @@ const tapToPlacePortalComponent = {
             easing: 'linear',
           })
 
-          portalVideo.setAttribute('animation__3', {
-            property: 'scale',
-            dur: 1500,
-            from: '0.001 0.001 0.001',
-            to: '7 7 1',
-            easing: 'easeOutElastic',
-          })
+
 
           portalVideo.setAttribute('animation__5', {
             property: 'radius-inner',
@@ -121,7 +115,14 @@ const tapToPlacePortalComponent = {
       }, 3000) // Jeda 3000 milidetik (3 detik)
 
 
-
+      portalVideo.setAttribute('animation__3', {
+        property: 'scale',
+        dur: 1500,
+        from: '0.001 0.001 0.001',
+        to: '7 7 1',
+        easing: 'easeOutElastic',
+      })
+      
       portalShadow.setAttribute('animation__4', {
         property: 'scale',
         dur: 1500,
