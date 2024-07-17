@@ -398,7 +398,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               className='Demo__some-network__share-button'
             >
               {/* <WhatsappIcon size={60} round /> */}
-              <img src={WAICON} className='w-[60xp] h-[60px] rounded-full' />
+              <img src={WAICON} className='w-[80xp] h-[80px] rounded-full' />
             </WhatsappShareButton>
           </div>
           <div className='flex items-center'>
