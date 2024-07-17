@@ -34,6 +34,7 @@ import {
   WhatsappShareButton,
 } from 'react-share'
 import Recenter from '../../assets/svgs/recenter.svg'
+import WAICON from '../../assets/svgs/whatsapp-icon.svg'
 
 type Props = {
   params: any
@@ -396,7 +397,8 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               url={shareUrl()}
               className='Demo__some-network__share-button'
             >
-              <WhatsappIcon size={60} round />
+              {/* <WhatsappIcon size={60} round /> */}
+              <img src={WAICON} className='w-[60xp] h-[60px] rounded-full' />
             </WhatsappShareButton>
           </div>
           <div className='flex items-center'>
