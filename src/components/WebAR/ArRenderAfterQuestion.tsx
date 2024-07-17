@@ -34,7 +34,10 @@ import {
   WhatsappShareButton,
 } from 'react-share'
 import Recenter from '../../assets/svgs/recenter.svg'
-import WAICON from '../../assets/svgs/whatsapp-icon.svg'
+import WAICON from '@assets/svgs/whatsapp-icon.svg'
+import FBICON from '@assets/svgs/facebook.svg'
+import GIFT from '@assets/svgs/gift.svg'
+import COPY from '@assets/svgs/copy.svg'
 
 type Props = {
   params: any
@@ -383,13 +386,13 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
         </motion.div>
       </WrapperLayouts>
       {reward === 2 && (
-        <div className='flex flex-col gap-y-[10px] absolute top-5 right-3 z-50 '>
+        <div className='flex flex-col gap-y-[0px] absolute top-5 right-3 z-50 '>
           <div>
             <FacebookShareButton
               url={shareUrl()}
               className='Demo__some-network__share-button'
             >
-              <FacebookIcon size={60} round />
+               <img src={FBICON} className='w-[48px] h-[48px] rounded-full' />
             </FacebookShareButton>
           </div>
           <div>
@@ -398,12 +401,12 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               className='Demo__some-network__share-button'
             >
               {/* <WhatsappIcon size={60} round /> */}
-              <img src={WAICON} className='w-[80xp] h-[80px] rounded-full' />
+              <img src={WAICON} className='w-[48px] h-[48px] rounded-full' />
             </WhatsappShareButton>
           </div>
           <div className='flex items-center'>
             {isLinkCopied && (
-              <div className='note  absolute bg-white/80 right-[4rem] mt-[-1rem] px-4 py-3 rounded-full w-fit min-w-[120px]'>
+              <div className='note  absolute bg-white/80 right-[4rem] mt-[0rem] px-4 py-3 rounded-full w-fit min-w-[120px]'>
                 Link copied
               </div>
             )}
@@ -414,19 +417,17 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
                   setTimeout(() => setIsLinkCopied(false), 2000)
                 })
               }}
-              className='h-[60px] mb-3 [:&>svg]:text-[24px] shadow-sm w-[60px] bg-white text-black rounded-full flex items-center justify-center'
             >
-              <span className='text-[24px]'>
-                <img src={FaLink} />
+              <span >
+                <img src={COPY} className='h-[48px] w-[48px]'/>
               </span>
             </div>
           </div>
           <div
             onClick={() => setReward(1)}
-            className='h-[60px] mb-3 [:&>svg]:text-[24px] w-[60px] shadow-sm bg-black text-white rounded-full flex items-center justify-center'
           >
-            <span className='text-[24px]'>
-              <img src={HiGiftTop} />
+            <span >
+              <img src={GIFT} className='h-[48px] w-[48px]' />
             </span>
           </div>
         </div>
