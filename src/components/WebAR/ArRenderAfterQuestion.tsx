@@ -445,7 +445,7 @@ const Rewarded = () => {
       </div>
       <div className='caption mb-8'>
         <p className='note'>
-          Get a Financial Freedom Starter Plan <br /> and a $20 voucher
+          Get a Financial Freedom Starter Plan <br /> and a $20 e-voucher
         </p>
       </div>
       <div className='action-button flex gap-[16px]'>

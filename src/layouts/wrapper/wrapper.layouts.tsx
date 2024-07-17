@@ -44,8 +44,7 @@ const WrapperLayouts = ({
                 />
               </div>
               <div className='mt-28 ml-16'>
-                <Button onClick={()=>window.open('https://singlife.com/','_blank')} title={<div className='flex justify-center items-center gap-5'><RiChatSmile2Fill/>Talk to a
-                  Financial Advisor</div>}/>
+                <Button onClick={()=>window.open('https://singlife.com/en/contact-us/make-an-appointment','_blank')} title={<div className='flex justify-center items-center gap-5'><RiChatSmile2Fill/>Make an appointment with our Financial Advisers</div>}/>
               </div>
             </div>
           </div>
