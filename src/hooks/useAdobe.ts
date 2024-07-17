@@ -12,19 +12,17 @@ const useAdobe = () => {
   const getSiteId = () => {
     return 'sg-dreamcube-stg'
   }
-  const seperatedPath = () => {
-    const path = window.location.pathname
+  const seperatedPath = (pathname: string | undefined) => {
+    const path = pathname ?? window.location.pathname
     return path.split('/')
   }
-  const push = ({
-    type = 'page',
-    navLevel1 = '',
-    navLevel2 = '',
-    navLevel3 = '',
-  }) => {
+  const push = (
+    { type = 'page', navLevel1 = '', navLevel2 = '', navLevel3 = '' },
+    pathname: string | undefined,
+  ) => {
     let dataLayer: any = layers ?? []
     if (navLevel1 === '' && navLevel2 === '' && navLevel3 === '') {
-      const path = seperatedPath()
+      const path = seperatedPath(pathname)
       if (path.length > 1) {
         navLevel1 = path[1] ?? ''
       }
