@@ -96,7 +96,7 @@ const tapToPlacePortalComponent = {
         setTimeout(() => {
           portalHiderRing.setAttribute('animation__1', {
             property: 'radius-inner',
-            dur: 1500,
+            dur: 1000,
             from: '0.001',
             to: '3.5',
             easing: 'linear',
@@ -104,7 +104,7 @@ const tapToPlacePortalComponent = {
 
           portalVideo.setAttribute('animation__3', {
             property: 'scale',
-            dur: 1500,
+            dur: 1000,
             from: '0.001 0.001 0.001',
             to: '7 7 1',
             easing: 'linear',
