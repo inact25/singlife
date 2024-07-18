@@ -1,13 +1,14 @@
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import Camera from '@assets/svgs/camera.svg'
 import Rotate from '@assets/svgs/rotate.svg'
 import Button from '@components/atom/button'
 import Popup from '@components/molecules/popup'
 import Question3 from '@assets/background/Question3.png'
 import useAccelerometer from '@utils/useAccelerometer.ts'
-import {bottomPopup} from '@utils/bottomPopup/bottomPopup.ts'
-import {useParams} from 'react-router-dom'
-import {motion} from 'framer-motion'
+import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
+import { useParams } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import useAdobe from '@hooks/useAdobe.ts'
 
 const Index = () => {
   const [open, setOpen] = useState(false)
@@ -17,7 +18,13 @@ const Index = () => {
   useEffect(() => {
     setTimeout(() => setOpen(true), 200)
   }, [])
-
+  const adobe_v1 = useAdobe()
+  useEffect(() => {
+    adobe_v1.push({
+      type: 'page',
+    })
+    adobe_v1.apply()
+  }, [])
   return (
     <div>
       <div
@@ -61,7 +68,7 @@ const Before = () => {
   const onGranted = () => {
     if (params.purpose?.split('-')[0] === 'explore') {
       window.open(
-          `/your-dream/explore-${params.purpose?.split('-')[1]}${params?.purpose?.includes('influencer') ? '-influencer' : ''}`,
+        `/your-dream/explore-${params.purpose?.split('-')[1]}${params?.purpose?.includes('influencer') ? '-influencer' : ''}`,
         '_self',
       )
     }

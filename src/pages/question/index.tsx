@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
-import {useState} from 'react'
+import { useEffect, useState } from 'react'
 import RenderQuestion from './RenderQuestion.tsx'
 import useQuiz from '@services/api/quiz'
-import {QuizSubmitItem} from '@services/api/quiz/type'
-import {useNavigate} from 'react-router-dom'
+import { QuizSubmitItem } from '@services/api/quiz/type'
+import { useNavigate } from 'react-router-dom'
+import useAdobe from '@hooks/useAdobe.ts'
 
 const question_ids = [1, 2, 3]
 const Question = () => {
@@ -60,24 +61,30 @@ const Question = () => {
         )
       })
   }
-
+  const adobe_v1 = useAdobe()
+  useEffect(() => {
+    adobe_v1.push({
+      type: 'page',
+    })
+    adobe_v1.apply()
+  }, [])
 
   return (
     <WrapperLayouts isFull={true}>
       <div>
         <RenderQuestion
-            handleBack={handleBack}
-            selected={selected ?? 1}
-            index={selected ? selected - 1 : 0}
-            lastChoice={lastChoice}
-            onChange={handleChanges}
-            value={{
-              quiz_id: selected ?? 1,
-              answer_id: selectAnswer(selected ?? 1) ?? 0,
-            }}
-            handleNext={handleNext}
-            isLast={selected === question_ids.length}
-            handleSubmit={handleSubmit}
+          handleBack={handleBack}
+          selected={selected ?? 1}
+          index={selected ? selected - 1 : 0}
+          lastChoice={lastChoice}
+          onChange={handleChanges}
+          value={{
+            quiz_id: selected ?? 1,
+            answer_id: selectAnswer(selected ?? 1) ?? 0,
+          }}
+          handleNext={handleNext}
+          isLast={selected === question_ids.length}
+          handleSubmit={handleSubmit}
         />
       </div>
     </WrapperLayouts>

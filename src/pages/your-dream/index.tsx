@@ -8,13 +8,13 @@ import useDream from '@services/api/dream'
 import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
 import Buttonicon from '@components/atom/buttonicon'
 import back from '@assets/svgs/back.svg'
+import useAdobe from '@hooks/useAdobe.ts'
 
 const motionFade = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 }
 const YourDream = () => {
-  console.log('youurr')
   const params = useParams()
   const dream_v1 = useDream()
   const navigate = useNavigate()
@@ -60,6 +60,14 @@ const YourDream = () => {
       }, 5000)
     }
   }, [showPopup])
+
+  const adobe_v1 = useAdobe()
+  useEffect(() => {
+    adobe_v1.push({
+      type: 'page',
+    })
+    adobe_v1.apply()
+  }, [])
   return (
     <WrapperLayouts isFull={true} allDevice>
       <div className=''>

@@ -2,11 +2,9 @@ import './App.css'
 import { useEffect } from 'react'
 import Question from './pages/question'
 import useAdobe from '@hooks/useAdobe.ts'
-import { useLocation } from 'react-use'
 
 function App() {
   const adobe_v1 = useAdobe()
-  const location = useLocation()
   useEffect(() => {
     if (
       localStorage.theme === 'dark' ||
@@ -20,14 +18,11 @@ function App() {
   }, [])
   //listen route change
   useEffect(() => {
-    adobe_v1.push(
-      {
-        type: 'page',
-      },
-      location.pathname,
-    )
+    adobe_v1.push({
+      type: 'page',
+    })
     adobe_v1.apply()
-  }, [location.pathname])
+  }, [])
   return (
     <div>
       <Question />

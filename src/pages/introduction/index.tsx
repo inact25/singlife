@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import useDream from '@services/api/dream'
 import { useEffect, useState } from 'react'
 import Splash from '@components/atom/splash'
+import useAdobe from '@hooks/useAdobe.ts'
 
 const Introduction = () => {
   const [isSplash, setIsSplash] = useState(true)
@@ -30,7 +31,13 @@ const Introduction = () => {
   useEffect(() => {
     dream_v1.getLatestDreamDo()
   }, [dream_v1.paginate.filter])
-
+  const adobe_v1 = useAdobe()
+  useEffect(() => {
+    adobe_v1.push({
+      type: 'page',
+    })
+    adobe_v1.apply()
+  }, [])
   return (
     <div>
       {isSplash ? (

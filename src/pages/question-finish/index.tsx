@@ -7,6 +7,7 @@ import MediaPopup from '@components/atom/mediapop'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import useDream from '@services/api/dream'
+import useAdobe from '@hooks/useAdobe.ts'
 
 const motionFade = {
   hidden: { opacity: 0 },
@@ -25,9 +26,16 @@ const QuestionFinish = () => {
   }
   useEffect(() => {
     if (params?.id) {
-      dream_v1.getDetailDo(parseInt(params?.id?.split('-')[0], 10),"standard")
+      dream_v1.getDetailDo(parseInt(params?.id?.split('-')[0], 10), 'standard')
     }
   }, [params?.id])
+  const adobe_v1 = useAdobe()
+  useEffect(() => {
+    adobe_v1.push({
+      type: 'page',
+    })
+    adobe_v1.apply()
+  }, [])
   return (
     <WrapperLayouts isFull={true} allDevice>
       <div className=''>
