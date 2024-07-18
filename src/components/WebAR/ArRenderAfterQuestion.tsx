@@ -242,7 +242,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             watermark-image-url='/singlife-watermark-new.png'
             watermark-location='bottomMiddle'
             file-name-prefix='singlife-image-'
-            footer-image-url='/logo_horizontal.png'
+            footer-image-url='/singlife-watermark-new.png'
           ></xrextras-capture-config>
           <xrextras-capture-preview
             action-button-share-text='Share your dream'
@@ -448,7 +448,7 @@ const Rewarded = () => {
       </div>
       <div className='caption mb-8'>
         <p className='note'>
-          Get a Financial Freedom Starter Plan <br /> and a $20 e-voucher
+          Get a Financial Freedom Starter Plan <br /> and a S$20 e-voucher
         </p>
       </div>
       <div className='action-button flex gap-[16px]'>
@@ -456,7 +456,7 @@ const Rewarded = () => {
           title='Learn more'
           onClick={() =>
             window.open(
-              `https://www.singlife.com/ffi?ffdream=${dream_no}&entry_id=${entry_id}`,
+              `https://singlife.com/en/about-us/financial-freedom-index?utm_source=singlife_web&utm_medium=web&utm_campaign=dreamcube_20240725-20240924&utm_content=learn-more&utm_term=&ffdream=${dream_no}&entry_id=${entry_id}`,
               '_blank',
             )
           }
@@ -465,7 +465,7 @@ const Rewarded = () => {
         <Button
           onClick={() =>
             window.open(
-              `https://aem-staging.singlife.com/en/form/dream-cube?ffdream=${dream_no}&entry_id=${entry_id}`,
+              `https://singlife.com/en/form/dream-cube?utm_source=singlife_web&utm_medium=web&utm_campaign=dreamcube_20240725-20240924&utm_content=sign-up&utm_term=&ffdream=${dream_no}&entry_id=${entry_id}`,
               '_blank',
             )
           }
