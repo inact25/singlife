@@ -4,7 +4,7 @@ import useResponsive from "@hooks/useResponsive.ts";
 import mainImg from "@assets/svgs/main.svg"
 import Button from "@components/atom/button";
 import {RiChatSmile2Fill} from "react-icons/ri";
-import QRcode from '@assets/svgs/qr.svg'
+import QRcode from '@assets/qr-new.png'
 
 type Props = {
   children: ReactNode
@@ -40,7 +40,7 @@ const WrapperLayouts = ({
                 {/* <QrCodeCreator value={host}/> */}
                 <img src={QRcode} 
                 style={{boxShadow: 'rgba(255, 0, 8, 0.2) 0px 7px 29px 0px'}}
-                className='bg-white rounded-xl shadow-singlife-red-800'
+                className='bg-white rounded-xl shadow-singlife-red-800 h-[150px]'
                 />
               </div>
               <div className='mt-28 ml-16'>
