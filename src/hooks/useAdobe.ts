@@ -47,6 +47,26 @@ const useAdobe = () => {
     })
     setLayers(dataLayer)
   }
+  const pushForm = (name: string) => {
+    // @ts-ignore
+    if (window?._satellite) {
+      // @ts-ignore
+      window.dataLayer = [
+        {
+          siteId: getSiteId(),
+          language: getBrowserLanguage(),
+          country: getCurrentCountry(),
+          versionNum: '1.0.0',
+          type: 'form',
+          form: {
+            name,
+          },
+        },
+      ]
+      // @ts-ignore
+      window?._satellite.track('track_form_view')
+    }
+  }
   const apply = () => {
     // @ts-ignore
     if (window?._satellite) {
@@ -61,7 +81,7 @@ const useAdobe = () => {
     }
     return false
   }
-  return { push, apply }
+  return { push, apply, pushForm }
 }
 
 export default useAdobe
