@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
 const getBrowserLanguage = () => {
-  return navigator.language || 'en-EN'
+  return navigator.language || 'en-sg'
 }
 const getCurrentCountry = () => {
-  return 'SG'
+  return 'sg'
 }
 const getSiteId = () => {
-  return 'sg-dreamcube-stg'
+  return 'sg-dreamcube'
 }
 const seperatedPath = () => {
   const path = window.location.pathname
