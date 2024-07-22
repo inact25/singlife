@@ -12,6 +12,7 @@ export type ListQuizParams = DefaultFilter
 export type QuizSubmitItem = {
   quiz_id: number
   answer_id: number
+  text: string
 }
 export type QuizSubmitBody = {
   answers: QuizSubmitItem[]

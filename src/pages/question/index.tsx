@@ -58,13 +58,19 @@ const Question = () => {
         if (response?.errors) {
           return
         }
+        let choicesAll: string[] = []
+        answers.map((item) => {
+          //extract item.choices flatten it
+          if (item?.text) {
+            choicesAll.push(item?.text)
+          }
+          return item
+        })
+        adobe_v1.completeForm(choicesAll)
         ctaAction('question-submit|button', 'Submit Question')
         navigate(
           `/tracking/question-${response?.entry_id}-${response?.dream_no}`,
         )
-      })
-      .finally(() => {
-        adobe_v1.completeForm()
       })
   }
   useEffect(() => {
@@ -87,6 +93,7 @@ const Question = () => {
           value={{
             quiz_id: selected ?? 1,
             answer_id: selectAnswer(selected ?? 1) ?? 0,
+            text: '',
           }}
           handleNext={handleNext}
           isLast={selected === question_ids.length}

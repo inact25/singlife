@@ -262,6 +262,7 @@ const RenderQuestion: React.FC<Props> = ({
                                 onChange({
                                   quiz_id: record?.question_id,
                                   answer_id: item.c_id,
+                                  text: item.c_text,
                                 })
                               if (record?.question_id) {
                                 adobe_v1.pushForm(

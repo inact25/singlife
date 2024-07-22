@@ -73,9 +73,29 @@ const useAdobe = () => {
     // @ts-ignore
     window?._satellite.track('track_form_start')
   }
-  const completeForm = () => {
+  const completeForm = (trackedOptions: string[]) => {
     // @ts-ignore
-    window?._satellite.track('track_form_complete')
+    if (
+      // @ts-ignore
+      window?._satellite &&
+      // @ts-ignore
+      window?.dataLayer &&
+      // @ts-ignore
+      window?.dataLayer.length > 0
+    ) {
+      // @ts-ignore
+      const pickOne = window?.dataLayer[0]
+      pickOne.form = {
+        ...pickOne.form,
+        option: trackedOptions.join('|'),
+      }
+      // @ts-ignore
+      window.dataLayer = [pickOne]
+      // @ts-ignore
+      console.log('submit', window.dataLayer)
+      // @ts-ignore
+      window?._satellite.track('track_form_complete')
+    }
   }
   const apply = () => {
     // @ts-ignore
