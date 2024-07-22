@@ -1,23 +1,24 @@
 import { useState } from 'react'
 
+const getBrowserLanguage = () => {
+  return navigator.language || 'en-EN'
+}
+const getCurrentCountry = () => {
+  return 'SG'
+}
+const getSiteId = () => {
+  return 'sg-dreamcube-stg'
+}
+const seperatedPath = () => {
+  const path = window.location.pathname
+  return path.split('/')
+}
 const useAdobe = () => {
   // @ts-ignore
   const [layers, setLayers] = useState([])
-  const getBrowserLanguage = () => {
-    return navigator.language || 'en-EN'
-  }
-  const getCurrentCountry = () => {
-    return 'SG'
-  }
-  const getSiteId = () => {
-    return 'sg-dreamcube-stg'
-  }
-  const seperatedPath = () => {
-    const path = window.location.pathname
-    return path.split('/')
-  }
+
   const push = ({
-    type = 'page',
+    type = 'mobile',
     navLevel1 = '',
     navLevel2 = '',
     navLevel3 = '',
@@ -47,7 +48,7 @@ const useAdobe = () => {
     })
     setLayers(dataLayer)
   }
-  const pushForm = (name: string) => {
+  const pushForm = (name: string, step: string) => {
     // @ts-ignore
     if (window?._satellite) {
       // @ts-ignore
@@ -57,15 +58,24 @@ const useAdobe = () => {
           language: getBrowserLanguage(),
           country: getCurrentCountry(),
           versionNum: '1.0.0',
-          type: 'form',
+          type: 'mobile',
           form: {
             name,
+            step,
           },
         },
       ]
       // @ts-ignore
       window?._satellite.track('track_form_view')
     }
+  }
+  const startForm = () => {
+    // @ts-ignore
+    window?._satellite.track('track_form_start')
+  }
+  const completeForm = () => {
+    // @ts-ignore
+    window?._satellite.track('track_form_complete')
   }
   const apply = () => {
     // @ts-ignore
@@ -81,7 +91,28 @@ const useAdobe = () => {
     }
     return false
   }
-  return { push, apply, pushForm }
+  return { push, apply, pushForm, startForm, completeForm }
 }
-
+export const ctaAction = (type: string, text: string) => {
+  // @ts-ignore
+  if (window?._satellite) {
+    // @ts-ignore
+    window.dataLayer = [
+      {
+        siteId: getSiteId(),
+        language: getBrowserLanguage(),
+        country: getCurrentCountry(),
+        versionNum: '1.0.0',
+        type: 'mobile',
+        cta: {
+          type,
+          text,
+        },
+      },
+    ]
+    //track_cta_click
+    // @ts-ignore
+    window?._satellite.track('track_cta_click')
+  }
+}
 export default useAdobe

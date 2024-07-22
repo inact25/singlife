@@ -8,7 +8,7 @@ import useDream from '@services/api/dream'
 import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
 import Buttonicon from '@components/atom/buttonicon'
 import back from '@assets/svgs/back.svg'
-import useAdobe from '@hooks/useAdobe.ts'
+import useAdobe, { ctaAction } from '@hooks/useAdobe.ts'
 
 const motionFade = {
   hidden: { opacity: 0 },
@@ -64,7 +64,7 @@ const YourDream = () => {
   const adobe_v1 = useAdobe()
   useEffect(() => {
     adobe_v1.push({
-      type: 'page',
+      type: 'mobile',
     })
     adobe_v1.apply()
   }, [])
@@ -75,6 +75,7 @@ const YourDream = () => {
           <Buttonicon
             icon={back}
             onClick={() => {
+              ctaAction('dream-gallery|button', 'Back')
               window.open('/dreams', '_self')
             }}
           />

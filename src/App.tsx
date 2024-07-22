@@ -19,7 +19,7 @@ function App() {
   //listen route change
   useEffect(() => {
     adobe_v1.push({
-      type: 'page',
+      type: 'mobile',
     })
     adobe_v1.apply()
   }, [])

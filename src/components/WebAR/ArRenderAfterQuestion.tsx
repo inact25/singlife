@@ -25,19 +25,13 @@ import Button from '@components/atom/button'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import Swal from 'sweetalert2'
 import { useParams } from 'react-router-dom'
-import FaLink from '../../assets/svgs/link-copy.svg'
-import HiGiftTop from '../../assets/svgs/gift.svg'
-import {
-  FacebookIcon,
-  FacebookShareButton,
-  WhatsappIcon,
-  WhatsappShareButton,
-} from 'react-share'
+import { FacebookShareButton, WhatsappShareButton } from 'react-share'
 import Recenter from '../../assets/svgs/recenter.svg'
 import WAICON from '@assets/svgs/whatsapp-icon.svg'
 import FBICON from '@assets/svgs/facebook.svg'
 import GIFT from '@assets/svgs/gift.svg'
 import COPY from '@assets/svgs/copy.svg'
+import { ctaAction } from '@hooks/useAdobe.ts'
 
 type Props = {
   params: any
@@ -351,10 +345,10 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
 
           <a-entity
             id='portalVideo'
-            auto-play-video="video: #portal-video"
-            material="shader: chromakey; src: #portal-video; color: 0 0 0; blending: additive; side: front"
+            auto-play-video='video: #portal-video'
+            material='shader: chromakey; src: #portal-video; color: 0 0 0; blending: additive; side: front'
             geometry='primitive: plane; height: 1.4; width: 1.4;'
-            position="0 7 -3.8"
+            position='0 7 -3.8'
             scale='0.001 0.001 0.001'
           ></a-entity>
 
@@ -392,7 +386,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               url={shareUrl()}
               className='Demo__some-network__share-button'
             >
-               <img src={FBICON} className='w-[48px] h-[48px] rounded-full' />
+              <img src={FBICON} className='w-[48px] h-[48px] rounded-full' />
             </FacebookShareButton>
           </div>
           <div>
@@ -412,21 +406,25 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
             )}
             <div
               onClick={() => {
+                ctaAction('ar|button', 'Copy link')
                 navigator.clipboard.writeText(shareUrl()).then(() => {
                   setIsLinkCopied(true)
                   setTimeout(() => setIsLinkCopied(false), 2000)
                 })
               }}
             >
-              <span >
-                <img src={COPY} className='h-[48px] w-[48px]'/>
+              <span>
+                <img src={COPY} className='h-[48px] w-[48px]' />
               </span>
             </div>
           </div>
           <div
-            onClick={() => setReward(1)}
+            onClick={() => {
+              ctaAction('ar|button', 'Get reward')
+              setReward(1)
+            }}
           >
-            <span >
+            <span>
               <img src={GIFT} className='h-[48px] w-[48px]' />
             </span>
           </div>

@@ -265,7 +265,8 @@ const RenderQuestion: React.FC<Props> = ({
                                 })
                               if (record?.question_id) {
                                 adobe_v1.pushForm(
-                                  `${record?.question_id} | ${parseToText(record?.question ?? '')} `,
+                                  `sg|dreamcube-quiz`,
+                                  `${parseToText(record?.question ?? '')} `,
                                 )
                               }
                             }}

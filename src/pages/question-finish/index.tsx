@@ -32,7 +32,7 @@ const QuestionFinish = () => {
   const adobe_v1 = useAdobe()
   useEffect(() => {
     adobe_v1.push({
-      type: 'page',
+      type: 'mobile',
     })
     adobe_v1.apply()
   }, [])

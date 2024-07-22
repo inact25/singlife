@@ -8,7 +8,7 @@ import useAccelerometer from '@utils/useAccelerometer.ts'
 import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
 import { useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import useAdobe from '@hooks/useAdobe.ts'
+import useAdobe, { ctaAction } from '@hooks/useAdobe.ts'
 
 const Index = () => {
   const [open, setOpen] = useState(false)
@@ -21,7 +21,7 @@ const Index = () => {
   const adobe_v1 = useAdobe()
   useEffect(() => {
     adobe_v1.push({
-      type: 'page',
+      type: 'mobile',
     })
     adobe_v1.apply()
   }, [])
@@ -81,6 +81,7 @@ const Before = () => {
   }
 
   const motionSensor = () => {
+    ctaAction('ar|button', 'Enable access')
     if (navigator.userAgent.toLowerCase().includes('android')) {
       requestPermission()
     } else {
@@ -124,7 +125,7 @@ const Before = () => {
     <div>
       <div className='caption mb-5'>
         <p className='body-1'>
-          We'll need BOTH of <br /> the following permissions:
+          {`We'll`} need BOTH of <br /> the following permissions:
         </p>
       </div>
       <div className='caption mb-5'>

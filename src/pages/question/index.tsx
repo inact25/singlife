@@ -5,10 +5,11 @@ import RenderQuestion from './RenderQuestion.tsx'
 import useQuiz from '@services/api/quiz'
 import { QuizSubmitItem } from '@services/api/quiz/type'
 import { useNavigate } from 'react-router-dom'
-import useAdobe from '@hooks/useAdobe.ts'
+import useAdobe, { ctaAction } from '@hooks/useAdobe.ts'
 
 const question_ids = [1, 2, 3]
 const Question = () => {
+  const adobe_v1 = useAdobe()
   const navigate = useNavigate()
   const quiz_service = useQuiz()
   const [selected, setSelected] = useState<number | null>(1)
@@ -24,11 +25,12 @@ const Question = () => {
   const handleBack = (id: number) => {
     const isAvailable = question_ids.find((item) => item === id)
     if (!isAvailable) {
+      ctaAction('question-back-home|button', 'Back Question')
       navigate('/')
       return
     }
     const answer = answers.find((item) => item.quiz_id === id - 1)
-    console.log(answer)
+    ctaAction('question-back|button', 'Back Question')
     setLastChoice(answer?.answer_id ?? 1)
     setSelected(id)
   }
@@ -41,6 +43,7 @@ const Question = () => {
     const answer = answers.find((item) => item.quiz_id === selected)
     setLastChoice(answer?.answer_id ?? 1)
     setSelected(next)
+    ctaAction('question-next|button', 'Next Question')
   }
   const selectAnswer = (id: number) => {
     return answers.find((item) => item.quiz_id === id)?.answer_id
@@ -55,18 +58,21 @@ const Question = () => {
         if (response?.errors) {
           return
         }
-        console.log(response)
+        ctaAction('question-submit|button', 'Submit Question')
         navigate(
           `/tracking/question-${response?.entry_id}-${response?.dream_no}`,
         )
       })
+      .finally(() => {
+        adobe_v1.completeForm()
+      })
   }
-  const adobe_v1 = useAdobe()
   useEffect(() => {
     adobe_v1.push({
-      type: 'page',
+      type: 'mobile',
     })
     adobe_v1.apply()
+    adobe_v1.startForm()
   }, [])
 
   return (

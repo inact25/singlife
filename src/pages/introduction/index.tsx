@@ -6,16 +6,18 @@ import { useNavigate } from 'react-router-dom'
 import useDream from '@services/api/dream'
 import { useEffect, useState } from 'react'
 import Splash from '@components/atom/splash'
-import useAdobe from '@hooks/useAdobe.ts'
+import useAdobe, { ctaAction } from '@hooks/useAdobe.ts'
 
 const Introduction = () => {
   const [isSplash, setIsSplash] = useState(true)
   const dream_v1 = useDream()
   const navigate = useNavigate()
   const handleGetStarted = () => {
+    ctaAction('get-started|button', 'Get Started')
     navigate('/questions')
   }
   const handleExploreDreamGallery = () => {
+    ctaAction('explore-dream-gallery|button', 'Explore Dream Gallery')
     navigate('/dreams')
   }
 
@@ -34,7 +36,7 @@ const Introduction = () => {
   const adobe_v1 = useAdobe()
   useEffect(() => {
     adobe_v1.push({
-      type: 'page',
+      type: 'mobile',
     })
     adobe_v1.apply()
   }, [])
