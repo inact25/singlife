@@ -268,6 +268,9 @@ const RenderQuestion: React.FC<Props> = ({
                                 adobe_v1.pushForm(
                                   `sg|dreamcube-quiz`,
                                   `${parseToText(record?.question ?? '')} `,
+                                  record.choices
+                                    .map((item) => item.c_text)
+                                    .join('|'),
                                 )
                               }
                             }}

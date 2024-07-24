@@ -41,6 +41,7 @@ const useAdobe = () => {
       language: getBrowserLanguage(),
       country: getCurrentCountry(),
       versionNum: '1.0.0',
+      brand: 'singlife',
       type,
       navLevel1,
       navLevel2,
@@ -48,25 +49,26 @@ const useAdobe = () => {
     })
     setLayers(dataLayer)
   }
-  const pushForm = (name: string, step: string) => {
+  const pushForm = (name: string, step: string, option: string) => {
     // @ts-ignore
     if (window?._satellite) {
-      // @ts-ignore
-      window.dataLayer = [
-        {
-          siteId: getSiteId(),
-          language: getBrowserLanguage(),
-          country: getCurrentCountry(),
-          versionNum: '1.0.0',
-          type: 'mobile',
-          form: {
-            name,
-            step,
-          },
+      const payload = {
+        siteId: getSiteId(),
+        language: getBrowserLanguage(),
+        country: getCurrentCountry(),
+        versionNum: '1.0.0',
+        type: 'mobile',
+        form: {
+          option,
+          name,
+          step,
         },
-      ]
+      }
       // @ts-ignore
-      window?._satellite.track('track_form_view')
+      window?._satellite.track('track_form_view', payload)
+
+      // @ts-ignore
+      window?._satellite.track('track_form_submit', payload)
     }
   }
   const startForm = () => {
@@ -88,11 +90,7 @@ const useAdobe = () => {
     // @ts-ignore
     if (
       // @ts-ignore
-      window?._satellite &&
-      // @ts-ignore
-      window?.dataLayer &&
-      // @ts-ignore
-      window?.dataLayer.length > 0
+      window?._satellite
     ) {
       // @ts-ignore
       const pickOne = window?.dataLayer[0]
@@ -104,8 +102,6 @@ const useAdobe = () => {
       window.dataLayer = [pickOne]
       // @ts-ignore
       console.log('submit', pickOne)
-      // @ts-ignore
-      window?._satellite.track('track_form_submit', pickOne)
       // @ts-ignore
       window?._satellite.track('track_form_complete', pickOne)
     }
