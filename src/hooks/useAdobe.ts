@@ -71,7 +71,18 @@ const useAdobe = () => {
   }
   const startForm = () => {
     // @ts-ignore
-    window?._satellite.track('track_form_start')
+    window?._satellite.track('track_form_start', {
+      siteId: getSiteId(),
+      language: getBrowserLanguage(),
+      country: getCurrentCountry(),
+      versionNum: '1.0.0',
+      type: 'mobile',
+      form: {
+        name: '',
+        step: '',
+        option: '',
+      },
+    })
   }
   const completeForm = (trackedOptions: string[]) => {
     // @ts-ignore
@@ -92,9 +103,11 @@ const useAdobe = () => {
       // @ts-ignore
       window.dataLayer = [pickOne]
       // @ts-ignore
-      console.log('submit', window.dataLayer)
+      console.log('submit', pickOne)
       // @ts-ignore
-      window?._satellite.track('track_form_complete')
+      window?._satellite.track('track_form_submit', pickOne)
+      // @ts-ignore
+      window?._satellite.track('track_form_complete', pickOne)
     }
   }
   const apply = () => {
@@ -104,7 +117,7 @@ const useAdobe = () => {
       // @ts-ignore
       window.dataLayer = layers
       // @ts-ignore
-      window?._satellite.track('track_page_load')
+      window?._satellite.track('track_page_load', layers)
       //clean up
       setLayers([])
       return true
@@ -116,23 +129,19 @@ const useAdobe = () => {
 export const ctaAction = (type: string, text: string) => {
   // @ts-ignore
   if (window?._satellite) {
-    // @ts-ignore
-    window.dataLayer = [
-      {
-        siteId: getSiteId(),
-        language: getBrowserLanguage(),
-        country: getCurrentCountry(),
-        versionNum: '1.0.0',
-        type: 'mobile',
-        cta: {
-          type,
-          text,
-        },
-      },
-    ]
     //track_cta_click
     // @ts-ignore
-    window?._satellite.track('track_cta_click')
+    window?._satellite.track('track_cta_click', {
+      siteId: getSiteId(),
+      language: getBrowserLanguage(),
+      country: getCurrentCountry(),
+      versionNum: '1.0.0',
+      type: 'mobile',
+      cta: {
+        type,
+        text,
+      },
+    })
   }
 }
 export default useAdobe
