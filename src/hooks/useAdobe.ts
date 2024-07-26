@@ -1,42 +1,44 @@
 import { useState } from 'react'
-declare global {
-  interface Window {
-    _satellite: any
-  }
+
+const getBrowserLanguage = () => {
+  return navigator.language || 'en-sg'
 }
 
-export {}
-declare global {
-  interface Window {
-    dataLayer: any[] | undefined
-  }
+const getCurrentCountry = () => {
+  return 'sg'
 }
-// Utility functions
-const getBrowserLanguage = (): string => navigator.language || 'en-sg'
-const getCurrentCountry = (): string => 'sg'
-const getSiteId = (): string => 'sg-dreamcube'
 
-const separatedPath = (): string[] => {
+const getSiteId = () => {
+  return 'sg-dreamcube'
+}
+
+const seperatedPath = () => {
   const path = window.location.pathname
   return path.split('/')
 }
 
-// Adobe hook
 const useAdobe = () => {
-  const [layers, setLayers] = useState<any[]>([])
+  // @ts-ignore
+  const [layers, setLayers] = useState([])
 
   const push = ({
     type = 'mobile',
     navLevel1 = '',
     navLevel2 = '',
     navLevel3 = '',
-  } = {}) => {
-    const dataLayer = layers ?? []
-    if (!navLevel1 && !navLevel2 && !navLevel3) {
-      const path = separatedPath()
-      navLevel1 = path[1] ?? ''
-      navLevel2 = path[2] ?? ''
-      navLevel3 = path[3] ?? ''
+  }) => {
+    let dataLayer: any = layers ?? []
+    if (navLevel1 === '' && navLevel2 === '' && navLevel3 === '') {
+      const path = seperatedPath()
+      if (path.length > 1) {
+        navLevel1 = path[1] ?? ''
+      }
+      if (path.length > 2) {
+        navLevel2 = path[2] ?? ''
+      }
+      if (path.length > 3) {
+        navLevel3 = path[3] ?? ''
+      }
     }
     dataLayer.push({
       siteId: getSiteId(),
@@ -52,8 +54,8 @@ const useAdobe = () => {
     setLayers(dataLayer)
   }
 
-  const pushForm = (step: string, option: string) => {
-    const name = 'sg|dreamcube-quiz'
+  const pushForm = (name: string, step: string, option: string) => {
+    // @ts-ignore
     if (window?._satellite) {
       const payload = {
         siteId: getSiteId(),
@@ -67,54 +69,64 @@ const useAdobe = () => {
           step,
         },
       }
-      console.log(
-        `Form Name: ${name}, Form Step: ${step}, Form Option: ${option}`,
-      )
-      window._satellite.track('track_form_view', payload)
-      window._satellite.track('track_form_submit', payload)
+      // Menambahkan console.log
+      console.log('Form data to be tracked:', payload)
+
+      // @ts-ignore
+      window?._satellite.track('track_form_view', payload)
+
+      // @ts-ignore
+      window?._satellite.track('track_form_submit', payload)
     }
   }
 
   const startForm = () => {
-    const name = 'sg|dreamcube-quiz'
-    if (window?._satellite) {
-      console.log(`Form Name: ${name}, Form Step: start, Form Option:`)
-      window._satellite.track('track_form_start', {
-        siteId: getSiteId(),
-        language: getBrowserLanguage(),
-        country: getCurrentCountry(),
-        versionNum: '1.0.0',
-        type: 'mobile',
-        form: {
-          name,
-          step: '',
-          option: '',
-        },
-      })
-    }
+    // @ts-ignore
+    window?._satellite.track('track_form_start', {
+      siteId: getSiteId(),
+      language: getBrowserLanguage(),
+      country: getCurrentCountry(),
+      versionNum: '1.0.0',
+      type: 'mobile',
+      form: {
+        name: '',
+        step: '',
+        option: '',
+      },
+    })
   }
 
   const completeForm = (trackedOptions: string[]) => {
-    const name = 'sg|dreamcube-quiz'
+    // @ts-ignore
     if (window?._satellite) {
-      const pickOne = window?.dataLayer?.[0] ?? {}
+      // @ts-ignore
+      const pickOne = window?.dataLayer[0]
       pickOne.form = {
         ...pickOne.form,
-        name,
         option: trackedOptions.join('|'),
       }
+      // @ts-ignore
       window.dataLayer = [pickOne]
-      console.log(
-        `Form Name: ${name}, Form Step: complete, Form Option: ${trackedOptions.join('|')}`,
-      )
-      window._satellite.track('track_form_complete', pickOne)
+      // Menambahkan console.log
+      console.log('Complete form data:', pickOne)
+
+      // @ts-ignore
+      window?._satellite.track('track_form_complete', pickOne)
     }
   }
 
-  const apply = (): boolean => {
+  const apply = () => {
+    // @ts-ignore
     if (window?._satellite) {
+      //parse data layer
+      // @ts-ignore
       window.dataLayer = layers
-      window._satellite.track('track_page_load', layers)
+      // Menambahkan console.log
+      console.log('Data layer applied:', layers)
+
+      // @ts-ignore
+      window?._satellite.track('track_page_load', layers)
+      //clean up
       setLayers([])
       return true
     }
@@ -124,10 +136,24 @@ const useAdobe = () => {
   return { push, apply, pushForm, startForm, completeForm }
 }
 
-// CTA action
 export const ctaAction = (type: string, text: string) => {
+  // @ts-ignore
   if (window?._satellite) {
-    window._satellite.track('track_cta_click', {
+    // Menambahkan console.log
+    console.log('CTA Action:', {
+      siteId: getSiteId(),
+      language: getBrowserLanguage(),
+      country: getCurrentCountry(),
+      versionNum: '1.0.0',
+      type: 'mobile',
+      cta: {
+        type,
+        text,
+      },
+    })
+
+    // @ts-ignore
+    window?._satellite.track('track_cta_click', {
       siteId: getSiteId(),
       language: getBrowserLanguage(),
       country: getCurrentCountry(),
