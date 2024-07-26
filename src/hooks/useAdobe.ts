@@ -1,40 +1,31 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-const getBrowserLanguage = () => {
-  return navigator.language || 'en-sg'
-}
-const getCurrentCountry = () => {
-  return 'sg'
-}
-const getSiteId = () => {
-  return 'sg-dreamcube'
-}
-const seperatedPath = () => {
-  const path = window.location.pathname
-  return path.split('/')
-}
+// Utility functions
+const getBrowserLanguage = (): string => navigator.language || 'en-sg';
+const getCurrentCountry = (): string => 'sg';
+const getSiteId = (): string => 'sg-dreamcube';
+
+const separatedPath = (): string[] => {
+  const path = window.location.pathname;
+  return path.split('/');
+};
+
+// Adobe hook
 const useAdobe = () => {
-  // @ts-ignore
-  const [layers, setLayers] = useState([])
+  const [layers, setLayers] = useState<any[]>([]);
 
   const push = ({
     type = 'mobile',
     navLevel1 = '',
     navLevel2 = '',
     navLevel3 = '',
-  }) => {
-    let dataLayer: any = layers ?? []
-    if (navLevel1 === '' && navLevel2 === '' && navLevel3 === '') {
-      const path = seperatedPath()
-      if (path.length > 1) {
-        navLevel1 = path[1] ?? ''
-      }
-      if (path.length > 2) {
-        navLevel2 = path[2] ?? ''
-      }
-      if (path.length > 3) {
-        navLevel3 = path[3] ?? ''
-      }
+  } = {}) => {
+    const dataLayer = layers ?? [];
+    if (!navLevel1 && !navLevel2 && !navLevel3) {
+      const path = separatedPath();
+      navLevel1 = path[1] ?? '';
+      navLevel2 = path[2] ?? '';
+      navLevel3 = path[3] ?? '';
     }
     dataLayer.push({
       siteId: getSiteId(),
@@ -46,11 +37,12 @@ const useAdobe = () => {
       navLevel1,
       navLevel2,
       navLevel3,
-    })
-    setLayers(dataLayer)
-  }
-  const pushForm = (name: string, step: string, option: string) => {
-    // @ts-ignore
+    });
+    setLayers(dataLayer);
+  };
+
+  const pushForm = (step: string, option: string) => {
+    const name = 'sg|dreamcube-quiz';
     if (window?._satellite) {
       const payload = {
         siteId: getSiteId(),
@@ -63,71 +55,62 @@ const useAdobe = () => {
           name,
           step,
         },
-      }
-      // @ts-ignore
-      window?._satellite.track('track_form_view', payload)
-
-      // @ts-ignore
-      window?._satellite.track('track_form_submit', payload)
+      };
+      window._satellite.track('track_form_view', payload);
+      window._satellite.track('track_form_submit', payload);
     }
-  }
+  };
+
   const startForm = () => {
-    // @ts-ignore
-    window?._satellite.track('track_form_start', {
-      siteId: getSiteId(),
-      language: getBrowserLanguage(),
-      country: getCurrentCountry(),
-      versionNum: '1.0.0',
-      type: 'mobile',
-      form: {
-        name: '',
-        step: '',
-        option: '',
-      },
-    })
-  }
+    const name = 'sg|dreamcube-quiz';
+    if (window?._satellite) {
+      window._satellite.track('track_form_start', {
+        siteId: getSiteId(),
+        language: getBrowserLanguage(),
+        country: getCurrentCountry(),
+        versionNum: '1.0.0',
+        type: 'mobile',
+        form: {
+          name,
+          step: '',
+          option: '',
+        },
+      });
+    }
+  };
+
   const completeForm = (trackedOptions: string[]) => {
-    // @ts-ignore
-    if (
-      // @ts-ignore
-      window?._satellite
-    ) {
-      // @ts-ignore
-      const pickOne = window?.dataLayer[0]
+    const name = 'sg|dreamcube-quiz';
+    if (window?._satellite) {
+      const pickOne = window?.dataLayer?.[0] ?? {};
       pickOne.form = {
         ...pickOne.form,
+        name,
         option: trackedOptions.join('|'),
-      }
-      // @ts-ignore
-      window.dataLayer = [pickOne]
-      // @ts-ignore
-      console.log('submit', pickOne)
-      // @ts-ignore
-      window?._satellite.track('track_form_complete', pickOne)
+      };
+      window.dataLayer = [pickOne];
+      console.log('submit', pickOne);
+      window._satellite.track('track_form_complete', pickOne);
     }
-  }
-  const apply = () => {
-    // @ts-ignore
+  };
+
+  const apply = (): boolean => {
     if (window?._satellite) {
-      //parse data layer
-      // @ts-ignore
-      window.dataLayer = layers
-      // @ts-ignore
-      window?._satellite.track('track_page_load', layers)
-      //clean up
-      setLayers([])
-      return true
+      window.dataLayer = layers;
+      window._satellite.track('track_page_load', layers);
+      setLayers([]);
+      return true;
     }
-    return false
-  }
-  return { push, apply, pushForm, startForm, completeForm }
-}
+    return false;
+  };
+
+  return { push, apply, pushForm, startForm, completeForm };
+};
+
+// CTA action
 export const ctaAction = (type: string, text: string) => {
-  // @ts-ignore
   if (window?._satellite) {
-    //track_cta_click
-    // @ts-ignore
-    window?._satellite.track('track_cta_click', {
+    window._satellite.track('track_cta_click', {
       siteId: getSiteId(),
       language: getBrowserLanguage(),
       country: getCurrentCountry(),
@@ -137,7 +120,8 @@ export const ctaAction = (type: string, text: string) => {
         type,
         text,
       },
-    })
+    });
   }
-}
-export default useAdobe
+};
+
+export default useAdobe;
