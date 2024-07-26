@@ -69,8 +69,10 @@ const useAdobe = () => {
           step,
         },
       }
-      // Menambahkan console.log
-      console.log('Form data to be tracked:', payload)
+      // Menambahkan console.log dengan format yang diinginkan
+      console.log(`form-name: ${name}`)
+      console.log(`form-step: ${step}`)
+      console.log(`form-option: ${option}`)
 
       // @ts-ignore
       window?._satellite.track('track_form_view', payload)
@@ -107,8 +109,10 @@ const useAdobe = () => {
       }
       // @ts-ignore
       window.dataLayer = [pickOne]
-      // Menambahkan console.log
-      console.log('Complete form data:', pickOne)
+      // Menambahkan console.log dengan format yang diinginkan
+      console.log(`form-name: ${pickOne.form.name}`)
+      console.log(`form-step: ${pickOne.form.step}`)
+      console.log(`form-option: ${pickOne.form.option}`)
 
       // @ts-ignore
       window?._satellite.track('track_form_complete', pickOne)
@@ -139,18 +143,9 @@ const useAdobe = () => {
 export const ctaAction = (type: string, text: string) => {
   // @ts-ignore
   if (window?._satellite) {
-    // Menambahkan console.log
-    console.log('CTA Action:', {
-      siteId: getSiteId(),
-      language: getBrowserLanguage(),
-      country: getCurrentCountry(),
-      versionNum: '1.0.0',
-      type: 'mobile',
-      cta: {
-        type,
-        text,
-      },
-    })
+    // Menambahkan console.log dengan format yang diinginkan
+    console.log(`cta-type: ${type}`)
+    console.log(`cta-text: ${text}`)
 
     // @ts-ignore
     window?._satellite.track('track_cta_click', {
