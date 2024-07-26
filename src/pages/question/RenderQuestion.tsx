@@ -32,7 +32,6 @@ type Props = {
   lastChoice?: number | null
   handleSubmit: () => void
 }
-
 const switchImage = (index: number) => {
   switch (index) {
     case 0:
@@ -45,18 +44,17 @@ const switchImage = (index: number) => {
       return question1
   }
 }
-
 const motionConfig = {
   closed: {
     height: 0,
     opacity: 0,
   },
+  //open visible
   open: {
     height: 'auto',
     opacity: 1,
   },
 }
-
 const motionImageConfig = {
   transition: {
     y: {
@@ -70,7 +68,6 @@ const motionImageConfig = {
     y: [0, '2rem', 0],
   },
 }
-
 const colorPicker = (index: number) => {
   switch (index) {
     case 0:
@@ -83,11 +80,9 @@ const colorPicker = (index: number) => {
       return 'singlife-purple'
   }
 }
-
 const parseToText = (text: string) => {
   return text.replace(/<[^>]*>?/gm, '')
 }
-
 const RenderQuestion: React.FC<Props> = ({
   selected,
   handleBack,
@@ -117,11 +112,9 @@ const RenderQuestion: React.FC<Props> = ({
       return () => clearTimeout(timer)
     }
   }, [record?.question_id])
-
   useEffect(() => {
     setIsActive(false)
   }, [selected])
-
   useEffect(() => {
     if (selected) {
       quiz_service.getQuizRPCDo(selected, lastChoice ?? 0)
@@ -169,13 +162,7 @@ const RenderQuestion: React.FC<Props> = ({
           >
             <div className='w-full'>
               <div
-                className={` ${
-                  index === 0
-                    ? 'mt-[-15rem]'
-                    : index === 1
-                      ? 'absolute -top-10 right-0'
-                      : 'absolute women-ladder right-0'
-                }`}
+                className={` ${index === 0 ? 'mt-[-15rem]' : index === 1 ? 'absolute -top-10 right-0' : 'absolute women-ladder right-0'}`}
               >
                 {index === 2 && (
                   <div>
@@ -241,9 +228,7 @@ const RenderQuestion: React.FC<Props> = ({
               >
                 <WrapperLayouts>
                   <h2
-                    className={`title text-black w-[300px] ${
-                      isActive ? 'custom-popup' : 'pb-0'
-                    }`}
+                    className={`title text-black w-[300px] ${isActive ? 'custom-popup' : 'pb-0'}`}
                   >
                     {htmlParser(record.question)}
                     {!isActive && (
@@ -281,7 +266,7 @@ const RenderQuestion: React.FC<Props> = ({
                                 })
                               if (record?.question_id) {
                                 adobe_v1.pushForm(
-                                  `${parseToText(record?.question ?? '')}`,
+                                  `${parseToText(record?.question ?? '')} `,
                                   record.choices
                                     .map((item) => item.c_text)
                                     .join('|'),

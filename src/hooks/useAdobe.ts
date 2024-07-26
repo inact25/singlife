@@ -67,6 +67,9 @@ const useAdobe = () => {
           step,
         },
       }
+      console.log(
+        `Form Name: ${name}, Form Step: ${step}, Form Option: ${option}`,
+      )
       window._satellite.track('track_form_view', payload)
       window._satellite.track('track_form_submit', payload)
     }
@@ -75,6 +78,7 @@ const useAdobe = () => {
   const startForm = () => {
     const name = 'sg|dreamcube-quiz'
     if (window?._satellite) {
+      console.log(`Form Name: ${name}, Form Step: start, Form Option:`)
       window._satellite.track('track_form_start', {
         siteId: getSiteId(),
         language: getBrowserLanguage(),
@@ -100,7 +104,9 @@ const useAdobe = () => {
         option: trackedOptions.join('|'),
       }
       window.dataLayer = [pickOne]
-      console.log('submit', pickOne)
+      console.log(
+        `Form Name: ${name}, Form Step: complete, Form Option: ${trackedOptions.join('|')}`,
+      )
       window._satellite.track('track_form_complete', pickOne)
     }
   }
