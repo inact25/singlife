@@ -78,3 +78,11 @@ export const formCompleteTrigger = () => {
     window?._satellite.track('track_form_complete')
   }
 }
+
+export const formStartTrigger = () => {
+  // @ts-ignore
+  if (window?._satellite) {
+    // @ts-ignore
+    window?._satellite.track('track_form_start')
+  }
+}

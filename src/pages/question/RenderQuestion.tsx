@@ -19,7 +19,7 @@ import useQuiz from '@services/api/quiz'
 import womenLeader from '@assets/lottie/Woman on ladder.json'
 import { Player } from '@lottiefiles/react-lottie-player'
 import MediaPopup from '@components/atom/mediapop'
-import { formFill, formViewTrigger } from '@hooks/useAdobe.ts'
+import { formFill, formStartTrigger, formViewTrigger } from '@hooks/useAdobe.ts'
 
 type Props = {
   selected: number
@@ -132,6 +132,7 @@ const RenderQuestion: React.FC<Props> = ({
   useEffect(() => {
     if (quiz_service.singleData) {
       setRecord(quiz_service.singleData)
+      formViewTrigger()
     }
   }, [quiz_service.singleData])
 
@@ -270,7 +271,7 @@ const RenderQuestion: React.FC<Props> = ({
                                   parseToText(record.question),
                                   parseToText(item.c_text),
                                 )
-                                formViewTrigger()
+                                formStartTrigger()
                               }
                             }}
                           />
