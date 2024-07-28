@@ -19,7 +19,7 @@ import useQuiz from '@services/api/quiz'
 import womenLeader from '@assets/lottie/Woman on ladder.json'
 import { Player } from '@lottiefiles/react-lottie-player'
 import MediaPopup from '@components/atom/mediapop'
-import useAdobe from '@hooks/useAdobe.ts'
+import { formFill, formViewTrigger } from '@hooks/useAdobe.ts'
 
 type Props = {
   selected: number
@@ -83,6 +83,7 @@ const colorPicker = (index: number) => {
 const parseToText = (text: string) => {
   return text.replace(/<[^>]*>?/gm, '')
 }
+console.log(parseToText('<p>hello</p>'))
 const RenderQuestion: React.FC<Props> = ({
   selected,
   handleBack,
@@ -94,7 +95,6 @@ const RenderQuestion: React.FC<Props> = ({
   handleSubmit,
   lastChoice = 0,
 }) => {
-  const adobe_v1 = useAdobe()
   const quiz_service = useQuiz()
   const [record, setRecord] = useState<ListQuiz | null>(null)
   const [isActive, setIsActive] = useState(false)
@@ -265,13 +265,11 @@ const RenderQuestion: React.FC<Props> = ({
                                   text: item.c_text,
                                 })
                               if (record?.question_id) {
-                                adobe_v1.pushForm(
+                                formFill(
                                   `sg|dreamcube-quiz`,
-                                  `${parseToText(record?.question ?? '')} `,
-                                  record.choices
-                                    .map((item) => item.c_text)
-                                    .join('|'),
+                                  parseToText(record.question),
                                 )
+                                formViewTrigger()
                               }
                             }}
                           />

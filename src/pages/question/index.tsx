@@ -1,85 +1,81 @@
 /* eslint-disable prettier/prettier */
-import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
-import { useEffect, useState } from 'react'
-import RenderQuestion from './RenderQuestion.tsx'
-import useQuiz from '@services/api/quiz'
-import { QuizSubmitItem } from '@services/api/quiz/type'
-import { useNavigate } from 'react-router-dom'
-import useAdobe, { ctaAction } from '@hooks/useAdobe.ts'
+import WrapperLayouts from "../../layouts/wrapper/wrapper.layouts.tsx";
+import { useEffect, useState } from "react";
+import RenderQuestion from "./RenderQuestion.tsx";
+import useQuiz from "@services/api/quiz";
+import { QuizSubmitItem } from "@services/api/quiz/type";
+import { useNavigate } from "react-router-dom";
+import { ctaAction, formOptions, formSubmitTrigger, pageTrack } from "@hooks/useAdobe.ts";
 
-const question_ids = [1, 2, 3]
+const question_ids = [1, 2, 3];
 const Question = () => {
-  const adobe_v1 = useAdobe()
-  const navigate = useNavigate()
-  const quiz_service = useQuiz()
-  const [selected, setSelected] = useState<number | null>(1)
-  const [lastChoice, setLastChoice] = useState<number | null>(null)
-  const [answers, setAnswers] = useState<QuizSubmitItem[]>([])
+  const navigate = useNavigate();
+  const quiz_service = useQuiz();
+  const [selected, setSelected] = useState<number | null>(1);
+  const [lastChoice, setLastChoice] = useState<number | null>(null);
+  const [answers, setAnswers] = useState<QuizSubmitItem[]>([]);
   const pushAnswer = (values: QuizSubmitItem) => {
-    const newAnswers = answers.filter((item) => item.quiz_id !== values.quiz_id)
-    setAnswers([...newAnswers, values])
-  }
+    const newAnswers = answers.filter((item) => item.quiz_id !== values.quiz_id);
+    setAnswers([...newAnswers, values]);
+  };
   const handleChanges = (values: QuizSubmitItem) => {
-    pushAnswer(values)
-  }
+    pushAnswer(values);
+  };
   const handleBack = (id: number) => {
-    const isAvailable = question_ids.find((item) => item === id)
+    const isAvailable = question_ids.find((item) => item === id);
     if (!isAvailable) {
-      ctaAction('question-back-home|button', 'Back Question')
-      navigate('/')
-      return
+      ctaAction("question-back-home|button", "Back Question");
+      navigate("/");
+      return;
     }
-    const answer = answers.find((item) => item.quiz_id === id - 1)
-    ctaAction('question-back|button', 'Back Question')
-    setLastChoice(answer?.answer_id ?? 1)
-    setSelected(id)
-  }
+    const answer = answers.find((item) => item.quiz_id === id - 1);
+    ctaAction("question-back|button", "Back Question");
+    setLastChoice(answer?.answer_id ?? 1);
+    setSelected(id);
+  };
   const handleNext = () => {
-    const next = (selected ?? 1) + 1
-    const isAvailable = question_ids.find((item) => item === next)
+    const next = (selected ?? 1) + 1;
+    const isAvailable = question_ids.find((item) => item === next);
     if (!isAvailable) {
-      return
+      return;
     }
-    const answer = answers.find((item) => item.quiz_id === selected)
-    setLastChoice(answer?.answer_id ?? 1)
-    setSelected(next)
-    ctaAction('question-next|button', 'Next Question')
-  }
+    const answer = answers.find((item) => item.quiz_id === selected);
+    setLastChoice(answer?.answer_id ?? 1);
+    setSelected(next);
+    ctaAction("question-next|button", "Next Question");
+  };
   const selectAnswer = (id: number) => {
-    return answers.find((item) => item.quiz_id === id)?.answer_id
-  }
+    return answers.find((item) => item.quiz_id === id)?.answer_id;
+  };
   const handleSubmit = () => {
     quiz_service
       .submitQuizRPCDo({
-        answers,
+        answers
       })
       .then((response) => {
-        sessionStorage.removeItem('image')
+        sessionStorage.removeItem("image");
         if (response?.errors) {
-          return
+          return;
         }
-        let choicesAll: string[] = []
+        let choicesAll: string[] = [];
         answers.map((item) => {
           //extract item.choices flatten it
           if (item?.text) {
-            choicesAll.push(item?.text)
+            choicesAll.push(item?.text);
           }
-          return item
-        })
-        adobe_v1.completeForm(choicesAll)
-        ctaAction('question-submit|button', 'Submit Question')
+          return item;
+        });
+        formOptions(choicesAll.join("|"));
+        formSubmitTrigger();
+        ctaAction("question-submit|button", "Submit Question");
         navigate(
-          `/tracking/question-${response?.entry_id}-${response?.dream_no}`,
-        )
-      })
-  }
+          `/tracking/question-${response?.entry_id}-${response?.dream_no}`
+        );
+      });
+  };
   useEffect(() => {
-    adobe_v1.push({
-      type: 'mobile',
-    })
-    adobe_v1.apply()
-    adobe_v1.startForm()
-  }, [])
+    pageTrack();
+  }, [window.location.pathname]);
 
   return (
     <WrapperLayouts isFull={true}>
@@ -93,7 +89,7 @@ const Question = () => {
           value={{
             quiz_id: selected ?? 1,
             answer_id: selectAnswer(selected ?? 1) ?? 0,
-            text: '',
+            text: ""
           }}
           handleNext={handleNext}
           isLast={selected === question_ids.length}
@@ -101,7 +97,7 @@ const Question = () => {
         />
       </div>
     </WrapperLayouts>
-  )
-}
+  );
+};
 
-export default Question
+export default Question;

@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import { useScroll, useScrolling, useWindowSize } from 'react-use'
 import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
 import placeholder from '@assets/anim/imageplaceholder.gif'
-import useAdobe, { ctaAction } from '@hooks/useAdobe.ts'
+import { ctaAction, pageTrack } from '@hooks/useAdobe.ts'
 
 const Dream = () => {
   const scrollRef = useRef(null)
@@ -54,13 +54,9 @@ const Dream = () => {
       }
     }
   }, [y, height, scrolling])
-  const adobe_v1 = useAdobe()
   useEffect(() => {
-    adobe_v1.push({
-      type: 'mobile',
-    })
-    adobe_v1.apply()
-  }, [])
+    pageTrack()
+  }, [window.location.pathname])
   return (
     <>
       <WrapperLayouts isFull={true}>

@@ -1,88 +1,142 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <link href="/favicon.png" rel="icon" type="image/svg+xml"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta content="aframe:1.3.0" name="8thwall:renderer">
-    <meta content="@8thwall.xrextras" name="8thwall:package">
-    <meta content="@8thwall.landing-page" name="8thwall:package">
-    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
-    <meta content="#fff" name="theme-color"/>
-    <meta content="#fff" media="(prefers-color-scheme: light)" name="theme-color">
-    <meta content="#000" media="(prefers-color-scheme: dark)" name="theme-color">
+  <meta charset="UTF-8" />
+  <link href="/favicon.png" rel="icon" type="image/svg+xml" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="aframe:1.3.0" name="8thwall:renderer">
+  <meta content="@8thwall.xrextras" name="8thwall:package">
+  <meta content="@8thwall.landing-page" name="8thwall:package">
+  <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+  <meta content="#fff" name="theme-color" />
+  <meta content="#fff" media="(prefers-color-scheme: light)" name="theme-color">
+  <meta content="#000" media="(prefers-color-scheme: dark)" name="theme-color">
+  <link href="//dpm.demdex.net" rel="preconnect">
+  <link href="//fast.techmarketingdemos.demdex.net" rel="preconnect">
+  <link href="//techmarketingdemos.demdex.net" rel="preconnect">
+  <link href="//cm.everesttech.net" rel="preconnect">
+  <link href="//techmarketingdemos.tt.omtrdc.net" rel="preconnect">
+  <link href="//techmarketingdemos.sc.omtrdc.net" rel="preconnect">
+  <link href="//dpm.demdex.net" rel="dns-prefetch">
+  <link href="//fast.techmarketingdemos.demdex.net" rel="dns-prefetch">
+  <link href="//techmarketingdemos.demdex.net" rel="dns-prefetch">
+  <link href="//cm.everesttech.net" rel="dns-prefetch">
+  <link href="//techmarketingdemos.tt.omtrdc.net" rel="dns-prefetch">
+  <link href="//techmarketingdemos.sc.omtrdc.net" rel="dns-prefetch">
+  <title>The Singlife Dream Cube</title>
+  <meta content="<%= description %>" name="description">
 
-    <title>The Singlife Dream Cube</title>
-    <meta content="<%= description %>" name="description">
+
+  <!-- Open Graph / Facebook -->
+  <meta content="<%= title %>" property="og:title">
+  <meta content="<%= description %>" property="og:description">
+  <meta content="<%= url %>" property="og:url">
+  <meta content="<%= image %>" property="og:image">
+  <meta content="website" property="og:type" />
 
 
-    <!-- Open Graph / Facebook -->
-    <meta content="<%= title %>" property="og:title">
-    <meta content="<%= description %>" property="og:description">
-    <meta content="<%= url %>" property="og:url">
-    <meta content="<%= image %>" property="og:image">
-    <meta content="website" property="og:type"/>
+  <!-- Twitter -->
 
+  <meta content="summary_large_image" property="twitter:card" />
+  <meta content="<%= url %>" property="twitter:url" />
+  <meta content="<%= title %>" property="twitter:title" />
+  <meta content="<%= description %>" property="twitter:description" />
+  <meta content="<%= image %>" property="twitter:image" />
 
-    <!-- Twitter -->
+  <script>
+    let digitalData = {
+      control: {
+        versionNum: "1.0.0"
+      },
+      form: {
+        error: {
+          fieldLabels: "",
+          messages: "",
+          numErrors: ""
+        },
+        name: "",
+        option: "",
+        step: ""
+      },
+      page: {
+        brand: "singlife",
+        country: "sg",
+        errorCode: "",
+        errorMessage: "",
+        language: "en-sg",
+        navLevel1: "",
+        navLevel2: "",
+        navLevel3: "",
+        navLevel4: "",
+        navLevel5: "",
+        navLevel6: "",
+        navLevel7: "",
+        navLevel8: "",
+        navLevel9: "",
+        siteID: "sg-dreamcube",
+        type: "mobile"
+      },
+      cta: {
+        type: "",
+        text: ""
+      }
+    };
 
-    <meta content="summary_large_image" property="twitter:card"/>
-    <meta content="<%= url %>" property="twitter:url"/>
-    <meta content="<%= title %>" property="twitter:title"/>
-    <meta content="<%= description %>" property="twitter:description"/>
-    <meta content="<%= image %>" property="twitter:image"/>
+  </script>
+  <script async
+          src="https://assets.adobedtm.com/92f5a7c23d20/b05e9d013a5c/launch-f5554cd7aa74-staging.min.js"></script>
+  <!--    Google Tag-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=DC-13636712"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-    <!--    Google Tag-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=DC-13636712"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+    gtag("js", new Date());
+    gtag("config", "DC-13636712");
+  </script>
+  <script>
+    gtag("event", "conversion", {
+      "allow_custom_scripts": true,
+      "send_to": "DC-13636712/invmedia/singl000+standard"
+    });
+  </script>
+  <!--    End of Google Tag-->
 
-        gtag('js', new Date());
-        gtag('config', 'DC-13636712');
-    </script>
-    <script>
-        gtag('event', 'conversion', {
-            'allow_custom_scripts': true,
-            'send_to': 'DC-13636712/invmedia/singl000+standard'
-        });
-    </script>
-    <!--    End of Google Tag-->
+  <script src="//cdn.8thwall.com/web/aframe/8frame-1.3.0.min.js"></script>
+  <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+  <script async
+          src="//apps.8thwall.com/xrweb?appKey=f7ZP4nVEAkMSvG1KK9kv7OWL128CF4dwgV3T9KesWIjw7BgoPFKf5z9BLPz9SRMJmlwg7l"></script>
+  <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
+  <script src="//cdn.8thwall.com/web/aframe/aframe-extras-7.2.0.min.js"></script>
 
-    <script async
-            src="https://assets.adobedtm.com/92f5a7c23d20/b05e9d013a5c/launch-f5554cd7aa74-staging.min.js"></script>
-    <script src="//cdn.8thwall.com/web/aframe/8frame-1.3.0.min.js"></script>
-    <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
-    <script async
-            src="//apps.8thwall.com/xrweb?appKey=f7ZP4nVEAkMSvG1KK9kv7OWL128CF4dwgV3T9KesWIjw7BgoPFKf5z9BLPz9SRMJmlwg7l"></script>
-    <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
-    <script src="//cdn.8thwall.com/web/aframe/aframe-extras-7.2.0.min.js"></script>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Contrail+One&display=swap" rel="stylesheet">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Contrail+One&display=swap" rel="stylesheet">
+  <meta
+    content="eyJhcHBLZXkiOiJmN1pQNG5WRUFrTVN2RzFLSzlrdjdPV0wxMjhDRjRkd2dWM1Q5S2VzV0lqdzdCZ29QRktmNXo5QkxQejlTUk1KbWx3ZzdsIiwiZGVwZW5kZW5jaWVzIjpbeyJtb2R1bGVJZCI6ImI2ZGQ3YWFlLWM3NWItNDFmMi1iM2ZhLTJkZDcyMDRhM2NiZSIsImFsaWFzIjoicmVmbGVjdGlvbnMiLCJjb25maWciOnt9fV19"
+    name="8thwall:dependencies">
+  <script crossorigin="anonymous" src="https://cdn.8thwall.com/web/hosting/modules8-llffcbe7.js"></script>
 
-    <meta content="eyJhcHBLZXkiOiJmN1pQNG5WRUFrTVN2RzFLSzlrdjdPV0wxMjhDRjRkd2dWM1Q5S2VzV0lqdzdCZ29QRktmNXo5QkxQejlTUk1KbWx3ZzdsIiwiZGVwZW5kZW5jaWVzIjpbeyJtb2R1bGVJZCI6ImI2ZGQ3YWFlLWM3NWItNDFmMi1iM2ZhLTJkZDcyMDRhM2NiZSIsImFsaWFzIjoicmVmbGVjdGlvbnMiLCJjb25maWciOnt9fV19"
-          name="8thwall:dependencies">
-    <script crossorigin="anonymous" src="https://cdn.8thwall.com/web/hosting/modules8-llffcbe7.js"></script>
-
-    <script crossorigin="anonymous"
-            src="https://static.8thwall.app/modules/v1/b6dd7aae-c75b-41f2-b3fa-2dd7204a3cbe/version/major/1/module.js?s=7bd03112-23ed-4b04-b2be-554bbf7bbc45"></script>
-    <link href="/manifest.json" rel="manifest"/>
-    <script>
-        const reflections = window.Modules8.getModule({moduleId: 'b6dd7aae-c75b-41f2-b3fa-2dd7204a3cbe'})
-    </script>
+  <script crossorigin="anonymous"
+          src="https://static.8thwall.app/modules/v1/b6dd7aae-c75b-41f2-b3fa-2dd7204a3cbe/version/major/1/module.js?s=7bd03112-23ed-4b04-b2be-554bbf7bbc45"></script>
+  <link href="/manifest.json" rel="manifest" />
+  <script>
+    const reflections = window.Modules8.getModule({ moduleId: "b6dd7aae-c75b-41f2-b3fa-2dd7204a3cbe" });
+  </script>
 </head>
 <body>
 <div id="root"></div>
 <script src="/src/main.tsx" type="module"></script>
 <noscript>
-    <img alt=""
-         height="1" src="https://ad.doubleclick.net/ddm/activity/src=13636712;type=invmedia;cat=singl000;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ord=1?" width="1"/>
+  <img alt=""
+       height="1"
+       src="https://ad.doubleclick.net/ddm/activity/src=13636712;type=invmedia;cat=singl000;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ord=1?"
+       width="1" />
 </noscript>
 </body>
 </html>
