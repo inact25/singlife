@@ -41,10 +41,11 @@ export const ctaAction = (type: string, text: string) => {
   }
 }
 
-export const formFill = (name: string, step: string) => {
+export const formFill = (name: string, step: string, option: string) => {
   // @ts-ignore
   digitalData.form.name = name
   // @ts-ignore
+  digitalData.form.option = option
   // @ts-ignore
   digitalData.form.step = step
 }

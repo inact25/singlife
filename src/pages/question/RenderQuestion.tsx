@@ -268,6 +268,7 @@ const RenderQuestion: React.FC<Props> = ({
                                 formFill(
                                   `sg|dreamcube-quiz`,
                                   parseToText(record.question),
+                                  parseToText(item.c_text),
                                 )
                                 formViewTrigger()
                               }
