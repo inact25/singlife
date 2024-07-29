@@ -46,11 +46,11 @@ export const formFill = (name: string, step: string, option: string) => {
     // @ts-ignore
     digitalData.form.name = name
   }
-  if (step !== '') {
+  if (option !== '') {
     // @ts-ignore
     digitalData.form.option = option
   }
-  if (option !== '') {
+  if (step !== '') {
     // @ts-ignore
     digitalData.form.step = step
   }
