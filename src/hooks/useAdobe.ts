@@ -42,12 +42,18 @@ export const ctaAction = (type: string, text: string) => {
 }
 
 export const formFill = (name: string, step: string, option: string) => {
-  // @ts-ignore
-  digitalData.form.name = name
-  // @ts-ignore
-  digitalData.form.option = option
-  // @ts-ignore
-  digitalData.form.step = step
+  if (name !== '') {
+    // @ts-ignore
+    digitalData.form.name = name
+  }
+  if (step !== '') {
+    // @ts-ignore
+    digitalData.form.option = option
+  }
+  if (option !== '') {
+    // @ts-ignore
+    digitalData.form.step = step
+  }
 }
 
 export const formOptions = (option: string) => {

@@ -133,6 +133,11 @@ const RenderQuestion: React.FC<Props> = ({
   useEffect(() => {
     if (quiz_service.singleData) {
       setRecord(quiz_service.singleData)
+      formFill(
+        `sg|dreamcube-quiz`,
+        parseToText(quiz_service.singleData.question),
+        '',
+      )
     }
   }, [quiz_service.singleData])
 
