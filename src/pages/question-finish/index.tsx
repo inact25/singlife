@@ -7,7 +7,7 @@ import MediaPopup from '@components/atom/mediapop'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import useDream from '@services/api/dream'
-import { formCompleteTrigger, pageTrack } from '@hooks/useAdobe.ts'
+import { pageTrack } from '@hooks/useAdobe.ts'
 
 const motionFade = {
   hidden: { opacity: 0 },
@@ -31,7 +31,6 @@ const QuestionFinish = () => {
   }, [params?.id])
   useEffect(() => {
     pageTrack()
-    formCompleteTrigger()
   }, [window.location.pathname])
   return (
     <WrapperLayouts isFull={true} allDevice>

@@ -5,7 +5,14 @@ import RenderQuestion from "./RenderQuestion.tsx";
 import useQuiz from "@services/api/quiz";
 import { QuizSubmitItem } from "@services/api/quiz/type";
 import { useNavigate } from "react-router-dom";
-import { ctaAction, formOptions, formSubmitTrigger, pageTrack } from "@hooks/useAdobe.ts";
+import {
+  ctaAction,
+  formCompleteTrigger,
+  formOptions,
+  formStartTrigger,
+  formSubmitTrigger,
+  pageTrack
+} from "@hooks/useAdobe.ts";
 
 const question_ids = [1, 2, 3];
 const Question = () => {
@@ -71,10 +78,12 @@ const Question = () => {
         navigate(
           `/tracking/question-${response?.entry_id}-${response?.dream_no}`
         );
+        formCompleteTrigger();
       });
   };
   useEffect(() => {
     pageTrack();
+    formStartTrigger();
   }, [window.location.pathname]);
 
   return (
