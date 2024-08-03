@@ -8,7 +8,7 @@ import useAccelerometer from '@utils/useAccelerometer.ts'
 import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
 import { useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import useAdobe, { ctaAction } from '@hooks/useAdobe.ts'
+import { ctaAction, pageTrack } from '@hooks/useAdobe.ts'
 
 const Index = () => {
   const [open, setOpen] = useState(false)
@@ -18,13 +18,9 @@ const Index = () => {
   useEffect(() => {
     setTimeout(() => setOpen(true), 200)
   }, [])
-  const adobe_v1 = useAdobe()
   useEffect(() => {
-    adobe_v1.push({
-      type: 'mobile',
-    })
-    adobe_v1.apply()
-  }, [])
+    pageTrack()
+  }, [window.location.pathname])
   return (
     <div>
       <div

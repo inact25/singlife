@@ -8,7 +8,7 @@ import useDream from '@services/api/dream'
 import { bottomPopup } from '@utils/bottomPopup/bottomPopup.ts'
 import Buttonicon from '@components/atom/buttonicon'
 import back from '@assets/svgs/back.svg'
-import useAdobe, { ctaAction } from '@hooks/useAdobe.ts'
+import { ctaAction, pageTrack } from '@hooks/useAdobe.ts'
 
 const motionFade = {
   hidden: { opacity: 0 },
@@ -60,14 +60,9 @@ const YourDream = () => {
       }, 5000)
     }
   }, [showPopup])
-
-  const adobe_v1 = useAdobe()
   useEffect(() => {
-    adobe_v1.push({
-      type: 'mobile',
-    })
-    adobe_v1.apply()
-  }, [])
+    pageTrack()
+  }, [window.location.pathname])
   return (
     <WrapperLayouts isFull={true} allDevice>
       <div className=''>

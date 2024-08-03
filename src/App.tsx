@@ -1,10 +1,9 @@
 import './App.css'
 import { useEffect } from 'react'
 import Question from './pages/question'
-import useAdobe from '@hooks/useAdobe.ts'
+import { pageTrack } from '@hooks/useAdobe.ts'
 
 function App() {
-  const adobe_v1 = useAdobe()
   useEffect(() => {
     if (
       localStorage.theme === 'dark' ||
@@ -18,10 +17,7 @@ function App() {
   }, [])
   //listen route change
   useEffect(() => {
-    adobe_v1.push({
-      type: 'mobile',
-    })
-    adobe_v1.apply()
+    pageTrack()
   }, [])
   return (
     <div>
