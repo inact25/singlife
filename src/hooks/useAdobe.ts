@@ -29,6 +29,7 @@ export const pageTrack = () => {
   }
 }
 export const ctaAction = (type: string, text: string) => {
+  // @ts-ignore
   if (window?._satellite) {
     //track_cta_click
     // @ts-ignore
