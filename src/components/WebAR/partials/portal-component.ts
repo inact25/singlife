@@ -104,7 +104,7 @@ const tapToPlacePortalComponent = {
 
           portalVideo.setAttribute('animation__3', {
             property: 'scale',
-            dur: 1250,
+            dur: 1000,
             from: '0.001 0.001 0.001',
             to: '7 7 1',
             easing: 'linear',
@@ -124,7 +124,7 @@ const tapToPlacePortalComponent = {
 
       portalShadow.setAttribute('animation__4', {
         property: 'scale',
-        dur: 1750,
+        dur: 1500,
         from: '0.001 0.001 0.001',
         to: '15.5 2 11',
         easing: 'easeOutElastic',

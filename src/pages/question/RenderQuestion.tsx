@@ -60,7 +60,7 @@ const motionImageConfig = {
     y: {
       repeat: Infinity,
       repeatType: 'loop',
-      duration: 1,
+      duration: 1.4,
       ease: 'linear',
     },
   },
