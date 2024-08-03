@@ -48,9 +48,11 @@ const motionConfig = {
   closed: {
     height: 0,
     opacity: 0,
+    // delay: 3000,
   },
   //open visible
   open: {
+    // delay: 3000,
     height: 'auto',
     opacity: 1,
   },
@@ -83,7 +85,6 @@ const colorPicker = (index: number) => {
 const parseToText = (text: string) => {
   return text.replace(/<[^>]*>?/gm, '')
 }
-console.log(parseToText('<p>hello</p>'))
 const RenderQuestion: React.FC<Props> = ({
   selected,
   handleBack,
@@ -109,7 +110,7 @@ const RenderQuestion: React.FC<Props> = ({
     if (record?.question_id) {
       const timer = setTimeout(() => {
         setIsActive(true)
-      }, 2000)
+      }, 5000)
       return () => clearTimeout(timer)
     }
   }, [record?.question_id])
