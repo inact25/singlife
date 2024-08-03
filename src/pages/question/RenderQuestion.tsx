@@ -62,7 +62,7 @@ const motionImageConfig = {
     y: {
       repeat: Infinity,
       repeatType: 'loop',
-      duration: 1.4,
+      duration: 1.5,
       ease: 'linear',
     },
   },
@@ -181,6 +181,7 @@ const RenderQuestion: React.FC<Props> = ({
                       loop={true}
                       controls={false}
                       src={womenLeader}
+                      speed={0.75}
                       style={{
                         height: '100%',
                         width: '100vw',
