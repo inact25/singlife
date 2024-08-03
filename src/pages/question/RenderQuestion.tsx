@@ -112,7 +112,7 @@ const RenderQuestion: React.FC<Props> = ({
         () => {
           setIsActive(true)
         },
-        index === 0 ? 5000 : 2000,
+        index === 0 ? 2000 : 2000,
       )
       return () => clearTimeout(timer)
     }
