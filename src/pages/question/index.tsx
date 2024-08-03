@@ -1,13 +1,13 @@
-/* eslint-disable prettier/prettier */
-import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts.tsx'
+import WrapperLayouts from '../../layouts/wrapper/wrapper.layouts'
 import { useEffect, useState } from 'react'
-import RenderQuestion from './RenderQuestion.tsx'
+import RenderQuestion from './RenderQuestion'
 import useQuiz from '@services/api/quiz'
 import { QuizSubmitItem } from '@services/api/quiz/type'
 import { useNavigate } from 'react-router-dom'
-import useAdobe, { ctaAction } from '@hooks/useAdobe.ts'
+import useAdobe, { ctaAction } from '@hooks/useAdobe'
 
 const question_ids = [1, 2, 3]
+
 const Question = () => {
   const adobe_v1 = useAdobe()
   const navigate = useNavigate()
@@ -15,13 +15,21 @@ const Question = () => {
   const [selected, setSelected] = useState<number | null>(1)
   const [lastChoice, setLastChoice] = useState<number | null>(null)
   const [answers, setAnswers] = useState<QuizSubmitItem[]>([])
+
   const pushAnswer = (values: QuizSubmitItem) => {
     const newAnswers = answers.filter((item) => item.quiz_id !== values.quiz_id)
     setAnswers([...newAnswers, values])
   }
+
   const handleChanges = (values: QuizSubmitItem) => {
     pushAnswer(values)
+    adobe_v1.pushForm(
+      'QuizForm',
+      selected?.toString() ?? '',
+      values.answer_id.toString(),
+    )
   }
+
   const handleBack = (id: number) => {
     const isAvailable = question_ids.find((item) => item === id)
     if (!isAvailable) {
@@ -34,6 +42,7 @@ const Question = () => {
     setLastChoice(answer?.answer_id ?? 1)
     setSelected(id)
   }
+
   const handleNext = () => {
     const next = (selected ?? 1) + 1
     const isAvailable = question_ids.find((item) => item === next)
@@ -45,38 +54,32 @@ const Question = () => {
     setSelected(next)
     ctaAction('question-next|button', 'Next Question')
   }
+
   const selectAnswer = (id: number) => {
     return answers.find((item) => item.quiz_id === id)?.answer_id
   }
+
   const handleSubmit = () => {
-    quiz_service
-      .submitQuizRPCDo({
-        answers,
-      })
-      .then((response) => {
-        sessionStorage.removeItem('image')
-        if (response?.errors) {
-          return
+    quiz_service.submitQuizRPCDo({ answers }).then((response) => {
+      sessionStorage.removeItem('image')
+      if (response?.errors) {
+        return
+      }
+      let choicesAll: string[] = []
+      answers.map((item) => {
+        if (item?.text) {
+          choicesAll.push(item?.text)
         }
-        let choicesAll: string[] = []
-        answers.map((item) => {
-          //extract item.choices flatten it
-          if (item?.text) {
-            choicesAll.push(item?.text)
-          }
-          return item
-        })
-        adobe_v1.completeForm(choicesAll)
-        ctaAction('question-submit|button', 'Submit Question')
-        navigate(
-          `/tracking/question-${response?.entry_id}-${response?.dream_no}`,
-        )
+        return item
       })
-  }
-  useEffect(() => {
-    adobe_v1.push({
-      type: 'mobile',
+      adobe_v1.completeForm(choicesAll)
+      ctaAction('question-submit|button', 'Submit Question')
+      navigate(`/tracking/question-${response?.entry_id}-${response?.dream_no}`)
     })
+  }
+
+  useEffect(() => {
+    adobe_v1.push({ type: 'mobile' })
     adobe_v1.apply()
     adobe_v1.startForm()
   }, [])

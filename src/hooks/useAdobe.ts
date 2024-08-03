@@ -1,33 +1,58 @@
 import { useState } from 'react'
 
-const getBrowserLanguage = () => {
+const getBrowserLanguage = (): string => {
   return navigator.language || 'en-sg'
 }
 
-const getCurrentCountry = () => {
+const getCurrentCountry = (): string => {
   return 'sg'
 }
 
-const getSiteId = () => {
+const getSiteId = (): string => {
   return 'sg-dreamcube'
 }
 
-const seperatedPath = () => {
+const seperatedPath = (): string[] => {
   const path = window.location.pathname
   return path.split('/')
 }
 
+interface FormData {
+  option: string
+  name: string
+  step: string
+}
+
+interface DataLayer {
+  siteId: string
+  language: string
+  country: string
+  versionNum: string
+  brand: string
+  type: string
+  navLevel1?: string
+  navLevel2?: string
+  navLevel3?: string
+  form?: FormData
+}
+
+declare global {
+  interface Window {
+    _satellite?: any
+    dataLayer?: DataLayer[]
+  }
+}
+
 const useAdobe = () => {
-  // @ts-ignore
-  const [layers, setLayers] = useState([])
+  const [layers, setLayers] = useState<DataLayer[]>([])
 
   const push = ({
     type = 'mobile',
     navLevel1 = '',
     navLevel2 = '',
     navLevel3 = '',
-  }) => {
-    let dataLayer: any = layers ?? []
+  }: Partial<DataLayer>) => {
+    let dataLayer: DataLayer[] = layers ?? []
     if (navLevel1 === '' && navLevel2 === '' && navLevel3 === '') {
       const path = seperatedPath()
       if (path.length > 1) {
@@ -55,13 +80,13 @@ const useAdobe = () => {
   }
 
   const pushForm = (name: string, step: string, option: string) => {
-    // @ts-ignore
     if (window?._satellite) {
-      const payload = {
+      const payload: DataLayer = {
         siteId: getSiteId(),
         language: getBrowserLanguage(),
         country: getCurrentCountry(),
         versionNum: '1.0.0',
+        brand: 'singlife',
         type: 'mobile',
         form: {
           option,
@@ -69,26 +94,23 @@ const useAdobe = () => {
           step,
         },
       }
-      // Menambahkan console.log dengan format yang diinginkan
+
       console.log(`form-name: ${name}`)
       console.log(`form-step: ${step}`)
       console.log(`form-option: ${option}`)
 
-      // @ts-ignore
-      window?._satellite.track('track_form_view', payload)
-
-      // @ts-ignore
-      window?._satellite.track('track_form_submit', payload)
+      window._satellite.track('track_form_view', payload)
+      window._satellite.track('track_form_submit', payload)
     }
   }
 
   const startForm = () => {
-    // @ts-ignore
     window?._satellite.track('track_form_start', {
       siteId: getSiteId(),
       language: getBrowserLanguage(),
       country: getCurrentCountry(),
       versionNum: '1.0.0',
+      brand: 'singlife',
       type: 'mobile',
       form: {
         name: '',
@@ -99,38 +121,26 @@ const useAdobe = () => {
   }
 
   const completeForm = (trackedOptions: string[]) => {
-    // @ts-ignore
     if (window?._satellite) {
-      // @ts-ignore
-      const pickOne = window?.dataLayer[0]
-      pickOne.form = {
-        ...pickOne.form,
-        option: trackedOptions.join('|'),
-      }
-      // @ts-ignore
-      window.dataLayer = [pickOne]
-      // Menambahkan console.log dengan format yang diinginkan
-      console.log(`form-name: ${pickOne.form.name}`)
-      console.log(`form-step: ${pickOne.form.step}`)
-      console.log(`form-option: ${pickOne.form.option}`)
+      const pickOne = window.dataLayer?.[0]
+      if (pickOne && pickOne.form) {
+        pickOne.form.option = trackedOptions.join('|')
 
-      // @ts-ignore
-      window?._satellite.track('track_form_complete', pickOne)
+        window.dataLayer = [pickOne]
+        console.log(`form-name: ${pickOne.form.name}`)
+        console.log(`form-step: ${pickOne.form.step}`)
+        console.log(`form-option: ${pickOne.form.option}`)
+
+        window._satellite.track('track_form_complete', pickOne)
+      }
     }
   }
 
   const apply = () => {
-    // @ts-ignore
     if (window?._satellite) {
-      //parse data layer
-      // @ts-ignore
       window.dataLayer = layers
-      // Menambahkan console.log
       console.log('Data layer applied:', layers)
-
-      // @ts-ignore
-      window?._satellite.track('track_page_load', layers)
-      //clean up
+      window._satellite.track('track_page_load', layers)
       setLayers([])
       return true
     }
@@ -141,18 +151,16 @@ const useAdobe = () => {
 }
 
 export const ctaAction = (type: string, text: string) => {
-  // @ts-ignore
   if (window?._satellite) {
-    // Menambahkan console.log dengan format yang diinginkan
     console.log(`cta-type: ${type}`)
     console.log(`cta-text: ${text}`)
 
-    // @ts-ignore
-    window?._satellite.track('track_cta_click', {
+    window._satellite.track('track_cta_click', {
       siteId: getSiteId(),
       language: getBrowserLanguage(),
       country: getCurrentCountry(),
       versionNum: '1.0.0',
+      brand: 'singlife',
       type: 'mobile',
       cta: {
         type,
