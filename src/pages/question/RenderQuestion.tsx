@@ -108,12 +108,15 @@ const RenderQuestion: React.FC<Props> = ({
 
   useEffect(() => {
     if (record?.question_id) {
-      const timer = setTimeout(() => {
-        setIsActive(true)
-      }, 5000)
+      const timer = setTimeout(
+        () => {
+          setIsActive(true)
+        },
+        index === 0 ? 5000 : 2000,
+      )
       return () => clearTimeout(timer)
     }
-  }, [record?.question_id])
+  }, [record?.question_id, index])
   useEffect(() => {
     setIsActive(false)
   }, [selected])
