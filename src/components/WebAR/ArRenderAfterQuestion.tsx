@@ -87,7 +87,7 @@ const ArRenderAfterQuestion: React.FC<Props> = ({ params, callback }) => {
               setIsPopupShow(true)
               setTimeout(() => {
                 setIsPopupShow(false)
-                setTimeout(() => setReward(1), 15000)
+                setTimeout(() => setReward(1), 12000)
               }, 2500)
             }, 6000)
           }, 3000)
