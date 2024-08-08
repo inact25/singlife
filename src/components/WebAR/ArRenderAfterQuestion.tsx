@@ -446,7 +446,7 @@ const Rewarded = () => {
       </div>
       <div className='caption mb-8'>
         <p className='note'>
-          Get a Financial Freedom Starter Plan <br /> and a S$20 e-voucher
+        Get a Financial Freedom Starter Plan* and a S$50 e-voucher* <br />  <br /> *T&Cs apply.
         </p>
       </div>
       <div className='action-button flex gap-[16px]'>
